@@ -44,75 +44,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CampReservation.cs">
+    <Compile Include="Forms\CampReservation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CampReservation.Designer.cs">
+    <Compile Include="Forms\CampReservation.Designer.cs">
       <DependentUpon>CampReservation.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntranceEvent.cs">
+    <Compile Include="Forms\EntranceEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EntranceEvent.Designer.cs">
+    <Compile Include="Forms\EntranceEvent.Designer.cs">
       <DependentUpon>EntranceEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="EventStatusReport.cs">
+    <Compile Include="Forms\EventStatusReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EventStatusReport.Designer.cs">
+    <Compile Include="Forms\EventStatusReport.Designer.cs">
       <DependentUpon>EventStatusReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExitEvent.cs">
+    <Compile Include="Forms\ExitEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExitEvent.Designer.cs">
+    <Compile Include="Forms\ExitEvent.Designer.cs">
       <DependentUpon>ExitEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="FoodShop.cs">
+    <Compile Include="Forms\FoodShop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FoodShop.Designer.cs">
+    <Compile Include="Forms\FoodShop.Designer.cs">
       <DependentUpon>FoodShop.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoanMaterial.cs">
+    <Compile Include="Forms\LoanMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoanMaterial.Designer.cs">
+    <Compile Include="Forms\LoanMaterial.Designer.cs">
       <DependentUpon>LoanMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PayPalTextFileTranslator.cs">
+    <Compile Include="Forms\PayPalTextFileTranslator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PayPalTextFileTranslator.Designer.cs">
+    <Compile Include="Forms\PayPalTextFileTranslator.Designer.cs">
       <DependentUpon>PayPalTextFileTranslator.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CampReservation.resx">
+    <EmbeddedResource Include="Forms\CampReservation.resx">
       <DependentUpon>CampReservation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EntranceEvent.resx">
+    <EmbeddedResource Include="Forms\EntranceEvent.resx">
       <DependentUpon>EntranceEvent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EventStatusReport.resx">
+    <EmbeddedResource Include="Forms\EventStatusReport.resx">
       <DependentUpon>EventStatusReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FoodShop.resx">
+    <EmbeddedResource Include="Forms\FoodShop.resx">
       <DependentUpon>FoodShop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoanMaterial.resx">
+    <EmbeddedResource Include="Forms\LoanMaterial.resx">
       <DependentUpon>LoanMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PayPalTextFileTranslator.resx">
+    <EmbeddedResource Include="Forms\PayPalTextFileTranslator.resx">
       <DependentUpon>PayPalTextFileTranslator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
