@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camp.cs" />
+    <Compile Include="CampRes.cs" />
     <Compile Include="CampReservation.cs">
       <SubType>Form</SubType>
     </Compile>
