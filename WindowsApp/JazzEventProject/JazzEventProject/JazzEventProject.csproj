@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\EventAccount.cs" />
     <Compile Include="Classes\Invoice.cs" />
     <Compile Include="Forms\CampReservation.cs">
       <SubType>Form</SubType>
