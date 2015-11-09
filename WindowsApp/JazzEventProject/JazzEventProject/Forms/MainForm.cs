@@ -63,6 +63,12 @@ namespace JazzEventProject
             foodform.Show();
         }
 
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            Form paymentform = new PayPalTextFileTranslator();
+            paymentform.Show();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -89,7 +95,18 @@ namespace JazzEventProject
 
         private void btnMaximine_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            if(this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+       
+          
         }
+
+      
     }
 }
