@@ -1,4 +1,4 @@
-﻿namespace JazzEventProject_V1
+﻿namespace JazzEventProject
 {
     partial class EventStatusReport
     {
@@ -134,6 +134,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "EventStatusReport";
             this.Text = "EventStatusReport";
+            this.Load += new System.EventHandler(this.EventStatusReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

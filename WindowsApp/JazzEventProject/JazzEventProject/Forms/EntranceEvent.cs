@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JazzEventProject_V1
+namespace JazzEventProject
 {
     public partial class EntranceEvent : Form
     {

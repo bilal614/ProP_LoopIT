@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JazzEventProject_V1
+namespace JazzEventProject
 {
     public partial class EventStatusReport : Form
     {
         public EventStatusReport()
         {
             InitializeComponent();
+        }
+
+        private void EventStatusReport_Load(object sender, EventArgs e)
+        {
+
         }
 
     }
