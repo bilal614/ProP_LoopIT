@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JazzEventProject_V1
+namespace JazzEventProject
 {
     static class Program
     {

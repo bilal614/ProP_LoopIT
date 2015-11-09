@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JazzEventProject_V1.Properties
+namespace JazzEventProject.Properties
 {
 
 

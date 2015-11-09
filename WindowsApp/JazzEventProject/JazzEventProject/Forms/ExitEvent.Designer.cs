@@ -1,4 +1,4 @@
-﻿namespace JazzEventProject_V1
+﻿namespace JazzEventProject
 {
     partial class ExitEvent
     {
