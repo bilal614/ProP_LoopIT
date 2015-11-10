@@ -76,6 +76,7 @@
     <Compile Include="FoodShop.Designer.cs">
       <DependentUpon>FoodShop.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupMember.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="LoanMaterial.cs">
       <SubType>Form</SubType>
