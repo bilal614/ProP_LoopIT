@@ -21,10 +21,10 @@ namespace JazzEventProject
         ///<summary>
         ///Constructor method for creating an event account object.
         ///</summary>
-        public EventAccount (int accountid, int rfid, string firstname, string lastname, string email, string phone, decimal balance, bool paymentStatus, bool payInAdvance)
+        public EventAccount (int accountid, string firstname, string lastname, string email, string phone, decimal balance, bool paymentStatus, bool payInAdvance)
         {
             this.AccountId = accountid;
-            this.RFID = rfid;
+            this.RFID = -1;
             this.FirstName = firstname;
             this.LastName = lastname;
             this.Email = email;
