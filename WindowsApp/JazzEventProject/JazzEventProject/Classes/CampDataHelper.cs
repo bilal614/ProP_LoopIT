@@ -26,13 +26,15 @@ namespace JazzEventProject.Classes
                 int CampID;
                 string CampDes;
                 int MaxPerson;
-                int available;
+                bool available;
                 while (reader.Read())
                 {
                     CampID = Convert.ToInt32(reader["CampID"]);
                     CampDes = Convert.ToString(reader["Description"]);
                     MaxPerson = Convert.ToInt32(reader["MaxPerson"]);
-                    available = Convert.ToInt32(reader["Available"]);
+                    available = Convert.ToBoolean(reader["Available"]);
+
+                    temp.Add(new Camp(CampID, CampDes, MaxPerson, available));
                 }
             }
             catch
