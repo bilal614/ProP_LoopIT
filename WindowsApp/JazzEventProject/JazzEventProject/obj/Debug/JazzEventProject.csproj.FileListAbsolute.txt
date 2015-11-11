@@ -31,3 +31,16 @@ D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\J
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.MainForm.resources
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.PayPalTextFileTranslator.resources
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Properties.Resources.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.pdb
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.csprojResolveAssemblyReference.cache
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.CampReservation.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.EntranceEvent.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.EventStatusReport.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.ExitEvent.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.FoodShop.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.LoanMaterial.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.MainForm.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.PayPalTextFileTranslator.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Properties.Resources.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.csproj.GenerateResource.Cache
