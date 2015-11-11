@@ -50,7 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Camp.cs" />
+    <Compile Include="Classes\CampRes.cs" />
     <Compile Include="Classes\EventAccount.cs" />
+    <Compile Include="Classes\GroupMember.cs" />
     <Compile Include="Classes\Invoice.cs" />
     <Compile Include="Classes\Invoice_Items.cs" />
     <Compile Include="Classes\Items.cs" />
