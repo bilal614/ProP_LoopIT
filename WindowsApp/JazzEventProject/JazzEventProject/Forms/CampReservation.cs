@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JazzEventProject.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace JazzEventProject
         public CampReservation()
         {
             InitializeComponent();
+        }
+        private CampDataHelper CampDh;
+        private void CampReservation_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnScan_Click(object sender, EventArgs e)
+        {
+            CampDh = new CampDataHelper();
+            Camp c = CampDh.GetACamp();
+            MessageBox.Show(c.GetInfo());
         }
 
     }

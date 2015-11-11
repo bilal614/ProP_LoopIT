@@ -10,16 +10,16 @@ namespace JazzEventProject.Classes
 {
     class CampDataHelper : DataHelper
     {
-        public List<Camp> GetAllStudents()
+        public Camp GetACamp()
         {
-            String sql = "SELECT * FROM Camp";
+            String sql = "SELECT * FROM Camp WHERE CampID = 1";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
-            List<Camp> temp;
-            temp = new List<Camp>();
+            Camp temp = null;
+            
 
-            try
-            {
+            //try
+            //{
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -33,16 +33,17 @@ namespace JazzEventProject.Classes
                     CampDes = Convert.ToString(reader["Description"]);
                     MaxPerson = Convert.ToInt32(reader["MaxPerson"]);
                     available = Convert.ToInt32(reader["Available"]);
+                    temp = new Camp(CampID, CampDes, MaxPerson, available);
                 }
-            }
-            catch
-            {
-                MessageBox.Show("error while loading the students");
-            }
-            finally
-            {
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("error while loading the camps");
+            //}
+            //finally
+            //{
                 connection.Close();
-            }
+            //}
             return temp;
         }
     }

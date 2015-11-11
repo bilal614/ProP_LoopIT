@@ -15,8 +15,8 @@ namespace JazzEventProject.Classes
         {
             String connectionInfo = "server=athena01.fhict.local;" +
                                     "database=dbi333151;" +
-                                    "user id=i333151;" +
-                                    "password=Chuotchit1504@" +
+                                    "user id=dbi333151;" +
+                                    "password=rTnrm7Fajk;" +
                                     "connect timeout=30;";
 
             connection = new MySqlConnection(connectionInfo);

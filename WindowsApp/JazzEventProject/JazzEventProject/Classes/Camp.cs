@@ -28,9 +28,9 @@ namespace JazzEventProject.Classes
             }
         }
 
-        public bool Available { get; set; }
+        public int Available { get; set; }
         //constructors
-        public Camp(int id, string desc, int size, bool available)
+        public Camp(int id, string desc, int size, int available)
         {
             this.campId = id;
             this.Description = desc;
@@ -38,5 +38,9 @@ namespace JazzEventProject.Classes
             this.Available = available;
         }
         //methods
+        public string GetInfo()
+        {
+            return String.Format("Camp information: {0} {1} {2} {3}", campId.ToString(), Description, MaxPerson.ToString(), Available.ToString());
+        }
     }
 }
