@@ -10,7 +10,7 @@ namespace JazzEventProject.Classes
 {
     class CampDataHelper : DataHelper
     {
-        public List<Camp> GetAllStudents()
+        public List<Camp> GetAllCamps()
         {
             String sql = "SELECT * FROM Camp";
             MySqlCommand command = new MySqlCommand(sql, connection);
@@ -39,7 +39,7 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("error while loading the students");
+                MessageBox.Show("error while loading the camps");
             }
             finally
             {

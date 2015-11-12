@@ -202,6 +202,7 @@
             this.btnMaterial.Text = "Loan material";
             this.btnMaterial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMaterial.UseVisualStyleBackColor = false;
+            this.btnMaterial.Click += new System.EventHandler(this.btnMaterial_Click);
             // 
             // btnFood
             // 
@@ -219,6 +220,7 @@
             this.btnFood.Text = "Food shop";
             this.btnFood.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFood.UseVisualStyleBackColor = false;
+            this.btnFood.Click += new System.EventHandler(this.btnFood_Click);
             // 
             // btnStatus
             // 
@@ -236,6 +238,7 @@
             this.btnStatus.Text = "Status of event";
             this.btnStatus.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnStatus.UseVisualStyleBackColor = false;
+            this.btnStatus.Click += new System.EventHandler(this.btnStatus_Click);
             // 
             // btnCamp
             // 
