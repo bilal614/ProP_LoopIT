@@ -43,37 +43,37 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.sub_rightPanel = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnSearchFood = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.GreyPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.bottomPanel = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panelSubLeft = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
             this.sub_rightPanel.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panelSubLeft.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCurrentDate
@@ -200,16 +200,62 @@
             this.sub_rightPanel.Size = new System.Drawing.Size(901, 514);
             this.sub_rightPanel.TabIndex = 7;
             // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.panel7);
+            this.panel12.Controls.Add(this.dataGridViewFood);
+            this.panel12.Controls.Add(this.panel11);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(0, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(901, 514);
+            this.panel12.TabIndex = 11;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Controls.Add(this.label4);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Controls.Add(this.lbSubTotal);
+            this.panel7.Controls.Add(this.label7);
+            this.panel7.Location = new System.Drawing.Point(737, 419);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(152, 89);
+            this.panel7.TabIndex = 8;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.tbCurrentDate);
+            this.panel11.Controls.Add(this.label3);
+            this.panel11.Location = new System.Drawing.Point(349, 6);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(311, 79);
+            this.panel11.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 32);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Date:";
+            // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(166, 18);
+            this.btnSave.Location = new System.Drawing.Point(170, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(103, 84);
+            this.btnSave.Size = new System.Drawing.Size(103, 96);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Sale";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -217,11 +263,13 @@
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(300, 18);
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(300, 6);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(105, 84);
+            this.btnPrint.Size = new System.Drawing.Size(105, 96);
             this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = "Print invoice";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnSearchFood
@@ -250,15 +298,27 @@
             this.panel2.Size = new System.Drawing.Size(336, 81);
             this.panel2.TabIndex = 9;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(14, 18);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(181, 41);
+            this.textBox2.TabIndex = 9;
+            this.textBox2.Text = "Typing food id here...";
+            // 
             // btnBackToMainForm
             // 
             this.btnBackToMainForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnBackToMainForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackToMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackToMainForm.Location = new System.Drawing.Point(435, 18);
+            this.btnBackToMainForm.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToMainForm.Image")));
+            this.btnBackToMainForm.Location = new System.Drawing.Point(435, 6);
             this.btnBackToMainForm.Name = "btnBackToMainForm";
-            this.btnBackToMainForm.Size = new System.Drawing.Size(95, 84);
+            this.btnBackToMainForm.Size = new System.Drawing.Size(95, 96);
             this.btnBackToMainForm.TabIndex = 1;
-            this.btnBackToMainForm.Text = "Close";
+            this.btnBackToMainForm.Text = "Back";
+            this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBackToMainForm.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -302,26 +362,6 @@
             this.GreyPanel.TabIndex = 13;
             this.GreyPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 32);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Date:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(14, 18);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 41);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.Text = "Typing food id here...";
-            // 
             // bottomPanel
             // 
             this.bottomPanel.Controls.Add(this.panel6);
@@ -342,20 +382,6 @@
             this.panel6.Size = new System.Drawing.Size(552, 114);
             this.panel6.TabIndex = 2;
             // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.Controls.Add(this.label1);
-            this.panel7.Controls.Add(this.label4);
-            this.panel7.Controls.Add(this.label8);
-            this.panel7.Controls.Add(this.label5);
-            this.panel7.Controls.Add(this.lbSubTotal);
-            this.panel7.Controls.Add(this.label7);
-            this.panel7.Location = new System.Drawing.Point(737, 419);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(152, 89);
-            this.panel7.TabIndex = 8;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.panelSubLeft);
@@ -365,15 +391,6 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(901, 514);
             this.panel8.TabIndex = 15;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(336, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(5, 514);
-            this.panel9.TabIndex = 14;
             // 
             // panelSubLeft
             // 
@@ -385,25 +402,14 @@
             this.panelSubLeft.Size = new System.Drawing.Size(341, 514);
             this.panelSubLeft.TabIndex = 15;
             // 
-            // panel11
+            // panel9
             // 
-            this.panel11.Controls.Add(this.tbCurrentDate);
-            this.panel11.Controls.Add(this.label3);
-            this.panel11.Location = new System.Drawing.Point(349, 6);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(311, 79);
-            this.panel11.TabIndex = 10;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.panel7);
-            this.panel12.Controls.Add(this.dataGridViewFood);
-            this.panel12.Controls.Add(this.panel11);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(0, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(901, 514);
-            this.panel12.TabIndex = 11;
+            this.panel9.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(336, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(5, 514);
+            this.panel9.TabIndex = 14;
             // 
             // FoodShop
             // 
@@ -417,6 +423,11 @@
             this.Name = "FoodShop";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).EndInit();
             this.sub_rightPanel.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -424,13 +435,8 @@
             this.HeaderPanel.PerformLayout();
             this.bottomPanel.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panelSubLeft.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
