@@ -50,8 +50,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbQuantity = new System.Windows.Forms.TextBox();
+            this.tbFoodID = new System.Windows.Forms.TextBox();
             this.btnSearchFood = new System.Windows.Forms.Button();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -107,7 +107,6 @@
             this.dataGridViewFood.RowHeadersWidth = 100;
             this.dataGridViewFood.Size = new System.Drawing.Size(507, 43);
             this.dataGridViewFood.TabIndex = 4;
-            this.dataGridViewFood.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FoodId
             // 
@@ -263,7 +262,6 @@
             this.btnSave.Text = "Sale";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnPrint
             // 
@@ -280,8 +278,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.tbQuantity);
+            this.panel2.Controls.Add(this.tbFoodID);
             this.panel2.Controls.Add(this.btnSearchFood);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -289,21 +287,21 @@
             this.panel2.Size = new System.Drawing.Size(306, 81);
             this.panel2.TabIndex = 9;
             // 
-            // textBox1
+            // tbQuantity
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "Typing quantity here...";
+            this.tbQuantity.Location = new System.Drawing.Point(34, 42);
+            this.tbQuantity.Name = "tbQuantity";
+            this.tbQuantity.Size = new System.Drawing.Size(181, 20);
+            this.tbQuantity.TabIndex = 9;
+            this.tbQuantity.Text = "Typing quantity here...";
             // 
-            // textBox2
+            // tbFoodID
             // 
-            this.textBox2.Location = new System.Drawing.Point(34, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 20);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.Text = "Typing food id here...";
+            this.tbFoodID.Location = new System.Drawing.Point(34, 16);
+            this.tbFoodID.Name = "tbFoodID";
+            this.tbFoodID.Size = new System.Drawing.Size(181, 20);
+            this.tbFoodID.TabIndex = 9;
+            this.tbFoodID.Text = "Typing food id here...";
             // 
             // btnSearchFood
             // 
@@ -320,6 +318,7 @@
             this.btnSearchFood.TabIndex = 8;
             this.btnSearchFood.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSearchFood.UseVisualStyleBackColor = false;
+            this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
             // 
             // btnBackToMainForm
             // 
@@ -374,7 +373,6 @@
             this.GreyPanel.Name = "GreyPanel";
             this.GreyPanel.Size = new System.Drawing.Size(901, 5);
             this.GreyPanel.TabIndex = 13;
-            this.GreyPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // bottomPanel
             // 
@@ -582,7 +580,7 @@
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Panel GreyPanel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbFoodID;
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
@@ -598,6 +596,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbQuantity;
     }
 }

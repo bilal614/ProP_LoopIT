@@ -1,0 +1,90 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace JazzEventProject.Classes
+{
+    class ItemDataHelper : DataHelper
+    {
+        /// <summary>
+        /// Read all of the foods item from database put in to the list
+        /// </summary>
+        /// <returns>List of items</returns>
+        public List<Items> GetAllFoods()
+        {
+            String sql = "SELECT * FROM FOOD";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            List<Items> temp;
+            temp = new List<Items>();
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                int FoodID;
+                string FoodName;
+                int FoodQuantity;
+                decimal FoodPrice;
+                while (reader.Read())
+                {
+                    FoodID = Convert.ToInt32(reader["Food_ID"]);
+                    FoodName = Convert.ToString(reader["Food_Name"]);
+                    FoodQuantity = Convert.ToInt32(reader["Food_Quantity"]);
+                    FoodPrice = Convert.ToDecimal(reader["Food_Price"]);
+
+                    temp.Add(new Items(FoodID, FoodName, FoodPrice, FoodQuantity));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("error while loading the camps");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return temp;
+        }
+
+        /// <summary>
+        /// Get a food item from the list of foods
+        /// </summary>
+        /// <param name="id">Food ID</param>
+        /// <returns>A object with type item</returns>
+        public Items GetAFood(int id)
+        {
+            Items item = null;
+            List<Items> listsFood = GetAllFoods();
+            foreach(var tempItem in listsFood)
+            {
+                if (item.ID == id)
+                {
+                    item = tempItem;
+                }
+            }
+            return item;
+        }
+         /// <summary>
+         /// Sell food with the given id and quantity
+         /// </summary>
+         /// <param name="id"></param>
+         /// <param name="quantity"></param>
+         /// <returns></returns>
+        public bool SellFood(int id, int quantity)
+        {
+            Items sitem = GetAFood(id);
+            if (sitem.Quantity >= quantity)
+            {
+                sitem.Quantity -= quantity;
+                return true;
+            }
+            else
+                return false;
+        }
+    }
+}
