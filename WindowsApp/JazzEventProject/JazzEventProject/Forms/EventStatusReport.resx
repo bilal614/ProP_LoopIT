@@ -138,4 +138,17 @@
   <metadata name="TotalRev.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFsSURBVGhD7ZrBTQMxEEVTAiVQwmq9nKEESkgH0AF0ADd7c4FOoAM425FSQtIBeGb/wUlG4I0j
+        2aD50hNS7PnME3sgShYtZXDhKfI1B+PCtrd+iYr6MeP6Vlo0B5JBTf0MNjxKS+aCmvpREYCa+lERgJr6
+        URGAmvpREYCa+lERgJr6URGAmvIY5++GMTzMgWYw3oZIP4Z7qTwHmqWOJkTiEu9SeRZxFh0qQvAipTkU
+        4UfNhhuJo8ew6b9IXBhHR6Gzg7sqksLlpVGR6a6KpHB5aVRkuqsiKVxeGhWZ7p5PpFv57moVrufAg0gT
+        Isatn6WD3/Ef3cvmAkvUF5FezIU+CsASf1uEfjmWUBGaxesqQqgIoyJ7d1UkRUUYFdm7qyIpKsL8e5H4
+        L378+SbDZ2lHyyIzOJeIcWEnHWSBR8hY/yqeZ0Cz3FH2Nafdgr60dYoMvbOkBSid3Vwa5z+lez9BMzSL
+        mpPerdLuvfXLb4SMNrFioimaAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>
