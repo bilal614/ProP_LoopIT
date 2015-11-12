@@ -179,7 +179,7 @@ INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (2, 'D
 INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (3, 'Joe@gmail.com', 1, false);
 INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (3, 'AliceSim@gmail.com', 1, false);
 
-//Insert into food
+//Insert data into food
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (1,'Big Burger', 150, 5.50);
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (2,'French Fries', 150, 5.00);
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (3,'Chicken Burger', 15, 4.50);
@@ -187,12 +187,12 @@ INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (4,'Salad
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (5,'Heniken Beer', 250, 1.50);
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (6,'Coca-cola', 550, 1.20);
 
-//Insert into f_invoice
-INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (1, STR_TO_DATE('02-10-2015', '%d-%m-%Y'), 1);
-INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (2, STR_TO_DATE('03-10-2015', '%d-%m-%Y'), 2);
-INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (3, STR_TO_DATE('04-10-2015', '%d-%m-%Y'), 3);
+//Insert data into f_invoice
+INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (1, STR_TO_DATE('02-11-2015', '%d-%m-%Y'), 1);
+INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (2, STR_TO_DATE('03-11-2015', '%d-%m-%Y'), 2);
+INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (3, STR_TO_DATE('04-11-2015', '%d-%m-%Y'), 3);
 
-//Insert into food_invoice
+//Insert data into food_invoice
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 1, 1);
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (1, 1, 2);
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 1, 6);
@@ -200,3 +200,27 @@ INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 1, 6
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (1, 2, 1);
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 2, 3);
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 2, 6);
+
+//Insert data into MATERIAL
+INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+VALUES (1,'USB Cable',1.00,1.50,'USB cable for charging phone',50);
+INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+VALUES (2,'Charger for laptop',2.00,2.50,'',30);
+INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+VALUES (3,'USB Device',1.00,1.50,'USB device, capacity 8GB',20);
+INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+VALUES (4,'Camera',11.50,10.00,'Canon cammera, 8GB, 2000x5000 pixels',20);
+
+//Insert data into M_Invoice
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, End_Date, Account_ID) 
+VALUES (1,STR_TO_DATE('02-11-2015', '%d-%m-%Y'),STR_TO_DATE('04-11-2015', '%d-%m-%Y'),1);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, End_Date, Account_ID) 
+VALUES (2,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),STR_TO_DATE('02-11-2015', '%d-%m-%Y'),2);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, End_Date, Account_ID) 
+VALUES (3,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),STR_TO_DATE('01-11-2015', '%d-%m-%Y'),3);
+
+//Insert data into Material_Invoice
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 1, 1);
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 1, 2);
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 2, 3);
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 4, 3);
