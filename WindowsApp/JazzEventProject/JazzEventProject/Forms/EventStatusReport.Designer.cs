@@ -37,15 +37,18 @@
             this.FoodDrinkSales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoanMtrlRev = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalRev = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.bottomPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnBackToMainForm = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -61,7 +64,7 @@
             this.TotalRev});
             this.dataGridView1.Location = new System.Drawing.Point(12, 73);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(750, 160);
+            this.dataGridView1.Size = new System.Drawing.Size(750, 226);
             this.dataGridView1.TabIndex = 0;
             // 
             // NmbrOfReg
@@ -99,36 +102,6 @@
             this.TotalRev.HeaderText = "Total Revenue";
             this.TotalRev.Name = "TotalRev";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(489, 253);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(273, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Update Table Data";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 253);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(223, 35);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Back To Main Form";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(489, 296);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(273, 32);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Print Report";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // HeaderPanel
             // 
             this.HeaderPanel.Controls.Add(this.pictureBox1);
@@ -160,15 +133,74 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "EVENT\'S REPORT";
             // 
+            // bottomPanel
+            // 
+            this.bottomPanel.Controls.Add(this.btnPrint);
+            this.bottomPanel.Controls.Add(this.panel3);
+            this.bottomPanel.Controls.Add(this.btnBackToMainForm);
+            this.bottomPanel.Controls.Add(this.btnUpdate);
+            this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomPanel.Location = new System.Drawing.Point(0, 316);
+            this.bottomPanel.Name = "bottomPanel";
+            this.bottomPanel.Size = new System.Drawing.Size(774, 114);
+            this.bottomPanel.TabIndex = 17;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(774, 5);
+            this.panel3.TabIndex = 16;
+            // 
+            // btnBackToMainForm
+            // 
+            this.btnBackToMainForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackToMainForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackToMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackToMainForm.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToMainForm.Image")));
+            this.btnBackToMainForm.Location = new System.Drawing.Point(667, 10);
+            this.btnBackToMainForm.Name = "btnBackToMainForm";
+            this.btnBackToMainForm.Size = new System.Drawing.Size(95, 96);
+            this.btnBackToMainForm.TabIndex = 1;
+            this.btnBackToMainForm.Text = "Back";
+            this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBackToMainForm.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.Location = new System.Drawing.Point(384, 11);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(141, 96);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Update table data";
+            this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(541, 11);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(105, 96);
+            this.btnPrint.TabIndex = 17;
+            this.btnPrint.Text = "Print report";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
             // EventStatusReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 408);
+            this.ClientSize = new System.Drawing.Size(774, 430);
+            this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.HeaderPanel);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "EventStatusReport";
             this.Load += new System.EventHandler(this.EventStatusReport_Load);
@@ -176,6 +208,7 @@
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.bottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -190,11 +223,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FoodDrinkSales;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoanMtrlRev;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalRev;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel bottomPanel;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnBackToMainForm;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

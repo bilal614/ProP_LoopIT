@@ -43,15 +43,20 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.GreyPanel = new System.Windows.Forms.Panel();
+            this.bottomPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBackToMainForm = new System.Windows.Forms.Button();
+            this.btnActivateRFID = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.bottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -207,24 +212,6 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Balance amount:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(535, 304);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 35);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Active RFID";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(373, 304);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 35);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Pay entrance fee";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // HeaderPanel
             // 
             this.HeaderPanel.Controls.Add(this.pictureBox1);
@@ -256,14 +243,84 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "CHECK IN AT ENTRANCE";
             // 
+            // GreyPanel
+            // 
+            this.GreyPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.GreyPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GreyPanel.Location = new System.Drawing.Point(0, 64);
+            this.GreyPanel.Name = "GreyPanel";
+            this.GreyPanel.Size = new System.Drawing.Size(754, 5);
+            this.GreyPanel.TabIndex = 20;
+            // 
+            // bottomPanel
+            // 
+            this.bottomPanel.Controls.Add(this.panel1);
+            this.bottomPanel.Controls.Add(this.btnBackToMainForm);
+            this.bottomPanel.Controls.Add(this.btnActivateRFID);
+            this.bottomPanel.Controls.Add(this.btnPay);
+            this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomPanel.Location = new System.Drawing.Point(0, 338);
+            this.bottomPanel.Name = "bottomPanel";
+            this.bottomPanel.Size = new System.Drawing.Size(754, 114);
+            this.bottomPanel.TabIndex = 21;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(754, 5);
+            this.panel1.TabIndex = 14;
+            // 
+            // btnBackToMainForm
+            // 
+            this.btnBackToMainForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackToMainForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackToMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackToMainForm.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToMainForm.Image")));
+            this.btnBackToMainForm.Location = new System.Drawing.Point(613, 11);
+            this.btnBackToMainForm.Name = "btnBackToMainForm";
+            this.btnBackToMainForm.Size = new System.Drawing.Size(129, 96);
+            this.btnBackToMainForm.TabIndex = 1;
+            this.btnBackToMainForm.Text = "Back";
+            this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBackToMainForm.UseVisualStyleBackColor = true;
+            // 
+            // btnActivateRFID
+            // 
+            this.btnActivateRFID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActivateRFID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActivateRFID.Image = ((System.Drawing.Image)(resources.GetObject("btnActivateRFID.Image")));
+            this.btnActivateRFID.Location = new System.Drawing.Point(459, 11);
+            this.btnActivateRFID.Name = "btnActivateRFID";
+            this.btnActivateRFID.Size = new System.Drawing.Size(136, 96);
+            this.btnActivateRFID.TabIndex = 1;
+            this.btnActivateRFID.Text = "Activate RFID";
+            this.btnActivateRFID.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnActivateRFID.UseVisualStyleBackColor = true;
+            // 
+            // btnPay
+            // 
+            this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
+            this.btnPay.Location = new System.Drawing.Point(296, 11);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(143, 96);
+            this.btnPay.TabIndex = 1;
+            this.btnPay.Text = "Pay entrance fee";
+            this.btnPay.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPay.UseVisualStyleBackColor = true;
+            // 
             // EntranceEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 452);
+            this.Controls.Add(this.bottomPanel);
+            this.Controls.Add(this.GreyPanel);
             this.Controls.Add(this.HeaderPanel);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
@@ -278,6 +335,7 @@
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.bottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,11 +357,15 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel GreyPanel;
+        private System.Windows.Forms.Panel bottomPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnBackToMainForm;
+        private System.Windows.Forms.Button btnActivateRFID;
+        private System.Windows.Forms.Button btnPay;
 
     }
 }

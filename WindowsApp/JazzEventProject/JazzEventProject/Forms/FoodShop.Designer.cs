@@ -50,7 +50,9 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnSearchFood = new System.Windows.Forms.Button();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -60,15 +62,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panelSubLeft = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.btnSearchFood = new System.Windows.Forms.Button();
-            this.btSelectBurger = new System.Windows.Forms.Button();
             this.btnSelectCoffee = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btSelectBurger = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
             this.sub_rightPanel.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -289,6 +289,14 @@
             this.panel2.Size = new System.Drawing.Size(306, 81);
             this.panel2.TabIndex = 9;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(34, 42);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(181, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "Typing quantity here...";
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(34, 16);
@@ -296,6 +304,22 @@
             this.textBox2.Size = new System.Drawing.Size(181, 20);
             this.textBox2.TabIndex = 9;
             this.textBox2.Text = "Typing food id here...";
+            // 
+            // btnSearchFood
+            // 
+            this.btnSearchFood.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSearchFood.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSearchFood.FlatAppearance.BorderSize = 0;
+            this.btnSearchFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchFood.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchFood.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSearchFood.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchFood.Image")));
+            this.btnSearchFood.Location = new System.Drawing.Point(216, 6);
+            this.btnSearchFood.Name = "btnSearchFood";
+            this.btnSearchFood.Size = new System.Drawing.Size(77, 67);
+            this.btnSearchFood.TabIndex = 8;
+            this.btnSearchFood.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSearchFood.UseVisualStyleBackColor = false;
             // 
             // btnBackToMainForm
             // 
@@ -399,47 +423,6 @@
             this.panelSubLeft.Size = new System.Drawing.Size(311, 446);
             this.panelSubLeft.TabIndex = 15;
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(306, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(5, 446);
-            this.panel9.TabIndex = 14;
-            // 
-            // btnSearchFood
-            // 
-            this.btnSearchFood.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSearchFood.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSearchFood.FlatAppearance.BorderSize = 0;
-            this.btnSearchFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchFood.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchFood.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSearchFood.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchFood.Image")));
-            this.btnSearchFood.Location = new System.Drawing.Point(216, 6);
-            this.btnSearchFood.Name = "btnSearchFood";
-            this.btnSearchFood.Size = new System.Drawing.Size(77, 67);
-            this.btnSearchFood.TabIndex = 8;
-            this.btnSearchFood.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSearchFood.UseVisualStyleBackColor = false;
-            // 
-            // btSelectBurger
-            // 
-            this.btSelectBurger.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSelectBurger.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btSelectBurger.FlatAppearance.BorderSize = 0;
-            this.btSelectBurger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSelectBurger.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSelectBurger.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btSelectBurger.Image = ((System.Drawing.Image)(resources.GetObject("btSelectBurger.Image")));
-            this.btSelectBurger.Location = new System.Drawing.Point(34, 87);
-            this.btSelectBurger.Name = "btSelectBurger";
-            this.btSelectBurger.Size = new System.Drawing.Size(116, 110);
-            this.btSelectBurger.TabIndex = 16;
-            this.btSelectBurger.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btSelectBurger.UseVisualStyleBackColor = false;
-            // 
             // btnSelectCoffee
             // 
             this.btnSelectCoffee.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -455,54 +438,6 @@
             this.btnSelectCoffee.TabIndex = 16;
             this.btnSelectCoffee.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSelectCoffee.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(34, 208);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 110);
-            this.button2.TabIndex = 16;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(166, 210);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 110);
-            this.button3.TabIndex = 16;
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(34, 330);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 110);
-            this.button4.TabIndex = 16;
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
@@ -520,13 +455,78 @@
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button5.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // button4
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "Typing quantity here...";
+            this.button4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(34, 330);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(116, 110);
+            this.button4.TabIndex = 16;
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(166, 210);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(116, 110);
+            this.button3.TabIndex = 16;
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(34, 208);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(116, 110);
+            this.button2.TabIndex = 16;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btSelectBurger
+            // 
+            this.btSelectBurger.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btSelectBurger.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btSelectBurger.FlatAppearance.BorderSize = 0;
+            this.btSelectBurger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSelectBurger.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSelectBurger.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btSelectBurger.Image = ((System.Drawing.Image)(resources.GetObject("btSelectBurger.Image")));
+            this.btSelectBurger.Location = new System.Drawing.Point(34, 87);
+            this.btSelectBurger.Name = "btSelectBurger";
+            this.btSelectBurger.Size = new System.Drawing.Size(116, 110);
+            this.btSelectBurger.TabIndex = 16;
+            this.btSelectBurger.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btSelectBurger.UseVisualStyleBackColor = false;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(306, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(5, 446);
+            this.panel9.TabIndex = 14;
             // 
             // FoodShop
             // 
