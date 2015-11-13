@@ -62,7 +62,7 @@ namespace JazzEventProject.Classes
             List<Items> listsFood = GetAllFoods();
             foreach(var tempItem in listsFood)
             {
-                if (item.ID == id)
+                if (tempItem.ID == id)
                 {
                     item = tempItem;
                 }
@@ -85,6 +85,25 @@ namespace JazzEventProject.Classes
             }
             else
                 return false;
+        }
+         
+        /// <summary>
+        /// Check wheather the id is exist in the list or not
+        /// </summary>
+        /// <param name="ListOfItems"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool CheckUniqueItem(List<Items> ListOfItems, int id)
+        {
+            bool unique = true;
+            foreach (var i in ListOfItems)
+            {
+                if(i.ID == id)
+                {
+                    unique = false;
+                }
+            }
+            return unique;
         }
     }
 }
