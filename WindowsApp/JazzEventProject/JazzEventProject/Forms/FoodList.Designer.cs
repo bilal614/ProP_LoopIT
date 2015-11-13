@@ -1,6 +1,6 @@
 ﻿namespace JazzEventProject.Forms
 {
-    partial class FoodLists
+    partial class FoodList
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             // dataGridViewFoodList
             // 
             this.dataGridViewFoodList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFoodList.Location = new System.Drawing.Point(12, 29);
+            this.dataGridViewFoodList.Location = new System.Drawing.Point(12, 92);
             this.dataGridViewFoodList.Name = "dataGridViewFoodList";
             this.dataGridViewFoodList.Size = new System.Drawing.Size(578, 177);
             this.dataGridViewFoodList.TabIndex = 0;

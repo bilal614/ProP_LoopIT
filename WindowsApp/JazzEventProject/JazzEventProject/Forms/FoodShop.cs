@@ -20,7 +20,7 @@ namespace JazzEventProject
 
         private void btnSearchFood_Click(object sender, EventArgs e)
         {
-            Form frmFoodlist = new FoodLists();
+            Form frmFoodlist = new FoodList();
             frmFoodlist.Show();
         }
     }

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace JazzEventProject.Forms
 {
-    public partial class FoodLists : Form
+    public partial class FoodList : Form
     {
-        public FoodLists()
+        public FoodList()
         {
             InitializeComponent();
         }
