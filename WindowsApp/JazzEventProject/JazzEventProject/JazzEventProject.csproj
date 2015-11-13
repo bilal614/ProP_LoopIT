@@ -67,6 +67,7 @@
     <Compile Include="Classes\Items.cs" />
     <Compile Include="Classes\Material.cs" />
     <Compile Include="Classes\MaterialInvoice.cs" />
+    <Compile Include="Classes\PaypalInvoiceReader.cs" />
     <Compile Include="Forms\CampReservation.cs">
       <SubType>Form</SubType>
     </Compile>
