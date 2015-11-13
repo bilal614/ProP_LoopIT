@@ -60,6 +60,7 @@
     <Compile Include="Classes\DataHelper.cs" />
     <Compile Include="Classes\EventAccount.cs" />
     <Compile Include="Classes\EventAccountDataHelper.cs" />
+    <Compile Include="Classes\GroupDataHelper.cs" />
     <Compile Include="Classes\ItemDataHelper.cs" />
     <Compile Include="Classes\GroupMember.cs" />
     <Compile Include="Classes\Invoice.cs" />
