@@ -42,7 +42,7 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("error while loading the camps");
+                MessageBox.Show("error while loading");
             }
             finally
             {
@@ -54,12 +54,10 @@ namespace JazzEventProject.Classes
         /// <summary>
         /// Get a food item from the list of foods
         /// </summary>
-        /// <param name="id">Food ID</param>
         /// <returns>A object with type item</returns>
-        public Items GetAFood(int id)
+        public Items GetAFood(int id, List<Items> listsFood)
         {
             Items item = null;
-            List<Items> listsFood = GetAllFoods();
             foreach(var tempItem in listsFood)
             {
                 if (tempItem.ID == id)
@@ -75,9 +73,9 @@ namespace JazzEventProject.Classes
          /// <param name="id"></param>
          /// <param name="quantity"></param>
          /// <returns></returns>
-        public bool SellFood(int id, int quantity)
+        public bool SellFood(int id, int quantity, List<Items> listsFood)
         {
-            Items sitem = GetAFood(id);
+            Items sitem = GetAFood(id,listsFood);
             if (sitem.Quantity >= quantity)
             {
                 sitem.Quantity -= quantity;
@@ -105,5 +103,37 @@ namespace JazzEventProject.Classes
             }
             return unique;
         }
+
+        /// <summary>
+        /// Update a food with the given id. Return true if the id is in the table and the updating process is success. 
+        /// Otherwise, return false.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>boolean values</returns>
+        public int UpdateAFood(int id, List<Items> listsFood)
+        {
+            Items seletedFood = GetAFood(id, listsFood);
+            String sql = string.Format("UPDATE FOOD SET FOOD_QUANTITY = {0} WHERE Food_ID = {1};", seletedFood.Quantity, seletedFood.ID);
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            try
+            {
+                connection.Open();
+                int nrOfRecordsChanged = command.ExecuteNonQuery();
+                return nrOfRecordsChanged;
+            }
+            catch
+            {
+                return -1; //which means the try-block was not executed succesfully, so  . . .
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
+
+
+//UPDATE FOOD SET FOOD_QUANTITY = 165
+//WHERE Food_ID = 1;

@@ -102,7 +102,7 @@
             this.Quantity,
             this.Price,
             this.Total});
-            this.dataGridViewFood.Location = new System.Drawing.Point(349, 105);
+            this.dataGridViewFood.Location = new System.Drawing.Point(349, 110);
             this.dataGridViewFood.Name = "dataGridViewFood";
             this.dataGridViewFood.RowHeadersVisible = false;
             this.dataGridViewFood.RowHeadersWidth = 100;
@@ -203,7 +203,7 @@
             this.sub_rightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sub_rightPanel.Location = new System.Drawing.Point(0, 0);
             this.sub_rightPanel.Name = "sub_rightPanel";
-            this.sub_rightPanel.Size = new System.Drawing.Size(901, 446);
+            this.sub_rightPanel.Size = new System.Drawing.Size(901, 456);
             this.sub_rightPanel.TabIndex = 7;
             // 
             // panel12
@@ -214,7 +214,7 @@
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(0, 0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(901, 446);
+            this.panel12.Size = new System.Drawing.Size(901, 456);
             this.panel12.TabIndex = 11;
             // 
             // panel7
@@ -226,7 +226,7 @@
             this.panel7.Controls.Add(this.label5);
             this.panel7.Controls.Add(this.lbSubTotal);
             this.panel7.Controls.Add(this.lbVAT);
-            this.panel7.Location = new System.Drawing.Point(737, 351);
+            this.panel7.Location = new System.Drawing.Point(737, 361);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(152, 89);
             this.panel7.TabIndex = 8;
@@ -263,6 +263,7 @@
             this.btnSave.Text = "Sale";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnPrint
             // 
@@ -385,7 +386,7 @@
             this.bottomPanel.Controls.Add(this.btnPrint);
             this.bottomPanel.Controls.Add(this.btnSave);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 515);
+            this.bottomPanel.Location = new System.Drawing.Point(0, 525);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(901, 114);
             this.bottomPanel.TabIndex = 14;
@@ -406,7 +407,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 69);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(901, 446);
+            this.panel8.Size = new System.Drawing.Size(901, 456);
             this.panel8.TabIndex = 15;
             // 
             // panelSubLeft
@@ -422,7 +423,7 @@
             this.panelSubLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSubLeft.Location = new System.Drawing.Point(0, 0);
             this.panelSubLeft.Name = "panelSubLeft";
-            this.panelSubLeft.Size = new System.Drawing.Size(311, 446);
+            this.panelSubLeft.Size = new System.Drawing.Size(311, 456);
             this.panelSubLeft.TabIndex = 15;
             // 
             // btnSelectCoffee
@@ -527,14 +528,14 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel9.Location = new System.Drawing.Point(306, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(5, 446);
+            this.panel9.Size = new System.Drawing.Size(5, 456);
             this.panel9.TabIndex = 14;
             // 
             // FoodShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 629);
+            this.ClientSize = new System.Drawing.Size(901, 639);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.GreyPanel);

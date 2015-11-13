@@ -190,7 +190,7 @@ INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (6,'Coca-
 //Insert data into f_invoice
 INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (1, STR_TO_DATE('02-11-2015', '%d-%m-%Y'), 1);
 INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (2, STR_TO_DATE('03-11-2015', '%d-%m-%Y'), 2);
-INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (3, STR_TO_DATE('04-11-2015', '%d-%m-%Y'), 3);
+INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (3, STR_TO_DATE('04-11-2015','%d-%m-%Y'), 3);
 
 //Insert data into food_invoice
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 1, 1);
