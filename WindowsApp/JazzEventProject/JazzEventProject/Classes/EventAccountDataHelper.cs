@@ -10,6 +10,11 @@ namespace JazzEventProject.Classes
 {
     class EventAccountDataHelper:DataHelper
     {
+        /// <summary>
+        /// Returns the eventId of the EventAccount if it exist in the databse otherwise it returns a -1.
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         public int GetEventAccountId(int eventId)
         {
             String str_eventId = Convert.ToString(eventId);
@@ -41,6 +46,45 @@ namespace JazzEventProject.Classes
             //the database
         }
 
+        /// <summary>
+        /// Added this extra method that returns the balance of the EventAccount with the given EventAccount eventId.
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        public decimal GetAccountBalance(int eventId)//method for retreiving the account balance of the eventAccountId given as parameter
+        {
+            String str_eventId = Convert.ToString(eventId);
+            decimal balance = -1;
+
+            if (GetEventAccountId(eventId) >= 0)
+            {
+                String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE E_Account_ID={0}", str_eventId);
+                MySqlCommand command = new MySqlCommand(sql, connection);
+
+                try
+                {
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        balance = Convert.ToInt32(reader["Balance"]);
+                    }
+                }
+                catch
+                { MessageBox.Show("error while loading the participant."); }
+                finally
+                { connection.Close(); }
+            }
+
+            return balance;//this method will either return the balance if the eventAccountId was found in database
+            //otherwise it will return -1
+        }
+
+        /// <summary>
+        /// This method returns a particular EventAccount with the given eventId as provided in its parameters.
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
         public EventAccount GetAccount(int eventId)
         {
             String str_eventId = Convert.ToString(eventId);
@@ -91,6 +135,11 @@ namespace JazzEventProject.Classes
             return tempAccount;//returns an EventAccount if the person exists in database else returns null object ref
         }
 
+        /// <summary>
+        /// This method returns all the EventAccounts in the database.
+        /// </summary>
+        /// <returns></returns>
+
         public List<EventAccount> GetAllAccounts()
         {
             String sql = String.Format("SELECT * FROM E_ACCOUNT");
@@ -140,6 +189,111 @@ namespace JazzEventProject.Classes
             return tempAccount;//returns an EventAccount if the person exists in database else returns null object ref
         }
 
+        ///<summary>
+        ///This method allows the participants to check in by being assigned a RFID code. The parameters are the eventAccountId of the 
+        ///person and the rfid to be assigned to them. If the rfid is successfully assigned to the persons EventAccount entity in the
+        ///database the method will return a true value.
+        ///</summary>
+        public bool CheckIn(int id, int rfid)
+        {
+            EventAccount currentClient = GetAccount(id);
+            bool checkIn = false;
 
+            if (currentClient != null)//to check if the EventAccount exists in database
+            {
+
+                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code={0} WHERE E_Account_ID={1}", rfid, id);
+                MySqlCommand command = new MySqlCommand(sql, connection);
+
+                try
+                {
+                    connection.Open();
+                    int nrOfrecordsChanged = command.ExecuteNonQuery();
+                    if (nrOfrecordsChanged == 1)
+                    { MessageBox.Show("RFID was successfully assigned."); checkIn = true; }
+                }
+                catch
+                { MessageBox.Show("error while loading the participant."); }
+                finally
+                { connection.Close(); }
+            }
+            else
+            {
+                MessageBox.Show("Event account Id does not exist in database.");
+            }
+            return checkIn;
+        }
+
+        ///<summary>
+        ///This method allows the participants to check out by giving back the RFID tags when they leave. Therfore the RFID_Cod of that
+        ///particular person has to be set to NULL in the database.The parameters are the eventAccountId of the person in question. 
+        ///If the rfid is successfully made NULL in the person's EventAccount entity in the database the method will return a true value.
+        ///</summary>
+        public bool CheckOut(int id)
+        {
+            EventAccount currentClient = GetAccount(id);
+            bool checkIn = false;
+
+            if (currentClient != null)//to check if the EventAccount exists in database
+            {
+
+                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code=NULL WHERE E_Account_ID={0}", id);
+                MySqlCommand command = new MySqlCommand(sql, connection);
+
+                try
+                {
+                    connection.Open();
+                    int nrOfrecordsChanged = command.ExecuteNonQuery();
+                    if (nrOfrecordsChanged == 1)
+                    { MessageBox.Show("RFID was successfully removed."); checkIn = true; }
+                }
+                catch
+                { MessageBox.Show("error while loading the participant."); }
+                finally
+                { connection.Close(); }
+            }
+            else
+            {
+                MessageBox.Show("Event account Id does not exist in database.");
+            }
+            return checkIn;
+        }
+
+        ///<summary>
+        ///This method allows the participants the participants to pay their entrance fees when they are at the entrance desk. The method
+        ///takes two parameters, the id will find the EventAccount to update the balance of the given EventAccount with the given id. Judging from
+        ///the form for EntranceEvent the only member that would change at that point would be the balance of the person when he/she makes the 
+        ///payment to enter the event therefore the method has been modified to update the balacnce only.
+        ///</summary>          
+        public void UpdateAccountBalance(int id,decimal balance)
+        {
+            EventAccount currentClient = GetAccount(id);
+
+            if (currentClient!=null)//to check if the EventAccount exists in database
+            {
+                decimal totalBalance=currentClient.Balance;
+                totalBalance += balance;
+
+                String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0} WHERE E_Account_ID={1}", totalBalance, id);
+                MySqlCommand command = new MySqlCommand(sql, connection);
+
+                try
+                {
+                    connection.Open();
+                    int nrOfrecordsChanged=command.ExecuteNonQuery();
+                    if (nrOfrecordsChanged == 1)
+                    { MessageBox.Show("Balance successfully updated."); }
+                }
+                catch
+                { MessageBox.Show("error while loading the participant."); }
+                finally
+                { connection.Close(); }
+            }
+            else
+            {
+                MessageBox.Show("Event account Id does not exist in database.");
+            }
+             
+        }
     }
 }

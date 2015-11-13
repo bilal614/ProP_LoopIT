@@ -32,6 +32,7 @@ namespace JazzEventProject
             this.Balance = balance;
         }
 
+
         ///<summary>
         ///The implementation of this method will subtract the balance by 50 euros for the entrance fee in case of the participant did not pay in advance on website 
         ///Check if the PaymentStatus == false
