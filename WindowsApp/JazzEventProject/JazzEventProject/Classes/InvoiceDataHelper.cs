@@ -55,20 +55,20 @@ namespace JazzEventProject.Classes
             String sql = String.Format("INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES ({0},STR_TO_DATE('{1}', '%d-%m-%Y'), {2});", foodID, SoldDate, Account_ID);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
-            //try
-            //{
+            try
+            {
                 connection.Open();
                 int nrOfRecordsChanged = command.ExecuteNonQuery();
                 return nrOfRecordsChanged;
-            //}
-            //catch
-            //{
-            //    return -1; //which means the try-block was not executed succesfully, so  . . .
-            //}
-            //finally
-            //{
+            }
+            catch
+            {
+                return -1; //which means the try-block was not executed succesfully, so  . . .
+            }
+            finally
+            {
                 connection.Close();
-            //}
+            }
         }
 
         /// <summary>

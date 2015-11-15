@@ -22,6 +22,7 @@ namespace JazzEventProject
         //Variables declaration 
         ItemDataHelper ItemData = new ItemDataHelper();
         InvoiceDataHelper InvoiceData = new InvoiceDataHelper();
+        Item_InvoiceDataHelper ItemInvoiceData = new Item_InvoiceDataHelper();
         List<Items> ListOfSoldFood = new List<Items>();
         List<Items> ListOFFoods = new List<Items>();
         decimal subtotal = 0;
@@ -49,34 +50,20 @@ namespace JazzEventProject
         /// <param name="e"></param>
         private void tbQuantity_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            try
             {
-                int id = Convert.ToInt32(tbFoodID.Text);
-                int quantity = Convert.ToInt32(tbQuantity.Text);
-                Items selectedItem = null;
-                if(ItemData.CheckUniqueItem(ListOfSoldFood,id) == true)
+                if (e.KeyCode == Keys.Enter)
                 {
-                    selectedItem = ItemData.GetAFood(id, ListOFFoods);
-                    ItemData.SellFood(selectedItem.ID, quantity, ListOFFoods);
-                    ListOfSoldFood.Add(selectedItem); 
-                }
-                else
-                {
-                    selectedItem = ItemData.GetAFood(id, ListOfSoldFood);
-                    ItemData.SellFood(selectedItem.ID, quantity,ListOfSoldFood);
-                }
-                subtotal += selectedItem.Price * quantity;
-                //Add row into the datagridview
-                DataGridViewRow newrow = new DataGridViewRow();
-                newrow.CreateCells(dataGridViewFood);
-                newrow.Cells[0].Value = selectedItem.ID;
-                newrow.Cells[1].Value = selectedItem.Name;
-                newrow.Cells[2].Value = quantity;
-                newrow.Cells[3].Value = selectedItem.Price;
-                newrow.Cells[4].Value = selectedItem.Price * quantity;
-                dataGridViewFood.Rows.Add(newrow);
+                    int id = Convert.ToInt32(tbFoodID.Text);
+                    int quantity = Convert.ToInt32(tbQuantity.Text);
 
-                UpdateToTal();
+                    UpdateGridView(id, quantity);
+                    UpdateToTal();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please enter the id and quantity of food");
             }
 
         }
@@ -112,23 +99,90 @@ namespace JazzEventProject
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //Update the quantity of sold food in database
+            //Update the quantity of sold food into database
+            int nbofSoldFood = 0;
             foreach (var f in ListOfSoldFood)
             {
-                int i = ItemData.UpdateAFood(f.ID,ListOfSoldFood);
+                nbofSoldFood += ItemData.UpdateAFood(f.ID, ListOfSoldFood);
             }
 
-            int foodID = InvoiceData.GenerateInvoiceID();
+            //Insert a new food invoice into database
+            int InvoiceID = InvoiceData.GenerateInvoiceID();
             string soldDate = (DateTime.Now).ToString("dd-MM-yyyy");
             int AccountID = 1; // This one will be provide by RFID after the scaning functionality completed
+            int nbofInvoice = InvoiceData.AddAFoodInvoice(InvoiceID, soldDate, AccountID);
 
-            int nbofInvoice = InvoiceData.AddAFoodInvoice(foodID, soldDate, AccountID);
-            MessageBox.Show(nbofInvoice.ToString());
+            //Insert rows into food_invoice (association table between food and invoice)
+            int InvoiceItemRows = 0;
+            foreach(var f in ListOfSoldFood)
+            {
+                InvoiceItemRows += ItemInvoiceData.AddNewSoldFood(InvoiceID, f.Quantity, f.ID);
+            }
+            if (nbofInvoice == 1 && nbofSoldFood >= 1 & InvoiceItemRows == nbofSoldFood)
+            {
+                MessageBox.Show("Success!");
+            }
+
+
         }
 
-       
+        //Updated gridview for all common food in the picture lists.
+        private void btSelectBurger_Click(object sender, EventArgs e)
+        {
+            UpdateGridView(1, 1);
+        }
+        private void btnSelectCoffee_Click(object sender, EventArgs e)
+        {
+            UpdateGridView(7, 1);
+        }
 
-       
-       
+        private void btnSelectedFrenchFies_Click(object sender, EventArgs e)
+        {
+            UpdateGridView(2, 1);
+        }
+
+        private void btnSelectedBeer_Click(object sender, EventArgs e)
+        {
+            UpdateGridView(5, 1);
+        }
+
+        private void btnSeletedSalad_Click(object sender, EventArgs e)
+        {
+            UpdateGridView(4, 1);
+        }
+
+        private void btnSeletedCoca_Click(object sender, EventArgs e)
+        {
+            UpdateGridView(6, 1);
+        }
+        /// <summary>
+        /// Update datagirdview after food is selected
+        /// </summary>
+        private void UpdateGridView(int id, int quantity)
+        {
+            Items selectedItem = null;
+            if (ItemData.CheckUniqueItem(ListOfSoldFood, id) == true)
+            {
+                selectedItem = ItemData.GetAFood(id, ListOFFoods);
+                ItemData.SellFood(selectedItem.ID, quantity, ListOFFoods);
+                ListOfSoldFood.Add(selectedItem);
+            }
+            else
+            {
+                selectedItem = ItemData.GetAFood(id, ListOfSoldFood);
+                ItemData.SellFood(selectedItem.ID, quantity, ListOfSoldFood);
+            }
+            subtotal += selectedItem.Price * quantity;
+            //Add row into the datagridview
+            DataGridViewRow newrow = new DataGridViewRow();
+            newrow.CreateCells(dataGridViewFood);
+            newrow.Cells[0].Value = selectedItem.ID;
+            newrow.Cells[1].Value = selectedItem.Name;
+            newrow.Cells[2].Value = quantity;
+            newrow.Cells[3].Value = selectedItem.Price;
+            newrow.Cells[4].Value = selectedItem.Price * quantity;
+            dataGridViewFood.Rows.Add(newrow);
+        }
+
     }
 }

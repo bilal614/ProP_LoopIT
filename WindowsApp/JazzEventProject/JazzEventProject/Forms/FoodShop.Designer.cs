@@ -63,10 +63,10 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panelSubLeft = new System.Windows.Forms.Panel();
             this.btnSelectCoffee = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSeletedCoca = new System.Windows.Forms.Button();
+            this.btnSeletedSalad = new System.Windows.Forms.Button();
+            this.btnSelectedBeer = new System.Windows.Forms.Button();
+            this.btnSelectedFrenchFies = new System.Windows.Forms.Button();
             this.btSelectBurger = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
@@ -413,10 +413,10 @@
             // panelSubLeft
             // 
             this.panelSubLeft.Controls.Add(this.btnSelectCoffee);
-            this.panelSubLeft.Controls.Add(this.button5);
-            this.panelSubLeft.Controls.Add(this.button4);
-            this.panelSubLeft.Controls.Add(this.button3);
-            this.panelSubLeft.Controls.Add(this.button2);
+            this.panelSubLeft.Controls.Add(this.btnSeletedCoca);
+            this.panelSubLeft.Controls.Add(this.btnSeletedSalad);
+            this.panelSubLeft.Controls.Add(this.btnSelectedBeer);
+            this.panelSubLeft.Controls.Add(this.btnSelectedFrenchFies);
             this.panelSubLeft.Controls.Add(this.btSelectBurger);
             this.panelSubLeft.Controls.Add(this.panel2);
             this.panelSubLeft.Controls.Add(this.panel9);
@@ -441,70 +441,75 @@
             this.btnSelectCoffee.TabIndex = 16;
             this.btnSelectCoffee.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSelectCoffee.UseVisualStyleBackColor = false;
+            this.btnSelectCoffee.Click += new System.EventHandler(this.btnSelectCoffee_Click);
             // 
-            // button5
+            // btnSeletedCoca
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(166, 330);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 110);
-            this.button5.TabIndex = 16;
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnSeletedCoca.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSeletedCoca.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSeletedCoca.FlatAppearance.BorderSize = 0;
+            this.btnSeletedCoca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeletedCoca.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeletedCoca.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSeletedCoca.Image = ((System.Drawing.Image)(resources.GetObject("btnSeletedCoca.Image")));
+            this.btnSeletedCoca.Location = new System.Drawing.Point(166, 330);
+            this.btnSeletedCoca.Name = "btnSeletedCoca";
+            this.btnSeletedCoca.Size = new System.Drawing.Size(116, 110);
+            this.btnSeletedCoca.TabIndex = 16;
+            this.btnSeletedCoca.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSeletedCoca.UseVisualStyleBackColor = false;
+            this.btnSeletedCoca.Click += new System.EventHandler(this.btnSeletedCoca_Click);
             // 
-            // button4
+            // btnSeletedSalad
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(34, 330);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 110);
-            this.button4.TabIndex = 16;
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnSeletedSalad.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSeletedSalad.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSeletedSalad.FlatAppearance.BorderSize = 0;
+            this.btnSeletedSalad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeletedSalad.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeletedSalad.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSeletedSalad.Image = ((System.Drawing.Image)(resources.GetObject("btnSeletedSalad.Image")));
+            this.btnSeletedSalad.Location = new System.Drawing.Point(34, 330);
+            this.btnSeletedSalad.Name = "btnSeletedSalad";
+            this.btnSeletedSalad.Size = new System.Drawing.Size(116, 110);
+            this.btnSeletedSalad.TabIndex = 16;
+            this.btnSeletedSalad.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSeletedSalad.UseVisualStyleBackColor = false;
+            this.btnSeletedSalad.Click += new System.EventHandler(this.btnSeletedSalad_Click);
             // 
-            // button3
+            // btnSelectedBeer
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(166, 210);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 110);
-            this.button3.TabIndex = 16;
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnSelectedBeer.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelectedBeer.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSelectedBeer.FlatAppearance.BorderSize = 0;
+            this.btnSelectedBeer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectedBeer.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectedBeer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelectedBeer.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectedBeer.Image")));
+            this.btnSelectedBeer.Location = new System.Drawing.Point(166, 210);
+            this.btnSelectedBeer.Name = "btnSelectedBeer";
+            this.btnSelectedBeer.Size = new System.Drawing.Size(116, 110);
+            this.btnSelectedBeer.TabIndex = 16;
+            this.btnSelectedBeer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSelectedBeer.UseVisualStyleBackColor = false;
+            this.btnSelectedBeer.Click += new System.EventHandler(this.btnSelectedBeer_Click);
             // 
-            // button2
+            // btnSelectedFrenchFies
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(34, 208);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 110);
-            this.button2.TabIndex = 16;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnSelectedFrenchFies.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelectedFrenchFies.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSelectedFrenchFies.FlatAppearance.BorderSize = 0;
+            this.btnSelectedFrenchFies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectedFrenchFies.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectedFrenchFies.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelectedFrenchFies.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectedFrenchFies.Image")));
+            this.btnSelectedFrenchFies.Location = new System.Drawing.Point(34, 208);
+            this.btnSelectedFrenchFies.Name = "btnSelectedFrenchFies";
+            this.btnSelectedFrenchFies.Size = new System.Drawing.Size(116, 110);
+            this.btnSelectedFrenchFies.TabIndex = 16;
+            this.btnSelectedFrenchFies.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSelectedFrenchFies.UseVisualStyleBackColor = false;
+            this.btnSelectedFrenchFies.Click += new System.EventHandler(this.btnSelectedFrenchFies_Click);
             // 
             // btSelectBurger
             // 
@@ -521,6 +526,7 @@
             this.btSelectBurger.TabIndex = 16;
             this.btSelectBurger.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btSelectBurger.UseVisualStyleBackColor = false;
+            this.btSelectBurger.Click += new System.EventHandler(this.btSelectBurger_Click);
             // 
             // panel9
             // 
@@ -598,10 +604,10 @@
         private System.Windows.Forms.Button btnSearchFood;
         private System.Windows.Forms.Button btSelectBurger;
         private System.Windows.Forms.Button btnSelectCoffee;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSeletedCoca;
+        private System.Windows.Forms.Button btnSeletedSalad;
+        private System.Windows.Forms.Button btnSelectedBeer;
+        private System.Windows.Forms.Button btnSelectedFrenchFies;
         private System.Windows.Forms.TextBox tbQuantity;
     }
 }
