@@ -69,6 +69,7 @@
             this.btnSelectedFrenchFies = new System.Windows.Forms.Button();
             this.btSelectBurger = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.pdoc = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFood)).BeginInit();
             this.sub_rightPanel.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -277,6 +278,7 @@
             this.btnPrint.Text = "Print invoice";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // panel2
             // 
@@ -338,6 +340,7 @@
             this.btnBackToMainForm.Text = "Back";
             this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBackToMainForm.UseVisualStyleBackColor = true;
+            this.btnBackToMainForm.Click += new System.EventHandler(this.btnBackToMainForm_Click);
             // 
             // label2
             // 
@@ -609,5 +612,6 @@
         private System.Windows.Forms.Button btnSelectedBeer;
         private System.Windows.Forms.Button btnSelectedFrenchFies;
         private System.Windows.Forms.TextBox tbQuantity;
+        private System.Drawing.Printing.PrintDocument pdoc;
     }
 }
