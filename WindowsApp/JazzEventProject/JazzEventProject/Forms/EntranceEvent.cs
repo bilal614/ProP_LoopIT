@@ -25,10 +25,10 @@ namespace JazzEventProject
         private void button1_Click(object sender, EventArgs e)
         {
             accountId = Convert.ToInt32(textBox1.Text);
+            currentAccount = accountHelper.GetAccount(accountId);
 
-            if (accountHelper.GetAccount(accountId) != null)
+            if (currentAccount!= null)
             {
-                currentAccount = accountHelper.GetAccount(accountId);
 
                 label5.Text=currentAccount.FirstName+" "+currentAccount.LastName;
                 label6.Text=currentAccount.Email;
@@ -51,8 +51,14 @@ namespace JazzEventProject
                 if (label14.Text != "")
                 {
                     int accountId = Convert.ToInt32(label14.Text);
+                    EventAccount currentAccount=accountHelper.GetAccount(accountId);
                     accountHelper.UpdateAccountBalance(accountId, amount);
                     label8.Text ="€ "+ Convert.ToString(accountHelper.GetAccountBalance(accountId));
+                    if(currentAccount!=null)
+                    {
+                        if (currentAccount.PaymentStatus)
+                            label10.Text = "Paid";
+                    }
                 }
             }
             catch

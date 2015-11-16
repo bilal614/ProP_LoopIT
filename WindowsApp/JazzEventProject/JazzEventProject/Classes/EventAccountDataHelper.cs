@@ -119,9 +119,13 @@ namespace JazzEventProject.Classes
                     paymentStatus=Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance=Convert.ToBoolean(reader["Pay_InAdvance"]);
 
-                    if(EventId>0)
-                        tempAccount = new EventAccount(EventId, firstName, lastName, eMail, phone, balance, 
-                            paymentStatus, payInAdvance);
+                    if (EventId > 0)
+                    {
+                        tempAccount = new EventAccount(EventId, firstName, lastName, eMail, phone, balance,
+                               paymentStatus, payInAdvance);
+                        tempAccount.PaymentStatus = paymentStatus;
+                        tempAccount.PayInAddvance = payInAdvance;
+                    }
                 }
             }
             catch
