@@ -33,12 +33,42 @@ namespace JazzEventProject
                 label5.Text=currentAccount.FirstName+" "+currentAccount.LastName;
                 label6.Text=currentAccount.Email;
                 label7.Text = currentAccount.Phone;
+                label14.Text = Convert.ToString(accountId);
 
                 if (currentAccount.PaymentStatus) { label10.Text = "Paid"; }
                 else { label10.Text = "Not Paid"; }
-                label8.Text = Convert.ToString(currentAccount.Balance);
+                label8.Text = "€ "+Convert.ToString(currentAccount.Balance);
             }
 
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal amount = Convert.ToDecimal(textBox2.Text);
+
+                if (label14.Text != "")
+                {
+                    int accountId = Convert.ToInt32(label14.Text);
+                    accountHelper.UpdateAccountBalance(accountId, amount);
+                    label8.Text ="€ "+ Convert.ToString(accountHelper.GetAccountBalance(accountId));
+                }
+            }
+            catch
+            { MessageBox.Show("Please enter appropriate amount."); }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            label5.Text = "";
+            label6.Text = "";
+            label7.Text = "";
+            label14.Text = "";
+            label10.Text = "";
+            label8.Text = "€ ";
         }
 
     }
