@@ -18,7 +18,7 @@ namespace JazzEventProject.Classes
         public int GetEventAccountId(int eventId)
         {
             String str_eventId = Convert.ToString(eventId);
-            String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE E_Account_ID={0}",str_eventId);
+            String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE Account_ID={0}",str_eventId);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             int tempId=0;
@@ -29,7 +29,7 @@ namespace JazzEventProject.Classes
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    tempId = Convert.ToInt32(reader["E_Account_ID"]);
+                    tempId = Convert.ToInt32(reader["Account_ID"]);
                 }
             }
             catch
@@ -58,7 +58,7 @@ namespace JazzEventProject.Classes
 
             if (GetEventAccountId(eventId) >= 0)
             {
-                String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE E_Account_ID={0}", str_eventId);
+                String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE Account_ID={0}", str_eventId);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try
@@ -88,7 +88,7 @@ namespace JazzEventProject.Classes
         public EventAccount GetAccount(int eventId)
         {
             String str_eventId = Convert.ToString(eventId);
-            String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE E_Account_ID={0}", str_eventId);
+            String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE Account_ID={0}", str_eventId);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             EventAccount tempAccount=null;
@@ -110,7 +110,7 @@ namespace JazzEventProject.Classes
 
                 while (reader.Read())
                 {
-                    EventId = Convert.ToInt32(reader["E_Account_ID"]);
+                    EventId = Convert.ToInt32(reader["Account_ID"]);
                     firstName=Convert.ToString(reader["First_Name"]);
                     lastName=Convert.ToString(reader["Last_Name"]);
                     eMail=Convert.ToString(reader["Email"]);
@@ -164,7 +164,7 @@ namespace JazzEventProject.Classes
 
                 while (reader.Read())
                 {
-                    EventId = Convert.ToInt32(reader["E_Account_ID"]);
+                    EventId = Convert.ToInt32(reader["Account_ID"]);
                     firstName = Convert.ToString(reader["First_Name"]);
                     lastName = Convert.ToString(reader["Last_Name"]);
                     eMail = Convert.ToString(reader["Email"]);
@@ -202,7 +202,7 @@ namespace JazzEventProject.Classes
             if (currentClient != null)//to check if the EventAccount exists in database
             {
 
-                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code={0} WHERE E_Account_ID={1}", rfid, id);
+                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code={0} WHERE Account_ID={1}", rfid, id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try
@@ -237,7 +237,7 @@ namespace JazzEventProject.Classes
             if (currentClient != null)//to check if the EventAccount exists in database
             {
 
-                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code=NULL WHERE E_Account_ID={0}", id);
+                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code=NULL WHERE Account_ID={0}", id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try
@@ -274,7 +274,7 @@ namespace JazzEventProject.Classes
                 decimal totalBalance=currentClient.Balance;
                 totalBalance += balance;
 
-                String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0} WHERE E_Account_ID={1}", totalBalance, id);
+                String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0} WHERE Account_ID={1}", totalBalance, id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try

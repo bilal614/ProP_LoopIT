@@ -52,6 +52,7 @@
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.btnActivateRFID = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
@@ -313,11 +314,22 @@
             this.btnPay.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPay.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(363, 81);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // EntranceEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 452);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.GreyPanel);
             this.Controls.Add(this.HeaderPanel);
@@ -366,6 +378,7 @@
         private System.Windows.Forms.Button btnBackToMainForm;
         private System.Windows.Forms.Button btnActivateRFID;
         private System.Windows.Forms.Button btnPay;
+        private System.Windows.Forms.Button button1;
 
     }
 }
