@@ -113,7 +113,7 @@ namespace JazzEventProject.Classes
                     EventId = Convert.ToInt32(reader["Account_ID"]);
                     firstName=Convert.ToString(reader["First_Name"]);
                     lastName=Convert.ToString(reader["Last_Name"]);
-                    eMail=Convert.ToString(reader["Email"]);
+                    eMail=Convert.ToString(reader["E_mail"]);
                     phone=Convert.ToString(reader["Phone"]);
                     balance=Convert.ToDecimal(reader["Balance"]);
                     paymentStatus=Convert.ToBoolean(reader["Payment_Status"]);
@@ -167,7 +167,7 @@ namespace JazzEventProject.Classes
                     EventId = Convert.ToInt32(reader["Account_ID"]);
                     firstName = Convert.ToString(reader["First_Name"]);
                     lastName = Convert.ToString(reader["Last_Name"]);
-                    eMail = Convert.ToString(reader["Email"]);
+                    eMail = Convert.ToString(reader["E_mail"]);
                     phone = Convert.ToString(reader["Phone"]);
                     balance = Convert.ToDecimal(reader["Balance"]);
                     paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
