@@ -98,7 +98,7 @@ namespace JazzEventProject.Classes
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                int EventId;
+                int EventId=0;
                 string firstName;
                 string lastName;
                 string eMail;
@@ -119,9 +119,13 @@ namespace JazzEventProject.Classes
                     paymentStatus=Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance=Convert.ToBoolean(reader["Pay_InAdvance"]);
 
-                    if(EventId!=0)
-                        tempAccount = new EventAccount(EventId, firstName, lastName, eMail, phone, balance, 
-                            paymentStatus, payInAdvance);
+                    if (EventId > 0)
+                    {
+                        tempAccount = new EventAccount(EventId, firstName, lastName, eMail, phone, balance,
+                               paymentStatus, payInAdvance);
+                        tempAccount.PaymentStatus = paymentStatus;
+                        tempAccount.PayInAddvance = payInAdvance;
+                    }
                 }
             }
             catch
@@ -190,16 +194,16 @@ namespace JazzEventProject.Classes
         }
 
         ///<summary>
-        ///This method allows the participants to check in by being assigned a RFID code. The parameters are the eventAccountId of the 
-        ///person and the rfid to be assigned to them. If the rfid is successfully assigned to the persons EventAccount entity in the
-        ///database the method will return a true value.
+        ///This method allows the participants to check in by being assigned an RFID code. The parameters are 
+        ///the eventAccountId of the person and the rfid to be assigned to them. If the rfid is successfully 
+        ///assigned to the persons EventAccount entity in the database the method will return a true value.
         ///</summary>
         public bool CheckIn(int id, int rfid)
         {
             EventAccount currentClient = GetAccount(id);
             bool checkIn = false;
 
-            if (currentClient != null)//to check if the EventAccount exists in database
+            if (currentClient != null && currentClient.RFID>0)//to check if the EventAccount exists in database
             {
 
                 String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code={0} WHERE Account_ID={1}", rfid, id);
@@ -225,9 +229,10 @@ namespace JazzEventProject.Classes
         }
 
         ///<summary>
-        ///This method allows the participants to check out by giving back the RFID tags when they leave. Therfore the RFID_Cod of that
-        ///particular person has to be set to NULL in the database.The parameters are the eventAccountId of the person in question. 
-        ///If the rfid is successfully made NULL in the person's EventAccount entity in the database the method will return a true value.
+        ///This method allows the participants to check out by giving back the RFID tags when they leave. 
+        ///Therfore the RFID_Code of that particular person has to be set to NULL in the database.The parameters 
+        ///are the eventAccountId of the person in question. If the rfid is successfully made NULL in the person's 
+        ///EventAccount entity in the database the method will return a true value.
         ///</summary>
         public bool CheckOut(int id)
         {
@@ -237,7 +242,7 @@ namespace JazzEventProject.Classes
             if (currentClient != null)//to check if the EventAccount exists in database
             {
 
-                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code=NULL WHERE Account_ID={0}", id);
+                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code=-1 WHERE Account_ID={0}", id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try
@@ -260,27 +265,30 @@ namespace JazzEventProject.Classes
         }
 
         ///<summary>
-        ///This method allows the participants the participants to pay their entrance fees when they are at the entrance desk. The method
-        ///takes two parameters, the id will find the EventAccount to update the balance of the given EventAccount with the given id. Judging from
-        ///the form for EntranceEvent the only member that would change at that point would be the balance of the person when he/she makes the 
-        ///payment to enter the event therefore the method has been modified to update the balacnce only.
+        ///This method allows the participants  to pay their entrance fees when they are at the 
+        ///entrance desk. The method takes two parameters, the id will find the EventAccount to update the balance 
+        ///of the given EventAccount with the given id. Judging from the form for EntranceEvent the only member 
+        ///that would change at that point would be the balance of the person when he/she makes the payment to enter 
+        ///the event therefore the method has been modified to update the balacnce only.
         ///</summary>          
         public void UpdateAccountBalance(int id,decimal balance)
         {
             EventAccount currentClient = GetAccount(id);
+            decimal totalBalance=0;
 
-            if (currentClient!=null)//to check if the EventAccount exists in database
+            if (currentClient != null) { totalBalance = currentClient.Balance; }//adds existing balance of the
+            //currentClient to the totalBalance if that client exists in the DB
+            totalBalance += balance;
+
+            if (currentClient != null && totalBalance>=55)//to check if the EventAccount exists in database
             {
-                decimal totalBalance=currentClient.Balance;
-                totalBalance += balance;
-
-                String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0} WHERE Account_ID={1}", totalBalance, id);
+                String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0},Payment_Status=TRUE WHERE Account_ID={1}",
+                    totalBalance, id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
-
                 try
                 {
                     connection.Open();
-                    int nrOfrecordsChanged=command.ExecuteNonQuery();
+                    int nrOfrecordsChanged = command.ExecuteNonQuery();
                     if (nrOfrecordsChanged == 1)
                     { MessageBox.Show("Balance successfully updated."); }
                 }
@@ -293,7 +301,6 @@ namespace JazzEventProject.Classes
             {
                 MessageBox.Show("Event account Id does not exist in database.");
             }
-             
         }
     }
 }

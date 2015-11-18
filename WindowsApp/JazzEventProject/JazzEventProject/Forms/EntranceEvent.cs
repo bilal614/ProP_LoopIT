@@ -25,20 +25,56 @@ namespace JazzEventProject
         private void button1_Click(object sender, EventArgs e)
         {
             accountId = Convert.ToInt32(textBox1.Text);
+            currentAccount = accountHelper.GetAccount(accountId);
 
-            if (accountHelper.GetAccount(accountId) != null)
+            if (currentAccount!= null)
             {
-                currentAccount = accountHelper.GetAccount(accountId);
 
                 label5.Text=currentAccount.FirstName+" "+currentAccount.LastName;
                 label6.Text=currentAccount.Email;
                 label7.Text = currentAccount.Phone;
+                label14.Text = Convert.ToString(accountId);
 
                 if (currentAccount.PaymentStatus) { label10.Text = "Paid"; }
                 else { label10.Text = "Not Paid"; }
-                label8.Text = Convert.ToString(currentAccount.Balance);
+                label8.Text = "€ "+Convert.ToString(currentAccount.Balance);
             }
 
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal amount = Convert.ToDecimal(textBox2.Text);
+
+                if (label14.Text != "")
+                {
+                    int accountId = Convert.ToInt32(label14.Text);
+                    EventAccount currentAccount=accountHelper.GetAccount(accountId);
+                    accountHelper.UpdateAccountBalance(accountId, amount);
+                    label8.Text ="€ "+ Convert.ToString(accountHelper.GetAccountBalance(accountId));
+                    if(currentAccount!=null)
+                    {
+                        if (currentAccount.PaymentStatus)
+                            label10.Text = "Paid";
+                    }
+                }
+            }
+            catch
+            { MessageBox.Show("Please enter appropriate amount."); }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            label5.Text = "";
+            label6.Text = "";
+            label7.Text = "";
+            label14.Text = "";
+            label10.Text = "";
+            label8.Text = "€ ";
         }
 
     }
