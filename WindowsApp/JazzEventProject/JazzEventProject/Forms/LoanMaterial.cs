@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JazzEventProject.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace JazzEventProject
 {
     public partial class LoanMaterial : Form
@@ -16,10 +16,10 @@ namespace JazzEventProject
         {
             InitializeComponent();
         }
-
-        private void label7_Click(object sender, EventArgs e)
+        private void btnSearchFood_Click(object sender, EventArgs e)
         {
-
+            Form frm = new MaterialList();
+            frm.Show();
         }
     }
 }
