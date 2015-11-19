@@ -73,9 +73,9 @@ namespace JazzEventProject.Classes
          /// <param name="id"></param>
          /// <param name="quantity"></param>
          /// <returns></returns>
-        public bool SellFood(int id, int quantity, List<Items> listsFood)
+        public bool SellItem(int id, int quantity, List<Items> ListOfItem)
         {
-            Items sitem = GetAnItem(id,listsFood);
+            Items sitem = GetAnItem(id, ListOfItem);
             if (sitem.Quantity >= quantity)
             {
                 sitem.Quantity -= quantity;
@@ -105,11 +105,11 @@ namespace JazzEventProject.Classes
         }
 
         /// <summary>
-        /// Update a food with the given id. Return true if the id is in the table and the updating process is success. 
+        /// Update a food with the given id. Return the number of updated row if the id is in the table and the updating process is success. 
         /// Otherwise, return false.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>boolean values</returns>
+        /// <returns>int values</returns>
         public int UpdateAFood(int id, List<Items> listsFood)
         {
             Items seletedFood = GetAnItem(id, listsFood);
@@ -175,6 +175,34 @@ namespace JazzEventProject.Classes
                 connection.Close();
             }
             return temp;
+        }
+
+        /// <summary>
+        /// Update a material with the given id. Return the number of updated row if the id is in the table and the updating process is success. 
+        /// Otherwise, return false.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>int values</returns>
+        public int UpdateAMaterial(int id, List<Items> materials)
+        {
+            Items seletedMaterial = GetAnItem(id, materials);
+            String sql = string.Format("UPDATE MATERIAL SET Material_Quantity = {0} WHERE Material_ID = {1};", seletedMaterial.Quantity, seletedMaterial.ID);
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            try
+            {
+                connection.Open();
+                int nrOfRecordsChanged = command.ExecuteNonQuery();
+                return nrOfRecordsChanged;
+            }
+            catch
+            {
+                return -1; //which means the try-block was not executed succesfully, so  . . .
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

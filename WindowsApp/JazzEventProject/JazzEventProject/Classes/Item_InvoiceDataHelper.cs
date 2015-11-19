@@ -36,5 +36,26 @@ namespace JazzEventProject.Classes
                 connection.Close();
             }
         }
+
+        public int AddNewLoanedMaterial(int invoice_id, int quantity, int materialID)
+        {
+            String sql = String.Format("INSERT INTO MATERIAL_INVOICE( Material_Quantity, Material_ID, Material_InvoiceID) VALUES ({0}, {1}, {2});", quantity, materialID, invoice_id);
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            try
+            {
+                connection.Open();
+                int nrOfRecordsChanged = command.ExecuteNonQuery();
+                return nrOfRecordsChanged;
+            }
+            catch
+            {
+                return -1; //which means the try-block was not executed succesfully, so  . . .
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

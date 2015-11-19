@@ -174,9 +174,9 @@
             this.lbSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSubTotal.Location = new System.Drawing.Point(95, 11);
             this.lbSubTotal.Name = "lbSubTotal";
-            this.lbSubTotal.Size = new System.Drawing.Size(47, 13);
+            this.lbSubTotal.Size = new System.Drawing.Size(36, 13);
             this.lbSubTotal.TabIndex = 6;
-            this.lbSubTotal.Text = "€ 50.9 ";
+            this.lbSubTotal.Text = "€ 0.0";
             // 
             // lbVAT
             // 
@@ -184,9 +184,9 @@
             this.lbVAT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbVAT.Location = new System.Drawing.Point(95, 35);
             this.lbVAT.Name = "lbVAT";
-            this.lbVAT.Size = new System.Drawing.Size(43, 13);
+            this.lbVAT.Size = new System.Drawing.Size(36, 13);
             this.lbVAT.TabIndex = 6;
-            this.lbVAT.Text = "€ 10.7";
+            this.lbVAT.Text = "€ 0.0";
             // 
             // lbTotal
             // 
@@ -194,9 +194,9 @@
             this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotal.Location = new System.Drawing.Point(95, 58);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(43, 13);
+            this.lbTotal.Size = new System.Drawing.Size(36, 13);
             this.lbTotal.TabIndex = 6;
-            this.lbTotal.Text = "€ 61.6";
+            this.lbTotal.Text = "€ 0.0";
             // 
             // sub_rightPanel
             // 

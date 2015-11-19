@@ -80,9 +80,9 @@ namespace JazzEventProject
         {
             VAT = subtotal * (decimal)0.21;
             lbSubTotal.Text = "€ " + subtotal.ToString();
-            lbVAT.Text = "€ " + VAT.ToString("#.##");
+            lbVAT.Text = "€ " + VAT.ToString("#.00");
             total = subtotal + VAT;
-            lbTotal.Text = "€" + total.ToString("#.##");
+            lbTotal.Text = "€" + total.ToString("#.00");
         }
 
 
@@ -113,7 +113,8 @@ namespace JazzEventProject
             }
 
             //Insert a new food invoice into database
-            InvoiceID = InvoiceData.GenerateInvoiceID();
+            List<Invoice> invoices = InvoiceData.GetAllFoodInvoices();
+            InvoiceID = InvoiceData.GenerateInvoiceID(invoices);
             string soldDate = (DateTime.Now).ToString("dd-MM-yyyy");
             int AccountID = 1; // This one will be provide by RFID after the scaning functionality completed
             int nbofInvoice = InvoiceData.AddAFoodInvoice(InvoiceID, soldDate, AccountID);
@@ -177,7 +178,7 @@ namespace JazzEventProject
             if (ItemData.CheckUniqueItem(ListOfUpdateFood, id) == true)
             {
                 selectedItem = ItemData.GetAnItem(id, ListOFFoods);
-                ItemData.SellFood(selectedItem.ID, quantity, ListOFFoods);
+                ItemData.SellItem(selectedItem.ID, quantity, ListOFFoods);
                 ListOfUpdateFood.Add(selectedItem);
                 //Add items into list of sold foods to keep track the quantity
                 ListOfSoldFoods.Add(new Items(selectedItem.ID, selectedItem.Name, selectedItem.Price, quantity));
@@ -185,7 +186,7 @@ namespace JazzEventProject
             else
             {
                 selectedItem = ItemData.GetAnItem(id, ListOfUpdateFood);
-                ItemData.SellFood(selectedItem.ID, quantity, ListOfUpdateFood);
+                ItemData.SellItem(selectedItem.ID, quantity, ListOfUpdateFood);
                 //Update the quantity for the list of sold food
                 Items soldItem = ItemData.GetAnItem(id, ListOfSoldFoods);
                 soldItem.Quantity += quantity;
