@@ -136,12 +136,12 @@ namespace JazzEventProject.Classes
         /// Load all of the material items from database put in to the list
         /// </summary>
         /// <returns>List of items</returns>
-        public List<Material> GetAllMaterials()
+        public List<Items> GetAllMaterials()
         {
             String sql = "SELECT * FROM MATERIAL";
             MySqlCommand command = new MySqlCommand(sql, connection);
-            List<Material> temp;
-            temp = new List<Material>();
+            List<Items> temp;
+            temp = new List<Items>();
 
             try
             {
@@ -162,7 +162,7 @@ namespace JazzEventProject.Classes
                     LoaningPrice = Convert.ToDecimal(reader["Loaning_Price"]);
                     DepositAmount = Convert.ToDecimal(reader["Deposit_Amount"]);
                     Description = Convert.ToString(reader["Description"]);
-                    Material m = new Material(Material_ID, Name, LoaningPrice, MaterialQuantity, DepositAmount, Description);
+                    Material m = new Material(Material_ID, Name, LoaningPrice, MaterialQuantity, DepositAmount, Description);               
                     temp.Add(m);
                 }
             }
