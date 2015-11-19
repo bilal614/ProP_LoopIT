@@ -77,5 +77,10 @@ namespace JazzEventProject
             label8.Text = "€ ";
         }
 
+        private void btnBackToMainForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
