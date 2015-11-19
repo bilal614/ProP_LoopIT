@@ -18,6 +18,7 @@ namespace JazzEventProject
         public FoodShop()
         {
             InitializeComponent();
+            btnPrint.Enabled = false;
         }
 
         //Variables declaration 
@@ -126,6 +127,7 @@ namespace JazzEventProject
             if (nbofInvoice == 1 && nbofSoldFood >= 1 & InvoiceItemRows == nbofSoldFood)
             {
                 MessageBox.Show("Success!");
+                btnPrint.Enabled = true;
             }
 
 
@@ -174,7 +176,7 @@ namespace JazzEventProject
             Items selectedItem = null;
             if (ItemData.CheckUniqueItem(ListOfUpdateFood, id) == true)
             {
-                selectedItem = ItemData.GetAFood(id, ListOFFoods);
+                selectedItem = ItemData.GetAnItem(id, ListOFFoods);
                 ItemData.SellFood(selectedItem.ID, quantity, ListOFFoods);
                 ListOfUpdateFood.Add(selectedItem);
                 //Add items into list of sold foods to keep track the quantity
@@ -182,10 +184,10 @@ namespace JazzEventProject
             }
             else
             {
-                selectedItem = ItemData.GetAFood(id, ListOfUpdateFood);
+                selectedItem = ItemData.GetAnItem(id, ListOfUpdateFood);
                 ItemData.SellFood(selectedItem.ID, quantity, ListOfUpdateFood);
                 //Update the quantity for the list of sold food
-                Items soldItem = ItemData.GetAFood(id, ListOfSoldFoods);
+                Items soldItem = ItemData.GetAnItem(id, ListOfSoldFoods);
                 soldItem.Quantity += quantity;
             }
             subtotal += selectedItem.Price * quantity;

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using JazzEventProject.Classes;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +24,7 @@ namespace JazzEventProject
             this.ID = id;
             this.Name = name;
             this.Price = price;
-            this.Quantity = quantity; 
+            this.Quantity = quantity;
         }
-
     }
 }

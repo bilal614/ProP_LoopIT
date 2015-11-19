@@ -55,10 +55,10 @@ namespace JazzEventProject.Classes
         /// Get a food item from the list of foods
         /// </summary>
         /// <returns>A object with type item</returns>
-        public Items GetAFood(int id, List<Items> listsFood)
+        public Items GetAnItem(int id, List<Items> lists)
         {
             Items item = null;
-            foreach(var tempItem in listsFood)
+            foreach(var tempItem in lists)
             {
                 if (tempItem.ID == id)
                 {
@@ -75,7 +75,7 @@ namespace JazzEventProject.Classes
          /// <returns></returns>
         public bool SellFood(int id, int quantity, List<Items> listsFood)
         {
-            Items sitem = GetAFood(id,listsFood);
+            Items sitem = GetAnItem(id,listsFood);
             if (sitem.Quantity >= quantity)
             {
                 sitem.Quantity -= quantity;
@@ -112,7 +112,7 @@ namespace JazzEventProject.Classes
         /// <returns>boolean values</returns>
         public int UpdateAFood(int id, List<Items> listsFood)
         {
-            Items seletedFood = GetAFood(id, listsFood);
+            Items seletedFood = GetAnItem(id, listsFood);
             String sql = string.Format("UPDATE FOOD SET FOOD_QUANTITY = {0} WHERE Food_ID = {1};", seletedFood.Quantity, seletedFood.ID);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
@@ -130,6 +130,51 @@ namespace JazzEventProject.Classes
             {
                 connection.Close();
             }
+        }
+
+        /// <summary>
+        /// Load all of the material items from database put in to the list
+        /// </summary>
+        /// <returns>List of items</returns>
+        public List<Items> GetAllMaterials()
+        {
+            String sql = "SELECT * FROM MATERIAL";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            List<Items> temp;
+            temp = new List<Items>();
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                int Material_ID;
+                string Name;
+                decimal LoaningPrice;
+                decimal DepositAmount;
+                int MaterialQuantity;
+                string Description;
+                while (reader.Read())
+                {
+                    Material_ID = Convert.ToInt32(reader["Material_ID"]);
+                    Name = Convert.ToString(reader["Name"]);
+                    MaterialQuantity = Convert.ToInt32(reader["Material_Quantity"]);
+                    LoaningPrice = Convert.ToDecimal(reader["Loaning_Price"]);
+                    DepositAmount = Convert.ToDecimal(reader["Deposit_Amount"]);
+                    Description = Convert.ToString(reader["Description"]);
+                    Material m = new Material(Material_ID, Name, LoaningPrice, MaterialQuantity, DepositAmount, Description);               
+                    temp.Add(m);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("error while loading");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return temp;
         }
     }
 }
