@@ -10,6 +10,10 @@ namespace JazzEventProject.Classes
 {
     class EventAccountDataHelper:DataHelper
     {
+        public delegate EventAccount EventAccountDataHandler(EventAccountDataHelper sender,int accountId);
+        //1)protoype of the method
+        public event EventAccountDataHandler eventAccountCalled;
+        //2) we dfine the event here
         /// <summary>
         /// Returns the eventId of the EventAccount if it exist in the databse otherwise it returns a -1.
         /// </summary>
@@ -125,6 +129,10 @@ namespace JazzEventProject.Classes
                                paymentStatus, payInAdvance);
                         tempAccount.PaymentStatus = paymentStatus;
                         tempAccount.PayInAddvance = payInAdvance;
+
+                        //if (eventAccountCalled != null)
+                        //    eventAccountCalled(this,EventId);//event is raised when a an EventAccount object would be
+                        ////returned from this method
                     }
                 }
             }

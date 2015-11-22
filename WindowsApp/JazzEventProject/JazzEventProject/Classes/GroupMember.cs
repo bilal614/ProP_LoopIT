@@ -31,7 +31,13 @@ namespace JazzEventProject.Classes
             //allow other guests to check-in in their place
         }
         //constructors
-
+        public GroupMember(int groupID, string coEmail, int campResNo)
+        {
+            this.groupId = groupID;
+            this.co_email = coEmail;
+            this.campResNo = campResNo;
+            this.CheckIn = false;
+        }
         //methods
     }
 }

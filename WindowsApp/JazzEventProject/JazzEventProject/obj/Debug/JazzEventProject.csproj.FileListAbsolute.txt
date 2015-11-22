@@ -50,3 +50,4 @@ C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventP
 C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.pdb
 C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Forms.FoodList.resources
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Forms.MaterialList.resources
+C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Forms.MaterialList.resources

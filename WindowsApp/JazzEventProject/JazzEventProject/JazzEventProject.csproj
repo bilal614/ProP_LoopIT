@@ -57,6 +57,7 @@
     <Compile Include="Classes\Camp.cs" />
     <Compile Include="Classes\CampDataHelper.cs" />
     <Compile Include="Classes\CampRes.cs" />
+    <Compile Include="Classes\CampResDataHelper.cs" />
     <Compile Include="Classes\DataHelper.cs" />
     <Compile Include="Classes\EventAccount.cs" />
     <Compile Include="Classes\EventAccountDataHelper.cs" />
