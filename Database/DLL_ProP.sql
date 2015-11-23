@@ -175,9 +175,10 @@ VALUES (3,3,3, STR_TO_DATE('01-11-2015', '%d-%m-%Y'), STR_TO_DATE('02-10-2015', 
 
 //Insert data into groupmembers
 INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'Chirs@gmail.com', 1, false);
+INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'Joe@gmail.com', 1, false);
+INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'AliceSim@gmail.com', 1, false);
+INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'ron_will@gmail.com', 1, false);
 INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (2, 'Devil@gmail.com', 2, false);
-INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (3, 'Joe@gmail.com', 1, false);
-INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (3, 'AliceSim@gmail.com', 1, false);
 
 //Insert data into food
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (1,'Big Burger', 150, 5.50);
@@ -212,12 +213,12 @@ INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Descripti
 VALUES (4,'Camera',11.50,10.00,'Canon cammera, 8GB, 2000x5000 pixels',20);
 
 //Insert data into M_Invoice
-INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, End_Date, Account_ID) 
-VALUES (1,STR_TO_DATE('02-11-2015', '%d-%m-%Y'),STR_TO_DATE('04-11-2015', '%d-%m-%Y'),1);
-INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, End_Date, Account_ID) 
-VALUES (2,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),STR_TO_DATE('02-11-2015', '%d-%m-%Y'),2);
-INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, End_Date, Account_ID) 
-VALUES (3,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),STR_TO_DATE('01-11-2015', '%d-%m-%Y'),3);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID) 
+VALUES (1,STR_TO_DATE('02-11-2015', '%d-%m-%Y'),1);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID) 
+VALUES (2,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),2);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID) 
+VALUES (3,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),3);
 
 //Insert data into Material_Invoice
 INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 1, 1);
