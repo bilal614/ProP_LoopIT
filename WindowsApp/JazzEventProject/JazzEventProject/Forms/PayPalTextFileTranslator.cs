@@ -36,7 +36,7 @@ namespace JazzEventProject
 
             EventAccount currentAccount;
             EventAccountDataHelper accountHelper = new EventAccountDataHelper();
-            accountHelper.UpdateAccountBalance()
+            //accountHelper.UpdateAccountBalance();
 
         }
     }
