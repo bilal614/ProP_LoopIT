@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace JazzEventProject.Classes
 {
-    class EventAccountDataHelper:DataHelper
+    class EventAccountDataHelper : DataHelper
     {
-        public delegate EventAccount EventAccountDataHandler(EventAccountDataHelper sender,int accountId);
+        public delegate EventAccount EventAccountDataHandler(EventAccountDataHelper sender, int accountId);
         //1)protoype of the method
         public event EventAccountDataHandler eventAccountCalled;
         //2) we dfine the event here
@@ -22,10 +22,10 @@ namespace JazzEventProject.Classes
         public int GetEventAccountId(int eventId)
         {
             String str_eventId = Convert.ToString(eventId);
-            String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE Account_ID={0}",str_eventId);
+            String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE Account_ID={0}", str_eventId);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
-            int tempId=0;
+            int tempId = 0;
 
             try
             {
@@ -95,14 +95,14 @@ namespace JazzEventProject.Classes
             String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE Account_ID={0}", str_eventId);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
-            EventAccount tempAccount=null;
+            EventAccount tempAccount = null;
 
             try
             {
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                int EventId=0;
+                int EventId = 0;
                 string firstName;
                 string lastName;
                 string eMail;
@@ -115,13 +115,13 @@ namespace JazzEventProject.Classes
                 while (reader.Read())
                 {
                     EventId = Convert.ToInt32(reader["Account_ID"]);
-                    firstName=Convert.ToString(reader["First_Name"]);
-                    lastName=Convert.ToString(reader["Last_Name"]);
-                    eMail=Convert.ToString(reader["E_mail"]);
-                    phone=Convert.ToString(reader["Phone"]);
-                    balance=Convert.ToDecimal(reader["Balance"]);
-                    paymentStatus=Convert.ToBoolean(reader["Payment_Status"]);
-                    payInAdvance=Convert.ToBoolean(reader["Pay_InAdvance"]);
+                    firstName = Convert.ToString(reader["First_Name"]);
+                    lastName = Convert.ToString(reader["Last_Name"]);
+                    eMail = Convert.ToString(reader["E_mail"]);
+                    phone = Convert.ToString(reader["Phone"]);
+                    balance = Convert.ToDecimal(reader["Balance"]);
+                    paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
+                    payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
                     if (reader["RFID_Code"] == null)
                         rfid = -1;
                     else
@@ -222,7 +222,7 @@ namespace JazzEventProject.Classes
             EventAccount currentClient = GetAccount(id);
             bool checkIn = false;
 
-            if (currentClient != null && currentClient.RFID>0)//to check if the EventAccount exists in database
+            if (currentClient != null && currentClient.RFID > 0)//to check if the EventAccount exists in database
             {
 
                 String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code={0} WHERE Account_ID={1}", rfid, id);
@@ -290,17 +290,17 @@ namespace JazzEventProject.Classes
         ///that would change at that point would be the balance and payment status of the person when he/she makes the 
         ///payment to enter the event therefore the method has been modified to update the balacnce and payment status.
         ///</summary>          
-        public bool UpdateAccountBalanceEntrance(int id,decimal balance)
+        public bool UpdateAccountBalanceEntrance(int id, decimal balance)
         {
             EventAccount currentClient = GetAccount(id);
-            decimal totalBalance=0;
+            decimal totalBalance = 0;
             bool ticketPaid = false;
 
             if (currentClient != null) { totalBalance = currentClient.Balance; }//adds existing balance of the
             //currentClient to the totalBalance if that client exists in the DB
             totalBalance += balance;
 
-            if (currentClient != null && totalBalance>=55)//to check if the EventAccount exists in database
+            if (currentClient != null && totalBalance >= 55)//to check if the EventAccount exists in database
             {
                 String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0},Payment_Status=TRUE WHERE Account_ID={1}",
                     totalBalance, id);
@@ -333,9 +333,9 @@ namespace JazzEventProject.Classes
         ///the event therefore the method has been modified to update the balacnce only.
         ///</summary> 
         public bool UpdateAccountBalance(int id, decimal balance)
-        { 
+        {
             EventAccount currentClient = GetAccount(id);
-            decimal totalBalance=0;
+            decimal totalBalance = 0;
             bool ticketPaid = false;
 
             if (currentClient != null) { totalBalance = currentClient.Balance; }//adds existing balance of the
@@ -373,9 +373,9 @@ namespace JazzEventProject.Classes
         ///</summary> 
         public int GetEventIdFromRFID(int rfid)
         {
-            int idEvent=0;
+            int idEvent = 0;
 
-            String sql = String.Format("SELECT Account_ID FROM E_Account WHERE RFID_code={0}",rfid);
+            String sql = String.Format("SELECT Account_ID FROM E_Account WHERE RFID_code={0}", rfid);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try
@@ -401,9 +401,9 @@ namespace JazzEventProject.Classes
         public string GetAccountEmailFromRFID(int rfid)
         {
             string email = "";
-            int eventId=GetEventIdFromRFID(rfid);
+            int eventId = GetEventIdFromRFID(rfid);
 
-            if ( eventId> 0)
+            if (eventId > 0)
             {
                 EventAccount selected = GetAccount(eventId);
                 email = selected.Email;

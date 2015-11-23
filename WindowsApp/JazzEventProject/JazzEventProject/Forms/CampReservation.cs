@@ -20,7 +20,7 @@ namespace JazzEventProject
         CampResDataHelper campDatHelper = new CampResDataHelper();
         CampRes reservation;
         GroupMember scannedMember;
-        GroupDataHelper groupHelper=new GroupDataHelper();
+        GroupDataHelper groupHelper = new GroupDataHelper();
 
         public CampReservation()
         {
@@ -29,14 +29,14 @@ namespace JazzEventProject
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            eID=accountHelper.GetEventIdFromRFID(rfid);
-            email=accountHelper.GetAccountEmailFromRFID(rfid);
-            if (email !="")
+            eID = accountHelper.GetEventIdFromRFID(rfid);
+            email = accountHelper.GetAccountEmailFromRFID(rfid);
+            if (email != "")
             {
-                scannedMember=groupHelper.GetGroupMembers(email);
+                scannedMember = groupHelper.GetGroupMembers(email);
                 reservation = campDatHelper.GetCampRes(scannedMember.CampResNo);
             }
-            
+
             if (reservation != null)
             {
                 DataGridViewRow newrow = new DataGridViewRow();

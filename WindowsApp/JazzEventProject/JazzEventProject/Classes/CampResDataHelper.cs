@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace JazzEventProject.Classes
 {
-    class CampResDataHelper:DataHelper
+    class CampResDataHelper : DataHelper
     {
         //here we create a prototype for getting CampRes objects to compare the CampRes.CampResNo to the CampResNo 
         //reported by the GroupMember objects that we get from the database
@@ -17,12 +17,12 @@ namespace JazzEventProject.Classes
         //we define the event
         public event CampCompare campComparison;
 
-        EventAccountDataHelper accountDataHolder=new EventAccountDataHelper();
-        EventAccount accountHolder=null;
+        EventAccountDataHelper accountDataHolder = new EventAccountDataHelper();
+        EventAccount accountHolder = null;
 
         public EventAccount EventAccountIdGetter(EventAccountDataHelper datHelp, int iD)
         {
-            accountHolder=datHelp.GetAccount(iD);
+            accountHolder = datHelp.GetAccount(iD);
             return accountHolder;
         }
 
@@ -47,11 +47,11 @@ namespace JazzEventProject.Classes
 
             try
             {
-                int campResNo=0;
+                int campResNo = 0;
                 int campId;
                 DateTime startDate;
                 DateTime endDate;
-                int camperAcctId=0;
+                int camperAcctId = 0;
 
 
                 connection.Open();
@@ -59,7 +59,7 @@ namespace JazzEventProject.Classes
                 while (reader.Read())
                 {
                     campResNo = Convert.ToInt32(reader["CampRes_No"]);
-                    camperAcctId=Convert.ToInt32(reader["Account_ID"]);
+                    camperAcctId = Convert.ToInt32(reader["Account_ID"]);
                     campId = Convert.ToInt32(reader["CAMP_CampID"]);
                     startDate = Convert.ToDateTime(reader["Start_Date"]);
                     endDate = Convert.ToDateTime(reader["End_Date"]);
@@ -78,7 +78,7 @@ namespace JazzEventProject.Classes
             catch
             { MessageBox.Show("error while loading from database."); }
             finally { connection.Close(); }
-            
+
             return reservation;
         }
 
@@ -102,7 +102,7 @@ namespace JazzEventProject.Classes
                     endDate = Convert.ToDateTime(reader["End_Date"]);
                     reservationGroup = new CampRes(resNo, campId, startDate, endDate);
                 }
-                
+
             }
             catch
             { MessageBox.Show("error while loading from database."); }

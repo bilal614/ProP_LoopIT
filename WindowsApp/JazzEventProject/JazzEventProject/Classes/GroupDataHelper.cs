@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace JazzEventProject.Classes
 {
-    class GroupDataHelper:DataHelper
+    class GroupDataHelper : DataHelper
     {
         CampResDataHelper campHelper = new CampResDataHelper();
         List<CampRes> campHolder = null;
@@ -33,7 +33,7 @@ namespace JazzEventProject.Classes
 
                 int groupId; string coEMail; int campResNo; //bool checkIn;
 
-                connection.Open(); 
+                connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -68,7 +68,7 @@ namespace JazzEventProject.Classes
             //selectedMember=groupMembergetter
             String sql = String.Format("SELECT * FROM GROUPMEMBERS");
             MySqlCommand command = new MySqlCommand(sql, connection);
-                            
+
             int groupId; string coEMail; int campResNo; //bool checkIn;
 
             connection.Open();
