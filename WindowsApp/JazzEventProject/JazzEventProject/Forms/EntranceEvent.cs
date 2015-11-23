@@ -46,17 +46,18 @@ namespace JazzEventProject
         {
             try
             {
+                bool ticketPaid = false;
                 decimal amount = Convert.ToDecimal(textBox2.Text);
 
                 if (label14.Text != "")
                 {
                     int accountId = Convert.ToInt32(label14.Text);
                     EventAccount currentAccount=accountHelper.GetAccount(accountId);
-                    accountHelper.UpdateAccountBalance(accountId, amount);
+                    ticketPaid=accountHelper.UpdateAccountBalanceEntrance(accountId, amount);
                     label8.Text ="€ "+ Convert.ToString(accountHelper.GetAccountBalance(accountId));
                     if(currentAccount!=null)
                     {
-                        if (currentAccount.PaymentStatus)
+                        if (ticketPaid)
                             label10.Text = "Paid";
                     }
                 }
