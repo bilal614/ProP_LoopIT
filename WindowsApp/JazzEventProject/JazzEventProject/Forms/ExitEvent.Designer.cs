@@ -54,10 +54,11 @@
             this.label18 = new System.Windows.Forms.Label();
             this.GreyPanel = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
@@ -334,6 +335,32 @@
             this.bottomPanel.Size = new System.Drawing.Size(884, 114);
             this.bottomPanel.TabIndex = 22;
             // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(493, 11);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(105, 96);
+            this.btnSave.TabIndex = 16;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(621, 11);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(105, 96);
+            this.btnPrint.TabIndex = 15;
+            this.btnPrint.Text = "Print receipt";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -357,37 +384,22 @@
             this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBackToMainForm.UseVisualStyleBackColor = true;
             // 
-            // btnPrint
+            // btnSearch
             // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(621, 11);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(105, 96);
-            this.btnPrint.TabIndex = 15;
-            this.btnPrint.Text = "Print receipt";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(493, 11);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(105, 96);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(319, 85);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 23;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // ExitEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 487);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.GreyPanel);
             this.Controls.Add(this.HeaderPanel);
@@ -440,5 +452,6 @@
         private System.Windows.Forms.Button btnBackToMainForm;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
