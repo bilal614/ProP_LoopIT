@@ -110,7 +110,7 @@ namespace JazzEventProject.Classes
                 decimal balance;
                 bool paymentStatus;
                 bool payInAdvance;
-
+                int rfid;
 
                 while (reader.Read())
                 {
@@ -122,6 +122,10 @@ namespace JazzEventProject.Classes
                     balance=Convert.ToDecimal(reader["Balance"]);
                     paymentStatus=Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance=Convert.ToBoolean(reader["Pay_InAdvance"]);
+                    if (reader["RFID_Code"] == null)
+                        rfid = -1;
+                    else
+                        rfid = Convert.ToInt32(reader["RFID_Code"]);
 
                     if (EventId > 0)
                     {
@@ -129,7 +133,7 @@ namespace JazzEventProject.Classes
                                paymentStatus, payInAdvance);
                         tempAccount.PaymentStatus = paymentStatus;
                         tempAccount.PayInAddvance = payInAdvance;
-
+                        tempAccount.RFID = rfid;
                         //if (eventAccountCalled != null)
                         //    eventAccountCalled(this,EventId);//event is raised when a an EventAccount object would be
                         ////returned from this method
@@ -156,7 +160,7 @@ namespace JazzEventProject.Classes
         {
             String sql = String.Format("SELECT * FROM E_ACCOUNT");
             MySqlCommand command = new MySqlCommand(sql, connection);
-
+            EventAccount addAccount = null;
             List<EventAccount> tempAccount = null;
 
             try
@@ -172,7 +176,7 @@ namespace JazzEventProject.Classes
                 decimal balance;
                 bool paymentStatus;
                 bool payInAdvance;
-
+                int rfid;
 
                 while (reader.Read())
                 {
@@ -184,10 +188,17 @@ namespace JazzEventProject.Classes
                     balance = Convert.ToDecimal(reader["Balance"]);
                     paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
+                    if (reader["RFID_Code"] == null)
+                        rfid = -1;
+                    else
+                        rfid = Convert.ToInt32(reader["RFID_Code"]);
 
                     if (EventId != 0)
-                        tempAccount.Add(new EventAccount(EventId, firstName, lastName, eMail, phone, balance,
-                            paymentStatus, payInAdvance));
+                    {
+                        addAccount = new EventAccount(EventId, firstName, lastName, eMail, phone, balance,
+                               paymentStatus, payInAdvance); addAccount.RFID = rfid;
+                        tempAccount.Add(addAccount);
+                    }
                 }
             }
             catch
@@ -276,8 +287,8 @@ namespace JazzEventProject.Classes
         ///This method allows the participants  to pay their entrance fees when they are at the 
         ///entrance desk. The method takes two parameters, the id will find the EventAccount to update the balance 
         ///of the given EventAccount with the given id. Judging from the form for EntranceEvent the only member 
-        ///that would change at that point would be the balance of the person when he/she makes the payment to enter 
-        ///the event therefore the method has been modified to update the balacnce only.
+        ///that would change at that point would be the balance and payment status of the person when he/she makes the 
+        ///payment to enter the event therefore the method has been modified to update the balacnce and payment status.
         ///</summary>          
         public bool UpdateAccountBalanceEntrance(int id,decimal balance)
         {
@@ -315,8 +326,8 @@ namespace JazzEventProject.Classes
         }
 
         ///<summary>
-        ///This method allows the participants  to pay their entrance fees when they are at the 
-        ///entrance desk. The method takes two parameters, the id will find the EventAccount to update the balance 
+        ///This method allows the participants  to increase their balance whenever they would like to via  
+        ///paypal. The method takes two parameters, the id will find the EventAccount to update the balance 
         ///of the given EventAccount with the given id. Judging from the form for EntranceEvent the only member 
         ///that would change at that point would be the balance of the person when he/she makes the payment to enter 
         ///the event therefore the method has been modified to update the balacnce only.
@@ -356,6 +367,49 @@ namespace JazzEventProject.Classes
             return ticketPaid;
         }
 
+        ///<summary>
+        ///This method takes in an rfid int value and returns its corresponging EventAccountId if it exists in the 
+        ///database, otherwise it returns a value of 0.
+        ///</summary> 
+        public int GetEventIdFromRFID(int rfid)
+        {
+            int idEvent=0;
 
+            String sql = String.Format("SELECT Account_ID FROM E_Account WHERE RFID_code={0}",rfid);
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    idEvent = Convert.ToInt32(reader["Account_ID"]);
+                }
+            }
+            catch { MessageBox.Show("error while loading from database."); }
+            finally { connection.Close(); }
+
+            return idEvent;
+        }
+
+        ///<summary>
+        ///This method takes in an rfid int value and returns its corresponging Email if it exists in the 
+        ///database, otherwise it returns a null string.
+        ///</summary> 
+        public string GetAccountEmailFromRFID(int rfid)
+        {
+            string email = "";
+            int eventId=GetEventIdFromRFID(rfid);
+
+            if ( eventId> 0)
+            {
+                EventAccount selected = GetAccount(eventId);
+                email = selected.Email;
+            }
+
+            return email;
+        }
     }
 }
