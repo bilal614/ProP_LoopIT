@@ -121,7 +121,7 @@ namespace JazzEventProject
 
             //Insert rows into food_invoice (association table between food and invoice)
             int InvoiceItemRows = 0;
-            foreach (var f in ListOfUpdateFood)
+            foreach (var f in ListOfSoldFoods)
             {
                 InvoiceItemRows += ItemInvoiceData.AddNewSoldFood(InvoiceID, f.Quantity, f.ID);
             }
