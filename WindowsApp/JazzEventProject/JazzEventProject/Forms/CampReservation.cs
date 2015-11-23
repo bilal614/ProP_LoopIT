@@ -13,11 +13,14 @@ namespace JazzEventProject
 {
     public partial class CampReservation : Form
     {
-        int accountId;
-        EventAccount currentAccount;
+        int rfid = 4;//will actually be provided by the scanning of the RFID
+        int eID;
+        string email;
         EventAccountDataHelper accountHelper = new EventAccountDataHelper();
         CampResDataHelper campDatHelper = new CampResDataHelper();
         CampRes reservation;
+        GroupMember scannedMember;
+        GroupDataHelper groupHelper=new GroupDataHelper();
 
         public CampReservation()
         {
@@ -26,16 +29,26 @@ namespace JazzEventProject
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            reservation=campDatHelper.GetAReservation(1);
-
+            eID=accountHelper.GetEventIdFromRFID(rfid);
+            email=accountHelper.GetAccountEmailFromRFID(rfid);
+            if (email !="")
+            {
+                scannedMember=groupHelper.GetGroupMembers(email);
+                reservation = campDatHelper.GetCampRes(scannedMember.CampResNo);
+            }
+            
             if (reservation != null)
             {
                 DataGridViewRow newrow = new DataGridViewRow();
                 newrow.CreateCells(dataGridView1);
-                newrow.Cells[0].Value = reservation.CampResNo;
+                newrow.Cells[0].Value = scannedMember.CampResNo;
                 newrow.Cells[1].Value = reservation.EndDate;
                 newrow.Cells[2].Value = reservation.StartDate;
                 newrow.Cells[3].Value = reservation.CampId;
+                newrow.Cells[4].Value = scannedMember.GroupId;
+                newrow.Cells[5].Value = scannedMember.Co_Email;
+                newrow.Cells[6].Value = eID;
+                newrow.Cells[7].Value = rfid;
                 dataGridView1.Rows.Add(newrow);
 
             }

@@ -55,11 +55,33 @@ namespace JazzEventProject.Classes
 
 
         /// <summary>
-        /// Returns the a GroupMember object if it exist in the databse otherwise it returns a null. If the CampResNo exists
-        /// in the database as in the GroupMember table in database the method will return a CampRes object otherwise
-        /// it will return an empty CampRes object.
+        /// Returns a GroupMember object if it exists in the databse otherwise it returns a null. If the 
+        /// email exists in the database as in the GroupMember table in database the method will return a GroupMember 
+        /// object otherwise it will return an empty GroupMember object.
         /// </summary>
         /// <param >int CampResNo</param>
-        /// <returns>GroupMemeber</returns>
+        /// <returns>List of GroupMemeber</returns>
+        public GroupMember GetGroupMembers(string coEmail)
+        {
+            GroupMember selectedMember = null;
+            EventAccountDataHelper groupMembergetter = new EventAccountDataHelper();
+            //selectedMember=groupMembergetter
+            String sql = String.Format("SELECT * FROM GROUPMEMBERS");
+            MySqlCommand command = new MySqlCommand(sql, connection);
+                            
+            int groupId; string coEMail; int campResNo; //bool checkIn;
+
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                groupId = Convert.ToInt32(reader["GroupID"]);
+                coEMail = Convert.ToString(reader["Co_email"]);
+                campResNo = Convert.ToInt32(reader["CampRes_No"]);
+
+                selectedMember = new GroupMember(groupId, coEMail, campResNo);
+            }
+            return selectedMember;
+        }
     }
 }

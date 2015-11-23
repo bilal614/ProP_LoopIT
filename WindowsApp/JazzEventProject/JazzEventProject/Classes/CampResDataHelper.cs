@@ -82,15 +82,27 @@ namespace JazzEventProject.Classes
             return reservation;
         }
 
-        public List<CampRes> GetCampResNo(int campResNo)
+        public CampRes GetCampRes(int campResNo)
         {
-            List<CampRes> reservationGroup = null;
+            CampRes reservationGroup = null;
             try
             {
                 String str_campRes = Convert.ToString(campResNo);
                 String sql = String.Format("SELECT * FROM CAMPING_RES WHERE CampRes_No={0}", str_campRes);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                int resNo, campId; DateTime startDate, endDate;
+                while (reader.Read())
+                {
+                    resNo = Convert.ToInt32(reader["CampRes_No"]);
+                    campId = Convert.ToInt32(reader["CAMP_CampID"]);
+                    startDate = Convert.ToDateTime(reader["Start_Date"]);
+                    endDate = Convert.ToDateTime(reader["End_Date"]);
+                    reservationGroup = new CampRes(resNo, campId, startDate, endDate);
+                }
+                
             }
             catch
             { MessageBox.Show("error while loading from database."); }
