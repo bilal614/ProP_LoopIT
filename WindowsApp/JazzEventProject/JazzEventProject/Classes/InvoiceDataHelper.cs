@@ -151,7 +151,7 @@ namespace JazzEventProject.Classes
                     Account_ID = Convert.ToInt32(reader["Account_ID"]);
 
 
-                    temp.Add(new MaterialInvoice(Material_InvoiceID,Account_ID,LoanDate,ReturnDate));
+                    //temp.Add(new MaterialInvoice(Material_InvoiceID,Account_ID,LoanDate,ReturnDate));
                 }
             }
             catch
