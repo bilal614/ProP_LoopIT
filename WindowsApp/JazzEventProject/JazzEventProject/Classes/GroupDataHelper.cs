@@ -66,21 +66,26 @@ namespace JazzEventProject.Classes
             GroupMember selectedMember = null;
             EventAccountDataHelper groupMembergetter = new EventAccountDataHelper();
             //selectedMember=groupMembergetter
-            String sql = String.Format("SELECT * FROM GROUPMEMBERS");
+            String sql = String.Format("SELECT * FROM GROUPMEMBERS WHERE Co_email='{0}'",coEmail);
             MySqlCommand command = new MySqlCommand(sql, connection);
-
-            int groupId; string coEMail; int campResNo; //bool checkIn;
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                groupId = Convert.ToInt32(reader["GroupID"]);
-                coEMail = Convert.ToString(reader["Co_email"]);
-                campResNo = Convert.ToInt32(reader["CampRes_No"]);
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
 
-                selectedMember = new GroupMember(groupId, coEMail, campResNo);
+                int groupId; string coEMail; int campResNo; //bool checkIn;
+
+                while (reader.Read())
+                {
+                    groupId = Convert.ToInt32(reader["GroupID"]);
+                    coEMail = Convert.ToString(reader["Co_email"]);
+                    campResNo = Convert.ToInt32(reader["CampRes_No"]);
+
+                    selectedMember = new GroupMember(groupId, coEMail, campResNo);
+                }
             }
+            catch { MessageBox.Show("error while loading from database."); }
+            finally { connection.Close(); }
             return selectedMember;
         }
     }

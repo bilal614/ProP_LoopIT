@@ -111,6 +111,7 @@ namespace JazzEventProject.Classes
                 bool paymentStatus;
                 bool payInAdvance;
                 int rfid;
+                string temp;
 
                 while (reader.Read())
                 {
@@ -122,10 +123,11 @@ namespace JazzEventProject.Classes
                     balance = Convert.ToDecimal(reader["Balance"]);
                     paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
-                    if (reader["RFID_Code"] == null)
+                    temp = Convert.ToString(reader["RFID_Code"]);
+                    if (temp =="")
                         rfid = -1;
                     else
-                        rfid = Convert.ToInt32(reader["RFID_Code"]);
+                        rfid = Convert.ToInt32(temp);
 
                     if (EventId > 0)
                     {
