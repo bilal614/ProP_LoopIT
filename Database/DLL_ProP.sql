@@ -221,7 +221,7 @@ INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID)
 VALUES (3,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),3);
 
 //Insert data into Material_Invoice
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 1, 1);
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 1, 2);
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 2, 3);
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID) VALUES (1, 4, 3);
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 1, 1, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 1, 2, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 2, 3, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 4, 3, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
