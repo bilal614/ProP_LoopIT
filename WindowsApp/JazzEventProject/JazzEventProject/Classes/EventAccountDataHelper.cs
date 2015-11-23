@@ -279,10 +279,11 @@ namespace JazzEventProject.Classes
         ///that would change at that point would be the balance of the person when he/she makes the payment to enter 
         ///the event therefore the method has been modified to update the balacnce only.
         ///</summary>          
-        public void UpdateAccountBalance(int id,decimal balance)
+        public bool UpdateAccountBalanceEntrance(int id,decimal balance)
         {
             EventAccount currentClient = GetAccount(id);
             decimal totalBalance=0;
+            bool ticketPaid = false;
 
             if (currentClient != null) { totalBalance = currentClient.Balance; }//adds existing balance of the
             //currentClient to the totalBalance if that client exists in the DB
@@ -298,7 +299,7 @@ namespace JazzEventProject.Classes
                     connection.Open();
                     int nrOfrecordsChanged = command.ExecuteNonQuery();
                     if (nrOfrecordsChanged == 1)
-                    { MessageBox.Show("Balance successfully updated."); }
+                    { MessageBox.Show("Balance successfully updated."); ticketPaid = true; }
                 }
                 catch
                 { MessageBox.Show("error while loading the participant."); }
@@ -309,6 +310,52 @@ namespace JazzEventProject.Classes
             {
                 MessageBox.Show("Event account Id does not exist in database.");
             }
+
+            return ticketPaid;
         }
+
+        ///<summary>
+        ///This method allows the participants  to pay their entrance fees when they are at the 
+        ///entrance desk. The method takes two parameters, the id will find the EventAccount to update the balance 
+        ///of the given EventAccount with the given id. Judging from the form for EntranceEvent the only member 
+        ///that would change at that point would be the balance of the person when he/she makes the payment to enter 
+        ///the event therefore the method has been modified to update the balacnce only.
+        ///</summary> 
+        public bool UpdateAccountBalance(int id, decimal balance)
+        { 
+            EventAccount currentClient = GetAccount(id);
+            decimal totalBalance=0;
+            bool ticketPaid = false;
+
+            if (currentClient != null) { totalBalance = currentClient.Balance; }//adds existing balance of the
+            //currentClient to the totalBalance if that client exists in the DB
+            totalBalance += balance;
+
+            if (currentClient != null)
+            {
+                String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0} WHERE Account_ID={1}",
+                    totalBalance, id);
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                try
+                {
+                    connection.Open();
+                    int nrOfrecordsChanged = command.ExecuteNonQuery();
+                    if (nrOfrecordsChanged == 1)
+                    { MessageBox.Show("Balance successfully updated."); ticketPaid = true; }
+                }
+                catch
+                { MessageBox.Show("error while loading the participant."); }
+                finally
+                { connection.Close(); }
+            }
+            else
+            {
+                MessageBox.Show("Event account Id does not exist in database.");
+            }
+
+            return ticketPaid;
+        }
+
+
     }
 }

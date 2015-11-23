@@ -95,7 +95,6 @@ namespace JazzEventProject.Classes
             catch
             { MessageBox.Show("error while loading from database."); }
 
-
             return reservationGroup;
         }
 
