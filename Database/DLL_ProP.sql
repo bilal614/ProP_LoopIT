@@ -82,8 +82,7 @@ ALTER TABLE MATERIAL ADD CONSTRAINT MATERIAL_PK PRIMARY KEY ( Material_ID ) ;
 CREATE TABLE M_INVOICE
   (
     Material_InvoiceID   INTEGER NOT NULL ,
-    Start_Date           DATE NOT NULL ,
-    End_Date             DATE ,
+    Start_Date           DATE NOT NULL,
     Account_ID          INTEGER NOT NULL
   ) ;
 ALTER TABLE M_INVOICE ADD CONSTRAINT M_INVOICE_PK PRIMARY KEY ( Material_InvoiceID ) ;
@@ -92,7 +91,8 @@ CREATE TABLE MATERIAL_INVOICE
   (
     Material_Quantity            INTEGER NOT NULL ,
     Material_ID         INTEGER NOT NULL ,
-    Material_InvoiceID INTEGER NOT NULL
+    Material_InvoiceID INTEGER NOT NULL,
+    End_Date             DATE 
   ) ;
 ALTER TABLE MATERIAL_INVOICE ADD CONSTRAINT MATERIAL_INVOICE_PK PRIMARY KEY ( Material_ID, Material_InvoiceID ) ;
 
