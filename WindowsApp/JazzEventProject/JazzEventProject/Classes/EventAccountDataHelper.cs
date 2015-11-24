@@ -413,5 +413,8 @@ namespace JazzEventProject.Classes
 
             return email;
         }
+
+        //Couple RFID and eventAccount
+
     }
 }

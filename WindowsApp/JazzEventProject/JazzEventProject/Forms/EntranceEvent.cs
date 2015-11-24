@@ -8,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Phidgets.Events;
+using Phidgets;
 namespace JazzEventProject
 {
     public partial class EntranceEvent : Form
@@ -16,6 +17,7 @@ namespace JazzEventProject
         int accountId;
         EventAccount currentAccount;
         EventAccountDataHelper accountHelper=new EventAccountDataHelper();
+        private RFID RFIDReader;
 
         public EntranceEvent()
         {
@@ -82,6 +84,44 @@ namespace JazzEventProject
         {
             this.Close();
         }
+        //
+        private void btnActivateRFID_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RFIDReader.open();
+                RFIDReader.waitForAttachment(3000);
+                lbScanStatus.Text = "an RFID-reader is found and opened.";
+                RFIDReader.Antenna = true;
+                RFIDReader.LED = true;
+            }
+            catch (PhidgetException) { 
+                lbScanStatus.Text ="no RFID-reader opened."; 
+            }
+            
+        }
 
+        private void EntranceEvent_Load(object sender, EventArgs e)
+        {
+            RFIDReader = new RFID();
+            RFIDReader.Attach += new AttachEventHandler(ShowWhoIsAttached);
+            RFIDReader.Detach += new DetachEventHandler(ShowWhoIsDetached);
+            RFIDReader.Tag += new TagEventHandler(ProcessThisTag);
+        }
+
+        private void ShowWhoIsAttached(object sender, AttachEventArgs e)
+        {
+            lbScanStatus.Text = ("RFIDReader attached!, serial nr: " + e.Device.SerialNumber.ToString());
+        }
+
+        private void ShowWhoIsDetached(object sender, DetachEventArgs e)
+        {
+            lbScanStatus.Text = ("RFIDReader detached!, serial nr: " + e.Device.SerialNumber.ToString());
+        }
+
+        private void ProcessThisTag(object sender, TagEventArgs e)
+        {
+            lbScanStatus.Text = ("rfid has tag-nr: " + e.Tag);
+        }
     }
 }
