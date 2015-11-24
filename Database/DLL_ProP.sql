@@ -23,7 +23,7 @@ ALTER TABLE CAMPING_RES ADD CONSTRAINT CAMPING_RES_PK PRIMARY KEY ( CampRes_No )
 CREATE TABLE E_ACCOUNT
   (
     Account_ID                 INTEGER NOT NULL ,
-    RFID_Code                   INTEGER,
+    RFID_Code                   CHAR(20),
     Balance                     DECIMAL (10,3) NOT NULL ,
     E_mail                    VARCHAR (30) NOT NULL ,
     First_Name                  VARCHAR (50) NOT NULL ,
