@@ -9,7 +9,7 @@ namespace JazzEventProject
     class EventAccount
     {
         public int AccountId { get; private set; }
-        public int RFID { get; set; }
+        public String RFID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -24,7 +24,7 @@ namespace JazzEventProject
         public EventAccount (int accountid, string firstname, string lastname, string email, string phone, decimal balance, bool paymentStatus, bool payInAdvance)
         {
             this.AccountId = accountid;
-            this.RFID = -1;
+            this.RFID = "";
             this.FirstName = firstname;
             this.LastName = lastname;
             this.Email = email;
@@ -71,9 +71,9 @@ namespace JazzEventProject
         ///sets the RFID_Code by the given code in case of the RFID’s value is -1 (it means that the value in database is NULL) and return true. 
         ///Otherwise the method will be return false. This methods will be called in the check-in procedure of event.
         ///</summary>
-        public bool ActivateRFID(int code)
+        public bool ActivateRFID(String code)
         {
-            if(this.RFID == -1)
+            if(this.RFID == "")
             {
                 this.RFID = code;
                 return true;
@@ -86,9 +86,9 @@ namespace JazzEventProject
         ///</summary>
         public bool DeactiveRFID()
         {
-            if(this.RFID != -1)
+            if(this.RFID != "")
             {
-                this.RFID = -1;
+                this.RFID = "";
                 return true;
             }
             return false;

@@ -83,5 +83,42 @@ namespace JazzEventProject
             this.Close();
         }
 
+/// <summary>
+/// This is where the phidget imlpementation is made below.
+/// </summary>
+        PhidgetHandler phidgetScanner = new PhidgetHandler();
+
+        private void btnScan_Click(object sender, EventArgs e)
+        {
+            phidgetScanner.OpenRFIDReader();
+            label18.Text="";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try { phidgetScanner.CloseRFIDReader(); }
+            catch { MessageBox.Show("No open RFID scanners detected."); }
+           
+        }
+
+        private void btnActivateRFID_Click(object sender, EventArgs e)
+        {
+            if (currentAccount != null)
+            {
+                button3.Enabled = true;
+                if (phidgetScanner.RFIDno != "")
+                {
+                    accountHelper.CheckIn(currentAccount.AccountId, phidgetScanner.RFIDno);//this method updates the rfid
+                    //of the visitor in the database
+                    currentAccount.ActivateRFID(phidgetScanner.RFIDno);//this method gives the currentAccount the scanned
+                    //RFID number
+                    label16.Text = currentAccount.RFID;
+                }
+            }
+            else { MessageBox.Show("Please enter an Event Account Id first and/or scan an RFID."); }
+        }
+
+
+
     }
 }

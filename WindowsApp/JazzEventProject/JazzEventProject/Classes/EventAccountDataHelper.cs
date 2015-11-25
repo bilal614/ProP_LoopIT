@@ -110,7 +110,7 @@ namespace JazzEventProject.Classes
                 decimal balance;
                 bool paymentStatus;
                 bool payInAdvance;
-                int rfid;
+                String rfid;
                 string temp;
 
                 while (reader.Read())
@@ -125,9 +125,9 @@ namespace JazzEventProject.Classes
                     payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
                     temp = Convert.ToString(reader["RFID_Code"]);
                     if (temp =="")
-                        rfid = -1;
+                        rfid = "";
                     else
-                        rfid = Convert.ToInt32(temp);
+                        rfid = Convert.ToString(temp);
 
                     if (EventId > 0)
                     {
@@ -178,7 +178,7 @@ namespace JazzEventProject.Classes
                 decimal balance;
                 bool paymentStatus;
                 bool payInAdvance;
-                int rfid;
+                String rfid;
 
                 while (reader.Read())
                 {
@@ -191,9 +191,9 @@ namespace JazzEventProject.Classes
                     paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
                     if (reader["RFID_Code"] == null)
-                        rfid = -1;
+                        rfid = "";
                     else
-                        rfid = Convert.ToInt32(reader["RFID_Code"]);
+                        rfid = Convert.ToString(reader["RFID_Code"]);
 
                     if (EventId != 0)
                     {
@@ -219,12 +219,12 @@ namespace JazzEventProject.Classes
         ///the eventAccountId of the person and the rfid to be assigned to them. If the rfid is successfully 
         ///assigned to the persons EventAccount entity in the database the method will return a true value.
         ///</summary>
-        public bool CheckIn(int id, int rfid)
+        public bool CheckIn(int id, String rfid)
         {
             EventAccount currentClient = GetAccount(id);
             bool checkIn = false;
 
-            if (currentClient != null && currentClient.RFID > 0)//to check if the EventAccount exists in database
+            if (currentClient != null && currentClient.RFID != "")//to check if the EventAccount exists in database
             {
 
                 String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code={0} WHERE Account_ID={1}", rfid, id);

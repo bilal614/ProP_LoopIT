@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.labelRFID = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,12 +54,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.GreyPanel = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnScan = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.btnActivateRFID = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
@@ -86,6 +92,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.labelRFID);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label7);
@@ -104,10 +112,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Participant profile";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(74, 45);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(0, 15);
+            this.label16.TabIndex = 5;
+            // 
+            // labelRFID
+            // 
+            this.labelRFID.AutoSize = true;
+            this.labelRFID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRFID.Location = new System.Drawing.Point(12, 45);
+            this.labelRFID.Name = "labelRFID";
+            this.labelRFID.Size = new System.Drawing.Size(38, 15);
+            this.labelRFID.TabIndex = 4;
+            this.labelRFID.Text = "RFID:";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(86, 54);
+            this.label14.Location = new System.Drawing.Point(100, 77);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(0, 15);
             this.label14.TabIndex = 3;
@@ -116,7 +142,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(12, 54);
+            this.label11.Location = new System.Drawing.Point(12, 77);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 15);
             this.label11.TabIndex = 2;
@@ -150,7 +176,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 162);
+            this.label4.Location = new System.Drawing.Point(12, 173);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 17);
@@ -161,7 +187,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 123);
+            this.label3.Location = new System.Drawing.Point(12, 140);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 17);
@@ -172,7 +198,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 89);
+            this.label2.Location = new System.Drawing.Point(12, 106);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 17);
@@ -258,7 +284,7 @@
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(754, 64);
+            this.HeaderPanel.Size = new System.Drawing.Size(761, 64);
             this.HeaderPanel.TabIndex = 13;
             // 
             // pictureBox1
@@ -288,11 +314,13 @@
             this.GreyPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.GreyPanel.Location = new System.Drawing.Point(0, 64);
             this.GreyPanel.Name = "GreyPanel";
-            this.GreyPanel.Size = new System.Drawing.Size(754, 5);
+            this.GreyPanel.Size = new System.Drawing.Size(761, 5);
             this.GreyPanel.TabIndex = 20;
             // 
             // bottomPanel
             // 
+            this.bottomPanel.Controls.Add(this.button3);
+            this.bottomPanel.Controls.Add(this.btnScan);
             this.bottomPanel.Controls.Add(this.button2);
             this.bottomPanel.Controls.Add(this.panel1);
             this.bottomPanel.Controls.Add(this.btnBackToMainForm);
@@ -301,15 +329,41 @@
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel.Location = new System.Drawing.Point(0, 338);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(754, 114);
+            this.bottomPanel.Size = new System.Drawing.Size(761, 114);
             this.bottomPanel.TabIndex = 21;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(9, 63);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(119, 46);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Close RFID Scanner";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btnScan
+            // 
+            this.btnScan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScan.Location = new System.Drawing.Point(9, 11);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(119, 46);
+            this.btnScan.TabIndex = 16;
+            this.btnScan.Text = "Open RFID Scanner";
+            this.btnScan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnScan.UseVisualStyleBackColor = true;
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(127, 11);
+            this.button2.Location = new System.Drawing.Point(143, 11);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(143, 96);
             this.button2.TabIndex = 15;
@@ -324,7 +378,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 5);
+            this.panel1.Size = new System.Drawing.Size(761, 5);
             this.panel1.TabIndex = 14;
             // 
             // btnBackToMainForm
@@ -333,7 +387,7 @@
             this.btnBackToMainForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackToMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToMainForm.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToMainForm.Image")));
-            this.btnBackToMainForm.Location = new System.Drawing.Point(613, 11);
+            this.btnBackToMainForm.Location = new System.Drawing.Point(620, 11);
             this.btnBackToMainForm.Name = "btnBackToMainForm";
             this.btnBackToMainForm.Size = new System.Drawing.Size(129, 96);
             this.btnBackToMainForm.TabIndex = 1;
@@ -347,20 +401,21 @@
             this.btnActivateRFID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActivateRFID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActivateRFID.Image = ((System.Drawing.Image)(resources.GetObject("btnActivateRFID.Image")));
-            this.btnActivateRFID.Location = new System.Drawing.Point(459, 11);
+            this.btnActivateRFID.Location = new System.Drawing.Point(466, 11);
             this.btnActivateRFID.Name = "btnActivateRFID";
             this.btnActivateRFID.Size = new System.Drawing.Size(136, 96);
             this.btnActivateRFID.TabIndex = 1;
             this.btnActivateRFID.Text = "Activate RFID";
             this.btnActivateRFID.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnActivateRFID.UseVisualStyleBackColor = true;
+            this.btnActivateRFID.Click += new System.EventHandler(this.btnActivateRFID_Click);
             // 
             // btnPay
             // 
             this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
-            this.btnPay.Location = new System.Drawing.Point(296, 11);
+            this.btnPay.Location = new System.Drawing.Point(308, 11);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(143, 96);
             this.btnPay.TabIndex = 1;
@@ -379,11 +434,31 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(463, 85);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(116, 17);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Scanned RFID:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(585, 84);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(100, 17);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "current RFID";
+            // 
             // EntranceEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 452);
+            this.ClientSize = new System.Drawing.Size(761, 452);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.GreyPanel);
@@ -439,6 +514,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnScan;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label labelRFID;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
 
     }
 }

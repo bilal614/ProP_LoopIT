@@ -35,7 +35,7 @@ namespace JazzEventProject
                     label6.Text = Convert.ToString(currentAccount.Email);
                     label7.Text = Convert.ToString(currentAccount.Phone);
 
-                    if (currentAccount.RFID <= 0)
+                    if (currentAccount.RFID == "")
                     { label9.Text = "Returned"; }
                     else { label9.Text = "Not Returned"; }
                     //must add the total spending of the client at the festival
