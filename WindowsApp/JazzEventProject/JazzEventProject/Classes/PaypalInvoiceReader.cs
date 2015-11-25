@@ -34,20 +34,6 @@ namespace JazzEventProject.Classes
                 while (p != null)
                 {
                     b.Add(p);
-                    int index = b.IndexOf(p);
-                    if (index > 3)
-                    {
-                        
-                        int[] arrID = new int[b.Count - 4];
-                        decimal[] arrB = new decimal[b.Count - 4];
-                        string[] arrS = p.Split(' ');
-                        foreach (string l in arrS)
-                        {
-                            arrS[0] = arrID[index - 4].ToString();
-                            arrS[1] = arrB[index - 4].ToString();
-                        }
-                        
-                    }
                     p = sr.ReadLine();
                 }
             }
@@ -64,6 +50,5 @@ namespace JazzEventProject.Classes
             return b;
         }
 
-
-    }
+        }
 }
