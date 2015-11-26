@@ -102,12 +102,12 @@ namespace JazzEventProject
             //catch (PhidgetException) { 
             //    lbScanStatus.Text ="no RFID-reader opened."; 
             //}
-            currentAccount.RFID = rfidCode;
-            bool result = accountHelper.CheckIn(currentAccount.AccountId, rfidCode);
-            if (result)
-            {
-                MessageBox.Show("Check in successfully");
-            }
+            //currentAccount.RFID = rfidCode;
+            //bool result = accountHelper.CheckIn(currentAccount.AccountId, rfidCode);
+            //if (result)
+            //{
+            //    MessageBox.Show("Check in successfully");
+            //}
             MessageBox.Show("rfidCode is " + rfidCode);
             
         }
