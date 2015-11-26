@@ -86,16 +86,26 @@ namespace JazzEventProject.Classes
         public int GenerateInvoiceID(List<Invoice> Invoices)
         {
             //Find the highest id
-            int id = -1;
-            for (int i = 0; i < Invoices.Count() - 1; i++)
+            int maxid = 0;
+            try
             {
-                if (Invoices[i].Id <= Invoices[i + 1].Id)
+                maxid = Invoices[0].Id;
+            }
+            catch
+            {
+                MessageBox.Show("No invoices is created");
+            }
+            finally
+            {
+                for (int i = 1; i < Invoices.Count(); i++)
                 {
-                    id = Invoices[i + 1].Id;
+                    if (maxid <= Invoices[i].Id)
+                    {
+                        maxid = Invoices[i].Id;
+                    }
                 }
             }
-            id = id + 1;
-            return id;
+            return maxid + 1;
         }
 
        /// <summary>
@@ -109,7 +119,7 @@ namespace JazzEventProject.Classes
        /// <returns></returns>
         public int AddAMaterialInvoice(int InvoiceID, string StartDate, int Account_ID, bool returnStatus)
         {
-            String sql = String.Format("INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date,End_Date, Account_ID, Return_Status) VALUES ({0},STR_TO_DATE('{1}', '%d-%m-%Y'),STR_TO_DATE('{2}', '%d-%m-%Y'), {3});", InvoiceID, StartDate, Account_ID, returnStatus);
+            String sql = String.Format("INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID, ReturnStatus) VALUES ({0},STR_TO_DATE('{1}', '%d-%m-%Y'), {2}, {3});", InvoiceID, StartDate, Account_ID, returnStatus);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try
@@ -120,14 +130,18 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                return -1; //which means the try-block was not executed succesfully, so  . . .
+               return -1; //which means the try-block was not executed succesfully, so  . . .
             }
             finally
             {
-                connection.Close();
+               connection.Close();
             }
         }
 
+        /// <summary>
+        /// Get all materials from database
+        /// </summary>
+        /// <returns></returns>
         public List<Invoice> GetAllMaterialInvoices()
         {
             String sql = "SELECT * FROM M_Invoice";
@@ -142,17 +156,17 @@ namespace JazzEventProject.Classes
 
                 int Material_InvoiceID;
                 DateTime LoanDate;
-                DateTime ReturnDate;
+                bool ReturnStatus;
                 int Account_ID;
                 while (reader.Read())
                 {
                     Material_InvoiceID = Convert.ToInt32(reader["Material_InvoiceID"]);
                     LoanDate = Convert.ToDateTime(reader["Start_Date"]);
-                    ReturnDate = Convert.ToDateTime(reader["End_Date"]);
                     Account_ID = Convert.ToInt32(reader["Account_ID"]);
+                    ReturnStatus = Convert.ToBoolean(reader["ReturnStatus"]);
 
 
-                    //temp.Add(new MaterialInvoice(Material_InvoiceID,Account_ID,LoanDate,ReturnDate));
+                    temp.Add(new MaterialInvoice(Material_InvoiceID, LoanDate,Account_ID, ReturnStatus));
                 }
             }
             catch

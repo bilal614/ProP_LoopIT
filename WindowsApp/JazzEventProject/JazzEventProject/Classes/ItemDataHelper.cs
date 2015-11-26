@@ -117,7 +117,7 @@ namespace JazzEventProject.Classes
             bool unique = true;
             foreach (var i in ListOfItems)
             {
-                if (i.Item_Id == id && i.ReturnDate == returnDate)
+                if (i.Item_Id == id && DateTime.Compare(i.ReturnDate,returnDate) == 0)
                 {
                     unique = false;
                 }

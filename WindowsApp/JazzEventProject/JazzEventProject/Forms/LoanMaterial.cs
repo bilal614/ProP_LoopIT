@@ -73,8 +73,15 @@ namespace JazzEventProject
                     int id = Convert.ToInt32(tbMaterialID.Text);
                     int quantity = Convert.ToInt32(tbQuantity.Text);
                     DateTime returnDate = Convert.ToDateTime(dateTimePickerReturnDate.Value);// Need to check the return date > current date
-                    UpdateGridView(id, quantity, returnDate);
-                    UpdateToTal();
+                    if(DateTime.Compare(currentDate,returnDate) < 0)
+                    {
+                        UpdateGridView(id, quantity, returnDate);
+                        UpdateToTal();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter the correct value of the return date");
+                    }
                 }
             }
             catch
@@ -90,14 +97,16 @@ namespace JazzEventProject
         private void UpdateGridView(int id, int quantity, DateTime returnDate)
         {
             Items selectedItem = null;
-            if (ItemData.CheckUniqueItem(ListOfUpdateMaterials, id) == true)
+            if (ItemData.CheckUniqueItem(ListOfMaterialsInInvoice, id, returnDate) == true)
             {
                 selectedItem = ItemData.GetAnItem(id, ListOfMaterials);
                 ItemData.SellItem(selectedItem.ID, quantity, ListOfMaterials);
                 ListOfUpdateMaterials.Add(selectedItem);
                 //Add items into list of loaned material to keep track the quantity
                 ListOfLoanedMaterials.Add(new Items(selectedItem.ID, selectedItem.Name, selectedItem.Price, quantity));
-               
+                //Add items into Material_Invoice_Item
+                ListOfMaterialsInInvoice.Add(new Material_Invoice_Items(quantity, selectedItem.ID, InvoiceID, returnDate, false));
+
             }
             else
             {
@@ -106,16 +115,7 @@ namespace JazzEventProject
                 //Update the quantity for the list of sold food
                 Items soldItem = ItemData.GetAnItem(id, ListOfLoanedMaterials);
                 soldItem.Quantity += quantity;
-            }
-
-            //Add items into Material_Invoice_Item
-            if (ItemData.CheckUniqueItem(ListOfMaterialsInInvoice, id, returnDate) == true)
-            {
-                ListOfMaterialsInInvoice.Add(new Material_Invoice_Items(quantity, selectedItem.ID, InvoiceID, returnDate, false));
-            }
-            else
-            {
-                foreach(var f in ListOfMaterialsInInvoice)
+                foreach (var f in ListOfMaterialsInInvoice)
                 {
                     f.Quantity += quantity;
                 }
@@ -205,90 +205,110 @@ namespace JazzEventProject
             int InvoiceItemRows = 0;
             foreach (var f in ListOfMaterialsInInvoice)
             {
-                InvoiceItemRows += ItemInvoiceData.AddNewLoanedMaterial(f.Invoice_Id,f.Quantity,f.Item_Id, f.ReturnDate, false);
+                InvoiceItemRows += ItemInvoiceData.AddNewLoanedMaterial(InvoiceID, f.Quantity, f.Item_Id, f.ReturnDate, false);
             }
-            if (nbofInvoice == 1 && nbofLoanedMaterial >= 1 & InvoiceItemRows == nbofLoanedMaterial)
+            if (nbofInvoice == 1 && nbofLoanedMaterial >= 1)
             {
                 MessageBox.Show("Success!");
                 btnPrint.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Error!");
             }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            //PrintDialog pd = new PrintDialog();
-            //pdoc = new PrintDocument();
-            //PrinterSettings ps = new PrinterSettings();
-            //Font font = new Font("Courier New", 15);
+            PrintDialog pd = new PrintDialog();
+            pdoc = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            Font font = new Font("Courier New", 15);
 
 
-            //PaperSize psize = new PaperSize("Custom", 100, 200);
+            PaperSize psize = new PaperSize("Custom", 100, 200);
 
-            //pd.Document = pdoc;
-            //pd.Document.DefaultPageSettings.PaperSize = psize;
-            //pdoc.DefaultPageSettings.PaperSize.Height = 720;
+            pd.Document = pdoc;
+            pd.Document.DefaultPageSettings.PaperSize = psize;
+            pdoc.DefaultPageSettings.PaperSize.Height = 720;
 
-            //pdoc.DefaultPageSettings.PaperSize.Width = 620;
+            pdoc.DefaultPageSettings.PaperSize.Width = 620;
 
-            //pdoc.PrintPage += new PrintPageEventHandler(pdoc_PrintPage);
+            pdoc.PrintPage += new PrintPageEventHandler(pdoc_PrintPage);
 
-            //DialogResult result = pd.ShowDialog();
-            //if (result == DialogResult.OK)
-            //{
-            //    PrintPreviewDialog pp = new PrintPreviewDialog();
-            //    pp.Document = pdoc;
-            //    result = pp.ShowDialog();
-            //    if (result == DialogResult.OK)
-            //    {
-            //        pdoc.Print();
-            //    }
-            //}
+            DialogResult result = pd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                PrintPreviewDialog pp = new PrintPreviewDialog();
+                pp.Document = pdoc;
+                result = pp.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    pdoc.Print();
+                }
+            }
 
         }
         private void pdoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            //Graphics graphics = e.Graphics;
-            //Font font = new Font("Arial", 10);
-            //SolidBrush color = new SolidBrush(Color.Black);
+            Graphics graphics = e.Graphics;
+            Font font = new Font("Arial", 10);
+            SolidBrush color = new SolidBrush(Color.Black);
 
-            //float fontHeight = font.GetHeight();
-            //int startX = 50;
-            //int startY = 55;
-            //int shift_x = 80;
-            //int shift_y = 20;
-            //graphics.DrawString("Loaning material receipt  " + InvoiceID.ToString(), new Font("Arial", 14),
-            //                    new SolidBrush(Color.Black), startX, startY);
-            
-            //graphics.DrawString("Returned date:  " + returnDate, new Font("Arial", 12),
-            //                    new SolidBrush(Color.Black), startX, startY + shift_y);
-            //shift_y = shift_y + 30;
+            float fontHeight = font.GetHeight();
+            int startX = 50;
+            int startY = 55;
+            int shift_x = 80;
+            int shift_y = 20;
+            graphics.DrawString("Loaning material receipt:  " + InvoiceID.ToString(), new Font("Arial", 14),
+                                new SolidBrush(Color.Black), startX, startY);
+            startY += 30;
+            graphics.DrawString("Loaning date:  " + currentDate.ToString("dd-MM-yyy"), new Font("Arial", 12),
+                                new SolidBrush(Color.Black), startX, startY);
+            startY += 10;
 
-            //graphics.DrawString("Material name", font, color, startX, startY + shift_y);
-            //graphics.DrawString("Quantity", font, color, startX + 2 * shift_x, startY + shift_y);
-            //graphics.DrawString("Price", font, color, startX + 3 * shift_x, startY + shift_y);
-            //graphics.DrawString("Total", font, color, startX + 4 * shift_x, startY + shift_y);
+            graphics.DrawString("Material name", font, color, startX, startY + shift_y);
+            graphics.DrawString("Quantity", font, color, startX + 2 * shift_x, startY + shift_y);
+            graphics.DrawString("Price/day", font, color, startX + 3 * shift_x, startY + shift_y);
+            graphics.DrawString("Return date", font, color, startX + 4 * shift_x, startY + shift_y);
+            graphics.DrawString("Total", font, color, startX + 5 * shift_x, startY + shift_y);
 
-            //shift_y = shift_y + 20;
-            //foreach (var f in ListOfSoldMaterials)
-            //{
-            //    graphics.DrawString(f.Name, font, color, startX, startY + shift_y);
-            //    graphics.DrawString(f.Quantity.ToString(), font, color, startX + 2 * shift_x, startY + shift_y);
-            //    graphics.DrawString(f.Price.ToString("#.00"), font, color, startX + 3 * shift_x, startY + shift_y);
-            //    graphics.DrawString((f.Price * f.Quantity).ToString("#.00"), font, color, startX + 4 * shift_x, startY + shift_y);
-            //    shift_y = shift_y + 20;
-            //}
-            //shift_y = shift_y + 20;
-            //graphics.DrawString("Sub-total: ", font, color, startX + 3 * shift_x, startY + shift_y);
-            //graphics.DrawString(subtotal.ToString("#.00"), font, color, startX + 4 * shift_x, startY + shift_y);
-            //shift_y = shift_y + 20;
-            //graphics.DrawString("VAT: ", font, color, startX + 3 * shift_x, startY + shift_y);
-            //graphics.DrawString(VAT.ToString("#.00"), font, color, startX + 4 * shift_x, startY + shift_y);
-            //shift_y = shift_y + 20;
-            //graphics.DrawString("Total: ", font, color, startX + 3 * shift_x, startY + shift_y);
-            //graphics.DrawString(total.ToString("#.00"), font, color, startX + 4 * shift_x, startY + shift_y);
+            shift_y = shift_y + 20;
+            foreach (var f in ListOfLoanedMaterials)
+            {
+                graphics.DrawString(f.Name, font, color, startX, startY + shift_y);
+                graphics.DrawString(f.Quantity.ToString(), font, color, startX + 2 * shift_x, startY + shift_y);
+                graphics.DrawString(f.Price.ToString("0.00"), font, color, startX + 3 * shift_x, startY + shift_y);
+                DateTime returnDate = GetReturnDate(ItemData.GetAnItem(f.ID, ListOfLoanedMaterials).ID, ListOfMaterialsInInvoice);
+                graphics.DrawString(returnDate.ToString("dd-MM-yyy"), font, color, startX + 4 * shift_x, startY + shift_y);
+                graphics.DrawString((f.Price * f.Quantity).ToString("0.00"), font, color, startX + 5 * shift_x, startY + shift_y);
+                shift_y = shift_y + 20;
+            }
+            shift_y = shift_y + 20;
+            graphics.DrawString("Sub-total: ", font, color, startX + 4 * shift_x, startY + shift_y);
+            graphics.DrawString(subtotal.ToString("0.00"), font, color, startX + 5 * shift_x, startY + shift_y);
+            shift_y = shift_y + 20;
+            graphics.DrawString("VAT: ", font, color, startX + 4 * shift_x, startY + shift_y);
+            graphics.DrawString(VAT.ToString("0.00"), font, color, startX + 5 * shift_x, startY + shift_y);
+            shift_y = shift_y + 20;
+            graphics.DrawString("Total: ", font, color, startX + 4 * shift_x, startY + shift_y);
+            graphics.DrawString(total.ToString("0.00"), font, color, startX + 5 * shift_x, startY + shift_y);
 
 
         }
 
+        //Get return date from list of borrowed items
+        private DateTime GetReturnDate(int m_id, List<Material_Invoice_Items>Items)
+        {
+            DateTime returnDate = currentDate;
+            foreach (var f in Items)
+            {
+                if(f.Item_Id == m_id)
+                {
+                    returnDate = f.ReturnDate;
+                }
+            }
+            return returnDate;
+        }
     }
 }
