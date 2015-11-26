@@ -1,5 +1,4 @@
 ﻿using JazzEventProject.Classes;
-using JazzEventProject.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,16 +32,12 @@ namespace JazzEventProject
         decimal total = 0;
         int InvoiceID = 0;
 
-        private void btnSearchFood_Click(object sender, EventArgs e)
-        {
-            Form frmFoodlist = new FoodList();
-            frmFoodlist.Show();
-        }
-
+       
         private void FoodShop_Load(object sender, EventArgs e)
         {
             tbCurrentDate.Text = DateTime.Now.ToString("d/M/yyyy");
             ListOFFoods = ItemData.GetAllFoods();
+            dataGridViewFoodList.DataSource = ListOFFoods;
         }
 
 

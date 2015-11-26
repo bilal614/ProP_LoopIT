@@ -83,7 +83,8 @@ CREATE TABLE M_INVOICE
   (
     Material_InvoiceID   INTEGER NOT NULL ,
     Start_Date           DATE NOT NULL,
-    Account_ID          INTEGER NOT NULL
+    Account_ID          INTEGER NOT NULL,
+    ReturnStatus	BOOLEAN NOT NULL
   ) ;
 ALTER TABLE M_INVOICE ADD CONSTRAINT M_INVOICE_PK PRIMARY KEY ( Material_InvoiceID ) ;
 
@@ -92,7 +93,8 @@ CREATE TABLE MATERIAL_INVOICE
     Material_Quantity            INTEGER NOT NULL ,
     Material_ID         INTEGER NOT NULL ,
     Material_InvoiceID INTEGER NOT NULL,
-    End_Date             DATE 
+    End_Date             DATE,
+    ReturnStatus	BOOLEAN NOT NULL
   ) ;
 ALTER TABLE MATERIAL_INVOICE ADD CONSTRAINT MATERIAL_INVOICE_PK PRIMARY KEY ( Material_ID, Material_InvoiceID ) ;
 
@@ -213,15 +215,15 @@ INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Descripti
 VALUES (4,'Camera',11.50,10.00,'Canon cammera, 8GB, 2000x5000 pixels',20);
 
 //Insert data into M_Invoice
-INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID) 
-VALUES (1,STR_TO_DATE('02-11-2015', '%d-%m-%Y'),1);
-INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID) 
-VALUES (2,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),2);
-INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID) 
-VALUES (3,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),3);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID, ReturnStatus) 
+VALUES (1,STR_TO_DATE('02-11-2015', '%d-%m-%Y'),1, false);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID, ReturnStatus) 
+VALUES (2,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),2, false);
+INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date, Account_ID, ReturnStatus) 
+VALUES (3,STR_TO_DATE('01-11-2015', '%d-%m-%Y'),3, false);
 
 //Insert data into Material_Invoice
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 1, 1, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 1, 2, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 2, 3, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
-INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate) VALUES (1, 4, 3, STR_TO_DATE('05-11-2015', '%d-%m-%Y'));
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate, ReturnStatus) VALUES (1, 1, 1, STR_TO_DATE('05-11-2015', '%d-%m-%Y'), false);
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate, ReturnStatus) VALUES (1, 1, 2, STR_TO_DATE('05-11-2015', '%d-%m-%Y'), false);
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate, ReturnStatus) VALUES (1, 2, 3, STR_TO_DATE('05-11-2015', '%d-%m-%Y'), false);
+INSERT INTO MATERIAL_INVOICE (Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate, ReturnStatus) VALUES (1, 4, 3, STR_TO_DATE('05-11-2015', '%d-%m-%Y'), false);

@@ -1,5 +1,4 @@
 ﻿using JazzEventProject.Classes;
-using JazzEventProject.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +19,8 @@ namespace JazzEventProject
         Item_InvoiceDataHelper ItemInvoiceData = new Item_InvoiceDataHelper();
         List<Items> ListOfUpdateMaterials = new List<Items>();//List of items need to be updated
         List<Items> ListOfMaterials = new List<Items>();// All of material from database
-        List<Items> ListOfSoldMaterials = new List<Items>();
+        List<Items> ListOfLoanedMaterials = new List<Items>();
+        List<Material_Invoice_Items> ListOfMaterialsInInvoice = new List<Material_Invoice_Items>(); // List of materials in current loaning invoices
         decimal subtotal = 0;
         decimal VAT = 0;
         decimal total = 0;
@@ -72,7 +72,7 @@ namespace JazzEventProject
                 {
                     int id = Convert.ToInt32(tbMaterialID.Text);
                     int quantity = Convert.ToInt32(tbQuantity.Text);
-                    DateTime returnDate = Convert.ToDateTime(dateTimePickerReturnDate.Value);
+                    DateTime returnDate = Convert.ToDateTime(dateTimePickerReturnDate.Value);// Need to check the return date > current date
                     UpdateGridView(id, quantity, returnDate);
                     UpdateToTal();
                 }
@@ -95,17 +95,32 @@ namespace JazzEventProject
                 selectedItem = ItemData.GetAnItem(id, ListOfMaterials);
                 ItemData.SellItem(selectedItem.ID, quantity, ListOfMaterials);
                 ListOfUpdateMaterials.Add(selectedItem);
-                //Add items into list of sold foods to keep track the quantity
-                ListOfSoldMaterials.Add(new Items(selectedItem.ID, selectedItem.Name, selectedItem.Price, quantity));
+                //Add items into list of loaned material to keep track the quantity
+                ListOfLoanedMaterials.Add(new Items(selectedItem.ID, selectedItem.Name, selectedItem.Price, quantity));
+               
             }
             else
             {
                 selectedItem = ItemData.GetAnItem(id, ListOfUpdateMaterials);
                 ItemData.SellItem(selectedItem.ID, quantity, ListOfUpdateMaterials);
                 //Update the quantity for the list of sold food
-                Items soldItem = ItemData.GetAnItem(id, ListOfSoldMaterials);
+                Items soldItem = ItemData.GetAnItem(id, ListOfLoanedMaterials);
                 soldItem.Quantity += quantity;
             }
+
+            //Add items into Material_Invoice_Item
+            if (ItemData.CheckUniqueItem(ListOfMaterialsInInvoice, id, returnDate) == true)
+            {
+                ListOfMaterialsInInvoice.Add(new Material_Invoice_Items(quantity, selectedItem.ID, InvoiceID, returnDate, false));
+            }
+            else
+            {
+                foreach(var f in ListOfMaterialsInInvoice)
+                {
+                    f.Quantity += quantity;
+                }
+            }
+            int nbofDates = (returnDate - currentDate).Days;
             subtotal += selectedItem.Price * quantity;
             //Add row into the datagridview
             DataGridViewRow newrow = new DataGridViewRow();
@@ -115,7 +130,7 @@ namespace JazzEventProject
             newrow.Cells[2].Value = returnDate.ToString("dd-MM-yyyy");
             newrow.Cells[3].Value = quantity;
             newrow.Cells[4].Value = selectedItem.Price.ToString("0.00");
-            newrow.Cells[5].Value = (selectedItem.Price * quantity).ToString("0.00");
+            newrow.Cells[5].Value = (selectedItem.Price * quantity * nbofDates).ToString("0.00");
             dataGridViewMaterial.Rows.Add(newrow);
         }
 
@@ -172,32 +187,31 @@ namespace JazzEventProject
 
         private void btnLoan_Click(object sender, EventArgs e)
         {
-            ////Update the quantity of loaned material into database
-            //int nbofLoanedMaterial = 0;
-            //foreach (var f in ListOfUpdateMaterials)
-            //{
-            //    nbofLoanedMaterial += ItemData.UpdateAMaterial(f.ID, ListOfUpdateMaterials);
-            //}
+            //Update the quantity of loaned material into database
+            int nbofLoanedMaterial = 0;
+            foreach (var f in ListOfUpdateMaterials)
+            {
+                nbofLoanedMaterial += ItemData.UpdateAMaterial(f.ID, ListOfUpdateMaterials);
+            }
 
-            ////Insert a new material invoice into database
-            //List<Invoice> invoices = InvoiceData.GetAllMaterialInvoices();
-            //InvoiceID = InvoiceData.GenerateInvoiceID(invoices);
-            //string startingDate = (DateTime.Now).ToString("dd-MM-yyyy");
-            ////returnDate = (dateTimePickerReturn.Value).ToString("dd-MM-yyyy");
-            //int AccountID = 1; // This one will be provide by RFID after the scaning functionality completed
-            //int nbofInvoice = InvoiceData.AddAMaterialInvoice(InvoiceID, startingDate, returnDate, AccountID);
+            //Insert a new material invoice into database
+            List<Invoice> invoices = InvoiceData.GetAllMaterialInvoices();
+            InvoiceID = InvoiceData.GenerateInvoiceID(invoices);
+            string startingDate = (DateTime.Now).ToString("dd-MM-yyyy");
+            int AccountID = 1; // This one will be provide by RFID after the scaning functionality completed
+            int nbofInvoice = InvoiceData.AddAMaterialInvoice(InvoiceID, startingDate, AccountID, false);
 
-            ////Insert rows into food_invoice (association table between food and invoice)
-            //int InvoiceItemRows = 0;
-            //foreach (var f in ListOfSoldMaterials)
-            //{
-            //    InvoiceItemRows += ItemInvoiceData.AddNewLoanedMaterial(InvoiceID, f.Quantity, f.ID);
-            //}
-            //if (nbofInvoice == 1 && nbofLoanedMaterial >= 1 & InvoiceItemRows == nbofLoanedMaterial)
-            //{
-            //    MessageBox.Show("Success!");
-            //    btnPrint.Enabled = true;
-            //}
+            //Insert rows into material_invoice (association table between material and invoice)
+            int InvoiceItemRows = 0;
+            foreach (var f in ListOfMaterialsInInvoice)
+            {
+                InvoiceItemRows += ItemInvoiceData.AddNewLoanedMaterial(f.Invoice_Id,f.Quantity,f.Item_Id, f.ReturnDate, false);
+            }
+            if (nbofInvoice == 1 && nbofLoanedMaterial >= 1 & InvoiceItemRows == nbofLoanedMaterial)
+            {
+                MessageBox.Show("Success!");
+                btnPrint.Enabled = true;
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -273,26 +287,6 @@ namespace JazzEventProject
             //graphics.DrawString("Total: ", font, color, startX + 3 * shift_x, startY + shift_y);
             //graphics.DrawString(total.ToString("#.00"), font, color, startX + 4 * shift_x, startY + shift_y);
 
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbSubTotal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblBalance_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl1_Click(object sender, EventArgs e)
-        {
 
         }
 

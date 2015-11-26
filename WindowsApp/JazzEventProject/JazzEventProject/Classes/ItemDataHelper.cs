@@ -104,6 +104,27 @@ namespace JazzEventProject.Classes
             return unique;
         }
 
+       /// <summary>
+       /// Check the material is unique or not. Unique here means that the loaned item id and date return have to be different.
+       /// It means that, the application allow clients borrow the same material and return it at different time.
+       /// </summary>
+       /// <param name="ListOfItems"></param>
+       /// <param name="id"></param>
+       /// <param name="returnDate"></param>
+       /// <returns></returns>
+        public bool CheckUniqueItem(List<Material_Invoice_Items> ListOfItems, int id, DateTime returnDate)
+        {
+            bool unique = true;
+            foreach (var i in ListOfItems)
+            {
+                if (i.Item_Id == id && i.ReturnDate == returnDate)
+                {
+                    unique = false;
+                }
+            }
+            return unique;
+        }
+
         /// <summary>
         /// Update a food with the given id. Return the number of updated row if the id is in the table and the updating process is success. 
         /// Otherwise, return false.

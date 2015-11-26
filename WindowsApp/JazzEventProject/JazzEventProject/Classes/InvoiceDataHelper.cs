@@ -98,17 +98,18 @@ namespace JazzEventProject.Classes
             return id;
         }
 
-        /// <summary>
-        /// Insert a loaning material invoice into database
-        /// </summary>
-        /// <param name="InvoiceID"></param>
-        /// <param name="StartDate"></param>
-        /// <param name="ReturnDate"></param>
-        /// <param name="Account_ID"></param>
-        /// <returns></returns>
-        public int AddAMaterialInvoice(int InvoiceID, string StartDate, string ReturnDate, int Account_ID)
+       /// <summary>
+       /// Insert a loaning material invoice into database
+       /// 
+       /// </summary>
+       /// <param name="InvoiceID"></param>
+       /// <param name="StartDate"></param>
+       /// <param name="Account_ID"></param>
+       /// <param name="returnStatus"></param>
+       /// <returns></returns>
+        public int AddAMaterialInvoice(int InvoiceID, string StartDate, int Account_ID, bool returnStatus)
         {
-            String sql = String.Format("INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date,End_Date, Account_ID) VALUES ({0},STR_TO_DATE('{1}', '%d-%m-%Y'),STR_TO_DATE('{2}', '%d-%m-%Y'), {3});", InvoiceID, StartDate, ReturnDate, Account_ID);
+            String sql = String.Format("INSERT INTO M_INVOICE(Material_InvoiceID, Start_Date,End_Date, Account_ID, Return_Status) VALUES ({0},STR_TO_DATE('{1}', '%d-%m-%Y'),STR_TO_DATE('{2}', '%d-%m-%Y'), {3});", InvoiceID, StartDate, Account_ID, returnStatus);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try

@@ -37,9 +37,10 @@ namespace JazzEventProject.Classes
             }
         }
 
-        public int AddNewLoanedMaterial(int invoice_id, int quantity, int materialID)
+       
+        public int AddNewLoanedMaterial(int invoice_id, int quantity, int materialID, DateTime returnDate, bool returnStatus)
         {
-            String sql = String.Format("INSERT INTO MATERIAL_INVOICE( Material_Quantity, Material_ID, Material_InvoiceID) VALUES ({0}, {1}, {2});", quantity, materialID, invoice_id);
+            String sql = String.Format("INSERT INTO MATERIAL_INVOICE( Material_Quantity, Material_ID, Material_InvoiceID, ReturnDate, ReturnStatus) VALUES ({0}, {1}, {2}, STR_TO_DATE('{3}', '%d-%m-%Y'), {4});", quantity, materialID, invoice_id, returnDate, returnStatus);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try

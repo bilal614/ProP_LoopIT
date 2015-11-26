@@ -44,7 +44,6 @@ C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\Jazz
 C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.PayPalTextFileTranslator.resources
 C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Properties.Resources.resources
 C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.csproj.GenerateResource.Cache
-D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Forms.FoodList.resources
 C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe.config
 C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.exe
 C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.pdb

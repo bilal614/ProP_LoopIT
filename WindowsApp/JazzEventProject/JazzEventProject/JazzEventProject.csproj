@@ -74,6 +74,7 @@
     <Compile Include="Classes\Items.cs" />
     <Compile Include="Classes\Item_InvoiceDataHelper.cs" />
     <Compile Include="Classes\Material.cs" />
+    <Compile Include="Classes\MaterialInvoice.cs" />
     <Compile Include="Classes\Material_Invoice_Items.cs" />
     <Compile Include="Classes\PaypalInvoiceReader.cs" />
     <Compile Include="Classes\PhidgetHandler.cs" />
@@ -100,12 +101,6 @@
     </Compile>
     <Compile Include="Forms\ExitEvent.Designer.cs">
       <DependentUpon>ExitEvent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FoodList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FoodList.Designer.cs">
-      <DependentUpon>FoodList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FoodShop.cs">
       <SubType>Form</SubType>
@@ -144,9 +139,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExitEvent.resx">
       <DependentUpon>ExitEvent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FoodList.resx">
-      <DependentUpon>FoodList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FoodShop.resx">
       <DependentUpon>FoodShop.cs</DependentUpon>
