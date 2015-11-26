@@ -276,5 +276,25 @@ namespace JazzEventProject
 
         }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbSubTotal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBalance_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
