@@ -13,7 +13,8 @@ namespace JazzEventProject.Classes
     {
         //instance variables
         public RFID myRFIDReader;
-        public String RFIDno;
+        public String RFIDtagNr, RFIDscannerNr;
+
 
         //constructor
         /// <summary>
@@ -55,16 +56,9 @@ namespace JazzEventProject.Classes
 
         //methods
 
-        public String ReadTag(object sender, TagEventArgs e)
-        {
-            ProcessThisTag(sender, e);
-            this.RFIDno=e.Tag.ToString();
-            return RFIDno;
-        }
-
         private void ShowWhoIsAttached(object sender, AttachEventArgs e)
         {
-            MessageBox.Show("RFIDReader attached!, serial nr: " + e.Device.SerialNumber.ToString());
+            RFIDscannerNr=e.Device.SerialNumber.ToString();
         }
 
         private void ShowWhoIsDetached(object sender, DetachEventArgs e)
@@ -74,23 +68,13 @@ namespace JazzEventProject.Classes
 
         public void ProcessThisTag(object sender, TagEventArgs e)
         {
-            MessageBox.Show("rfid has tag-nr: " + e.Tag);
+            RFIDtagNr = e.Tag.ToString();
         }
 
         public void SayHello(object sender, TagEventArgs e)
         {
             MessageBox.Show("Hello visitor with rfid-nr " + e.Tag +
                 ".\nWelcome at our event ! ! !");
-        }
-
-        private void btnAddAnother_Click(object sender, EventArgs e)
-        {
-            this.myRFIDReader.Tag += new TagEventHandler(SayHello);
-        }
-
-        private void btnRemoveAnother_Click(object sender, EventArgs e)
-        {
-            this.myRFIDReader.Tag -= new TagEventHandler(SayHello);
         }
     }
 }

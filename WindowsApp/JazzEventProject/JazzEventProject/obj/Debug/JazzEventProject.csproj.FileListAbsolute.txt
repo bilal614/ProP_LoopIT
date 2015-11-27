@@ -47,7 +47,6 @@ C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\Jazz
 C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe.config
 C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.exe
 C:\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.pdb
-C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.Forms.FoodList.resources
 C:\ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe.config
 C:\ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.exe
 C:\ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.pdb

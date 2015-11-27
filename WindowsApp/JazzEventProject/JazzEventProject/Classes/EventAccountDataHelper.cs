@@ -51,6 +51,67 @@ namespace JazzEventProject.Classes
         }
 
         /// <summary>
+        /// This method takes an RFID string and searches in database in the EventAccount table for any instances that have 
+        /// the provided RFID string as their assigned RFID and returns that persons EventAccount object.
+        /// </summary>
+        public EventAccount GetEventAccountFromRFID(String rfid)
+        {
+            String sql = String.Format("SELECT * FROM E_ACCOUNT WHERE RFID_code='{0}'", rfid);
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            EventAccount tempAccount = null;
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                int EventId = 0;
+                string firstName;
+                string lastName;
+                string eMail;
+                string phone;
+                decimal balance;
+                bool paymentStatus;
+                bool payInAdvance;
+                String Rfid;
+
+                while (reader.Read())
+                {
+                    EventId = Convert.ToInt32(reader["Account_ID"]);
+                    firstName = Convert.ToString(reader["First_Name"]);
+                    lastName = Convert.ToString(reader["Last_Name"]);
+                    eMail = Convert.ToString(reader["E_mail"]);
+                    phone = Convert.ToString(reader["Phone"]);
+                    balance = Convert.ToDecimal(reader["Balance"]);
+                    paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
+                    payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
+                    Rfid = Convert.ToString(reader["RFID_code"]);
+                    if (Rfid == "")
+                        MessageBox.Show(String.Format("Account Id: {0} belonging to {1} is not assigned an RFID"
+                            ,EventId,lastName));
+
+                    if (EventId > 0)
+                    {
+                        tempAccount = new EventAccount(EventId, firstName, lastName, eMail, phone, balance,
+                               paymentStatus, payInAdvance);
+                        tempAccount.PaymentStatus = paymentStatus;
+                        tempAccount.PayInAddvance = payInAdvance;
+                        tempAccount.RFID = Rfid;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("error while loading the participant.");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return tempAccount;
+        }
+
+        /// <summary>
         /// Added this extra method that returns the balance of the EventAccount with the given EventAccount eventId.
         /// </summary>
         /// <param name="eventId"></param>
@@ -123,7 +184,7 @@ namespace JazzEventProject.Classes
                     balance = Convert.ToDecimal(reader["Balance"]);
                     paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
-                    temp = Convert.ToString(reader["RFID_Code"]);
+                    temp = Convert.ToString(reader["RFID_code"]);
                     if (temp =="")
                         rfid = "";
                     else
@@ -190,10 +251,10 @@ namespace JazzEventProject.Classes
                     balance = Convert.ToDecimal(reader["Balance"]);
                     paymentStatus = Convert.ToBoolean(reader["Payment_Status"]);
                     payInAdvance = Convert.ToBoolean(reader["Pay_InAdvance"]);
-                    if (reader["RFID_Code"] == null)
+                    if (reader["RFID_code"] == null)
                         rfid = "";
                     else
-                        rfid = Convert.ToString(reader["RFID_Code"]);
+                        rfid = Convert.ToString(reader["RFID_code"]);
 
                     if (EventId != 0)
                     {
@@ -224,10 +285,10 @@ namespace JazzEventProject.Classes
             EventAccount currentClient = GetAccount(id);
             bool checkIn = false;
 
-            if (currentClient != null && currentClient.RFID != "")//to check if the EventAccount exists in database
+            if (currentClient != null )//to check if the EventAccount exists in database
             {
 
-                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code={0} WHERE Account_ID={1}", rfid, id);
+                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_code='{0}' WHERE Account_ID={1};", rfid, id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try
@@ -263,7 +324,7 @@ namespace JazzEventProject.Classes
             if (currentClient != null)//to check if the EventAccount exists in database
             {
 
-                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_Code=-1 WHERE Account_ID={0}", id);
+                String sql = String.Format("UPDATE E_ACCOUNT SET RFID_code='' WHERE Account_ID={0}", id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try
@@ -377,7 +438,7 @@ namespace JazzEventProject.Classes
         {
             int idEvent = 0;
 
-            String sql = String.Format("SELECT Account_ID FROM E_Account WHERE RFID_code={0}", rfid);
+            String sql = String.Format("SELECT Account_ID FROM E_Account WHERE RFID_code='{0}'", rfid);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try

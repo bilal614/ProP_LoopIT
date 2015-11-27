@@ -1,4 +1,5 @@
 ﻿using JazzEventProject.Classes;
+using Phidgets.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace JazzEventProject
         int accountId;
         EventAccount currentAccount;
         EventAccountDataHelper accountHelper=new EventAccountDataHelper();
+        PhidgetHandler phidgetScanner = new PhidgetHandler();
+
 
         public EntranceEvent()
         {
@@ -86,38 +89,46 @@ namespace JazzEventProject
 /// <summary>
 /// This is where the phidget imlpementation is made below.
 /// </summary>
-        PhidgetHandler phidgetScanner = new PhidgetHandler();
-
-        private void btnScan_Click(object sender, EventArgs e)
-        {
-            phidgetScanner.OpenRFIDReader();
-            label18.Text="";
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try { phidgetScanner.CloseRFIDReader(); }
-            catch { MessageBox.Show("No open RFID scanners detected."); }
-           
-        }
 
         private void btnActivateRFID_Click(object sender, EventArgs e)
         {
             if (currentAccount != null)
             {
-                button3.Enabled = true;
-                if (phidgetScanner.RFIDno != "")
+                if (phidgetScanner.RFIDtagNr != null)
                 {
-                    accountHelper.CheckIn(currentAccount.AccountId, phidgetScanner.RFIDno);//this method updates the rfid
+                    accountHelper.CheckIn(currentAccount.AccountId, phidgetScanner.RFIDtagNr);//this method updates the rfid
                     //of the visitor in the database
-                    currentAccount.ActivateRFID(phidgetScanner.RFIDno);//this method gives the currentAccount the scanned
+                    currentAccount.ActivateRFID(phidgetScanner.RFIDtagNr);//this method gives the currentAccount the scanned
                     //RFID number
-                    label16.Text = currentAccount.RFID;
+                    label16.Text = currentAccount.RFID; 
+                    MessageBox.Show(String.Format("RFID: {0} has bee assigned to event account id: {1}"
+                        ,phidgetScanner.RFIDtagNr,currentAccount.AccountId));
                 }
+                else { MessageBox.Show("Please scan an RFID."); }
             }
             else { MessageBox.Show("Please enter an Event Account Id first and/or scan an RFID."); }
         }
 
+        private void EntranceEvent_Load(object sender, EventArgs e)
+        {
+            try 
+            {
+                phidgetScanner.OpenRFIDReader();
+                phidgetScanner.myRFIDReader.Tag += new TagEventHandler(ChangeTagOnForm);
+            }
+            catch { MessageBox.Show("No RFID reader detected."); }
+        }
+
+        private void EntranceEvent_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try { phidgetScanner.CloseRFIDReader(); }
+            catch { MessageBox.Show("No open RFID scanners detected."); }
+        }
+
+        private void ChangeTagOnForm(object sender, TagEventArgs e)
+        {
+            label18.Text = phidgetScanner.RFIDtagNr;
+        }
 
 
     }

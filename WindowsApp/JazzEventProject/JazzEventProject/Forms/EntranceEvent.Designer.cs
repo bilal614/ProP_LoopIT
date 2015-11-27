@@ -54,8 +54,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.GreyPanel = new System.Windows.Forms.Panel();
             this.bottomPanel = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.btnScan = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
@@ -115,10 +113,11 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(74, 45);
+            this.label16.Location = new System.Drawing.Point(86, 45);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(0, 15);
+            this.label16.Size = new System.Drawing.Size(101, 15);
             this.label16.TabIndex = 5;
+            this.label16.Text = "assigned RFID";
             // 
             // labelRFID
             // 
@@ -133,10 +132,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(100, 77);
+            this.label14.Location = new System.Drawing.Point(86, 77);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(0, 15);
+            this.label14.Size = new System.Drawing.Size(99, 15);
             this.label14.TabIndex = 3;
+            this.label14.Text = "visitor event id";
             // 
             // label11
             // 
@@ -151,26 +151,29 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(86, 162);
+            this.label7.Location = new System.Drawing.Point(86, 175);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 15);
+            this.label7.Size = new System.Drawing.Size(121, 15);
             this.label7.TabIndex = 1;
+            this.label7.Text = "telephone contact";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(86, 123);
+            this.label6.Location = new System.Drawing.Point(86, 142);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 15);
+            this.label6.Size = new System.Drawing.Size(103, 15);
             this.label6.TabIndex = 1;
+            this.label6.Text = "e-mail address";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(86, 89);
+            this.label5.Location = new System.Drawing.Point(86, 108);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 15);
+            this.label5.Size = new System.Drawing.Size(96, 15);
             this.label5.TabIndex = 1;
+            this.label5.Text = "visitor\'s name";
             // 
             // label4
             // 
@@ -319,8 +322,6 @@
             // 
             // bottomPanel
             // 
-            this.bottomPanel.Controls.Add(this.button3);
-            this.bottomPanel.Controls.Add(this.btnScan);
             this.bottomPanel.Controls.Add(this.button2);
             this.bottomPanel.Controls.Add(this.panel1);
             this.bottomPanel.Controls.Add(this.btnBackToMainForm);
@@ -331,32 +332,6 @@
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(761, 114);
             this.bottomPanel.TabIndex = 21;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(9, 63);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 46);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Close RFID Scanner";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btnScan
-            // 
-            this.btnScan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScan.Location = new System.Drawing.Point(9, 11);
-            this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(119, 46);
-            this.btnScan.TabIndex = 16;
-            this.btnScan.Text = "Open RFID Scanner";
-            this.btnScan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnScan.UseVisualStyleBackColor = true;
-            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // button2
             // 
@@ -448,9 +423,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(585, 84);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(100, 17);
+            this.label18.Size = new System.Drawing.Size(164, 17);
             this.label18.TabIndex = 24;
-            this.label18.Text = "current RFID";
+            this.label18.Text = "Please scan an RFID.";
             // 
             // EntranceEvent
             // 
@@ -470,6 +445,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EntranceEvent";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EntranceEvent_FormClosed);
+            this.Load += new System.EventHandler(this.EntranceEvent_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -514,8 +491,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button btnScan;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label labelRFID;
         private System.Windows.Forms.Label label17;

@@ -8,8 +8,10 @@ namespace JazzEventProject
 {
     class EventAccount
     {
+        private String rfid = "";
+
         public int AccountId { get; private set; }
-        public String RFID { get; set; }
+        public String RFID { get { return rfid; } set { rfid = value; } }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -24,7 +26,7 @@ namespace JazzEventProject
         public EventAccount (int accountid, string firstname, string lastname, string email, string phone, decimal balance, bool paymentStatus, bool payInAdvance)
         {
             this.AccountId = accountid;
-            this.RFID = "";
+            //this.RFID = "";
             this.FirstName = firstname;
             this.LastName = lastname;
             this.Email = email;
