@@ -141,6 +141,33 @@
   <metadata name="RFID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="CheckIn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Camping_Reservation_Number.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="End_Date.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Start_Date.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Camp_ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Group_ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="E_mail.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Event_Account_ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="RFID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -226,24 +253,7 @@
         3SNwdPQfAqrcD/NNG90AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAzxJREFUaEPt
-        WMFx2zAQVAkpISVoTOcddaB0kHTgdBB3YP8o+WN3EHWgdOC8Sc0oHUQdJLuHAwnQoEiQsMwZc2d2TB2I
-        4y2AOx69mDFjxowZ7xKfHsrPlmqaPpb58eP1tvxxvSn34L92Fs/4e7d8KJY6dRpgQAisI/g2QlRertTV
-        24FBZJvybzjI/rzKi2/q8vJYPh4/NEVkefkH4m4pkON6awXar7bl92xT/HbnkW921LiKNggIOmXbwxcd
-        6gXZTQqvfBzudeiykJWvhfxUcxQYvPUBf7/UfFm4QpRM+LUOnwWPEcV78yckRMi8kSBZihukHflxDM2b
-        nJDBnIIQrPSO9ALrICvXq+cIz7DbXvCtrUMVvB3BNW1SklG9+DvLiycGZylCYWe1s/7we5VUCBytsUKP
-        ree3Yt1eMChrH1o63RI+SghXrzv4MLHC/hsdyRx6CbYBz/7q+RgqxF3RVGRgurM39ljiOSt7bYJv2fkh
-        Qui86YhnWM5vS6tAe1t7kYRDhEgiqgMGFkrmc+BCQPjJ9eH+7k0E716r+/5wHXCr1RwFBF6/mbVqmZxD
-        SYV/t48yz4FQsRdPsvPIJ/weV7U4yX0I2Lu90HPun3EVEgsKd3wkESLEqrGK7JutBWx3Yg/MIWUeVlfd
-        94J8UZpybvykFJKAe+5Ya8FA8LZyvZg7WgiusaJx7QXOeeycTiYQ8qK9UHqthbI6PvJbfeCe+IoFevNS
-        CYlFo+G75XGijaW4sgfIaiY7ahYtXdXCqvBtfKNDnZCyaQpAHWBgMSSZGagylDcyVvtIk+xGkPkgsi2F
-        JcbXtMt4Y55h8RzTZ1m4/nC9U3N/hISMJReCYru6BKdyee8iviT1lv5whfBMI4ioZJVzfiYXRJR573hs
-        Bm/JnNHQ4uDtiJ5vp2KZjyH7EG0tlJLU6iNN9xzIr96QoEY6coWwWsV0xmZHD/ddx7ATXulkora8idsA
-        Ed6/SilCh0xVw7h8/VGskvfQPjp4Fwy8FmKIwPivGvkg0tsqMDjaOe71R2beaUjFSgbve3kgRUTkbr4K
-        uNXgoFIMEbukxyQFuKqSN12iMM6zPjkB56C7FWwtZsyYMWPGO8Bi8R/Oio1JiIZTggAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
+  <metadata name="CheckIn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

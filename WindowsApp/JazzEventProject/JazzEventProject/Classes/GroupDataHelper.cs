@@ -31,7 +31,7 @@ namespace JazzEventProject.Classes
                 String sql = String.Format("SELECT * FROM GROUPMEMBERS");
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
-                int groupId; string coEMail; int campResNo; //bool checkIn;
+                int groupId; string coEMail; int campResNo; bool checkIn;
 
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
@@ -40,7 +40,7 @@ namespace JazzEventProject.Classes
                     groupId = Convert.ToInt32(reader["GroupID"]);
                     coEMail = Convert.ToString(reader["Co_email"]);
                     campResNo = Convert.ToInt32(reader["CampRes_No"]);
-                    //checkIn = Convert.ToBoolean(reader["Check_in"]);
+                    checkIn = Convert.ToBoolean(reader["Check_in"]);
 
                     //no need to look at checkIn because it is assumed everybodys checkIn value would be false in
                     //database when they arrive at the festival
@@ -73,20 +73,39 @@ namespace JazzEventProject.Classes
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                int groupId; string coEMail; int campResNo; //bool checkIn;
+                int groupId; string coEMail; int campResNo; bool checkIn;
 
                 while (reader.Read())
                 {
                     groupId = Convert.ToInt32(reader["GroupID"]);
                     coEMail = Convert.ToString(reader["Co_email"]);
                     campResNo = Convert.ToInt32(reader["CampRes_No"]);
+                    checkIn = Convert.ToBoolean(reader["Check_in"]);
 
                     selectedMember = new GroupMember(groupId, coEMail, campResNo);
+                    selectedMember.CheckIn = checkIn;
                 }
             }
             catch { MessageBox.Show("error while loading from database."); }
             finally { connection.Close(); }
             return selectedMember;
+        }
+
+        public bool CampCheckIn(String coEmail)
+        {
+            bool checkIn = false;
+            String sql = String.Format("UPDATE GROUPMEMBERS SET Check_in=1 WHERE Co_email='{0}'", coEmail);
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                int nrOfrecordsChanged = command.ExecuteNonQuery();
+                if (nrOfrecordsChanged == 1)
+                { MessageBox.Show("Balance successfully updated."); checkIn = true; }
+            }
+            catch { MessageBox.Show("could not open/write to database"); }
+            finally { connection.Close(); }
+            return checkIn;
         }
     }
 }

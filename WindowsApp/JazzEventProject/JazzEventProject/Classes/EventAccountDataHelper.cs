@@ -434,7 +434,7 @@ namespace JazzEventProject.Classes
         ///This method takes in an rfid int value and returns its corresponging EventAccountId if it exists in the 
         ///database, otherwise it returns a value of 0.
         ///</summary> 
-        public int GetEventIdFromRFID(int rfid)
+        public int GetEventIdFromRFID(String rfid)
         {
             int idEvent = 0;
 
@@ -461,7 +461,7 @@ namespace JazzEventProject.Classes
         ///This method takes in an rfid int value and returns its corresponging Email if it exists in the 
         ///database, otherwise it returns a null string.
         ///</summary> 
-        public string GetAccountEmailFromRFID(int rfid)
+        public string GetAccountEmailFromRFID(String rfid)
         {
             string email = "";
             int eventId = GetEventIdFromRFID(rfid);
@@ -471,7 +471,6 @@ namespace JazzEventProject.Classes
                 EventAccount selected = GetAccount(eventId);
                 email = selected.Email;
             }
-
             return email;
         }
 

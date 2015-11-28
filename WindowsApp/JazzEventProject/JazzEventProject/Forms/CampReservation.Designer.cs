@@ -39,6 +39,8 @@
             this.Event_Account_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HeaderPanel = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bottomPanel = new System.Windows.Forms.Panel();
@@ -46,9 +48,9 @@
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.btnCheckIn = new System.Windows.Forms.Button();
-            this.btnScan = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,10 +69,11 @@
             this.Group_ID,
             this.E_mail,
             this.Event_Account_ID,
-            this.RFID});
+            this.RFID,
+            this.CheckIn});
             this.dataGridView1.Location = new System.Drawing.Point(0, 90);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(843, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(942, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // Camping_Reservation_Number
@@ -115,13 +118,35 @@
             // 
             // HeaderPanel
             // 
+            this.HeaderPanel.Controls.Add(this.label20);
+            this.HeaderPanel.Controls.Add(this.label19);
             this.HeaderPanel.Controls.Add(this.pictureBox1);
             this.HeaderPanel.Controls.Add(this.label2);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(863, 64);
+            this.HeaderPanel.Size = new System.Drawing.Size(942, 64);
             this.HeaderPanel.TabIndex = 13;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(528, 25);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(184, 20);
+            this.label20.TabIndex = 26;
+            this.label20.Text = "Please scan an RFID.";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(377, 26);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(133, 20);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Scanned RFID:";
             // 
             // pictureBox1
             // 
@@ -150,11 +175,10 @@
             this.bottomPanel.Controls.Add(this.btnBackToMainForm);
             this.bottomPanel.Controls.Add(this.btnCheckOut);
             this.bottomPanel.Controls.Add(this.btnCheckIn);
-            this.bottomPanel.Controls.Add(this.btnScan);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel.Location = new System.Drawing.Point(0, 271);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(863, 114);
+            this.bottomPanel.Size = new System.Drawing.Size(942, 114);
             this.bottomPanel.TabIndex = 15;
             // 
             // panel3
@@ -163,7 +187,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(863, 5);
+            this.panel3.Size = new System.Drawing.Size(942, 5);
             this.panel3.TabIndex = 15;
             // 
             // btnBackToMainForm
@@ -172,20 +196,21 @@
             this.btnBackToMainForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackToMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToMainForm.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToMainForm.Image")));
-            this.btnBackToMainForm.Location = new System.Drawing.Point(756, 11);
+            this.btnBackToMainForm.Location = new System.Drawing.Point(835, 11);
             this.btnBackToMainForm.Name = "btnBackToMainForm";
             this.btnBackToMainForm.Size = new System.Drawing.Size(95, 96);
             this.btnBackToMainForm.TabIndex = 1;
             this.btnBackToMainForm.Text = "Back";
             this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBackToMainForm.UseVisualStyleBackColor = true;
+            this.btnBackToMainForm.Click += new System.EventHandler(this.btnBackToMainForm_Click);
             // 
             // btnCheckOut
             // 
             this.btnCheckOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckOut.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckOut.Image")));
-            this.btnCheckOut.Location = new System.Drawing.Point(638, 11);
+            this.btnCheckOut.Location = new System.Drawing.Point(717, 11);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(105, 96);
             this.btnCheckOut.TabIndex = 1;
@@ -198,27 +223,14 @@
             this.btnCheckIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.Image = ((System.Drawing.Image)(resources.GetObject("btnCheckIn.Image")));
-            this.btnCheckIn.Location = new System.Drawing.Point(517, 11);
+            this.btnCheckIn.Location = new System.Drawing.Point(596, 11);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(105, 96);
             this.btnCheckIn.TabIndex = 1;
             this.btnCheckIn.Text = "Check in";
             this.btnCheckIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCheckIn.UseVisualStyleBackColor = true;
-            // 
-            // btnScan
-            // 
-            this.btnScan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScan.Image = ((System.Drawing.Image)(resources.GetObject("btnScan.Image")));
-            this.btnScan.Location = new System.Drawing.Point(393, 11);
-            this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(103, 96);
-            this.btnScan.TabIndex = 1;
-            this.btnScan.Text = "Scan";
-            this.btnScan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnScan.UseVisualStyleBackColor = true;
-            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
+            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
             // panel2
             // 
@@ -227,7 +239,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 64);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(863, 5);
+            this.panel2.Size = new System.Drawing.Size(942, 5);
             this.panel2.TabIndex = 16;
             // 
             // panel1
@@ -236,20 +248,27 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(863, 5);
+            this.panel1.Size = new System.Drawing.Size(942, 5);
             this.panel1.TabIndex = 15;
+            // 
+            // CheckIn
+            // 
+            this.CheckIn.HeaderText = "Check In";
+            this.CheckIn.Name = "CheckIn";
             // 
             // CampReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 385);
+            this.ClientSize = new System.Drawing.Size(942, 385);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.dataGridView1);
             this.Name = "CampReservation";
             this.Text = "CampReservation";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CampReservation_FormClosed);
+            this.Load += new System.EventHandler(this.CampReservation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
@@ -277,10 +296,12 @@
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Button btnBackToMainForm;
         private System.Windows.Forms.Button btnCheckIn;
-        private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CheckIn;
     }
 }
