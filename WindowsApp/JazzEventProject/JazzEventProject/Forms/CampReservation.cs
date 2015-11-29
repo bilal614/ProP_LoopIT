@@ -102,6 +102,14 @@ namespace JazzEventProject
                 else { MessageBox.Show("Could not check in."); }
             }
             else { MessageBox.Show("Scanned visitor does not have a reservation."); }
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows)
+            //{
+            //    if (row.Cells[8].Value == "true")
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.Yellow;
+            //    }
+            //}
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
@@ -115,6 +123,14 @@ namespace JazzEventProject
                 else { MessageBox.Show("Could not check out."); }
             }
             else { MessageBox.Show("Scanned visitor does not have a reservation."); }
+
+            //foreach (DataGridViewRow row in dataGridView1.Rows)
+            //{
+            //    if (row.Cells[8].Value == "false")
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.White;
+            //    }
+            //}
         }
 
 
