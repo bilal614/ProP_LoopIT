@@ -284,24 +284,30 @@ namespace JazzEventProject.Classes
         {
             EventAccount currentClient = GetAccount(id);
             bool checkIn = false;
+            int rfidOwner;
 
-            if (currentClient != null )//to check if the EventAccount exists in database
+
+            if (currentClient != null)//to check if the EventAccount exists in database
             {
 
                 String sql = String.Format("UPDATE E_ACCOUNT SET RFID_code='{0}' WHERE Account_ID={1};", rfid, id);
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
-                try
+                if ((rfidOwner=GetEventIdFromRFID(rfid)) == 0)
                 {
-                    connection.Open();
-                    int nrOfrecordsChanged = command.ExecuteNonQuery();
-                    if (nrOfrecordsChanged == 1)
-                    { MessageBox.Show("RFID was successfully assigned."); checkIn = true; }
+                    try
+                    {
+                        connection.Open();
+                        int nrOfrecordsChanged = command.ExecuteNonQuery();
+                        if (nrOfrecordsChanged == 1)
+                        { MessageBox.Show("RFID was successfully assigned."); checkIn = true; }
+                    }
+                    catch
+                    { MessageBox.Show("error while loading the participant."); }
+                    finally
+                    { connection.Close(); }
                 }
-                catch
-                { MessageBox.Show("error while loading the participant."); }
-                finally
-                { connection.Close(); }
+                else { MessageBox.Show(String.Format("This rfid: {0} already belongs to event Id {1}.",rfid,rfidOwner)); }
             }
             else
             {
@@ -434,7 +440,7 @@ namespace JazzEventProject.Classes
         ///This method takes in an rfid int value and returns its corresponging EventAccountId if it exists in the 
         ///database, otherwise it returns a value of 0.
         ///</summary> 
-        public int GetEventIdFromRFID(int rfid)
+        public int GetEventIdFromRFID(String rfid)
         {
             int idEvent = 0;
 
@@ -461,7 +467,7 @@ namespace JazzEventProject.Classes
         ///This method takes in an rfid int value and returns its corresponging Email if it exists in the 
         ///database, otherwise it returns a null string.
         ///</summary> 
-        public string GetAccountEmailFromRFID(int rfid)
+        public string GetAccountEmailFromRFID(String rfid)
         {
             string email = "";
             int eventId = GetEventIdFromRFID(rfid);
@@ -471,7 +477,6 @@ namespace JazzEventProject.Classes
                 EventAccount selected = GetAccount(eventId);
                 email = selected.Email;
             }
-
             return email;
         }
 

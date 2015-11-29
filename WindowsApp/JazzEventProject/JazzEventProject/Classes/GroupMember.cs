@@ -36,7 +36,7 @@ namespace JazzEventProject.Classes
             this.groupId = groupID;
             this.co_email = coEmail;
             this.campResNo = campResNo;
-            this.CheckIn = false;
+            //this.CheckIn = false;
         }
         //methods
     }

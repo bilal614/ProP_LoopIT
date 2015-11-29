@@ -19,7 +19,6 @@ namespace JazzEventProject
         EventAccountDataHelper accountHelper=new EventAccountDataHelper();
         PhidgetHandler phidgetScanner = new PhidgetHandler();
 
-
         public EntranceEvent()
         {
             InitializeComponent();
@@ -37,6 +36,7 @@ namespace JazzEventProject
                 label6.Text=currentAccount.Email;
                 label7.Text = currentAccount.Phone;
                 label14.Text = Convert.ToString(accountId);
+                label16.Text = currentAccount.RFID;
 
                 if (currentAccount.PaymentStatus) { label10.Text = "Paid"; }
                 else { label10.Text = "Not Paid"; }
@@ -72,7 +72,7 @@ namespace JazzEventProject
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            textBox1.Text = ""; label16.Text = "";
             label5.Text = "";
             label6.Text = "";
             label7.Text = "";
@@ -101,7 +101,7 @@ namespace JazzEventProject
                     currentAccount.ActivateRFID(phidgetScanner.RFIDtagNr);//this method gives the currentAccount the scanned
                     //RFID number
                     label16.Text = currentAccount.RFID; 
-                    MessageBox.Show(String.Format("RFID: {0} has bee assigned to event account id: {1}"
+                    MessageBox.Show(String.Format("RFID: {0} has been assigned to event account id: {1}"
                         ,phidgetScanner.RFIDtagNr,currentAccount.AccountId));
                 }
                 else { MessageBox.Show("Please scan an RFID."); }
