@@ -38,6 +38,7 @@
             this.E_mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Event_Account_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -115,6 +115,11 @@
             // 
             this.RFID.HeaderText = "RFID";
             this.RFID.Name = "RFID";
+            // 
+            // CheckIn
+            // 
+            this.CheckIn.HeaderText = "Check In";
+            this.CheckIn.Name = "CheckIn";
             // 
             // HeaderPanel
             // 
@@ -217,6 +222,7 @@
             this.btnCheckOut.Text = "Check out";
             this.btnCheckOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click);
             // 
             // btnCheckIn
             // 
@@ -250,11 +256,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(942, 5);
             this.panel1.TabIndex = 15;
-            // 
-            // CheckIn
-            // 
-            this.CheckIn.HeaderText = "Check In";
-            this.CheckIn.Name = "CheckIn";
             // 
             // CampReservation
             // 

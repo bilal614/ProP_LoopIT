@@ -101,11 +101,28 @@ namespace JazzEventProject.Classes
                 connection.Open();
                 int nrOfrecordsChanged = command.ExecuteNonQuery();
                 if (nrOfrecordsChanged == 1)
-                { MessageBox.Show("Balance successfully updated."); checkIn = true; }
+                { MessageBox.Show("Check In successful."); checkIn = true; }
             }
             catch { MessageBox.Show("could not open/write to database"); }
             finally { connection.Close(); }
             return checkIn;
+        }
+
+        public bool CampCheckOut(String coEmail)
+        {
+            bool checkOut = false;
+            String sql = String.Format("UPDATE GROUPMEMBERS SET Check_in=0 WHERE Co_email='{0}'", coEmail);
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            try
+            {
+                connection.Open();
+                int nrOfrecordsChanged = command.ExecuteNonQuery();
+                if (nrOfrecordsChanged == 1)
+                { MessageBox.Show("Check out successful."); checkOut = true; }
+            }
+            catch { MessageBox.Show("could not open/write to database"); }
+            finally { connection.Close(); }
+            return checkOut;
         }
     }
 }

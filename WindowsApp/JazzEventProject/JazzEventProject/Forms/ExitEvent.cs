@@ -100,14 +100,14 @@ namespace JazzEventProject
             {
                 if (phidgetScanner.RFIDtagNr != null)
                 {
-                    accountHelper.CheckIn(currentAccount.AccountId, "");//this method updates the rfid
+                    accountHelper.CheckOut(currentAccount.AccountId);//this method updates the rfid
                     //of the visitor in the database back to a null string
                     currentAccount.ActivateRFID(phidgetScanner.RFIDtagNr);//this method gives the currentAccount a null
                     //string value for its RFID number in order to show that the person's RFID has been deactivated
                     label16.Text = currentAccount.RFID;
                     MessageBox.Show(String.Format("RFID: {0} has been deactivated for event account id: {1}"
                         , phidgetScanner.RFIDtagNr, currentAccount.AccountId));
-                    label22.Text = "";
+                    label9.Text = "Returned";
                 }
                 else { MessageBox.Show("Please scan an RFID."); }
             }

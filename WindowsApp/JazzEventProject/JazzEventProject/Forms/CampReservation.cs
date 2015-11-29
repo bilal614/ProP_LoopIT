@@ -73,7 +73,6 @@ namespace JazzEventProject
                         newrow.Cells[7].Value = rfid;
                         newrow.Cells[8].Value = scannedMember.CheckIn;
                         dataGridView1.Rows.Add(newrow);
-
                     }
                     else { MessageBox.Show("This accountId does not have a camping reservation."); }
                 }
@@ -98,21 +97,24 @@ namespace JazzEventProject
             {
                 if (groupHelper.CampCheckIn(scannedMember.Co_Email))
                 {
-                    DataGridViewRow newrow = new DataGridViewRow();
-                    newrow.CreateCells(dataGridView1);
-                    newrow.Cells[0].Value = scannedMember.CampResNo;
-                    newrow.Cells[1].Value = reservation.EndDate;
-                    newrow.Cells[2].Value = reservation.StartDate;
-                    newrow.Cells[3].Value = reservation.CampId;
-                    newrow.Cells[4].Value = scannedMember.GroupId;
-                    newrow.Cells[5].Value = scannedMember.Co_Email;
-                    newrow.Cells[6].Value = eID;
-                    newrow.Cells[7].Value = rfid;
-                    newrow.Cells[8].Value = scannedMember.CheckIn;
-                    dataGridView1.Rows.Add(newrow);
+                    dataGridView1[8, 0].Value = true;
                 }
                 else { MessageBox.Show("Could not check in."); }
             }
+            else { MessageBox.Show("Scanned visitor does not have a reservation."); }
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            if (scannedMember != null)
+            {
+                if (groupHelper.CampCheckOut(scannedMember.Co_Email))
+                {
+                    dataGridView1[8, 0].Value = false;
+                }
+                else { MessageBox.Show("Could not check out."); }
+            }
+            else { MessageBox.Show("Scanned visitor does not have a reservation."); }
         }
 
 
