@@ -1,4 +1,5 @@
 ﻿using JazzEventProject.Classes;
+using Phidgets.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace JazzEventProject
         ItemDataHelper ItemData = new ItemDataHelper();
         InvoiceDataHelper InvoiceData = new InvoiceDataHelper();
         Item_InvoiceDataHelper ItemInvoiceData = new Item_InvoiceDataHelper();
+        EventAccountDataHelper AccountdData = new EventAccountDataHelper();
         List<Items> ListOfUpdateMaterials = new List<Items>();//List of items need to be updated
         List<Items> ListOfMaterials = new List<Items>();// All of material from database
         List<Items> ListOfLoanedMaterials = new List<Items>();
@@ -27,6 +29,12 @@ namespace JazzEventProject
         DateTime currentDate = DateTime.Now;
         //Variables are used for printing stuff.
         int InvoiceID = 0;
+
+        //RFID & payment
+        PhidgetHandler phidgetScanner = new PhidgetHandler();
+        string customerRFID = null;
+        EventAccount currentAccount = null;
+
         public LoanMaterial()
         {
             InitializeComponent();
@@ -55,6 +63,14 @@ namespace JazzEventProject
                 dataGridViewMaterialList.Rows.Add(newrow);
             }
             btnPrint.Enabled = false;
+
+            //Activate and open RFID
+            try
+            {
+                phidgetScanner.OpenRFIDReader();
+                phidgetScanner.myRFIDReader.Tag += new TagEventHandler(ChangeTagOnForm);
+            }
+            catch { MessageBox.Show("No RFID reader detected."); }
         }
 
         /// <summary>
@@ -216,6 +232,9 @@ namespace JazzEventProject
             {
                 MessageBox.Show("Error!");
             }
+
+            //Update the new balance
+            AccountdData.UpdateAccountBalance(currentAccount.AccountId, currentAccount.Balance - total);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -309,6 +328,15 @@ namespace JazzEventProject
                 }
             }
             return returnDate;
+        }
+
+        private void ChangeTagOnForm(object sender, TagEventArgs e)
+        {
+            customerRFID = phidgetScanner.RFIDtagNr;
+            currentAccount = AccountdData.GetEventAccountFromRFID(customerRFID);
+            lblName.Text = currentAccount.FirstName;
+            lblBalance.Text = currentAccount.Balance.ToString("0.00");
+
         }
     }
 }
