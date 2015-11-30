@@ -41,10 +41,6 @@ namespace JazzEventProject
        
         private void FoodShop_Load(object sender, EventArgs e)
         {
-            tbCurrentDate.Text = DateTime.Now.ToString("d/M/yyyy");
-            ListOFFoods = ItemData.GetAllFoods();
-            dataGridViewFoodList.DataSource = ListOFFoods;
-
             //Activate and open RFID
             try
             {
@@ -52,6 +48,10 @@ namespace JazzEventProject
                 phidgetScanner.myRFIDReader.Tag += new TagEventHandler(ChangeTagOnForm);
             }
             catch { MessageBox.Show("No RFID reader detected."); }
+            tbCurrentDate.Text = DateTime.Now.ToString("d/M/yyyy");
+            ListOFFoods = ItemData.GetAllFoods();
+            dataGridViewFoodList.DataSource = ListOFFoods;
+            
         }
 
 
@@ -114,35 +114,53 @@ namespace JazzEventProject
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //Update the quantity of sold food into database
-            int nbofSoldFood = 0;
-            foreach (var f in ListOfUpdateFood)
+            try
             {
-                nbofSoldFood += ItemData.UpdateAFood(f.ID, ListOfUpdateFood);
+                if (currentAccount.Balance >= total)
+                {
+                    //Update the new balance
+                    decimal balanceupdate = 0 - total;
+                    AccountdData.UpdateAccountBalance(currentAccount.AccountId, balanceupdate);
+
+                    lblBalance.Text = currentAccount.Balance.ToString("0.00");
+
+
+                    //Update the quantity of sold food into database
+                    int nbofSoldFood = 0;
+                    foreach (var f in ListOfUpdateFood)
+                    {
+                        nbofSoldFood += ItemData.UpdateAFood(f.ID, ListOfUpdateFood);
+                    }
+
+                    //Insert a new food invoice into database
+                    List<Invoice> invoices = InvoiceData.GetAllFoodInvoices();
+                    InvoiceID = InvoiceData.GenerateInvoiceID(invoices);
+                    string soldDate = (DateTime.Now).ToString("dd-MM-yyyy");
+                    int AccountID = currentAccount.AccountId; // This one will be provide by RFID after the scaning functionality completed
+                    int nbofInvoice = InvoiceData.AddAFoodInvoice(InvoiceID, soldDate, AccountID);
+
+                    //Insert rows into food_invoice (association table between food and invoice)
+                    int InvoiceItemRows = 0;
+                    foreach (var f in ListOfSoldFoods)
+                    {
+                        InvoiceItemRows += ItemInvoiceData.AddNewSoldFood(InvoiceID, f.Quantity, f.ID);
+                    }
+                    if (nbofInvoice == 1 && nbofSoldFood >= 1 & InvoiceItemRows == nbofSoldFood)
+                    {
+                        btnPrint.Enabled = true;
+                        MessageBox.Show("Success!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You don't have enough money, please add more!");
+                }
             }
-
-            //Insert a new food invoice into database
-            List<Invoice> invoices = InvoiceData.GetAllFoodInvoices();
-            InvoiceID = InvoiceData.GenerateInvoiceID(invoices);
-            string soldDate = (DateTime.Now).ToString("dd-MM-yyyy");
-            int AccountID = 1; // This one will be provide by RFID after the scaning functionality completed
-            int nbofInvoice = InvoiceData.AddAFoodInvoice(InvoiceID, soldDate, AccountID);
-
-            //Insert rows into food_invoice (association table between food and invoice)
-            int InvoiceItemRows = 0;
-            foreach (var f in ListOfSoldFoods)
+            catch
             {
-                InvoiceItemRows += ItemInvoiceData.AddNewSoldFood(InvoiceID, f.Quantity, f.ID);
+                MessageBox.Show("Please scan the RFID");
             }
-            if (nbofInvoice == 1 && nbofSoldFood >= 1 & InvoiceItemRows == nbofSoldFood)
-            {
-                MessageBox.Show("Success!");
-                btnPrint.Enabled = true;
-            }
-
-            //Update the new balance
-            AccountdData.UpdateAccountBalance(currentAccount.AccountId, currentAccount.Balance - total);
-        }
+        }         
 
         //Updated gridview for all common food in the picture lists.
         private void btSelectBurger_Click(object sender, EventArgs e)
@@ -291,23 +309,44 @@ namespace JazzEventProject
         private void btnBackToMainForm_Click(object sender, EventArgs e)
         {
             this.Close();
-            try 
-            { 
-                phidgetScanner.CloseRFIDReader();
-            }
-            catch 
-            {
-                MessageBox.Show("No open RFID scanners detected.");
-            }
+     
         }
 
         private void ChangeTagOnForm(object sender, TagEventArgs e)
         {
             customerRFID = phidgetScanner.RFIDtagNr;
             currentAccount = AccountdData.GetEventAccountFromRFID(customerRFID);
-            lblName.Text = currentAccount.FirstName;
-            lblBalance.Text = currentAccount.Balance.ToString("0.00");
+            if (currentAccount != null)
+            {
+                lblName.Text = currentAccount.FirstName;
+                lblBalance.Text = currentAccount.Balance.ToString("0.00");
+            }
+            else { MessageBox.Show("The scanned RFID code does not exist in database."); }
 
+           
+         
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            //Reset the working section for new user
+            dataGridViewFood.Rows.Clear();
+            dataGridViewFood.Refresh();
+            ListOFFoods.Clear();
+            ListOfSoldFoods.Clear();
+            ListOfUpdateFood.Clear();
+        }
+
+        private void FoodShop_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                phidgetScanner.CloseRFIDReader();
+            }
+            catch
+            {
+                MessageBox.Show("No open RFID scanners detected.");
+            }
         }
 
     }

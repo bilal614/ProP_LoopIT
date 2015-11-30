@@ -175,6 +175,14 @@ namespace JazzEventProject
         private void btnBackToMainForm_Click(object sender, EventArgs e)
         {
             this.Close();
+            try
+            {
+                phidgetScanner.CloseRFIDReader();
+            }
+            catch
+            {
+                MessageBox.Show("No open RFID scanners detected.");
+            }
         }
 
         private void btSelectCamera_Click(object sender, EventArgs e)
@@ -203,38 +211,45 @@ namespace JazzEventProject
 
         private void btnLoan_Click(object sender, EventArgs e)
         {
-            //Update the quantity of loaned material into database
-            int nbofLoanedMaterial = 0;
-            foreach (var f in ListOfUpdateMaterials)
+            if (currentAccount.Balance >= total)
             {
-                nbofLoanedMaterial += ItemData.UpdateAMaterial(f.ID, ListOfUpdateMaterials);
+                //Update the new balance
+                decimal balanceupdate = 0 - total;
+                AccountdData.UpdateAccountBalance(currentAccount.AccountId, balanceupdate);
+
+                lblBalance.Text = currentAccount.Balance.ToString("0.00");
+
+                //Update the quantity of loaned material into database
+                int nbofLoanedMaterial = 0;
+                foreach (var f in ListOfUpdateMaterials)
+                {
+                    nbofLoanedMaterial += ItemData.UpdateAMaterial(f.ID, ListOfUpdateMaterials);
+                }
+
+                //Insert a new material invoice into database
+                List<Invoice> invoices = InvoiceData.GetAllMaterialInvoices();
+                InvoiceID = InvoiceData.GenerateInvoiceID(invoices);
+                string startingDate = (DateTime.Now).ToString("dd-MM-yyyy");
+                int AccountID = currentAccount.AccountId; // This one will be provide by RFID after the scaning functionality completed
+                int nbofInvoice = InvoiceData.AddAMaterialInvoice(InvoiceID, startingDate, AccountID, false);
+
+                //Insert rows into material_invoice (association table between material and invoice)
+                int InvoiceItemRows = 0;
+                foreach (var f in ListOfMaterialsInInvoice)
+                {
+                    InvoiceItemRows += ItemInvoiceData.AddNewLoanedMaterial(InvoiceID, f.Quantity, f.Item_Id, f.ReturnDate, false);
+                }
+                if (nbofInvoice == 1 && nbofLoanedMaterial >= 1)
+                {
+                    MessageBox.Show("Success!");
+                    btnPrint.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Error!");
+                }
             }
 
-            //Insert a new material invoice into database
-            List<Invoice> invoices = InvoiceData.GetAllMaterialInvoices();
-            InvoiceID = InvoiceData.GenerateInvoiceID(invoices);
-            string startingDate = (DateTime.Now).ToString("dd-MM-yyyy");
-            int AccountID = 1; // This one will be provide by RFID after the scaning functionality completed
-            int nbofInvoice = InvoiceData.AddAMaterialInvoice(InvoiceID, startingDate, AccountID, false);
-
-            //Insert rows into material_invoice (association table between material and invoice)
-            int InvoiceItemRows = 0;
-            foreach (var f in ListOfMaterialsInInvoice)
-            {
-                InvoiceItemRows += ItemInvoiceData.AddNewLoanedMaterial(InvoiceID, f.Quantity, f.Item_Id, f.ReturnDate, false);
-            }
-            if (nbofInvoice == 1 && nbofLoanedMaterial >= 1)
-            {
-                MessageBox.Show("Success!");
-                btnPrint.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("Error!");
-            }
-
-            //Update the new balance
-            AccountdData.UpdateAccountBalance(currentAccount.AccountId, currentAccount.Balance - total);
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -334,9 +349,35 @@ namespace JazzEventProject
         {
             customerRFID = phidgetScanner.RFIDtagNr;
             currentAccount = AccountdData.GetEventAccountFromRFID(customerRFID);
-            lblName.Text = currentAccount.FirstName;
-            lblBalance.Text = currentAccount.Balance.ToString("0.00");
+            if (currentAccount != null)
+            {
+                lblName.Text = currentAccount.FirstName;
+                lblBalance.Text = currentAccount.Balance.ToString("0.00");
+            }
+            else { MessageBox.Show("The scanned RFID code does not exist in database."); }
 
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            //Reset the working section for new user
+            dataGridViewMaterial.Rows.Clear();
+            dataGridViewMaterial.Refresh();
+            ListOfLoanedMaterials.Clear();
+            ListOfUpdateMaterials.Clear();
+            ListOfMaterialsInInvoice.Clear();
+        }
+
+        private void LoanMaterial_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                phidgetScanner.CloseRFIDReader();
+            }
+            catch
+            {
+                MessageBox.Show("No open RFID scanners detected.");
+            }
         }
     }
 }
