@@ -96,13 +96,15 @@ namespace JazzEventProject
             {
                 if (phidgetScanner.RFIDtagNr != null)
                 {
-                    accountHelper.CheckIn(currentAccount.AccountId, phidgetScanner.RFIDtagNr);//this method updates the rfid
+                    if (accountHelper.CheckIn(currentAccount.AccountId, phidgetScanner.RFIDtagNr))//this method updates the rfid
                     //of the visitor in the database
-                    currentAccount.ActivateRFID(phidgetScanner.RFIDtagNr);//this method gives the currentAccount the scanned
-                    //RFID number
-                    label16.Text = currentAccount.RFID; 
-                    MessageBox.Show(String.Format("RFID: {0} has been assigned to event account id: {1}"
-                        ,phidgetScanner.RFIDtagNr,currentAccount.AccountId));
+                    {
+                        currentAccount.ActivateRFID(phidgetScanner.RFIDtagNr);//this method gives the currentAccount the scanned
+                        //RFID number
+                        label16.Text = currentAccount.RFID;
+                        MessageBox.Show(String.Format("RFID: {0} has been assigned to event account id: {1}"
+                            , phidgetScanner.RFIDtagNr, currentAccount.AccountId));
+                    }
                 }
                 else { MessageBox.Show("Please scan an RFID."); }
             }
@@ -129,7 +131,5 @@ namespace JazzEventProject
         {
             label18.Text = phidgetScanner.RFIDtagNr;
         }
-
-
     }
 }
