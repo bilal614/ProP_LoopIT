@@ -1,4 +1,5 @@
 ﻿using JazzEventProject.Classes;
+using Phidgets.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace JazzEventProject
         ItemDataHelper ItemData = new ItemDataHelper();
         InvoiceDataHelper InvoiceData = new InvoiceDataHelper();
         Item_InvoiceDataHelper ItemInvoiceData = new Item_InvoiceDataHelper();
+        EventAccountDataHelper AccountdData = new EventAccountDataHelper();
         List<Items> ListOfUpdateFood = new List<Items>();//List of items need to be updated
         List<Items> ListOFFoods = new List<Items>();// All of food from database
         List<Items> ListOfSoldFoods = new List<Items>();
@@ -32,12 +34,24 @@ namespace JazzEventProject
         decimal total = 0;
         int InvoiceID = 0;
 
+        //RFID & payment
+        PhidgetHandler phidgetScanner = new PhidgetHandler();
+        string customerRFID = null;
+        EventAccount currentAccount = null;
        
         private void FoodShop_Load(object sender, EventArgs e)
         {
             tbCurrentDate.Text = DateTime.Now.ToString("d/M/yyyy");
             ListOFFoods = ItemData.GetAllFoods();
             dataGridViewFoodList.DataSource = ListOFFoods;
+
+            //Activate and open RFID
+            try
+            {
+                phidgetScanner.OpenRFIDReader();
+                phidgetScanner.myRFIDReader.Tag += new TagEventHandler(ChangeTagOnForm);
+            }
+            catch { MessageBox.Show("No RFID reader detected."); }
         }
 
 
@@ -126,7 +140,8 @@ namespace JazzEventProject
                 btnPrint.Enabled = true;
             }
 
-
+            //Update the new balance
+            AccountdData.UpdateAccountBalance(currentAccount.AccountId, currentAccount.Balance - total);
         }
 
         //Updated gridview for all common food in the picture lists.
@@ -196,6 +211,8 @@ namespace JazzEventProject
             newrow.Cells[3].Value = selectedItem.Price;
             newrow.Cells[4].Value = selectedItem.Price * quantity;
             dataGridViewFood.Rows.Add(newrow);
+
+        
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -274,6 +291,23 @@ namespace JazzEventProject
         private void btnBackToMainForm_Click(object sender, EventArgs e)
         {
             this.Close();
+            try 
+            { 
+                phidgetScanner.CloseRFIDReader();
+            }
+            catch 
+            {
+                MessageBox.Show("No open RFID scanners detected.");
+            }
+        }
+
+        private void ChangeTagOnForm(object sender, TagEventArgs e)
+        {
+            customerRFID = phidgetScanner.RFIDtagNr;
+            currentAccount = AccountdData.GetEventAccountFromRFID(customerRFID);
+            lblName.Text = currentAccount.FirstName;
+            lblBalance.Text = currentAccount.Balance.ToString("0.00");
+
         }
 
     }
