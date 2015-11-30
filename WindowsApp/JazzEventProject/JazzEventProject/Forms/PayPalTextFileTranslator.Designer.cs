@@ -35,11 +35,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bottomPanel = new System.Windows.Forms.Panel();
+            this.btnAddTextFile = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.btnLoadFileAndSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddTextFile = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textSelectedFile = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bottomPanel.SuspendLayout();
@@ -47,10 +50,10 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(14, 152);
+            this.richTextBox1.Location = new System.Drawing.Point(14, 200);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(967, 329);
+            this.richTextBox1.Size = new System.Drawing.Size(967, 281);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -59,7 +62,7 @@
             // 
             this.lblTxtBox.AutoSize = true;
             this.lblTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTxtBox.Location = new System.Drawing.Point(9, 115);
+            this.lblTxtBox.Location = new System.Drawing.Point(13, 170);
             this.lblTxtBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTxtBox.Name = "lblTxtBox";
             this.lblTxtBox.Size = new System.Drawing.Size(223, 25);
@@ -113,6 +116,19 @@
             this.bottomPanel.Size = new System.Drawing.Size(992, 175);
             this.bottomPanel.TabIndex = 16;
             // 
+            // btnAddTextFile
+            // 
+            this.btnAddTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTextFile.Image = global::JazzEventProject.Properties.Resources.Plus_50;
+            this.btnAddTextFile.Location = new System.Drawing.Point(256, 17);
+            this.btnAddTextFile.Name = "btnAddTextFile";
+            this.btnAddTextFile.Size = new System.Drawing.Size(279, 148);
+            this.btnAddTextFile.TabIndex = 17;
+            this.btnAddTextFile.Text = "Add PayPal text file";
+            this.btnAddTextFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAddTextFile.UseVisualStyleBackColor = true;
+            this.btnAddTextFile.Click += new System.EventHandler(this.btnAddTextFile_Click);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -163,21 +179,34 @@
             this.panel2.Size = new System.Drawing.Size(992, 8);
             this.panel2.TabIndex = 17;
             // 
-            // btnAddTextFile
+            // openFileDialog1
             // 
-            this.btnAddTextFile.Location = new System.Drawing.Point(256, 17);
-            this.btnAddTextFile.Name = "btnAddTextFile";
-            this.btnAddTextFile.Size = new System.Drawing.Size(279, 148);
-            this.btnAddTextFile.TabIndex = 17;
-            this.btnAddTextFile.Text = "Add PayPal text file";
-            this.btnAddTextFile.UseVisualStyleBackColor = true;
-            this.btnAddTextFile.Click += new System.EventHandler(this.btnAddTextFile_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textSelectedFile
+            // 
+            this.textSelectedFile.Location = new System.Drawing.Point(183, 124);
+            this.textSelectedFile.Name = "textSelectedFile";
+            this.textSelectedFile.Size = new System.Drawing.Size(797, 26);
+            this.textSelectedFile.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 127);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 25);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Selected file";
             // 
             // PayPalTextFileTranslator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 672);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textSelectedFile);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.bottomPanel);
             this.Controls.Add(this.HeaderPanel);
@@ -207,5 +236,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnAddTextFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox textSelectedFile;
+        private System.Windows.Forms.Label label1;
     }
 }

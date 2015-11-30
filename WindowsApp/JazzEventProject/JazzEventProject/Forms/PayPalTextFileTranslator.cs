@@ -27,7 +27,7 @@ namespace JazzEventProject
             // I used a predefined name for testing. We will just have to indicate the name 
             // of the paypal textfile for the updates.
             // At the same time it will update the balance of the client
-            read = new PaypalInvoiceReader("test.txt");
+            read = new PaypalInvoiceReader(userSelectedFilePath);
             s = read.readfile();
             
             foreach ( string m in s)
@@ -80,11 +80,11 @@ namespace JazzEventProject
         {
             get
             {
-                return richTextBox1.Text;
+                return textSelectedFile.Text;
             }
             set
             {
-                richTextBox1.Text = value;
+                textSelectedFile.Text = value;
             }
         }
 
