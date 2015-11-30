@@ -63,3 +63,6 @@ C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\Jazz
 C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.csproj.GenerateResource.Cache
 C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.exe
 C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.pdb
+\\vmware-host\Shared Folders\Desktop\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe.config
+\\vmware-host\Shared Folders\Desktop\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.exe
+\\vmware-host\Shared Folders\Desktop\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.pdb
