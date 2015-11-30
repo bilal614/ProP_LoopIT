@@ -1,3 +1,7 @@
+<?php
+echo("hello guys");
+    ?>
+
 <!DOCTYPE html>
 <html>
 <head>
