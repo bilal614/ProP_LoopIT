@@ -56,9 +56,37 @@ namespace JazzEventProject
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Hellow world");
+
         }
+
+        private void btnAddTextFile_Click(object sender, EventArgs e)
+        {
+            LoadNewFile();
+        }
+
+        private void LoadNewFile()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            System.Windows.Forms.DialogResult dr = ofd.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                userSelectedFilePath = ofd.FileName;
+            }
+        }
+        public string userSelectedFilePath
+        {
+            get
+            {
+                return richTextBox1.Text;
+            }
+            set
+            {
+                richTextBox1.Text = value;
+            }
+        }
+
     }
 }
