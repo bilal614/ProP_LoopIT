@@ -41,6 +41,7 @@ namespace JazzEventProject
             catch { MessageBox.Show("No RFID reader detected."); }
         }
 
+        //DataGridViewRow newrow = new DataGridViewRow();
         private void ChangeTagOnForm(object sender, TagEventArgs e)
         {
             label20.Text = phidgetScanner.RFIDtagNr;
@@ -62,17 +63,21 @@ namespace JazzEventProject
                     if (reservation != null)
                     {
                         DataGridViewRow newrow = new DataGridViewRow();
-                        newrow.CreateCells(dataGridView1);
-                        newrow.Cells[0].Value = scannedMember.CampResNo;
-                        newrow.Cells[1].Value = reservation.EndDate;
-                        newrow.Cells[2].Value = reservation.StartDate;
-                        newrow.Cells[3].Value = reservation.CampId;
-                        newrow.Cells[4].Value = scannedMember.GroupId;
-                        newrow.Cells[5].Value = scannedMember.Co_Email;
-                        newrow.Cells[6].Value = eID;
-                        newrow.Cells[7].Value = rfid;
-                        newrow.Cells[8].Value = scannedMember.CheckIn;
-                        dataGridView1.Rows.Add(newrow);
+                        //try
+                        //{
+                            newrow.CreateCells(dataGridView1);
+                            newrow.Cells[0].Value = scannedMember.CampResNo;
+                            newrow.Cells[1].Value = reservation.EndDate;
+                            newrow.Cells[2].Value = reservation.StartDate;
+                            newrow.Cells[3].Value = reservation.CampId;
+                            newrow.Cells[4].Value = scannedMember.GroupId;
+                            newrow.Cells[5].Value = scannedMember.Co_Email;
+                            newrow.Cells[6].Value = eID;
+                            newrow.Cells[7].Value = rfid;
+                            newrow.Cells[8].Value = scannedMember.CheckIn;
+                            dataGridView1.Rows.Add(newrow);
+                        //}
+                        //catch { MessageBox.Show("This reservation information is already displayed."); }
                     }
                     else { MessageBox.Show("This accountId does not have a camping reservation."); }
                 }
