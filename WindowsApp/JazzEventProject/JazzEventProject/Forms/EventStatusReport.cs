@@ -18,7 +18,7 @@ namespace JazzEventProject
             InitializeComponent();
         }
 
-        EventAccountDataHelper accountHelper = new EventAccountDataHelper();
+        EventReportDataHelper eventstat = new EventReportDataHelper();
         private void EventStatusReport_Load(object sender, EventArgs e)
         {
 
@@ -29,13 +29,13 @@ namespace JazzEventProject
 
             DataGridViewRow newrow = new DataGridViewRow();
             newrow.CreateCells(dataGridView1);
-            newrow.Cells[0].Value = 1;
-            newrow.Cells[1].Value = 2;
-            newrow.Cells[2].Value = 3;
-            newrow.Cells[3].Value = 4;
-            newrow.Cells[4].Value = 5;
-            newrow.Cells[5].Value = 5;
-            newrow.Cells[6].Value = 5;
+            newrow.Cells[0].Value = eventstat.NrOfReg();
+            newrow.Cells[1].Value = eventstat.TickRev();
+            newrow.Cells[2].Value = eventstat.NrOfCampRented();
+            newrow.Cells[3].Value = eventstat.CampRev();
+            newrow.Cells[4].Value = eventstat.FoodRev();
+            newrow.Cells[5].Value = eventstat.LoanMatRev();
+            newrow.Cells[6].Value = eventstat.TickRev() + eventstat.CampRev() + eventstat.FoodRev() + eventstat.LoanMatRev();
             dataGridView1.Rows.Add(newrow);
         }
 
