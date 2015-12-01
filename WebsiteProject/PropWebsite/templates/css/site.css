@@ -8,7 +8,7 @@ body {
   color:#333;
   text-align:center;
   font-family: arial;
-  background: url(jazz.jpg) no-repeat center center fixed; 
+  background: url(../images/jazz.jpg) no-repeat center center fixed; 
   background-size: cover;
 }
 
@@ -26,7 +26,7 @@ body {
 }
 
 .BG{
-    background: url(earth.jpg);
+    background: url(../images/earth.jpg);
     background-size: 100%;
 }
 .footer {
@@ -239,7 +239,7 @@ img map{
     background: #fff; 
     background: -moz-linear-gradient(#fff, #f9fdff);
     background: -o-linear-gradient(#fff, #f9fdff);
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff)); /
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff)); 
     background: -webkit-linear-gradient(#fff, #f9fdff);
     padding:20px;
     border-color:rgba(4, 129, 177, 0.4);
@@ -316,7 +316,7 @@ img map{
 #RSwapper > form > div {
     background: -moz-linear-gradient(#fff, #f9fdff);
     background: -o-linear-gradient(#fff, #f9fdff);
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff)); /
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff)); 
     background: -webkit-linear-gradient(#fff, #f9fdff);
     padding:20px;
     border-color:rgba(4, 129, 177, 0.4);

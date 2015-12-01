@@ -1,22 +1,18 @@
-<?php
-echo("hello guys");
-    ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>JAZZ Festival</title>
-    <link href="site.css" rel="stylesheet">  
+    <link href="templates/css/site.css" rel="stylesheet">  
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 <body><h1>
-    <img src="logo.png" alt="logo" style="width:400px;height:70px" />
+        <img src="templates/images/logo.png" alt="logo" style="width:400px;height:70px" />
     </h1>
     <div class="container">
         <div class="navigation">
             <ul class="nav">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.php">Home</a>
                 </li>
                 <li>
                     <a href="#">News</a>
@@ -34,21 +30,21 @@ echo("hello guys");
                 <li>
                     <a href="#">Guide</a>
                     <ul>
-                        <li><a href="Maps.html">Travel</a></li>
-                        <li><a href="festivalmap.html">Festival Map</a></li>
+                        <li><a href="webPages/publicPages/Maps.html">Travel</a></li>
+                        <li><a href="webPages/publicPages/festivalmap.html">Festival Map</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="Resgister.html">Log in\ Register</a>
+                    <a href="webPages/publicPages/Resgister.html">Log in\ Register</a>
                 </li>
                 <li>
-                    <a href="Contact_US.html">Contacts</a>
+                    <a href="webPages/publicPages/Contact_US.html">Contacts</a>
                 </li>
             </ul>
         </div>
         <div class="content BG">
             <p>
-                <img src="jazz.png" alt="logo1" style="width:500px;height:300px; padding-top: 40px;">
+                <img src="templates/images/jazz.png" alt="logo1" style="width:500px;height:300px; padding-top: 40px;">
             </p>
         
 <div class="countdown countdown-container">
@@ -111,17 +107,17 @@ echo("hello guys");
      </div>        
     <div class="footer">
          <div class= "container">
-          <a href="https://www.facebook.com/" ><img src="fb.png" alt="facebook logo"></a>
-         <a href="https://twitter.com/"><img src="twitter.png" alt="twitter logo"></a>
+             <a href="https://www.facebook.com/" ><img src="templates/images/fb.png" alt="facebook logo"></a>
+             <a href="https://twitter.com/"><img src="templates/images/twitter.png" alt="twitter logo"></a>
         <span id="footer">Follow us on:</span>
         <div class = "clear"></div>
          </div>
     </div>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-            <script src="jquery.countdown.min.js"></script>
-            <script src="script.js"></script>
-            <script type="text/javascript" src="kinetic.js"></script>
-            <script type="text/javascript" src="jquery.final-countdown.js"></script>
+            <script src="js/query.countdown.min.js"></script>
+            <script src="js/script.js"></script>
+            <script type="text/javascript" src="js/kinetic.js"></script>
+            <script type="text/javascript" src="js/jquery.final-countdown.js"></script>
             <script type="text/javascript">
             $('.countdown').final_countdown({
                 start: '1441104300',
