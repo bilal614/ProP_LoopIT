@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php
-        include('../includes/headTag.php');
+     <?php
+        include('../includes/subPages/headTag.php');
     ?>
 <body>
     <h1>
@@ -10,7 +10,7 @@
     </h1>
     <div class="container">
          <?php
-            include('../includes/header.php');
+            include('../includes/subPages/header.php');
         ?>
         <div class="content">
             <div id="Regwrapper">
@@ -32,7 +32,7 @@
         </div>
     </div>
     <?php
-       include('../includes/footer.php');
-    ?>              
+        include('../includes/subPages/footer.php');
+    ?>             
 </body>
 </html>

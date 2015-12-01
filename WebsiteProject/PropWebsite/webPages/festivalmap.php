@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php
-        include('../includes/headTag.php');
+     <?php
+        include('../includes/subPages/headTag.php');
     ?>
 </head>
 <body onload="initialize()">
@@ -11,7 +11,7 @@
     </h1>
     <div class="container">
         <?php
-            include('../includes/header.php');
+            include('../includes/subPages/header.php');
         ?>
         <div class="content">
             <p id="route">Festival Map</p>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <?php
-       include('../includes/footer.php');
-    ?>  
+        include('../includes/subPages/footer.php');
+    ?> 
 </body>
 </html>

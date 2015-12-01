@@ -286,7 +286,7 @@ img map{
     box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
     opacity:0.6;
 }
-#Regwrapper a.register{
+#Regwrapper input[type="submit"]{
     background: #222;
     border: none;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
@@ -298,7 +298,7 @@ img map{
     padding: 5px 22px;
    
 }
-#Regwrapper a.register:hover{
+#Regwrapper input[type="submit"]:hover{
     opacity: 0.7;
     text-decoration: none;
 }

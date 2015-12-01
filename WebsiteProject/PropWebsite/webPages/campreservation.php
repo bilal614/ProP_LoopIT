@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php
-        include('../includes/headTag.php');
+     <?php
+        include('../includes/subPages/headTag.php');
     ?>
 </head>
 <body>
@@ -10,8 +10,8 @@
     <img src="logo.png" alt="logo" style="width:400px;height:70px" />
     </h1>
     <div class="container">
-        <?php
-            include('../includes/header.php');
+         <?php
+            include('../includes/subPages/header.php');
         ?>
         <div class="content">
            <div id="Regwrapper">
@@ -58,7 +58,7 @@
         </div>
     </div>
     <?php
-       include('../includes/footer.php');
-    ?>  
+        include('../includes/subPages/footer.php');
+    ?> 
 </body>
 </html>

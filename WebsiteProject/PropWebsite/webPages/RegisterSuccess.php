@@ -2,7 +2,7 @@
 <html>
 <head>
      <?php
-        include('../includes/headTag.php');
+        include('../includes/subPages/headTag.php');
     ?>
     <!-- Bootrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -13,7 +13,7 @@
     </h1>
     <div class="container">
          <?php
-            include('../includes/header.php');
+            include('../includes/subPages/header.php');
         ?>
         <div class="content">
            <div id="RSwapper">
@@ -52,9 +52,9 @@
             </div><!--end div#RSwapper-->
          </div><!--End div.content-->
     </div>
-    <?php
-       include('../includes/footer.php');
-    ?>  
+   <?php
+        include('../includes/subPages/footer.php');
+    ?> 
             
 </body>
 </html>
