@@ -5,7 +5,7 @@
     <link href="site.css" rel="stylesheet">  
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
-<body>
+<body onload="initialize()">
     <h1>
     <img src="logo.png" alt="logo" style="width:400px;height:70px" />
     </h1>
@@ -13,10 +13,10 @@
         <div class="navigation">
             <ul class="nav">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="../index.php">Home</a>
                 </li>
                 <li>
-                    <a href="#">News</a>
+                    <a href="News_Page.php">News</a>
                 </li>
                 <li>
                     <a href="#">Program</a>
@@ -31,38 +31,29 @@
                 <li>
                     <a href="#">Guide</a>
                     <ul>
-                        <li><a href="Maps.html">Travel</a></li>
-                        <li><a href="festivalmap.html">Festival Map</a></li>
+                        <li><a href="Maps.php">Travel</a></li>
+                        <li><a href="festivalmap.php">Festival Map</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="Resgister.html">Log in\ Register</a>
+                    <a href="Resgister.php">Log in\ Register</a>
                 </li>
                 <li>
-                    <a href="Contact_US.html">Contacts</a>
+                    <a href="Contact_US.php">Contacts</a>
                 </li>
             </ul>
         </div>
         <div class="content">
-        <div id="Regwrapper">
-            <header class="regHeader">Please fill the form below to contact us!<span></span></header>
-            <form action="" method="post">
-                <div id ="Cont">
-                                <label>Name:</label><br/>
-                                <input type="text", name="name" required="required"  placeholder="Full Name"/><br/>
-                
-                                <label>Email:</label><br/>
-                                <input type="text", name="name" required="required"  placeholder="Email address"/ ><br/>
-                            <label>Message:</label><br/>
-                            <textarea cols="50" rows="10" required="required" > </textarea>
-                            <br/>
-                            <input type="Submit" name="submit" value="Send"/>
-                    </div>
-                        </form>  
-                        </div>
-                   </div>
-                </form>
-            </div>
+            <p id="route">How to get there?</p>
+            <p id="location">Festival location<br></p>
+            <p id="location2">This year's JAZZ FESTIVAL will be held Molecaten Park Kuierpad, 7853 TA Wezuperbrug, Netherlands. Gate coordinates: 52.840494, 6.723770</p>
+            <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2409.9595548428388!2d6.721851615722525!3d52.841113820134304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b7e010cfe19b33%3A0xe1bd06427483d7af!2sMolecaten+Park+Kuierpad!5e0!3m2!1slt!2snl!4v1444651184759" width="800" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
+            <p id="h2travel">TRAVEL BY BUS / TRAIN</p>
+            <p id="travelby">&#8594;Train: Eindhoven &#8594; Emmen<br>&#8594;Train: Amsterdam &#8594; Emmen<br>&#8594;Bus: Eindhoven &#8594; Emmen<br>&#8594;Bus: Amsterdam &#8594; Emmen<br>&#8594;Bus: Maastricht &#8594; Emmen<br> </p>
+            <p id="h2travel">TAXI NUMBERS IN EMMEN</p>
+            <p id="travelby"><b>+31402871111</b><br><b>+31402871001</b></p>
+        </div>
+        </div>
         </div>
      <div class="footer">
          <div class= "container">
@@ -75,6 +66,6 @@
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
             <script src="jquery.countdown.min.js"></script>
             <script src="script.js"></script>
-    </div>
+            <script src="https://maps.googleapis.com/maps/api/js"></script>
 </body>
 </html>

@@ -13,10 +13,10 @@
         <div class="navigation">
             <ul class="nav">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="../index.php">Home</a>
                 </li>
                 <li>
-                    <a href="#">News</a>
+                    <a href="News_Page.php">News</a>
                 </li>
                 <li>
                     <a href="#">Program</a>
@@ -31,15 +31,15 @@
                 <li>
                     <a href="#">Guide</a>
                     <ul>
-                        <li><a href="Maps.html">Travel</a></li>
-                        <li><a href="festivalmap.html">Festival Map</a></li>
+                        <li><a href="Maps.php">Travel</a></li>
+                        <li><a href="festivalmap.php">Festival Map</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="Resgister.html">Log in\ Register</a>
+                    <a href="Resgister.php">Log in\ Register</a>
                 </li>
                 <li>
-                    <a href="Contact_US.html">Contacts</a>
+                    <a href="Contact_US.php">Contacts</a>
                 </li>
             </ul>
         </div>
@@ -73,7 +73,7 @@
                     <div class="bg-warning">The entrance price is 55 euro</div>
                     <div class="bg-info">Would you like to pay right now?</div>
                     <div >
-                        <a class="btn btn-default white-tooltip" href="campreservation.html" title="If you pay right now, you can make the camp reservation and get 10 euro for discount">Pay now</a>
+                        <a class="btn btn-default white-tooltip" href="campreservation.php" title="If you pay right now, you can make the camp reservation and get 10 euro for discount">Pay now</a>
                         <button type="button" class="btn btn-default white-tooltip" data-toggle="tooltip" data-placement="bottom" title="If you pay at the event, you cannot make the camp reservation">Pay letter                          </button>
                     </div>
                 </div>

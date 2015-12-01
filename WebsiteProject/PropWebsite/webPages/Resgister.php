@@ -13,10 +13,10 @@
         <div class="navigation">
             <ul class="nav">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="../index.php">Home</a>
                 </li>
                 <li>
-                    <a href="#">News</a>
+                    <a href="News_Page.php">News</a>
                 </li>
                 <li>
                     <a href="#">Program</a>
@@ -31,15 +31,15 @@
                 <li>
                     <a href="#">Guide</a>
                     <ul>
-                        <li><a href="Maps.html">Travel</a></li>
-                        <li><a href="festivalmap.html">Festival Map</a></li>
+                        <li><a href="Maps.php">Travel</a></li>
+                        <li><a href="festivalmap.php">Festival Map</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="Resgister.html">Log in\ Register</a>
+                    <a href="Resgister.php">Log in\ Register</a>
                 </li>
                 <li>
-                    <a href="Contact_US.html">Contacts</a>
+                    <a href="Contact_US.php">Contacts</a>
                 </li>
             </ul>
         </div>
@@ -64,7 +64,7 @@
                             <label for="email" class="uname"> Your email </label>
                             <input type="text" name="email" placeholder="Email"/>
                         </div>  
-                        <a href="RegisterSuccess.html" class="register">Register</a>
+                        <a href="RegisterSuccess.php" class="register">Register</a>
                     </div>    
                 </form>
             </div>

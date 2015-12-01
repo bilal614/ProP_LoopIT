@@ -15,7 +15,7 @@
                     <a href="index.php">Home</a>
                 </li>
                 <li>
-                    <a href="#">News</a>
+                    <a href="webPages/News_Page.php">News</a>
                 </li>
                 <li>
                     <a href="#">Program</a>
@@ -30,15 +30,15 @@
                 <li>
                     <a href="#">Guide</a>
                     <ul>
-                        <li><a href="webPages/publicPages/Maps.html">Travel</a></li>
-                        <li><a href="webPages/publicPages/festivalmap.html">Festival Map</a></li>
+                        <li><a href="webPages/Maps.php">Travel</a></li>
+                        <li><a href="webPages/festivalmap.php">Festival Map</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="webPages/publicPages/Resgister.html">Log in\ Register</a>
+                    <a href="webPages/Resgister.php">Log in\ Register</a>
                 </li>
                 <li>
-                    <a href="webPages/publicPages/Contact_US.html">Contacts</a>
+                    <a href="webPages/Contact_US.php">Contacts</a>
                 </li>
             </ul>
         </div>
