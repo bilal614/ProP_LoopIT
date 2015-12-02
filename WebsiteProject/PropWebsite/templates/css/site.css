@@ -432,3 +432,53 @@ text-align: left;
 .table1 td:hover{
     background-color: bisque;
 }
+
+/*The following is the CSS for the personalPages of the user.*/
+#mainInfoColumn{
+    max-width: 55%;
+    float: left;
+    position: relative;
+}
+
+#welcomeContainer{
+    position: absolute;
+    top:10px;
+    width:550px;
+}
+
+#welcomeMsg{
+    font-family: Helvetica,sans-serif;
+    font-size: 25px;
+}
+#toDoList{
+    float: right;
+    padding: 12px;
+    position:relative;
+    width:35%;
+    border: solid;
+    top:8px;
+    right:8px;
+}
+.ticketReminder{
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+p.personalPage{
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: left;
+}
+
+.userInfo{
+    float: left;
+    padding: 12px;
+    position:relative;
+    width:105%;
+    height: 45%;
+    border: solid;
+    top:8px;
+    left:8px;
+    text-align: left;
+    margin: 5px;
+}
