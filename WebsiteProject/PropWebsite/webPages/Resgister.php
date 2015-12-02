@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>
-    <img src="logo.png" alt="logo" style="width:400px;height:70px" />
+    <img src="../templates/images/logo.png" alt="logo" style="width:400px;height:70px" />
     </h1>
     <div class="container">
          <?php
