@@ -10,12 +10,12 @@ $(document).ready(function() {
             rules: {
                 'first_name': {
                     required: true,
-                    minlength: 5,
+                    minlength: 3,
                     maxlength: 20
                 },
                 'last_name': {
                     required: true,
-                    minlength: 5,
+                    minlength: 3,
                     maxlength: 20
                 },
                 'phone': {
@@ -27,6 +27,17 @@ $(document).ready(function() {
                     email: true,
                     minlength: 5,
                     maxlength: 100
+                },
+                  'Password': {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 25,
+                },
+                    'RepeatPassword': {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 25,
+                    equalTo: "#password"
                 }
             }
         });

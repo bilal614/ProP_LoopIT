@@ -24,7 +24,7 @@
             </ul>
         </li>
         <li>
-            <a href="../webPages/Resgister.php">Log in\ Register</a>
+            <a href="../webPages/Register.php">Log in\ Register</a>
         </li>
         <li>
             <a href="../webPages/Contact_US.php">Contacts</a>
