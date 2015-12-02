@@ -24,7 +24,6 @@ namespace JazzEventProject.Classes
                 }
                 catch
                 {
-                   MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                    return -1;
                 }
                 finally
@@ -34,9 +33,9 @@ namespace JazzEventProject.Classes
         
         }
 
-        public int TickRev()
+        public int TickWithDiscount()
         {
-            String sql = "SELECT SUM(BALANCE) FROM E_ACCOUNT ";
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE Pay_InAdvance = 1 ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -48,6 +47,28 @@ namespace JazzEventProject.Classes
             catch
             {
             return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        public int TickWithoutDiscount()
+        {
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE Payment_Status = 1 AND Pay_InAdvance = 0";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
             }
             finally
             {
@@ -68,7 +89,6 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                 return -1;
             }
             finally
@@ -79,7 +99,7 @@ namespace JazzEventProject.Classes
         }
         public int CampRev()
         {
-            String sql = "SELECT SUM(*) FROM E_ACCOUNT ";
+            String sql = "SELECT COUNT(*) FROM CAMPING_RES ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -90,7 +110,6 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                 return -1;
             }
             finally
@@ -101,7 +120,7 @@ namespace JazzEventProject.Classes
         }
         public int FoodRev()
         {
-            String sql = "SELECT SUM(*) FROM E_ACCOUNT ";
+            String sql = "SELECT SUM(Quantity_Sold * 50) FROM FOOD_INVOICE ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -112,8 +131,7 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
-                return -1;
+               return -1;
             }
             finally
             {
@@ -123,7 +141,7 @@ namespace JazzEventProject.Classes
         }
         public int LoanMatRev()
         {
-            String sql = "SELECT SUM(*) FROM E_ACCOUNT ";
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -134,7 +152,6 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                 return -1;
             }
             finally
