@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+    <head></head>
      <?php
         include('../includes/subPages/headTag.php');
+        include('../model/User.DAO.php');
     ?>
 <body>
     <h1>
@@ -17,7 +18,7 @@
             <div class="loginMain">
                 <div class="login-form">
                     <h1>Login</h1>
-                    <form action = "" method="post">
+                    <form action = "Login.php" method="post">
                         <input name = 'email' type="text" value="Email" class="text" placeholder="Email">
                         <input name = 'password' type="password" value="Password" placeholder="Password">
                         <div class="submit">
@@ -27,6 +28,13 @@
                     </form>
             </div>
             </div>
+            <?php
+        if(isset($_POST["loginForm"])){
+            $logVal=checkLogin($_POST["email"], $_POST["password"]);
+            if($logVal){
+                ?><h1 style="color: black;">LogIn Successful!</h1>   <?php
+                }else{ ?> <h1 style="color: black;">LogIn Unsuccessful.</h1>  <?php }
+        }?>
         </div>
     </div>
     <?php

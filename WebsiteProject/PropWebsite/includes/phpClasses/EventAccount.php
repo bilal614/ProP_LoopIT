@@ -44,6 +44,6 @@ class EventAccount {
     public function setEmail($email){$this->Email=$email;}       
     public function setPhone($phone){$this->Phone=$phone;}       
     public function setBalance($bal){$this->Balance=$bal;}       
-    public function setPmtStart($pmtStatus){$this->PaymentStatus=$pmtStatus;}
+    public function setPmtStat($pmtStatus){$this->PaymentStatus=$pmtStatus;}
     public function setPmtAdv($pmtAdvance){$this->PayInAdvance=$pmtAdvance;}
 }

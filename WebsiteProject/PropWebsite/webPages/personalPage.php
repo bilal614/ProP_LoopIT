@@ -11,6 +11,7 @@
     <div class="container">
          <?php
             include('../includes/subPages/header.php');
+            include '../model/User.DAO.php';
         ?>
         <div class="content"><!--all content for the content container goes in here!-->
             <div id="mainInfoColumn">
@@ -20,11 +21,15 @@
                         <p class="personalPage">Welcome to your personal page. Here you can view important
                             personal information and reminders before the event.</p>
                         <div class="userInfo">
-                            Email/User name: email@example.com<br>
+                            <?php 
+                            $eventAct=new EventAccount();
+                            $eventAct=  fetchEventAccount("martin@gmail.com");
+                            ?>
+                            Email/User name: <?php echo $eventAct->getEmail();?><br>
                             
-                            Name: Michael Jackson<br>
+                            Name: <?php echo $eventAct->getFirstName()." ".$eventAct->getLastName();?><br>
                             
-                            Event ID:4<br> 
+                            Event ID:<?php echo $eventAct->getEventID();?><br> 
                             IMPORTANT: Your personal event ID will be used as the key for the entrance to this event.
                         </div>
                         <div></div>

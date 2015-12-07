@@ -28,24 +28,24 @@ try{
         
         $dbSelect=mysql_select_db('prop') || die($conn_error);//selects the database we want from the mysql databases
 
-echo'Connection successful.'."<br>";
+//echo'Connection successful.'."<br>";
 
 //example code to see db connection
-$exampleQuery="SELECT * FROM E_ACCOUNT;";
-$query_run=  mysql_query($exampleQuery);
+//$exampleQuery="SELECT * FROM E_ACCOUNT;";
+//$query_run=  mysql_query($exampleQuery);
 
-while($QueryRow = mysql_fetch_assoc($query_run)){
-    $id= $QueryRow['Account_ID'];
-    $rfid=$QueryRow['RFID_Code'];
-    $bal=$QueryRow['Balance'];
-    $Email=$QueryRow['E_mail'];
-    $Fname=$QueryRow['First_Name'];
-    $Lname=$QueryRow['Last_Name'];
-    $phone=$QueryRow['Phone'];
-    $pmtStat=$QueryRow['Payment_Status'];
-    $inAdv=$QueryRow['Pay_InAdvance'];
+//while($QueryRow = mysql_fetch_assoc($query_run)){
+  //  $id= $QueryRow['Account_ID'];
+    //$rfid=$QueryRow['RFID_Code'];
+    //$bal=$QueryRow['Balance'];
+    //$Email=$QueryRow['E_mail'];
+    //$Fname=$QueryRow['First_Name'];
+    //$Lname=$QueryRow['Last_Name'];
+    //$phone=$QueryRow['Phone'];
+    //$pmtStat=$QueryRow['Payment_Status'];
+    //$inAdv=$QueryRow['Pay_InAdvance'];
     
-    $s="$id $Fname $Lname";
-echo ($s)."<br>";}
+    //$s="$id $Fname $Lname";
+//echo ($s)."<br>";}
 
 ?>
