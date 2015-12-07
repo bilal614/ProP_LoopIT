@@ -35,7 +35,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="webPages/Resgister.php">Log in\ Register</a>
+                    <a href="#">Log in\ Register</a>
+                    <ul>
+                        <li><a href="webPages/Login.php">Login</a></li>
+                        <li><a href="webPages/Register.php">Register</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="webPages/Contact_US.php">Contacts</a>

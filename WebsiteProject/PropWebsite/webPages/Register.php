@@ -1,3 +1,6 @@
+<?php
+    
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +25,7 @@
                <form action="" method="post" id="registerForm">
                     <div>
                         <div class="form-group">
-                            <label for="first_name" class="uname" > First name </label>
+                            <label for="first_name" class="uname"> First name </label>
                             <input type="text" name="first_name" id="first_name" placeholder="First Name" />
                         </div>
                         <div class="form-group">
@@ -37,8 +40,16 @@
                             <label for="email" class="uname"> Your email </label>
                             <input type="text" name="email" id="email" placeholder="Email"/>
                         </div>  
+                         <div class="form-group">
+                            <label for="Password" >Password</label>
+                            <input type="password" name="Password" id="Password" value="" maxLength="40"  placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="RepeatPassword" class="control-label required">Repeat password</label>
+                            <input type="password" name="RepeatPassword" id="RepeatPassword" value="" maxLength="40"  placeholder="Repeat password" />
+                        </div>      
                         <div>
-                             <input type="submit" value="SUBMIT" name="">
+                             <input type="submit" value="CREATE YOUR ACCOUNT" name="">
                         </div>
                     </div>    
                 </form>

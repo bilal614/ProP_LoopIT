@@ -57,7 +57,7 @@ namespace JazzEventProject.Classes
 
         public int TickWithoutDiscount()
         {
-            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE Payment_Status = 1 AND Pay_InAdvance = 0";
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE (Payment_Status = 1 AND Pay_InAdvance = 0)";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try

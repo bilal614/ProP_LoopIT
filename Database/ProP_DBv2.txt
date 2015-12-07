@@ -36,6 +36,16 @@ CREATE TABLE E_ACCOUNT
   ) ;
   ALTER TABLE E_ACCOUNT ADD CONSTRAINT E_ACCOUNT_PK PRIMARY KEY ( Account_ID ) ;
 
+CREATE TABLE USER_ACCT
+(
+    UserEmail VARCHAR(50) NOT NULL,
+    PassWord VARCHAR(25) NOT NULL,
+    Hash VARCHAR(32) NOT NULL,
+    Active INT(1) NOT NULL DEFAULT '0'
+);
+ALTER TABLE USER_ACCT ADD CONSTRAINT UserEmail_PK PRIMARY KEY (UserEmail);
+ALTER TABLE E_ACCOUNT ADD CONSTRAINT UserAcct_E_Acct_email_FK FOREIGN KEY (E_mail) REFERENCES USER_ACCT(UserEmail);
+
 CREATE TABLE FOOD
   (
     Food_ID       INT NOT NULL ,
@@ -144,6 +154,22 @@ ALTER TABLE MATERIAL_INVOICE DROP FOREIGN KEY MATERIAL_INVOICE_MATERIAL_FK;
 ALTER TABLE MATERIAL_INVOICE DROP FOREIGN KEY MATERIAL_INVOICE_M_INVOICE_FK;
 
 ALTER TABLE M_INVOICE DROP FOREIGN KEY M_INVOICE_E_ACCOUNT_FK;
+
+/*Insert Data into UserAcct table*/
+INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+VALUES('martin@gmail.com','password','sajhdkalfjlkasjdlskjd', 1);
+INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+VALUES('ron_will@gmail.com','password','sjdlaksfjkaaskjasdq',1);
+INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+VALUES('Mike@gmail.com', 'password','qoirowueqroiureiw',1);
+INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+VALUES('Chirs@gmail.com','password','zbnxcmnxzcmnvb',1);
+INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+VALUES('Devil@gmail.com','password','qoiwruytweqouewqi',1);
+INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+VALUES('Joe@gmail.com', 'password','mzxnvcmbczvmzxnk', 1);
+INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+VALUES('AliceSim@gmail.com', 'password','qpwoireuriwer', 1);
 
 /*Insert data into Camp Table*/
 INSERT INTO Camp(CampID, Description, MaxPerson, Available)
