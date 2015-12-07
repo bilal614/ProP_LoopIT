@@ -1,14 +1,11 @@
-<?php
-    
-?>
 <!DOCTYPE html>
 <html>
 <head>
      <?php
         include('../includes/subPages/headTag.php');
     ?>
-    <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="../js/additional-methods.min.js" type="text/javascript"></script>
+<!--    <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../js/additional-methods.min.js" type="text/javascript"></script>-->
     
 </head>
 <body>
@@ -42,11 +39,11 @@
                         </div>  
                          <div class="form-group">
                             <label for="Password" >Password</label>
-                            <input type="password" name="Password" id="Password" value="" maxLength="40"  placeholder="Password" />
+                            <input type="password" name="password" id="Password" value="" maxLength="40"  placeholder="Password" />
                         </div>
                         <div class="form-group">
                             <label for="RepeatPassword" class="control-label required">Repeat password</label>
-                            <input type="password" name="RepeatPassword" id="RepeatPassword" value="" maxLength="40"  placeholder="Repeat password" />
+                            <input type="password" name="repeatpassword" id="RepeatPassword" value="" maxLength="40"  placeholder="Repeat password" />
                         </div>      
                         <div>
                              <input type="submit" value="CREATE YOUR ACCOUNT" name="">

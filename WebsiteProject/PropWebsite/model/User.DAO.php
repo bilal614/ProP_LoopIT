@@ -1,7 +1,7 @@
         <?php
         
-        include '../config/DBconnection.inc.php';
-        include '../includes/phpClasses/EventAccount.php';
+        include 'DBconnection.inc.php';
+        include 'EventAccount.php';
         
         //this function takes in an email as an argument and returns 
         function fetchEventAccount($email){
@@ -46,4 +46,7 @@
             {return true;}
             else {return false;}
         }
+        
+        //This method will insert the user's info into database
+        
         ?>

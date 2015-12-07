@@ -1,10 +1,9 @@
-
+<?php include ('../model/User.DAO.php')?>
 <!DOCTYPE html>
 <html>
     <head></head>
      <?php
         include('../includes/subPages/headTag.php');
-        include('../model/User.DAO.php');
     ?>
 <body>
     <h1>
@@ -29,12 +28,12 @@
             </div>
             </div>
             <?php
-        if(isset($_POST["loginForm"])){
-            $logVal=checkLogin($_POST["email"], $_POST["password"]);
-            if($logVal){
-                ?><h1 style="color: black;">LogIn Successful!</h1>   <?php
-                }else{ ?> <h1 style="color: black;">LogIn Unsuccessful.</h1>  <?php }
-        }?>
+                if(isset($_POST["loginForm"])){
+                    $logVal=checkLogin($_POST["email"], $_POST["password"]);
+                    if($logVal){
+                        ?><h1 style="color: black;">LogIn Successful!</h1>   <?php
+                        }else{ ?> <h1 style="color: black;">LogIn Unsuccessful.</h1>  <?php }
+            }?>
         </div>
     </div>
     <?php

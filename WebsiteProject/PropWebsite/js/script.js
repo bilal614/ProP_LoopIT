@@ -28,16 +28,16 @@ $(document).ready(function() {
                     minlength: 5,
                     maxlength: 100
                 },
-                  'Password': {
+                  'password': {
                     required: true,
                     minlength: 8,
-                    maxlength: 25,
+                    maxlength: 25
                 },
-                    'RepeatPassword': {
+                    'repeatpassword': {
                     required: true,
-                    minlength: 8,
-                    maxlength: 25,
+                    password_again: {
                     equalTo: "#password"
+                    }
                 }
             }
         });
