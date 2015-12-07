@@ -26,17 +26,21 @@ namespace JazzEventProject
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
-            DataGridViewRow newrow = new DataGridViewRow();
+             DataGridViewRow newrow = new DataGridViewRow();
             newrow.CreateCells(dataGridView1);
-            newrow.Cells[0].Value = eventstat.NrOfReg();
-            newrow.Cells[1].Value = eventstat.TickRev();
-            newrow.Cells[2].Value = eventstat.NrOfCampRented();
-            newrow.Cells[3].Value = eventstat.CampRev();
-            newrow.Cells[4].Value = eventstat.FoodRev();
-            newrow.Cells[5].Value = eventstat.LoanMatRev();
-            newrow.Cells[6].Value = eventstat.TickRev() + eventstat.CampRev() + eventstat.FoodRev() + eventstat.LoanMatRev();
+            newrow.Cells[0].Value = eventstat.NrOfReg() +" Users";
+            newrow.Cells[1].Value = eventstat.TickWithDiscount() * 45 + eventstat.TickWithoutDiscount() * 50 + " €";
+            newrow.Cells[2].Value = eventstat.NrOfCampRented() + " rented camps";
+            newrow.Cells[3].Value = eventstat.CampRev() + " €";
+            newrow.Cells[4].Value = eventstat.FoodRev() + " €";
+            newrow.Cells[5].Value = eventstat.LoanMatRev() + " €";
+            newrow.Cells[6].Value = eventstat.TickWithDiscount() * 45 + eventstat.TickWithoutDiscount() * 50 + eventstat.CampRev() + eventstat.FoodRev() + eventstat.LoanMatRev() + " €";
             dataGridView1.Rows.Add(newrow);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
      }

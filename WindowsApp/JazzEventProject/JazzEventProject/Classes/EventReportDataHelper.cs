@@ -24,7 +24,6 @@ namespace JazzEventProject.Classes
                 }
                 catch
                 {
-                   MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                    return -1;
                 }
                 finally
@@ -34,9 +33,9 @@ namespace JazzEventProject.Classes
         
         }
 
-        public int TickRev()
+        public int TickWithDiscount()
         {
-            String sql = "SELECT SUM(BALANCE) FROM E_ACCOUNT ";
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE Pay_InAdvance = 1 ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -48,6 +47,28 @@ namespace JazzEventProject.Classes
             catch
             {
             return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        public int TickWithoutDiscount()
+        {
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE (Payment_Status = 1 AND Pay_InAdvance = 0)";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
             }
             finally
             {
@@ -68,7 +89,6 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                 return -1;
             }
             finally
@@ -79,7 +99,7 @@ namespace JazzEventProject.Classes
         }
         public int CampRev()
         {
-            String sql = "SELECT SUM(*) FROM E_ACCOUNT ";
+            String sql = "SELECT (COUNT( DISTINCT CampRes_No)*30 + COUNT(GroupID)*20) FROM GROUPMEMBERS ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -90,7 +110,6 @@ namespace JazzEventProject.Classes
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                 return -1;
             }
             finally
@@ -99,21 +118,20 @@ namespace JazzEventProject.Classes
             }
 
         }
-        public int FoodRev()
+        public decimal FoodRev()
         {
-            String sql = "SELECT SUM(*) FROM E_ACCOUNT ";
+            String sql = "SELECT SUM(i.Quantity_Sold * f.Food_Price) FROM FOOD_INVOICE i INNER JOIN FOOD f GROUP BY i.Food_ID ";//ON (i.Food_ID = f.Food_ID)
             MySqlCommand command = new MySqlCommand(sql, connection);
-            int number = 0;
+            decimal number = 0;
             try
             {
                 connection.Open();
-                number = Convert.ToInt32(command.ExecuteScalar());
+                number = Convert.ToDecimal(command.ExecuteScalar());
                 return number;
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
-                return -1;
+               return -1;
             }
             finally
             {
@@ -121,20 +139,19 @@ namespace JazzEventProject.Classes
             }
 
         }
-        public int LoanMatRev()
+        public decimal LoanMatRev()
         {
-            String sql = "SELECT SUM(*) FROM E_ACCOUNT ";
+            String sql = "SELECT ROUND(SUM(im.Material_ID * m.Loaning_Price), 2) FROM MATERIAL m INNER JOIN MATERIAL_INVOICE im GROUP BY im.Material_ID ";//ON (m.Material_ID = im.Material_ID)
             MySqlCommand command = new MySqlCommand(sql, connection);
-            int number = 0;
+            decimal number = 0;
             try
             {
                 connection.Open();
-                number = Convert.ToInt32(command.ExecuteScalar());
+                number = Convert.ToDecimal(command.ExecuteScalar());
                 return number;
             }
             catch
             {
-                MessageBox.Show("Error processing your request. Make sure you are coneected to the server and that you used the right table. ");
                 return -1;
             }
             finally
