@@ -47,6 +47,18 @@
             else {return false;}
         }
         
-        //This method will insert the user's info into database
+        //this method will return true if the given user's email is not exist in the database
+        //used for registration 
+        function user_exists($userEmail){
+            $query = "SELECT UserEmail FROM USER_ACCT WHERE UserEmail = '$userEmail';";
+            $query_run = mysql_query($query); //return false if query cannot run
+            //Check the result of query??
+            if (mysql_num_rows($query_run) != 0){
+                return false; // user's email exist on the database;
+            }
+            else{
+                return true;
+            }
+        }
         
         ?>
