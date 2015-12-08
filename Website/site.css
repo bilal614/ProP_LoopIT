@@ -12,6 +12,17 @@ body {
   background-size: cover;
 }
 
+#pargh{
+font-weight:normal;
+    color:#000000;
+    border: 1px dotted #FF2424;
+    letter-spacing:0pt;
+    word-spacing:2pt;
+    font-size:11px;
+    text-align:center;
+    font-family:arial, helvetica, sans-serif;
+    line-height:2;
+}
 .container {
     width: 1000px;
     margin: 0 auto;
@@ -29,6 +40,8 @@ body {
     background: url(earth.jpg);
     background-size: 100%;
 }
+
+
 .footer {
   position: relative;
   right: 0;
