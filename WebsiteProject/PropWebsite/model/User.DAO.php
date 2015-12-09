@@ -61,4 +61,41 @@
             }
         }
         
+        //this method will insert an array of register data into 2 tables, E_ACCOUNT and USER_ACCOUNT
+        function register_user($register_data){
+            // go through the array and apply array_sanitize, remove space
+            array_walk($register_data, 'array_sanitize');
+            //encoding the password by md5
+            $register_data['password'] = md5($register_data['password']);
+            $password = $register_data['password'];
+            $email = $register_data['email'];
+            $lastname = $register_data['lastname'];
+            $firstname = $register_data['firstname'];
+            $phone = $register_data['phone'];
+            $accountID = getAccountID();
+            
+           //Insert new users into USER_ACCOUNT
+           $queryAccount = "INSERT INTO User_Acct (UserEmail,PassWord,HASH,Active) VALUES('$email','$password','', 0); ";
+           mysql_query($queryAccount);
+           //Insert new users into E_ACCOUNT
+           $queryEvent = "INSERT INTO E_Account (Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+                         VALUES('$accountID',null,'$firstname', '$lastname','$phone','$email', 0.0, false, false);";
+           $result  =  mysql_query($queryEvent);  
+           //Inserting value into E_ACCOUNT depend on USER_ACCOUNT (foreign key contraint), therefore just check for the insert of event account.
+           //If $return true, that means the one for User_Account is sucessful as well.
+           return $result;
+        }
+        
+        function getAccountID()
+        {
+            $query = "SELECT Account_ID FROM E_ACCOUNT";
+            $result = mysql_query($query);
+            $ids = Array();
+            while($row = mysql_fetch_array($result,MYSQL_ASSOC)){
+                 $ids[] =  $row['Account_ID'];  
+            }
+            sort($ids);
+            return end($ids) + 1;
+           
+        }
         ?>

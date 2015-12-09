@@ -17,18 +17,11 @@
             include('../includes/subPages/header.php');
         ?>
         <div class="content">
-        <?php 
-            //Show the message to the user
-              if(empty($_POST) === true && empty($errors) === true){
-                //register user
-              }
-               else {
-             //oput errors
-                 echo output_error($errors);
-           }
-        ?>
            <div id="Regwrapper">
                <header class="regHeader">Register to join our Jazz event right now! <span></span></header>
+                <?php 
+                    Register();
+                ?>
                <form action="" method="post" id="registerForm">
                     <div>
                         <div class="form-group">

@@ -1,9 +1,8 @@
 <?php
+    session_start();
     include '../model/User.DAO.php' ;
     include '../functions/generalFunctions.php';
-   
-    
-    //Validate the form in server side
+   //Validate the form in server side
     $errors = array();
     if (empty($_POST)=== false){
         $required_fields = array('first_name', 'last_name', 'email', 'password','repeatpassword');
@@ -35,7 +34,34 @@
             $errors[] = 'A valid email address is required';
         }
     }
-    
+
+    function Register()
+    {
+        global $errors;
+         //Show the message to the user
+              if(empty($_POST) === false && empty($errors) === true){
+                //register user
+                  $register_data = array(
+                    'lastname' => $_POST['last_name'],
+                    'firstname'=> $_POST['first_name'],
+                    'phone' => $_POST['phone'],
+                    'email'=> $_POST['email'],
+                    'password'=> $_POST['password']
+                  );
+                  //Insert users' data into database
+                  $result = register_user($register_data);
+                  if($result === true){
+                      //redirect the user                  
+                      $_SESSION['email'] = $register_data['email'];
+                      header('Location: registerSuccess.php');
+                  }
+                  
+              }
+               else if(empty($errors) === false) {
+             //oput errors
+                 echo output_error($errors); 
+           }
+    }
     include '../webPages/register.view.php';
 
 ?>
