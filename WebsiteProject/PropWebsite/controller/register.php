@@ -2,6 +2,11 @@
     session_start();
     include '../model/User.DAO.php' ;
     include '../functions/generalFunctions.php';
+    require '../library/PhpMailer/PHPMailerAutoload.php';
+    require '../library/PhpMailer/class.phpmailer.php';
+    require '../library/PhpMailer/class.smtp.php';
+   
+   
    //Validate the form in server side
     $errors = array();
     if (empty($_POST)=== false){
@@ -54,13 +59,13 @@
                       //redirect the user                  
                       $_SESSION['email'] = $register_data['email'];
                       header('Location: registerSuccess.php');
-                  }
-                  
+                      //sentEmail($email, $hash);
+                  } 
               }
                else if(empty($errors) === false) {
              //oput errors
-                 echo output_error($errors); 
-           }
+                    echo output_error($errors); 
+               }
     }
     include '../webPages/register.view.php';
 
