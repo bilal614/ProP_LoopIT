@@ -7,7 +7,7 @@
             <a href="../webPages/News_Page.php">News</a>
         </li>
         <li>
-            <a href="#">Program</a>
+            <a href="../webPages/Program.php">Program</a>
             <ul>
                 <li><a href="#">Stage1</a></li>
                 <li><a href="#">Stage2</a></li>
