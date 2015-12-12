@@ -1,8 +1,8 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+define("DB_DSN","mysql:host=localhost;dbname=prop");
+define("DB_USERNAME","root");
+define("DB_PASSWORD","");
+define("PAGE_SIZE",6);
+define("TBL_E_ACCOUNT","E_ACCOUNT");
 ?>
