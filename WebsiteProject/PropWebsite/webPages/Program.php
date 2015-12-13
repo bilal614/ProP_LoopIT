@@ -12,7 +12,8 @@
     </h1>
         <div class="container">
         <?php
-            include('../includes/subPages/header.php');
+            //include('../includes/subPages/header.php');
+            displayHeader();
         ?>
         <div class="content">
             <h3 id="header" align="left">Festival program for the 10th of June </h3>
@@ -25,7 +26,8 @@
         </div>
         </div>
      <?php
-        include('../includes/subPages/footer.php');
+        //include('../includes/subPages/footer.php');
+        displayFooter();
     ?>
             <script src="../js/script.js"></script>
             <script src="../js/timetable.min.js"></script>

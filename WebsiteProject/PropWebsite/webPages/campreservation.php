@@ -11,7 +11,8 @@
     </h1>
     <div class="container">
          <?php
-            include('../includes/subPages/header.php');
+           include('../includes/subPages/header.php');
+             
         ?>
         <div class="content">
            <div id="Regwrapper">

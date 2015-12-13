@@ -15,7 +15,7 @@
         ?>
         <div class="content">
             <p id="route">Festival Map</p>
-            <img id="map" src="map.jpeg" alt="festMap" style="width:650px;height:450px">
+            <img id="map" src="../templates/images/map.jpeg" alt="festMap" style="width:650px;height:450px">
         </div>
     </div>
     <?php
