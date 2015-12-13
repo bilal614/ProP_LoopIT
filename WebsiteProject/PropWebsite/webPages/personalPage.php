@@ -2,7 +2,9 @@
 <html>
 <head>
      <?php
-        include('../includes/subPages/headTag.php');
+        //include('../includes/subPages/headTag.php');
+        include ('../includes/common.inc.php');
+        displayHeadTag();
     ?>
 <body>
     <h1>
@@ -10,8 +12,9 @@
     </h1>
     <div class="container">
          <?php
-            include('../includes/subPages/header.php');
-            include '../model/User.DAO.php';
+            //include('../includes/subPages/header.php');
+            displayHeader();   
+         include '../model/User.DAO.php';
         ?>
         <div class="content"><!--all content for the content container goes in here!-->
             <div id="mainInfoColumn">
@@ -68,7 +71,8 @@
         </div>
     </div>
     <?php
-        include('../includes/subPages/footer.php');
+        //include('../includes/subPages/footer.php');
+        displayFooter();
     ?>             
 </body>
 </html>

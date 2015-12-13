@@ -2,7 +2,9 @@
 <html>
 <head>
      <?php
-        include('../includes/subPages/headTag.php');
+        //include('../includes/subPages/headTag.php'); So we can use one common file for calling common functions
+include('../includes/common.inc.php');        
+displayHeadTag();
     ?>
 <!--    <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="../js/additional-methods.min.js" type="text/javascript"></script>-->
@@ -14,7 +16,8 @@
     </h1>
     <div class="container">
          <?php
-            include('../includes/subPages/header.php');
+            //include('../includes/subPages/header.php');
+            displayHeader();
         ?>
         <div class="content">
            <div id="Regwrapper">
@@ -57,7 +60,8 @@
         </div>
     </div>
     <?php
-        include('../includes/subPages/footer.php');
+        //include('../includes/subPages/footer.php');
+        displayFooter();
     ?>
 </body>
 </html>
