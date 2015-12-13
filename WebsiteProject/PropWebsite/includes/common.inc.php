@@ -40,8 +40,8 @@ function displayHeader(){
         <li>
             <a href="#">Log in\ Register</a>
             <ul>
-                <li><a href="webPages/Login.php">Login</a></li>
-                <li><a href="../../controller/register.php">Register</a></li>
+                <li><a href="../webPages/Login.php">Login</a></li>
+                <li><a href="../controller/register.php">Register</a></li>
             </ul>
         </li>
         <li>
