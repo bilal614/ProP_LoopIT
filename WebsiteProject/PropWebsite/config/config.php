@@ -5,4 +5,5 @@ define("DB_USERNAME","root");
 define("DB_PASSWORD","");
 define("PAGE_SIZE",6);
 define("TBL_E_ACCOUNT","E_ACCOUNT");
+define("TBL_USER","USER_ACCT");
 ?>

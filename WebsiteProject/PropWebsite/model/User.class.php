@@ -1,9 +1,44 @@
         <?php
         
-        include 'DBconnection.inc.php';
+        require_once 'DataObject.class.php';
         include 'EventAccount.php';
         
         //this function takes in an email as an argument and returns 
+        class User extends DataObject{
+            protected $data=array(
+                "UserEmail"=>"",
+                "PassWord"=>"",
+                "Hash"=>"",
+                "Active"=>""
+            );
+            
+            public static function getUserAccount($userEmail){
+            $conn=parent::connect();
+            $sql ="SELECT * FROM ".TBL_USER. " WHERE UserEmail= :userEmail";
+    
+            try{
+                $st=$conn->prepare($sql);
+                $st->bindValue(":userEmail", $userEmail,PDO::PARAM_STR);
+                $st->execute();
+                $row=$st->fetch();
+                parent::disconnect($conn);
+                if($row) 
+                {return new EventAccount ($row);}
+                }  catch (PDOException $e){
+                    parent::disconnect($conn);
+                    die("Query failed: ".$e->getMessage());
+                }
+            }
+            
+            public function authenticate(){
+                $conn=  parent::connect();
+                $sql="SELECT * FROM ".TBL_USER." WHERE UserEmail= :username AND PassWord= :password";
+                //finish this method
+            }
+        
+        }
+        
+        //the following will no longer be used for this class
         function fetchEventAccount($email){
             $exampleQuery="SELECT * FROM E_ACCOUNT WHERE E_mail='$email';";
             $query_run=  mysql_query($exampleQuery);

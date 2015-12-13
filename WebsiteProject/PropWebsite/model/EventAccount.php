@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,10 +10,60 @@
  *
  * @author bilalbutt.614
  */
-class EventAccount {
+require_once "DataObject.class.php";
+
+class EventAccount extends DataObject {
     
     //instance variables for the class EventAccount
     //these variables will be read and updated from the database for an EventAccount object
+    protected $data=array(
+    "Account_ID"=>"",
+    "RFID_Code"=>"",
+    "Balance"=>"",
+    "E_mail"=>"",
+    "First_Name"=>"",
+    "Last_Name"=>"",
+    "Phone"=>"",
+    "Payment_Status"=>"",
+    "Pay_InAdvance"=>""
+    );
+     
+    public static function getEventAccount($eventAccountId){
+        $conn=parent::connect();
+        $sql ="SELECT * FROM ".TBL_E_ACCOUNT. " WHERE Account_ID= :eventAccountId";
+    
+        try{
+            $st=$conn->prepare($sql);
+            $st->bindValue(":eventAccountId", $eventAccountId,PDO::PARAM_INT);
+            $st->execute();
+            $row=$st->fetch();
+            parent::disconnect($conn);
+            if($row) 
+            {return new EventAccount ($row);}
+        }  catch (PDOException $e){
+            parent::disconnect($conn);
+            die("Query failed: ".$e->getMessage());
+        }
+    }
+
+    public static function getByEmailAddress($email){
+        $conn=parent::connect();
+        $sql ="SELECT * FROM ".TBL_E_ACCOUNT. " WHERE E_mail= :email";
+    
+        try{
+            $st=$conn->prepare($sql);
+            $st->bindValue(":email", $email,PDO::PARAM_STR);
+            $st->execute();
+            $row=$st->fetch();
+            parent::disconnect($conn);
+            if($row) 
+            {return new EventAccount ($row);}
+        }  catch (PDOException $e){
+            parent::disconnect($conn);
+            die("Query failed: ".$e->getMessage());
+        }
+    }
+    //features below of this class will not be used anymore
     private $eventId;
     private $RFIDcode;
     private $FirstName;
