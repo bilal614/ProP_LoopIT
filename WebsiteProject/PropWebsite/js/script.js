@@ -1,6 +1,29 @@
 $(document).ready(function() {
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()});
+    
+$( "#campForm" ).validate({
+  rules: {
+    co_camper1: {
+      required: true,
+      email: true
+    },
+      co_camper2: {
+      required: true,
+      email: true
+    },
+      co_camper3: {
+      required: false,
+      email: true
+    },
+      co_camper4: {
+      required: false,
+      email: true
+    },
+      co_camper5: {
+      required: false,
+      email: true
+    }}});
 });
 
 $(document).ready(function() {
