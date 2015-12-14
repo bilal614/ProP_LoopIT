@@ -1,7 +1,7 @@
         <?php
         
         require_once 'DataObject.class.php';
-        include 'EventAccount.php';
+        //require_once  'EventAccount.php';
         
         //this function takes in an email as an argument and returns 
         class User extends DataObject{
