@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include '../model/User.DAO.php' ;
+    include '../model/User.class.php' ;
     include '../functions/generalFunctions.php';
     $email = $_SESSION['email'];
     $eventAccount = fetchEventAccount($email);    

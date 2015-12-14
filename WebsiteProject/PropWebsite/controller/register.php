@@ -1,6 +1,10 @@
 <?php
     session_start();
     include '../model/User.class.php' ;
+<<<<<<< HEAD
+=======
+    include '../model/EventAccount.class.php' ;
+>>>>>>> 2107ed5724b20f185f5cb5722515a39527ee220d
     include '../functions/generalFunctions.php';
     require '../library/PhpMailer/PHPMailerAutoload.php';
     require '../library/PhpMailer/class.phpmailer.php';
@@ -20,13 +24,13 @@
             }   
         }
         
-        if(empty($errors) === true)//no errors with the list of input, check for password and repeatpassword
-        {
-            //Check wheather the users exist or not
-            if(user_exists($_POST['email']) === true){
-                $errors[] = 'Sorry, the email \''. $_POST['email'] . '\' is already taken.';
-            }
-        }
+//        if(empty($errors) === true)//no errors with the list of input, check for password and repeatpassword
+//        {
+//            //Check wheather the users exist or not
+//            if(user_exists($_POST['email']) === true){
+//                $errors[] = 'Sorry, the email \''. $_POST['email'] . '\' is already taken.';
+//            }
+//        }
         
         if(strlen($_POST['password'])< 8 && strlen($_POST['password'])>25){
             $errors[] = 'Your password must be at least 6 characters';
@@ -53,14 +57,24 @@
                     'email'=> $_POST['email'],
                     'password'=> $_POST['password']
                   );
+                  //Insert into user account
+                  $userData = array (
+                        "UserEmail"=>$register_data['email'],
+                        "PassWord"=>$register_data['password'],
+                        "Hash"=>"abcad",
+                        "Active"=>"0"  
+                  );
+                  $userData = new User($userData);
+                  $userData->register();
                   //Insert users' data into database
-                  $result = register_user($register_data);
-                  if($result === true){
-                      //redirect the user                  
-                      $_SESSION['email'] = $register_data['email'];
-                      header('Location: registerSuccess.php');
-                      //sentEmail($email, $hash);
-                  } 
+                  //$result = register_user($register_data);
+                  
+//                  if($result === true){
+//                      //redirect the user                  
+//                      $_SESSION['email'] = $register_data['email'];
+//                      header('Location: registerSuccess.php');
+//                      //sentEmail($email, $hash);
+//                  } 
               }
                else if(empty($errors) === false) {
              //oput errors

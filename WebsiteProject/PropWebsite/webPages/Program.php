@@ -1,8 +1,12 @@
+<?php
+include('../includes/common.inc.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <?php
-        include('../includes/subPages/headTag.php');
+        //include('../includes/subPages/headTag.php');
+        displayHeadTag();
     ?>
     <link rel="stylesheet" href="../templates/css/timetablejs.css">
 </head>
