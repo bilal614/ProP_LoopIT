@@ -1,11 +1,8 @@
         <?php
         
         require_once 'DataObject.class.php';
-<<<<<<< HEAD
-        require_once 'EventAccount.php';
-=======
+        require_once 'EventAccount.class.php';
         //require_once  'EventAccount.php';
->>>>>>> 2107ed5724b20f185f5cb5722515a39527ee220d
         
         //this function takes in an email as an argument and returns 
         class User extends DataObject{
@@ -46,13 +43,13 @@
             public function register(){
                 $pword=  md5($this->data["PassWord"]);
                 $conn=  parent::connect();
-                $sql="INSERT INTO ".TBL_USER. " (UserEmail,PassWord,HASH,Active)
+                $sql="INSERT INTO ".TBL_USER. " (UserEmail,PassWord,Hash,Active)
                 VALUES(:userName,:password,:hash,:active)";
                 try{
                     $st=$conn->prepare($sql);
                     $st->bindValue(":userName",$this->data["UserEmail"],PDO::PARAM_STR);
                     $st->bindValue(":password",$pword,PDO::PARAM_STR);
-                    $st->bindValue(":hash",$this->data["HASH"],PDO::PARAM_STR);
+                    $st->bindValue(":hash",$this->data["Hash"],PDO::PARAM_STR);
                     $st->bindValue(":active",$this->data["Active"],PDO::PARAM_INT);
                     $st->execute();
                     parent::disconnect($conn);

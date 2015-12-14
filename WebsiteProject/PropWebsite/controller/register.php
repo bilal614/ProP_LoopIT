@@ -1,10 +1,6 @@
 <?php
     session_start();
     include '../model/User.class.php' ;
-<<<<<<< HEAD
-=======
-    include '../model/EventAccount.class.php' ;
->>>>>>> 2107ed5724b20f185f5cb5722515a39527ee220d
     include '../functions/generalFunctions.php';
     require '../library/PhpMailer/PHPMailerAutoload.php';
     require '../library/PhpMailer/class.phpmailer.php';
@@ -64,17 +60,34 @@
                         "Hash"=>"abcad",
                         "Active"=>"0"  
                   );
-                  $userData = new User($userData);
-                  $userData->register();
+                  $UserData = new User($userData);
+                  $UserData->register();
+                  $eventData=array(
+                      "Account_ID"=>"",
+                      "RFID_Code"=>"",
+                      "Balance"=>0.0,
+                      "E_mail"=>$register_data['email'],
+                      "First_Name"=>$register_data['firstname'],
+                      "Last_Name"=>$register_data['lastname'],
+                      "Phone"=>$register_data['phone'],
+                      "Payment_Status"=>"",
+                      "Pay_InAdvance"=>""
+                  );
+                  $EventData=new EventAccount($eventData);
+                  $EventData->generateUniqueId();
+                  //if EventData is able to insert the EventAccount in the database the user is re-directed to a 
+                  //registerScuccess page
+                  if($EventData->insert())
+                      header('Location: ../webPages/RegisterSuccess.view.php');
                   //Insert users' data into database
                   //$result = register_user($register_data);
                   
-//                  if($result === true){
-//                      //redirect the user                  
-//                      $_SESSION['email'] = $register_data['email'];
-//                      header('Location: registerSuccess.php');
-//                      //sentEmail($email, $hash);
-//                  } 
+                  if($result === true){
+                      //redirect the user                  
+                      $_SESSION['email'] = $register_data['email'];
+                      header('Location: registerSuccess.php');
+                      //sentEmail($email, $hash);
+                  } 
               }
                else if(empty($errors) === false) {
              //oput errors
