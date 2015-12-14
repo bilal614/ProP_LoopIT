@@ -63,6 +63,63 @@ class EventAccount extends DataObject {
             die("Query failed: ".$e->getMessage());
         }
     }
+    
+
+    public static function generateUniqueId()
+    {
+        $x=  rand(11111, 99999);
+        $conn=  parent::connect();
+        $sql="SELECT Account_ID FROM ".TBL_E_ACCOUNT." WHERE Account_ID=:x";
+        $row;
+        do{
+        try{
+            $st=$conn->prepare($sql);
+            $st->bindValue(":x", $x,PDO::PARAM_INT);
+            $st->execute();
+            $row=$st->fetch();
+            parent::disconnect($conn);
+            if($row) 
+            {
+                $x=rand(11111,99999);
+                $sql="SELECT Account_ID FROM ".TBL_E_ACCOUNT." WHERE Account_ID=:x";
+            }
+            else{$row=null;}
+            }  catch (PDOException $e){
+            parent::disconnect($conn);
+            die("Query failed: ".$e->getMessage());
+            }
+            }while($row!=null);
+            return $x;
+    }
+    
+    public function insert(){
+        $conn=  parent::connect();
+        if(generateUniqueId()!=null)
+            $id=generateUniqueId();
+        $sql="INSERT INTO ".TBL_E_ACCOUNT."((Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,
+            Payment_Status,Pay_InAdvance)
+            VALUES(:accountId,:rfid,:firstName,:lastName,:phone,:email,:balance,:pmtStatus,:pmtAdv)";
+        try{
+            $st=$conn->prepare($sql);
+            $st->bindValue(":accountId", $id,PDO::PARAM_STR);
+            $st->bindValue(":rfid", "",PDO::PARAM_STR);
+            $st->bindValue(":firstName", $this->data["First_Name"],PDO::PARAM_STR);
+            $st->bindValue(":lastName", $this->data["Last_Name"],PDO::PARAM_STR);
+            $st->bindValue(":phone", $this->data["Phone"],PDO::PARAM_STR);
+            $st->bindValue(":email", $this->data["E_mail"],PDO::PARAM_STR);
+            $st->bindValue(":balance", "");
+            $st->bindValue(":pmtStatus",$this->data["Payment_Status"],PDO::PARAM_BOOL);
+            $st->bindValue(":pmtStatus",$this->data["Pay_InAdvance"],PDO::PARAM_BOOL);
+            $st->execute();
+            parent::disconnect($conn);
+        }catch(PDOException $e){
+            parent::disconnect($conn);
+            die("Query failed: ".$e->getMessage());
+        }
+    }
+
+
+    
     //features below of this class will not be used anymore
     private $eventId;
     private $RFIDcode;

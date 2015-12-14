@@ -35,6 +35,28 @@
                 $sql="SELECT * FROM ".TBL_USER." WHERE UserEmail= :username AND PassWord= :password";
                 //finish this method
             }
+            
+            //first you pass all the information of the user such as UserName, password etc. to the data array 
+            //of a User object, then you call the register function to create an instance of the user in the
+            //database
+            public function register(){
+                $pword=  md5($this->data["PassWord"]);
+                $conn=  parent::connect();
+                $sql="INSERT INTO ".TBL_USER. " (UserEmail,PassWord,HASH,Active)
+                VALUES(:userName,:password,:hash,:active)";
+                try{
+                    $st=$conn->prepare($sql);
+                    $st->bindValue(":userName",$this->data["UserEmail"],PDO::PARAM_STR);
+                    $st->bindValue(":password",$pword,PDO::PARAM_STR);
+                    $st->bindValue(":hash",$this->data["HASH"],PDO::PARAM_STR);
+                    $st->bindValue(":active",$this->data["Active"],PDO::PARAM_INT);
+                    $st->execute();
+                    parent::disconnect($conn);
+                }catch(PDOException $e){
+                    parent::disconnect($conn);
+                    die("Query failed: ".$e->getMessage());
+                }
+            }
         
         }
         
