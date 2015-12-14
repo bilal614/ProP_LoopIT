@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include '../model/User.DAO.php' ;
+    include '../model/User.class.php' ;
     include '../functions/generalFunctions.php';
     require '../library/PhpMailer/PHPMailerAutoload.php';
     require '../library/PhpMailer/class.phpmailer.php';
