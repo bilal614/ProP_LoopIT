@@ -17,8 +17,10 @@ namespace JazzEventProject
         {
             InitializeComponent();
         }
-
+        int accountId;
+        EventAccount currentAccount;
         EventReportDataHelper eventstat = new EventReportDataHelper();
+        EventAccountDataHelper accountHelper = new EventAccountDataHelper();
         private void EventStatusReport_Load(object sender, EventArgs e)
         {
 
@@ -40,6 +42,22 @@ namespace JazzEventProject
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            accountId = Convert.ToInt32(textBox1.Text);
+            currentAccount = accountHelper.GetAccount(accountId);
+
+            if (currentAccount!= null)
+            {
+
+                textBox8.Text = Convert.ToString(currentAccount.Balance) + " €";
+                
+
+               
+            }
 
         }
 
