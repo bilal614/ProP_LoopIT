@@ -13,6 +13,12 @@ abstract class DataObject{
         }
     }
     
+    //Return data array 
+    public function GetData()
+    {
+        return $this->data;
+    }
+    
     public function getValue($field){
         if(array_key_exists($field, $this->data)){
             return $this->data[$field];

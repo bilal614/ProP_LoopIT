@@ -1,4 +1,8 @@
 <?php
+    require '../library/PhpMailer/PHPMailerAutoload.php';
+    require '../library/PhpMailer/class.phpmailer.php';
+    require '../library/PhpMailer/class.smtp.php';
+    
 //remove special characters of input string, input variable is an item of array
 function array_sanitize(&$item){
     $item = mysql_real_escape_string($item);
@@ -8,7 +12,7 @@ function output_error($error){
 }
 
 //Using phpMailer to sent email
-function sentEmail($email,$hash){
+function sentEmail($email,$msg){
     //testing mail function of php/ didn't work on localhost
     //$msg = 'Pleasmail('thanhhnk@gmail.com','My subject',$msg,'From: customerService@festivaljazz.com')e click this link to activate your account';
     // mail('thanhhnk@gmail.com','My subject',$msg,'From: customerService@festivaljazz.com');
@@ -26,11 +30,9 @@ function sentEmail($email,$hash){
     $mail->FromName = 'Jazz festival team';
     $mail->AddAddress($email);               // Name is optional
 
-    $mail->IsHTML(true);                                  // Set email format to HTML
-
-    $mail->Subject = 'Here is the subject';
+    $mail->IsHTML(TRUE);                                  // Set email format to HTML
     $mail->Subject = 'Activate your account for jazz festival';
-    $mail->Body    = 'Click on following link to activate your account'.$code;
+    $mail->Body    = $msg;
 
     if(!$mail->Send()) {
        echo 'Message could not be sent.';

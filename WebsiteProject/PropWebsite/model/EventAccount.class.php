@@ -27,7 +27,8 @@ class EventAccount extends DataObject {
     "Payment_Status"=>"",
     "Pay_InAdvance"=>""
     );
-     
+    
+    
     public static function getEventAccount($eventAccountId){
         $conn=parent::connect();
         $sql ="SELECT * FROM ".TBL_E_ACCOUNT. " WHERE Account_ID= :eventAccountId";
@@ -118,39 +119,4 @@ class EventAccount extends DataObject {
             die("Query failed: ".$e->getMessage());
         }
     }
-
-
-    
-    //features below of this class will not be used anymore
-    private $eventId;
-    private $RFIDcode;
-    private $FirstName;
-    private $LastName;
-    private $Email;
-    private $Phone;
-    private $Balance;
-    private $PaymentStatus;
-    private $PayInAdvance;
-    
-    //get methods for the private variables of the class
-    public function getEventID(){return $this->eventId;}
-    public function getRFID(){return $this->RFIDcode;}
-    public function getFirstName(){return $this->FirstName;}
-    public function getLastName(){return $this->LastName;}
-    public function getEmail(){return $this->Email;}
-    public function getPhone(){return $this->Phone;}
-    public function getBalance(){return $this->Balance;}
-    public function getPmtStat(){return $this->PaymentStatus;}
-    public function getPmtAdvance(){return $this->PayInAdvance;}
-            
-    //set methods for the private variables for the class
-    public function setEventId($id){$this->eventId=$id;}
-    public function setRFID($rfid){$this->RFIDCode=$rfid;}
-    public function setFirstName($first){$this->FirstName=$first;}
-    public function setLastName($last){$this->LastName=$last;}
-    public function setEmail($email){$this->Email=$email;}       
-    public function setPhone($phone){$this->Phone=$phone;}       
-    public function setBalance($bal){$this->Balance=$bal;}       
-    public function setPmtStat($pmtStatus){$this->PaymentStatus=$pmtStatus;}
-    public function setPmtAdv($pmtAdvance){$this->PayInAdvance=$pmtAdvance;}
 }

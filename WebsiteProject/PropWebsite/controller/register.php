@@ -2,9 +2,7 @@
     session_start();
     include '../model/User.class.php' ;
     include '../functions/generalFunctions.php';
-    require '../library/PhpMailer/PHPMailerAutoload.php';
-    require '../library/PhpMailer/class.phpmailer.php';
-    require '../library/PhpMailer/class.smtp.php';
+
    
    
    //Validate the form in server side
@@ -20,13 +18,13 @@
             }   
         }
         
-//        if(empty($errors) === true)//no errors with the list of input, check for password and repeatpassword
-//        {
-//            //Check wheather the users exist or not
-//            if(user_exists($_POST['email']) === true){
-//                $errors[] = 'Sorry, the email \''. $_POST['email'] . '\' is already taken.';
-//            }
-//        }
+        if(empty($errors) === true)//no errors with the list of input, check for password and repeatpassword
+        {
+            //Check wheather the users exist or not
+            if(User::user_exists($_POST['email']) === true){
+                $errors[] = 'Sorry, the email \''. $_POST['email'] . '\' is already taken.';
+            }
+        }
         
         if(strlen($_POST['password'])< 8 && strlen($_POST['password'])>25){
             $errors[] = 'Your password must be at least 6 characters';
@@ -51,13 +49,14 @@
                     'firstname'=> $_POST['first_name'],
                     'phone' => $_POST['phone'],
                     'email'=> $_POST['email'],
-                    'password'=> $_POST['password']
+                    'password'=> $_POST['password'],
+                    'hash'=> md5($register_data['email']+  microtime())
                   );
                   //Insert into user account
                   $userData = array (
                         "UserEmail"=>$register_data['email'],
                         "PassWord"=>$register_data['password'],
-                        "Hash"=>"abcad",
+                        "Hash"=> $register_data['hash'],
                         "Active"=>"0"  
                   );
                   $UserData = new User($userData);
@@ -78,19 +77,18 @@
                   //if EventData is able to insert the EventAccount in the database the user is re-directed to a 
                   //registerScuccess page
                   if($EventData->insert())
-                      header('Location: ../webPages/RegisterSuccess.view.php');
-                  //Insert users' data into database
-                  //$result = register_user($register_data);
-                  
-                  if($result === true){
-                      //redirect the user                  
-                      $_SESSION['email'] = $register_data['email'];
-                      header('Location: registerSuccess.php');
-                      //sentEmail($email, $hash);
-                  } 
+                  {
+                       $_SESSION['email'] = $register_data['email'];
+                       $_SESSION['name'] = $register_data['lastname'];
+                       header('Location: registerSuccess.php');
+                       //email to user
+                       $link = 'http://localhost/PropWebsite/PropWebsite/controller/activate.php?email='.$register_data['email'].'&hash='.$register_data['hash'];
+                       $msg = "<p>Hello ".$register_data['lastname']."<\p> <p>You need to activate your account, please click the link below: <\p> <p>".$link."<\p> <p> Kind regards,</p> <p>Jazz festival team</p>";
+                       sentEmail($register_data['email'], $msg);
+                  }
               }
-               else if(empty($errors) === false) {
-             //oput errors
+              else if(empty($errors) === false) {
+                //oput errors
                     echo output_error($errors); 
                }
     }
