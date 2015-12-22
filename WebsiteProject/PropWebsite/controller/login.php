@@ -30,9 +30,7 @@ if(empty($_POST) === false){
         }
     }
 }
- else {
-    $errors[] =  "No data recieved";
-}
+
 
 function HandleErrors(){
     global $errors;
