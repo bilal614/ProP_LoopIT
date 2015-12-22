@@ -31,11 +31,6 @@
                 }
             }
             
-            public function authenticate(){
-                $conn=  parent::connect();
-                $sql="SELECT * FROM ".TBL_USER." WHERE UserEmail= :username AND PassWord= :password";
-                //finish this method
-            }
             
             //first you pass all the information of the user such as UserName, password etc. to the data array 
             //of a User object, then you call the register function to create an instance of the user in the

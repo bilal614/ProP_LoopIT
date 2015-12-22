@@ -2,7 +2,8 @@
 <html>
 <head>
      <?php
-        include('../includes/subPages/headTag.php');
+        include('../includes/common.inc.php');        
+        displayHeadTag();
     ?>
 </head>
 <body>
@@ -11,8 +12,7 @@
     </h1>
     <div class="container">
          <?php
-           include('../includes/subPages/header.php');
-             
+         displayHeader();
         ?>
         <div class="content">
            <div id="Regwrapper">
@@ -21,15 +21,15 @@
                    <div id="innerContainer"> 
                     <div id="leftCol">
                             <div>
-                                <label for="co_camper1" class="camper" > Co-camper 1 </label>
+                                <label for="co_camper1" class="camper" > Co-camper 1 *</label>
                                 <input type="text" name="co_camper1" placeholder="e-mail of co-camper 1"/>
                             </div>
                             <div>
-                                <label for="co_camper2" class="camper" > Co-camper 2 </label>
+                                <label for="co_camper2" class="camper" > Co-camper 2 * </label>
                                 <input type="text" name="co_camper2" placeholder="e-mail of co-camper 2"/>
                             </div>
                             <div>
-                                <label for="co_camper3" class="camper" > Co-camper 3 </label>
+                                <label for="co_camper3" class="camper" > Co-camper 3 * </label>
                                 <input type="text" name="co_camper3" placeholder="e-mail of co-camper 3"/>
                             </div>
                             <div>
@@ -43,15 +43,15 @@
                                 <input type="text" name="co_camper5" placeholder="e-mail of co-camper 5"/>
                             </div>
                             <div id="CampDate">
-                                Enter a date after 2015-12-30:<br>
-                                <input type="date" name="bday" min="2015-12-30"><br><br>
-                                Enter a date before 2016-01-05:<br>
-                                <input type="date" name="bday" max="2016-01-05"><br><br>
+                                * Enter a date after 2015-12-30:<br>
+                                <input type="date" name="start_date" min="2015-12-30"><br><br>
+                                * Enter a date before 2016-01-05:<br>
+                                <input type="date" name="end_date" max="2016-01-05"><br><br>
                             </div>
                         </div>
                         <div id="campButtons">
                             <input type="submit" name="submit" value="Register and Pay"/>
-                            <input type="submit" name="skip" value="Skip camping reservation"/>
+                            <input type="submit" name="skip" value="Back To Personal Page"/>
                         </div>
                    </div>
                 </form>
@@ -59,7 +59,7 @@
         </div>
     </div>
     <?php
-        include('../includes/subPages/footer.php');
+    displayFooter();
     ?> 
 </body>
 </html>
