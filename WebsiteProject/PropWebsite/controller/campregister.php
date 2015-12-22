@@ -1,6 +1,8 @@
 <?php
 
-    include '../model/Camp.class.php' ;
+//session_start();
+//session was already started when the user logged in
+    include '../model/Camp.class.php';
     include '../functions/generalFunctions.php';
 
 //Validate the form in server side
@@ -61,8 +63,9 @@
                 "start_date"=>$_POST['start_date'],
                 "end_date"=>$_POST['end_date']
                 );
-            $camper=new Camp($formVars);
-            
+            $Camper=new Camp($formVars);
+            $Camp->putInCampers();
+            $Camp->verifyEmails();
         }
         else if(empty($errors) === false) { echo output_error($errors);  }
     }
