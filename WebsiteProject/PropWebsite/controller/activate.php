@@ -10,7 +10,7 @@
         if(User::user_exists($email)===FALSE){
             $errors[]='Oops, something went wrong, we could not find that email address';
         } else if(User::activate_user($email, $hash)===FALSE){
-            $errors[] = 'We had problems to activating your account';
+            $errors[] = 'We had problems activating your account';
         }
     }
     else
