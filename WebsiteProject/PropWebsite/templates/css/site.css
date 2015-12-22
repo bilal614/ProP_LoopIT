@@ -529,19 +529,15 @@ text-align: left;
 
 /*The following is the CSS for the personalPages of the user.*/
 #mainInfoColumn{
+   overflow: auto;
+}
+
+#welcomeContainer{
     max-width: 55%;
     float: left;
     position: relative;
     padding: 4px;
 }
-
-#welcomeContainer{
-    padding: 4px;
-    position: absolute;
-    top:10px;
-    width:550px;
-}
-
 #welcomeMsg{
     font-family: Helvetica,sans-serif;
     font-size: 25px;
@@ -550,10 +546,11 @@ text-align: left;
 #toDoList{
     float: right;
     padding: 12px;
-    position:relative;
+    margin-top: 128px;
+    margin-right: 20px;
     width:35%;
     border: solid;
-    top:8px;
+    top:21px;
     right:14px;
 }
 .ticketReminder{
@@ -565,6 +562,7 @@ p.personalPage{
     font-family: Helvetica, sans-serif;
     font-size: 14px;
     text-align: left;
+    padding-left: 20px
 }
 
 .userInfo{
@@ -572,10 +570,30 @@ p.personalPage{
     padding: 12px;
     position:relative;
     width:600px;
-    height: 200px;
+    height: 257px;
     border: solid;
     top:8px;
     left:15px;
     text-align: left;
     margin: 5px;
+}
+#logout{
+    width: 150px;
+    margin-top: 20px;
+}
+#mainInfoColumn a:hover{
+     text-decoration: none !important;
+}
+
+.errorlist
+{
+    background-color: #f2dede;
+    list-style-type: none;
+    padding: 10px;
+    font-size: 16px;
+    color: #a94442;
+}
+.errorlist > li{
+    padding-left: 200px;
+    text-align: left;
 }

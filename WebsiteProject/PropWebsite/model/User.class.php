@@ -2,7 +2,6 @@
         
         require_once 'DataObject.class.php';
         require_once 'EventAccount.class.php';
-        //require_once  'EventAccount.php';
         
         //this function takes in an email as an argument and returns 
         class User extends DataObject{
@@ -31,10 +30,30 @@
                 }
             }
             
-            public function authenticate(){
+            public static function authenticate($email,$password){
+                $password = md5($password);
                 $conn=  parent::connect();
-                $sql="SELECT * FROM ".TBL_USER." WHERE UserEmail= :username AND PassWord= :password";
-                //finish this method
+                $sql="SELECT * FROM ".TBL_USER." WHERE UserEmail= :userEmail AND PassWord= :password AND Active = 1";
+                try{
+                    $st=$conn->prepare($sql);
+                    $st->bindValue(":userEmail", $email,PDO::PARAM_STR);
+                    $st->bindValue(":password", $password,PDO::PARAM_STR);
+                    $st->execute();
+                    $row=$st->rowCount();
+                    parent::disconnect($conn);
+                    if($row != 0)
+                    {
+                        return $email;
+                    }
+                    else 
+                    {
+                        return false;
+                    } 
+                }
+                catch(PDOException $e){
+                    parent::disconnect($conn);
+                    die("Query failed: ".$e->getMessage());
+                }
             }
             
             //first you pass all the information of the user such as UserName, password etc. to the data array 
@@ -111,18 +130,24 @@
                     die("Query failed: ".$e->getMessage());
                 }
             }
-        //this method will return true if the given username and password match an instance in the database
-        //otherwise it will return false - this one need to be replaced.
-        function checkLogin($userName,$passWord){
-            $exampleQuery="SELECT * FROM USER_ACCT WHERE UserEmail='$userName' AND PassWord='$passWord';";
-            $query_run=  mysql_query($exampleQuery);
-
-            while($QueryRow = mysql_fetch_assoc($query_run)){
-                $user= $QueryRow['UserEmail'];
-                $active=$QueryRow['Active'];
+            //Check the given email of user is active or not. This method will return true if the account is activated. 
+            public static function user_active($email){
+                $conn = parent::connect();
+                $sql = "SELECT * FROM ".TBL_USER. " WHERE UserEmail= :userEmail AND Active=1 ";
+                try{
+                    $st = $conn->prepare($sql);
+                    $st->bindValue(":userEmail", $email, PDO::PARAM_STR);
+                    $st->execute();
+                    $row=$st->rowCount();
+                    if($row == 1){
+                        return TRUE;
+                    }
+                    else
+                        return FALSE;
+                }
+                catch(PDOException $e){
+                    parent::disconnect($conn);
+                    die("Query failed: ".$e->getMessage());
+                }
             }
-            if($user===$userName && $active==1)
-            {return true;}
-            else {return false;}
-        }     
     }

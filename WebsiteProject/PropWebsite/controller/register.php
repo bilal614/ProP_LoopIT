@@ -4,7 +4,6 @@
     include '../functions/generalFunctions.php';
 
    
-   
    //Validate the form in server side
     $errors = array();
     if (empty($_POST)=== false){

@@ -1,19 +1,19 @@
-<?php include ('../model/User.DAO.php')?>
 <!DOCTYPE html>
 <html>
-    <head></head>
      <?php
-        include('../includes/subPages/headTag.php');
-    ?>
+        include ('../includes/common.inc.php');
+        displayHeadTag();
+     ?>
 <body>
     <h1>
         <img src="../templates/images/logo.png" alt="logo" style="width:400px;height:70px" />
     </h1>
     <div class="container">
          <?php
-            include('../includes/subPages/header.php');
+            displayHeader()
         ?>
         <div class="content">
+            <?php HandleErrors(); ?>
             <div class="loginMain">
                 <div class="login-form">
                     <h1>Login</h1>
@@ -27,17 +27,10 @@
                     </form>
             </div>
             </div>
-            <?php
-                if(isset($_POST["loginForm"])){
-                    $logVal=checkLogin($_POST["email"], $_POST["password"]);
-                    if($logVal){
-                        ?><h1 style="color: black;">LogIn Successful!</h1>   <?php
-                        }else{ ?> <h1 style="color: black;">LogIn Unsuccessful.</h1>  <?php }
-            }?>
         </div>
     </div>
     <?php
-        include('../includes/subPages/footer.php');
+        displayFooter();
     ?>             
 </body>
 </html>

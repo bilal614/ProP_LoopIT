@@ -2,7 +2,6 @@
 <html>
 <head>
      <?php
-        //include('../includes/subPages/headTag.php');
         include ('../includes/common.inc.php');
         displayHeadTag();
     ?>
@@ -46,6 +45,7 @@
                 </fieldset>
                 <div class = "paymentRequest">
                     <div class="bg-warning">Please check your email for these information and keep this with you when you show up at our event.</div>
+                    <div class="bg-warning"><a href="../controller/login.php">Login here</a></div>
                 </div>
             </div><!--end div#RSwapper-->
          </div><!--End div.content-->
