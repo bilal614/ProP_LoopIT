@@ -30,6 +30,7 @@
                 }
             }
             
+
             public static function authenticate($email,$password){
                 $password = md5($password);
                 $conn=  parent::connect();
