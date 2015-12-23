@@ -33,7 +33,7 @@ class Camp extends DataObject {
         "Camper5"=>"",
        );
     
-    public $unregistered=array();//to see which emails are not registered user yet
+    public $unregistered=array();//to see which emails are not registered users yet
     
     //method for checking if all co-campers have an event and/or user account?? don't really need it 
     //For checking the email of co-camper exists in database or not we can use the getUserAccount function 
@@ -111,8 +111,8 @@ class Camp extends DataObject {
             $coCampers=array();//coCampers will store all the coCampers that are in the reservation so it will 
             //ignore the empty fields included in the campers array variable
             foreach ($this->campers as $key=>$val){
-                if(isset($val)===false && empty($val))
-                    $coCampers[]=$val;
+                if(isset($val)===false && !empty($val))
+                    $coCampers[]=$val;//this variable stores the emails of all the co-campers
             }
             
             $stDate=date('Y-m-d', strtotime($this->data["start_date"]));
