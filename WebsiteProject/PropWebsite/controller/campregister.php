@@ -63,10 +63,14 @@
                 "start_date"=>$_POST['start_date'],
                 "end_date"=>$_POST['end_date']
                 );
-            $Camper=new Camp($formVars);
-            $Camp->putInCampers();
-            $Camp->verifyEmails();
+            $Camper=new Camp($formVars);//creates new Camp object using the data required from the variable formVars
+            $Camper->putInCampers();//puts the co_camper emails in a separate array belonging to Camp object
+            $Camper->verifyEmails();//verifies all the emails that were put in if they exist in database
+        
+            if(empty($Camper->unregistered) && isset($Camper->unregistered)){
+                
+            }
         }
-        else if(empty($errors) === false) { echo output_error($errors);  }
+        else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
     }
 ?>

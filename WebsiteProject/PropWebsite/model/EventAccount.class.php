@@ -28,6 +28,9 @@ class EventAccount extends DataObject {
     "Pay_InAdvance"=>""
     );
     
+    public function EventAccountGet(){
+        return $this->data["Account_ID"];
+    }
     
     public static function getEventAccount($eventAccountId){
         $conn=parent::connect();

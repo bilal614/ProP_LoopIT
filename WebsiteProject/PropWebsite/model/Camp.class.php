@@ -33,7 +33,7 @@ class Camp extends DataObject {
         "Camper5"=>"",
        );
     
-    protected $unregistered=array();//to see which emails are not registered user yet
+    public $unregistered=array();//to see which emails are not registered user yet
     
     //method for checking if all co-campers have an event and/or user account?? don't really need it 
     //For checking the email of co-camper exists in database or not we can use the getUserAccount function 
@@ -41,36 +41,62 @@ class Camp extends DataObject {
     //if his/her friends exist in the database or not.
     public function putInCampers()//must execute this method in camp controller to move the camper emails in campers array
     {
-        $campers["Camper1"]=$data["co_camper1"];
-        $campers["Camper2"]=$data["co_camper2"];
-        $campers["Camper3"]=$data["co_camper3"];
-        $campers["Camper4"]=$data["co_camper4"];
-        $campers["Camper5"]=$data["co_camper5"];
+        $this->campers["Camper1"]=$data["co_camper1"];
+        $this->campers["Camper2"]=$data["co_camper2"];
+        $this->campers["Camper3"]=$data["co_camper3"];
+        $this->campers["Camper4"]=$data["co_camper4"];
+        $this->campers["Camper5"]=$data["co_camper5"];
     }
     
     //verifyEmails method checks whether the emails in the coCampers array all exist in the database and returns 
     //true if they do else returns false
-    public function verifyEmails(&$unregistered)
+    public function verifyEmails()
     {
-        
-        foreach ($campers as $key=>$emails){
-            if(user_exists($emails)==false)
-                $unregistered[]=$emails;
+        foreach ($this->campers as $key=>$emails){
+            if(isset($emails)===false && empty($emails)===false){
+                if(user_exists($emails)==false)
+                    $this->unregistered[]=$emails;
+            }
         }
-        if(empty($unregistered))
+        if(empty($this->unregistered))
             return true;
+        else 
+            return false;
     }
     //method for registering
-    public function makeReservation(){
-        if(empty($unregistered)){
+    public function makeReservation($UserEmail){
+        if(isset($unregistered) && empty($unregistered)){
+            $eventAct=  EventAccount::getByEmailAddress($UserEmail);//now eventAct variable is the Event Account object
+            //of the person that is making the camping reservation for the group of people, when this method
+            //is called the argument given to it will most likely be the username stored in the session variable
+            $coCampers=array();//coCampers will store all the coCampers that are in the reservation so it will 
+            //ignore the empty fields included in the campers array variable
+            foreach ($campers as $key=>$val){
+                if(isset($val)===false && empty($val))
+                    $coCampers[]=$val;
+            }
+            
+            $stDate=date('Y-m-d', strtotime($this->data["start_date"]));
+            $eDate=date('Y-m-d', strtotime($this->data["end_date"]));
             
             $conn=  parent::connect();
-            $sql="INSERT INTO ".TBL_CAMP_RES." (CampRes_No,Start_Date,End_Date,Account_ID,CAMP_CampID)
-            VALUES(:campresNo,:stDate,:eDate,:acctId,:campId)";
-        
+            $sql="INSERT INTO ".TBL_CAMP_RES." (Start_Date,End_Date,Account_ID,CAMP_CampID)
+            VALUES(:stDate,:eDate,:acctId,:campId)";
+            
+            try{
+            $st=$conn->prepare($sql);
+            $st->bindValue(":stDate", $stDate);
+            $st->bindValue(":eDate", $eDate,PDO::PARAM_STR);
+            $st->bindValue(":acctId", $eventAct->EventAccountGet(),PDO::PARAM_INT);
+            $st->bindValue(":campId", $this->data["Last_Name"],PDO::PARAM_STR);
+            $st->execute();
+            parent::disconnect($conn);
+            return true;//returns true when sql query is successfully executed and EventAccount is added to database
+        }catch(PDOException $e){
+            parent::disconnect($conn);
+            die("Query failed: ".$e->getMessage());
         }
-        else
-        {
+        }else{
             echo 'Not all co-campers are registered yet.';
         }
     }

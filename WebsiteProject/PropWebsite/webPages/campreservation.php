@@ -17,7 +17,7 @@
         <div class="content">
            <div id="Regwrapper">
                <header class="regHeader">Camp Registration <span></span></header>
-               <form id="campForm" action="" method="post">
+               <form id="campForm" action="../controller/campregister.php" method="post">
                    <div id="innerContainer"> 
                     <div id="leftCol">
                             <div>
