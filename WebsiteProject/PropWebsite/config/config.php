@@ -8,4 +8,5 @@ define("TBL_E_ACCOUNT","E_ACCOUNT");
 define("TBL_USER","USER_ACCT");
 define("TBL_CAMP_RES","CAMPING_RES");
 define("TBL_GROUP","GROUPMEMBERS");
+define("TBL_CAMP","CAMP");
 ?>
