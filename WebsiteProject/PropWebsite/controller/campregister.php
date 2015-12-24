@@ -18,13 +18,6 @@
             }   
         }
         
-        if(empty($errors) === true)//no errors with the list of input, check for password and repeatpassword
-        {
-            //Check wheather the users exist or not
-            if(User::user_exists($_POST['email']) === true){
-                $errors[] = 'Sorry, the email \''. $_POST['email'] . '\' is already taken.';
-            }
-        }
         
 //validate the start date entered by the user
         if($startDate = strtotime($_POST['start_date']))
@@ -52,7 +45,7 @@
     function campRegistration()
     {
         global $errors;
-        if(empty($_POST) === false && empty($errors) === true){
+        if(!empty($_POST) && empty($errors)){
             $formVars=array
                 (
                 "co_camper1"=>$_POST['co_camper1'],
@@ -67,10 +60,36 @@
             $Camper->putInCampers();//puts the co_camper emails in a separate array belonging to Camp object
             $Camper->verifyEmails();//verifies all the emails that were put in if they exist in database
         
-            if(empty($Camper->unregistered) && isset($Camper->unregistered)){
-                
+            if(empty($Camper->unregistered) && !isset($Camper->unregistered)){
+                //sorry the user's co-campers are not all registered
+                echo 'All users not registered';
+            }
+            else{
+                $Camper->makeReservation($_SESSION['userEmail']);
             }
         }
         else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
     }
+    
+    //get rid of 
+    function Register()
+    {
+        
+                  if($EventData->insert())
+                  {
+                       $_SESSION['email'] = $register_data['email'];
+                       $_SESSION['name'] = $register_data['lastname'];
+                       header('Location: registerSuccess.php');
+                       //email to user
+                       $link = 'http://localhost/PropWebsite/PropWebsite/controller/activate.php?email='.$register_data['email'].'&hash='.$register_data['hash'];
+                       $msg = "<p>Hello ".$register_data['lastname']."<\p> <p>You need to activate your account, please click the link below: <\p> <p>".$link."<\p> <p> Kind regards,</p> <p>Jazz festival team</p>";
+                       sentEmail($register_data['email'], $msg);
+                  }
+              
+              else if(empty($errors) === false) {
+                //oput errors
+                    echo output_error($errors); 
+               }
+    }
+    include '../webPages/register.view.php';
 ?>

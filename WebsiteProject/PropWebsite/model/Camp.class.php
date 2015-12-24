@@ -53,8 +53,8 @@ class Camp extends DataObject {
     public function verifyEmails()
     {
         foreach ($this->campers as $key=>$emails){
-            if(isset($emails)===false && empty($emails)===false){
-                if(user_exists($emails)==false)
+            if(isset($emails) && !empty($emails)){
+                if(User::user_exists($emails)==false)
                     $this->unregistered[]=$emails;
             }
         }
@@ -70,14 +70,17 @@ class Camp extends DataObject {
         try{
             $st=$conn->prepare($sql);
             $st->execute();
-            $row=$st->fetch();
+            $row=$st->fetch(PDO::FETCH_ASSOC);
         }catch(PDOException $e){
             parent::disconnect($conn);
             die("Query failed: ".$e->getMessage());
         }
         
         parent::disconnect($conn);
-        return $row;//this method will return the campId of the first camp in a set of available Camps    
+        $CampID=$row["CampID"];
+        if(isset($CampID) && !empty($CampID))
+            return $CampID;//this method will return the campId of the first camp in a set of available Camps    
+        else{return -1;}//otherwise it returns -1 meaning there are no camps available 
     }
     
     public function makeCampOccupied($campId){
@@ -89,29 +92,50 @@ class Camp extends DataObject {
             $st->bindValue(":campId", $campId,PDO::PARAM_INT);
             $st->execute();
         }catch(PDOException $e){
-            echo 'Could not make camp occupied';
+            parent::disconnect($conn);
+            die ("Could not make camp occupied: ".$e);
         }   
     }
     
-    //we can assign the eventId of the person making the reservation as the groupId as well, we can do that because 
-    //groupId is any unique number for a group so it can also be the number of the eventId
-    public function makeGroup(){
+//this method generates a unique number for each camp-reservation
+    public function generateUniqueCampResNo(){
+        
+        $ResNo=rand(1111, 9999);
         $conn=  parent::connect();
-        $sql="INSERT INTO ".TBL_GROUP." (GroupID, Co_email, CampRes_No,Check_in)
-                VALUES(:stDate,:eDate,:acctId,:campId)";
-            
+        $sql="SELECT CampRes_No FROM ".TBL_CAMP_RES." WHERE CampRes_No=:resNo";
+        $row;
+        do{
+            try{
+                $st=$conn->prepare($sql);
+                $st->bindValue(":resNo", $ResNo,PDO::PARAM_INT);
+                $st->execute();
+                $row=$st->fetch();
+                if($row) 
+            {
+                $ResNo=rand(1111,9999);
+                $sql="SELECT CampRes_No FROM ".TBL_CAMP_RES." WHERE CampRes_No=:resNo";
+            }
+            else{$row=null;}
+                
+            }catch(PDOException $e){
+                parent::disconnect($conn);
+                die('Query failed'.$e);
+            }
+        }while(isset($row) && !empty($row));//$row!=null
+        parent::disconnect($conn);
+        return $ResNo;
     }
     
     //method for registering
     public function makeReservation($UserEmail){
-        if(isset($unregistered) && empty($unregistered)){
+        if(!isset($unregistered)){//&& empty($unregistered)
             $eventAct=  EventAccount::getByEmailAddress($UserEmail);//now eventAct variable is the Event Account object
             //of the person that is making the camping reservation for the group of people, when this method
             //is called the argument given to it will most likely be the username stored in the session variable
             $coCampers=array();//coCampers will store all the coCampers that are in the reservation so it will 
             //ignore the empty fields included in the campers array variable
             foreach ($this->campers as $key=>$val){
-                if(isset($val)===false && !empty($val))
+                if(isset($val) && !empty($val))
                     $coCampers[]=$val;//this variable stores the emails of all the co-campers
             }
             
@@ -120,24 +144,34 @@ class Camp extends DataObject {
             
             //here we get a campId of a camp that is available 
             $campId=$this->checkCampAvailability();
+            $campResNo=$this->generateUniqueCampResNo();
             
-            if(!isset($campId) && !empty($campId)){
+            if($campId>=0){//would only execute the SQL statement if there are camps available
                 $conn=  parent::connect();
-                $sql="INSERT INTO ".TBL_CAMP_RES." (Start_Date,End_Date,Account_ID,CAMP_CampID)
-                VALUES(:stDate,:eDate,:acctId,:campId)";
+                $sql="INSERT INTO ".TBL_CAMP_RES." (CampRes_No, Start_Date,End_Date,Account_ID,CAMP_CampID)
+                VALUES(:campRes, :stDate,:eDate,:acctId,:campId)";
                 
-                $sqlGroup=$sql="INSERT INTO ".TBL_GROUP." (GroupID, Co_email, CampRes_No,Check_in)
-                VALUES(:groupId,:coEmail,:acctId,:campId)";
+                $sqlGroup="INSERT INTO ".TBL_GROUP." (GroupID, Co_email, CampRes_No,Check_in)
+                VALUES(:groupId,:coEmail,:campResNo,0)";//checkIn is always 0 upon registration 
                         
                 try{
                     $st=$conn->prepare($sql);
+                    $st->bindValue(":campRes", $campResNo,PDO::PARAM_INT);
                     $st->bindValue(":stDate", $stDate);
-                    $st->bindValue(":eDate", $eDate,PDO::PARAM_STR);
+                    $st->bindValue(":eDate", $eDate);
                     $st->bindValue(":acctId", $eventAct->EventAccountGet(),PDO::PARAM_INT);
                     $st->bindValue(":campId", $campId,PDO::PARAM_INT);
                     $st->execute();
                     
-                    $stGroup=$conn->prepare($sqlGroup);
+    //we can assign the eventId of the person making the reservation as the groupId as well, we can do that because 
+    //groupId is any unique number for a group so it can also be the number of the eventId
+                    foreach($coCampers as $coEmail){
+                        $stGroup=$conn->prepare($sqlGroup);
+                        $stGroup->bindValue(":groupId", $eventAct->EventAccountGet(),PDO::PARAM_INT);
+                        $stGroup->bindValue(":coEmail", $coEmail,PDO::PARAM_STR);
+                        $stGroup->bindValue(":campResNo", $campResNo,PDO::PARAM_INT);
+                        $stGroup->execute();
+                    }
                     
                     parent::disconnect($conn);
                     $this->makeCampOccupied($campId);//call this method to make camp occupied by making its Active

@@ -92,7 +92,7 @@ class EventAccount extends DataObject {
             parent::disconnect($conn);
             die("Query failed: ".$e->getMessage());
             }
-            }while($row!=null);
+            }while(isset($row) && !empty($row));//$row!=null
             parent::disconnect($conn);
             $this->data["Account_ID"]=$x;
     }
