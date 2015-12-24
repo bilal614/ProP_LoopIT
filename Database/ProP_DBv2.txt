@@ -15,7 +15,7 @@ CREATE TABLE CAMPING_RES
     CampRes_No           INT NOT NULL ,
     Start_Date           DATE NOT NULL ,
     End_Date             DATE NOT NULL ,
-    Account_ID INTEGER NOT NULL ,
+    Account_ID 		 INTEGER NOT NULL ,
     CAMP_CampID          INT NOT NULL,
     PRIMARY KEY (CampRes_No)
   ) ;

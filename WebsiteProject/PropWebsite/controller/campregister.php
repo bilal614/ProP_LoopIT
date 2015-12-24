@@ -77,7 +77,7 @@
             }
             else{
                 $Camper->makeReservation('bilalbutt.614@gmail.com');//$_SESSION['userEmail'],use this but for now use an 
-                //example email registered in the DB
+                //example email registered in the DB!!!!IMPORTANT!!!
             }
         }
         else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
