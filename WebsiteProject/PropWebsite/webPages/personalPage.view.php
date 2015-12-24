@@ -2,7 +2,8 @@
 <html>
 <head>
      <?php
-        include ('../includes/common.inc.php');
+        require_once ('../includes/common.inc.php');
+        include ('../controller/personalPage.php');
         displayHeadTag();
     ?>
 <body>
@@ -59,8 +60,8 @@
                         NOTE: You will have to make the entire payment in full on behalf of all your co-campers 
                         if you choose this option!!!
                     </p>
-                    <a href=""> 
-                        <input type="button" id="campReserve" name="CampReserve" value="Make Reservation Now!">
+                    <a href="campreservation.php">
+                        <input type="button" id="campReserve" name="CampReserve" value="Make Reservation Now!"/>
                     </a>
                 </div>
             </div>

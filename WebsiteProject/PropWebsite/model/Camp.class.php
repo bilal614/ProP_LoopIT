@@ -41,11 +41,11 @@ class Camp extends DataObject {
     //if his/her friends exist in the database or not.
     public function putInCampers()//must execute this method in camp controller to move the camper emails in campers array
     {
-        $this->campers["Camper1"]=$data["co_camper1"];
-        $this->campers["Camper2"]=$data["co_camper2"];
-        $this->campers["Camper3"]=$data["co_camper3"];
-        $this->campers["Camper4"]=$data["co_camper4"];
-        $this->campers["Camper5"]=$data["co_camper5"];
+        $this->campers["Camper1"]= parent::getValue('co_camper1');
+        $this->campers["Camper2"]= parent::getValue('co_camper2');
+        $this->campers["Camper3"]= parent::getValue('co_camper3');
+        $this->campers["Camper4"]= parent::getValue('co_camper4');
+        $this->campers["Camper5"]= parent::getValue('co_camper5');
     }
     
     //verifyEmails method checks whether the emails in the coCampers array all exist in the database and returns 
@@ -65,10 +65,11 @@ class Camp extends DataObject {
     }
     public function checkCampAvailability(){
         $conn=  parent::connect();
-        $sql="SELECT CampID FROM".TBL_CAMP." WHERE Available=1";
+        $sql="SELECT CampID FROM ".TBL_CAMP." WHERE Available=:x";
         
         try{
             $st=$conn->prepare($sql);
+            $st->bindValue(":x", 1,PDO::PARAM_BOOL);
             $st->execute();
             $row=$st->fetch(PDO::FETCH_ASSOC);
         }catch(PDOException $e){
@@ -152,7 +153,7 @@ class Camp extends DataObject {
                 VALUES(:campRes, :stDate,:eDate,:acctId,:campId)";
                 
                 $sqlGroup="INSERT INTO ".TBL_GROUP." (GroupID, Co_email, CampRes_No,Check_in)
-                VALUES(:groupId,:coEmail,:campResNo,0)";//checkIn is always 0 upon registration 
+                VALUES(:groupId,:coEmail,:campResNo,:checkIn)";//checkIn is always 0 upon registration 
                         
                 try{
                     $st=$conn->prepare($sql);
@@ -161,6 +162,7 @@ class Camp extends DataObject {
                     $st->bindValue(":eDate", $eDate);
                     $st->bindValue(":acctId", $eventAct->EventAccountGet(),PDO::PARAM_INT);
                     $st->bindValue(":campId", $campId,PDO::PARAM_INT);
+                    $st->bindValue("checkIn", false,PDO::PARAM_BOOL);
                     $st->execute();
                     
     //we can assign the eventId of the person making the reservation as the groupId as well, we can do that because 

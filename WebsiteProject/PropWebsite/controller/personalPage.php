@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include '../model/User.class.php' ;
-    include '../functions/generalFunctions.php';
+    require_once '../model/User.class.php' ;
+    require_once '../functions/generalFunctions.php';
     if(isset($_SESSION['userEmail'])){
         $email = $_SESSION['userEmail'];
         $eventAccount = EventAccount::getByEmailAddress($email);
@@ -13,7 +13,15 @@
     }   
     
    
-   
+   /*if(!empty($_POST) && $_POST){
+       if(isset($_POST['CampReserve']))
+       {
+           global $email;
+           $_POST["EmailOfCamper"]=$email;
+           //redirect to campreservation page
+           header('Location: campreservation.php');
+       }
+   }*/
     
         
 

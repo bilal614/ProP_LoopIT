@@ -2,7 +2,7 @@
 <html>
 <head>
      <?php
-        include('../includes/common.inc.php');        
+        include('../includes/common.inc.php');   
         displayHeadTag();
     ?>
 </head>
@@ -17,6 +17,7 @@
         <div class="content">
            <div id="Regwrapper">
                <header class="regHeader">Camp Registration <span></span></header>
+               
                <form id="campForm" action="../controller/campregister.php" method="post">
                    <div id="innerContainer"> 
                     <div id="leftCol">
@@ -60,6 +61,7 @@
     </div>
     <?php
     displayFooter();
+    campReg(); 
     ?> 
 </body>
 </html>

@@ -24,7 +24,7 @@
                 <?php 
                     Register();
                 ?>
-               <form action="" method="post" id="registerForm">
+               <form action="../controller/register.php" method="post" id="registerForm">
                     <div>
                         <div class="form-group">
                             <label for="first_name" class="uname"> First name </label>

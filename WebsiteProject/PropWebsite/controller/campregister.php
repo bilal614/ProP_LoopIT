@@ -7,7 +7,7 @@
 
 //Validate the form in server side
     $errors = array();
-    if (empty($_POST)=== false){
+    if (!empty($_POST)){
         $required_fields = array('co_camper1', 'co_camper2', 'co_camper3', 'start_date','end_date');
         //echo '<pre>',print_r($_POST,true), '</pre>';
         foreach ($_POST as $key=>$value){
@@ -29,23 +29,35 @@
         else { $errors[]='End date must be during event week.'; } 
                
 //Validates that all the emails entered in the co-camper emails are infact valid emails.
-        if(filter_var($_POST['co_camper1'],FILTER_VALIDATE_EMAIL)===FALSE)
-        {$errors[] = 'Co-camper 1 must have a valid email address.';}
-        if(filter_var($_POST['co_camper2'],FILTER_VALIDATE_EMAIL)===FALSE)
-        { $errors[] = 'Co-camper 2 must have a valid email address.'; }
-        if(filter_var($_POST['co_camper3'],FILTER_VALIDATE_EMAIL)===FALSE)
-        { $errors[] = 'Co-camper 3 must have a valid email address.'; }
-        if(filter_var($_POST['co_camper4'],FILTER_VALIDATE_EMAIL)===FALSE)
-        { $errors[] = 'Co-camper 4 must have a valid email address.'; }
-        if(filter_var($_POST['co_camper5'],FILTER_VALIDATE_EMAIL)===FALSE)
-        { $errors[] = 'Co-camper 5 must have a valid email address.'; }
+        if(!empty($_POST['co_camper1'])){
+            if(filter_var($_POST['co_camper1'],FILTER_VALIDATE_EMAIL)===FALSE)
+            {$errors[] = 'Co-camper 1 must have a valid email address.';}
+        }
+        if(!empty($_POST['co_camper2'])){
+            if(filter_var($_POST['co_camper2'],FILTER_VALIDATE_EMAIL)===FALSE)
+            { $errors[] = 'Co-camper 2 must have a valid email address.'; }
+        }
         
+        if(!empty($_POST['co_camper3'])){
+            if(filter_var($_POST['co_camper3'],FILTER_VALIDATE_EMAIL)===FALSE)
+            { $errors[] = 'Co-camper 3 must have a valid email address.'; }
+        }
+        
+        if(!empty($_POST['co_camper4'])){
+            if(filter_var($_POST['co_camper4'],FILTER_VALIDATE_EMAIL)===FALSE)
+            { $errors[] = 'Co-camper 4 must have a valid email address.'; }
+        }
+        
+        if(!empty($_POST['co_camper5'])){
+            if(filter_var($_POST['co_camper5'],FILTER_VALIDATE_EMAIL)===FALSE)
+            { $errors[] = 'Co-camper 5 must have a valid email address.'; }
+        }
     }
 
-    function campRegistration()
+    function campReg()
     {
         global $errors;
-        if(!empty($_POST) && empty($errors)){
+        if(!empty($_POST['submit']) && empty($errors)){
             $formVars=array
                 (
                 "co_camper1"=>$_POST['co_camper1'],
@@ -59,20 +71,20 @@
             $Camper=new Camp($formVars);//creates new Camp object using the data required from the variable formVars
             $Camper->putInCampers();//puts the co_camper emails in a separate array belonging to Camp object
             $Camper->verifyEmails();//verifies all the emails that were put in if they exist in database
-        
             if(empty($Camper->unregistered) && !isset($Camper->unregistered)){
                 //sorry the user's co-campers are not all registered
                 echo 'All users not registered';
             }
             else{
-                $Camper->makeReservation($_SESSION['userEmail']);
+                $Camper->makeReservation('bilalbutt.614@gmail.com');//$_SESSION['userEmail'],use this but for now use an 
+                //example email registered in the DB
             }
         }
         else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
     }
     
     //get rid of 
-    function Register()
+    /*function Register()
     {
         
                   if($EventData->insert())
@@ -90,6 +102,6 @@
                 //oput errors
                     echo output_error($errors); 
                }
-    }
-    include '../webPages/register.view.php';
+    }*/
+    include '../webPages/campreservation.view.php';
 ?>
