@@ -6,22 +6,25 @@
         $email = $_SESSION['userEmail'];
         $eventAccount = EventAccount::getByEmailAddress($email);
         $infors = $eventAccount->GetData(); 
-        include '../webPages/personalPage.view.php';
     }
     else{
         echo "Opps! You need to login for this page!";
     }   
     
    
-   /*if(!empty($_POST) && $_POST){
+   if(isset($_POST)){
        if(isset($_POST['CampReserve']))
        {
            global $email;
            $_POST["EmailOfCamper"]=$email;
            //redirect to campreservation page
-           header('Location: campreservation.php');
+           $_SESSION['redirectURL']=$_SERVER['REQUEST_URI'];
+           header('Location: campregister.php');
+           //include '../webPages/campreservation.view.php';
+           exit();
        }
-   }*/
+   }
     
+   include '../webPages/personalPage.view.php';
         
 

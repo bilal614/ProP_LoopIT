@@ -1,13 +1,12 @@
 <?php
 
-//session_start();
-//session was already started when the user logged in
+session_start();
     include '../model/Camp.class.php';
     include '../functions/generalFunctions.php';
 
 //Validate the form in server side
     $errors = array();
-    if (!empty($_POST)){
+    if (!empty($_POST) && empty($_POST['Skip'])){
         $required_fields = array('co_camper1', 'co_camper2', 'co_camper3', 'start_date','end_date');
         //echo '<pre>',print_r($_POST,true), '</pre>';
         foreach ($_POST as $key=>$value){
@@ -52,12 +51,15 @@
             if(filter_var($_POST['co_camper5'],FILTER_VALIDATE_EMAIL)===FALSE)
             { $errors[] = 'Co-camper 5 must have a valid email address.'; }
         }
+        
     }
 
     function campReg()
     {
         global $errors;
-        if(!empty($_POST['submit']) && empty($errors)){
+        $goBack=filter_input(INPUT_POST, 'Skip');
+        $submitForm=  filter_input(INPUT_POST, 'Submit');
+        if(!empty($submitForm) && empty($errors)){
             $formVars=array
                 (
                 "co_camper1"=>$_POST['co_camper1'],
@@ -73,35 +75,22 @@
             $Camper->verifyEmails();//verifies all the emails that were put in if they exist in database
             if(empty($Camper->unregistered) && !isset($Camper->unregistered)){
                 //sorry the user's co-campers are not all registered
-                echo 'All users not registered';
+                //echo 'All users not registered';
+                //here we will implement sending emails to other un-registered users to get them to register
             }
             else{
-                $Camper->makeReservation('bilalbutt.614@gmail.com');//$_SESSION['userEmail'],use this but for now use an 
+                $Camper->makeReservation($_SESSION['userEmail']);//'bilalbutt.614@gmail.com',use this but for now use an 
                 //example email registered in the DB!!!!IMPORTANT!!!
             }
         }
         else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
+        else if(isset($goBack)){
+            
+            header('Location: '.$_SESSION['redirectURL']);
+            exit();
+            //include 'personalPage.php';
+            }
     }
     
-    //get rid of 
-    /*function Register()
-    {
-        
-                  if($EventData->insert())
-                  {
-                       $_SESSION['email'] = $register_data['email'];
-                       $_SESSION['name'] = $register_data['lastname'];
-                       header('Location: registerSuccess.php');
-                       //email to user
-                       $link = 'http://localhost/PropWebsite/PropWebsite/controller/activate.php?email='.$register_data['email'].'&hash='.$register_data['hash'];
-                       $msg = "<p>Hello ".$register_data['lastname']."<\p> <p>You need to activate your account, please click the link below: <\p> <p>".$link."<\p> <p> Kind regards,</p> <p>Jazz festival team</p>";
-                       sentEmail($register_data['email'], $msg);
-                  }
-              
-              else if(empty($errors) === false) {
-                //oput errors
-                    echo output_error($errors); 
-               }
-    }*/
     include '../webPages/campreservation.view.php';
 ?>

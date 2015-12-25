@@ -6,7 +6,7 @@ include '../functions/generalFunctions.php';
 $errors = array();
 if(empty($_POST) === false){
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
     
     if(empty($email) === true || empty($password)=== true){
        $errors[] = "Please enter your email or your password";

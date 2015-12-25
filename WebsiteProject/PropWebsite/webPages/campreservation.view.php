@@ -51,8 +51,8 @@
                             </div>
                         </div>
                         <div id="campButtons">
-                            <input type="submit" name="submit" value="Register and Pay"/>
-                            <input type="submit" name="skip" value="Back To Personal Page"/>
+                                <input type="submit" name="Reserve" value="Register and Pay"/>
+                                <input type="submit" name="Skip" value="Back To Personal Page"/>
                         </div>
                    </div>
                 </form>
