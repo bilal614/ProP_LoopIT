@@ -53,6 +53,10 @@ session_start();
         }
         
     }
+    else if(isset($_POST['Skip'])){
+        header('Location: '.$_SESSION['redirectURL']);
+        exit();
+    }
 
     function campReg()
     {
@@ -84,12 +88,12 @@ session_start();
             }
         }
         else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
-        else if(isset($goBack)){
+        /*else if(isset($goBack)){
             
             header('Location: '.$_SESSION['redirectURL']);
             exit();
             //include 'personalPage.php';
-            }
+            }*/
     }
     
     include '../webPages/campreservation.view.php';
