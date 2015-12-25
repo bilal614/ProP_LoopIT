@@ -129,7 +129,25 @@ class Camp extends DataObject {
     
     //method for registering
     public function makeReservation($UserEmail){
+        //global $errors;
         if(!isset($unregistered)){//&& empty($unregistered)
+            
+            
+            /////////////////////////////////////////////////////////
+            //This piece of code is a check to see if any of the people are already registered including the person 
+            //making the camp reservation 
+            foreach($coCampers as $coEmail){
+            $already=  Camp::getCampResNo($coEmail);
+                if(!isset($already)){
+                    //$errors[]='Some of you co-campers are already registered.';
+                    return false;}
+            }
+            $already=  Camp::getCampResNo($UserEmail);
+            if(!isset($already)){
+                return false;
+            }
+            //////////////////////////////////////////////////////////
+            
             $eventAct=  EventAccount::getByEmailAddress($UserEmail);//now eventAct variable is the Event Account object
             //of the person that is making the camping reservation for the group of people, when this method
             //is called the argument given to it will most likely be the username stored in the session variable
@@ -187,8 +205,6 @@ class Camp extends DataObject {
                     $this->makeCampOccupied($campId);//call this method to make camp occupied by making its Active
                     //field in database to a 0
                     
-                    
-                    
                     return true;//returns true when sql query is successfully executed and EventAccount is added to database
                 }catch(PDOException $e){
                     parent::disconnect($conn);
@@ -205,5 +221,23 @@ class Camp extends DataObject {
         }
         
         parent::disconnect($conn);
+    }
+    
+    public static function getCampResNo($email){
+        $conn= parent::connect();
+        $sql="SELECT CampRes_No, GroupID FROM ".TBL_GROUP." WHERE Co_email=:email";
+        $row;
+        try{
+            $st=$conn->prepare($sql);
+            $st->bindValue(":email", $email,PDO::PARAM_STR);
+            $st->execute();
+            $row=$st->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+            parent::disconnect($conn);
+            die ("Could not retrieve data ".$e);
+        }
+        parent::disconnect($conn);
+        return $row;
     }
 }

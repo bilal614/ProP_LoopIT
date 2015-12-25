@@ -61,7 +61,7 @@
     </div>
     <?php
     displayFooter();
-    campReg(); 
+    //campReg(); 
     ?> 
 </body>
 </html>
