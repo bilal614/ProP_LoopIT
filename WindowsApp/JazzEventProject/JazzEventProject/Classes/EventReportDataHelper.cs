@@ -161,6 +161,191 @@ namespace JazzEventProject.Classes
 
         }
 
+        // Visitors who check in
+
+        public int NrOfVisPresent()
+        {
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE RFID_code > 1  ";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        // Visitors who check in
+
+        public decimal EvAccountBalance()
+        {
+            String sql = "SELECT ROUND(IFNULL(SUM(Balance),0),2) FROM E_ACCOUNT  ";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            decimal number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToDecimal(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        // Big burger sold
+        public int BBurgerSold()
+        {
+            String sql = "SELECT IFNULL(SUM(Quantity_Sold),0) FROM FOOD_INVOICE WHERE Food_ID = 1 "; 
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        // Cocacola sold
+        public int CColaSold()
+        {
+            String sql = "SELECT IFNULL(SUM(Quantity_Sold),0) FROM FOOD_INVOICE WHERE Food_ID = 6 ";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        // Chicken burger sold
+        public int ChickBurgerSold()
+        {
+            String sql = "SELECT IFNULL(SUM(Quantity_Sold),0) FROM FOOD_INVOICE WHERE Food_ID = 3 ";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        // French fries sold
+        public int FFriesSold()
+        {
+            String sql = "SELECT IFNULL(SUM(Quantity_Sold),0) FROM FOOD_INVOICE WHERE Food_ID = 2 ";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        // Heinneken beer sold
+        public int HBeerSold()
+        {
+            String sql = "SELECT IFNULL(SUM(Quantity_Sold),0) FROM FOOD_INVOICE WHERE Food_ID = 5 ";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
+
+        // Salad sold
+        public int SaladSold()
+        {
+            String sql = "SELECT IFNULL(SUM(Quantity_Sold),0) FROM FOOD_INVOICE WHERE Food_ID = 4 ";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            int number = 0;
+            try
+            {
+                connection.Open();
+                number = Convert.ToInt32(command.ExecuteScalar());
+                return number;
+            }
+            catch
+            {
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
 
     }
 }
