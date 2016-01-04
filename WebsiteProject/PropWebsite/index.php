@@ -30,7 +30,7 @@
                 <li>
                     <a href="controller/login.php">Log in\ Register</a>
                     <ul>
-                        <li><a href="controller//login.php">Login</a></li>
+                        <li><a href="controller/login.php">Login</a></li>
                         <li><a href="controller/register.php">Register</a></li>
                     </ul>
                 </li>
