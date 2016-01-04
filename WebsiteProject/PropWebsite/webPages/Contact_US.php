@@ -48,7 +48,7 @@
                         }
                         ?>
                                 <label>Name:</label><br/>
-                                <input type="text" name="name" required="required" placeholder="email change Name"/> *
+                                <input type="text" name="name" required="required" placeholder=" Name"/> *
                                    <br><br>
                 
                                 <label>Email:</label><br/>
