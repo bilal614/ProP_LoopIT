@@ -5,6 +5,8 @@
         include('../includes/common.inc.php');   
         displayHeadTag();
     ?>
+    <script src="../js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../js/additional-methods.min.js" type="text/javascript"></script>
 </head>
 <body>
     <h1>
