@@ -66,6 +66,7 @@
     <Compile Include="Classes\EventAccount.cs" />
     <Compile Include="Classes\EventAccountDataHelper.cs" />
     <Compile Include="Classes\EventReportDataHelper.cs" />
+    <Compile Include="Classes\FoodReport.cs" />
     <Compile Include="Classes\GroupDataHelper.cs" />
     <Compile Include="Classes\InvoiceDataHelper.cs" />
     <Compile Include="Classes\ItemDataHelper.cs" />

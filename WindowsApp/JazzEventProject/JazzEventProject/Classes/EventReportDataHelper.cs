@@ -347,5 +347,43 @@ namespace JazzEventProject.Classes
 
         }
 
+
+        //Select food report infors
+        public List<FoodReport> GetAllFoodInfors()
+        {
+            String sql = "select f.food_ID as foodID, f.food_name as foodName, sum(fi.quantity_sold) soldQuantity, f.food_quantity availableQuantity from food f join food_invoice fi on f.food_id = fi.food_id group by f.food_id";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            List<FoodReport> temp;
+            temp = new List<FoodReport>();
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                int FoodID;
+                string FoodName;
+                int amountSold;
+                int amountAval;
+                while (reader.Read())
+                {
+                    FoodID = Convert.ToInt32(reader["foodID"]);
+                    FoodName = Convert.ToString(reader["foodName"]);
+                    amountSold = Convert.ToInt32(reader["soldQuantity"]);
+                    amountAval = Convert.ToInt32(reader["availableQuantity"]);
+
+                    temp.Add(new FoodReport(FoodID, FoodName, amountSold,amountAval));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("error while loading the invoices");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return temp;
+        }
     }
 }

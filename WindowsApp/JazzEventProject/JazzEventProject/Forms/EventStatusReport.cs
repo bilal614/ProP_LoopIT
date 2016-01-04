@@ -23,6 +23,7 @@ namespace JazzEventProject
         EventAccountDataHelper accountHelper = new EventAccountDataHelper();
         private void EventStatusReport_Load(object sender, EventArgs e)
         {
+            dataGridViewFoodReport.DataSource = eventstat.GetAllFoodInfors();
 
         }
 
