@@ -170,8 +170,8 @@ class Camp extends DataObject {
                 $sql="INSERT INTO ".TBL_CAMP_RES." (CampRes_No, Start_Date, End_Date, Account_ID, CAMP_CampID)
                 VALUES(:campRes, :stDate, :eDate, :acctId, :campId)";
                 
-                $sqlGroup="INSERT INTO ".TBL_GROUP." (GroupID, Co_email, CampRes_No,Check_in)
-                VALUES(:groupId,:coEmail,:campResNo,:checkIn)";//checkIn is always 0 upon registration 
+                $sqlGroup="INSERT INTO ".TBL_GROUP." ( Co_email, CampRes_No,Check_in)
+                VALUES(:coEmail,:campResNo,:checkIn)";//checkIn is always 0 upon registration 
                         
                 try{
                     $st=$conn->prepare($sql);
@@ -186,7 +186,6 @@ class Camp extends DataObject {
     //groupId is any unique number for a group so it can also be the number of the eventId
                     foreach($coCampers as $coEmail){
                         $stGroup=$conn->prepare($sqlGroup);
-                        $stGroup->bindValue(":groupId", $eventAct->EventAccountGet(),PDO::PARAM_INT);
                         $stGroup->bindValue(":coEmail", $coEmail,PDO::PARAM_STR);
                         $stGroup->bindValue(":campResNo", $campResNo,PDO::PARAM_INT);
                         $stGroup->bindValue("checkIn", 0,PDO::PARAM_BOOL);
@@ -195,7 +194,6 @@ class Camp extends DataObject {
                     //we have added the rest of the group members of the user making reservation but now we must also 
                     //add that person to the group
                     $stUser=$conn->prepare($sqlGroup);
-                    $stUser->bindValue(":groupId", $eventAct->EventAccountGet(),PDO::PARAM_INT);
                     $stUser->bindValue(":coEmail", $UserEmail,PDO::PARAM_STR);
                     $stUser->bindValue(":campResNo", $campResNo,PDO::PARAM_INT);
                     $stUser->bindValue("checkIn", 0,PDO::PARAM_BOOL);
@@ -211,11 +209,11 @@ class Camp extends DataObject {
                     die("Query failed: ".$e->getMessage());
                 }
             }else{
-                echo 'No camps are available at this time.';
+                //echo 'No camps are available at this time.';
                 return false;
             }
         }else{
-            echo 'Not all co-campers are registered yet.';
+            //echo 'Not all co-campers are registered yet.';
             //we must send an invite to the unregistered emails supplied by the user in this case!!!!!
             return false;
         }
@@ -225,7 +223,7 @@ class Camp extends DataObject {
     
     public static function getCampResNo($email){
         $conn= parent::connect();
-        $sql="SELECT CampRes_No, GroupID FROM ".TBL_GROUP." WHERE Co_email=:email";
+        $sql="SELECT CampRes_No FROM ".TBL_GROUP." WHERE Co_email=:email";
         $row;
         try{
             $st=$conn->prepare($sql);

@@ -27,7 +27,7 @@ and open the template in the editor.
                     <header class="regHeader">Welcome <?php echo($_SESSION['name']);?> to our festival!</header>
                     <div class = "paymentRequest">
                         <div class="bg-warning">You have been registered successfully! 
-                            Your Camp Reservation Number is <?php echo $campInfo['CampRes_No'] ?> and Group Id is <?php echo $campInfo['GroupID'] ?>
+                            Your Camp Reservation Number is <?php echo $campInfo['CampRes_No'] ?>
                         </div>
                         <form action="../controller/campRegSuccess.php" method="post"> 
                             <input type="submit" name="BackPersonPage" value="Back To Personal Page"/>                            

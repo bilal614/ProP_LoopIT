@@ -2,10 +2,12 @@
     session_start();
     require_once '../model/User.class.php' ;
     require_once '../functions/generalFunctions.php';
+    require_once '../model/Camp.class.php';
     if(isset($_SESSION['userEmail'])){
         $email = $_SESSION['userEmail'];
         $eventAccount = EventAccount::getByEmailAddress($email);
-        $infors = $eventAccount->GetData(); 
+        $infors = $eventAccount->GetData();
+        $campInfo=  Camp::getCampResNo($_SESSION['email']);
     }
     else{
         echo "Opps! You need to login for this page!";

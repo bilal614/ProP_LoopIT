@@ -12,21 +12,27 @@ session_start();
         foreach ($_POST as $key=>$value){
             if(empty($value) && in_array($key, $required_fields) === true)
             {
-                $errors["missingReqFields"] = 'Please enter the required fields';
+                $errors[] = 'Please enter the required fields';
                 break 1; // break out of the loop
             }   
         }
 //validate the start date entered by the user
+        $beginning =  strtotime('2016-01-30');
+        $ending=  strtotime('2016-02-08');
+        
         if($startDate = strtotime($_POST['start_date']))
-        {   $stDate=date('Y-m-d',$startDate);
-            if($stDate)
-            {}
-            else { $errors["badDate1"]='Starting date must be during event week.';}
+        {            
+            if($startDate>=$beginning && $startDate<=$ending)
+                {$stDate=date('Y-m-d',$startDate);}
+            else{ $errors[]='Starting date must be during event week.';}
         }
 //validate the end date entered by the user        
         if($endDate = strtotime($_POST['end_date']))
-        {$eDate=date('Y-m-d',$endDate);}
-        else { $errors[]='End date must be during event week.'; } 
+        {
+            if($endDate>=$beginning && $endDate<=$ending && $startDate<=$endDate)
+            {$eDate=date('Y-m-d',$endDate);}
+            else{ $errors[]='End date must be during event week.';}
+        }
                
 //Validates that all the emails entered in the co-camper emails are infact valid emails.
         if(!empty($_POST['co_camper1'])){
@@ -63,13 +69,16 @@ session_start();
                 "co_camper3"=>$_POST['co_camper3'],
                 "co_camper4"=>$_POST['co_camper4'],
                 "co_camper5"=>$_POST['co_camper5'],
-                "start_date"=>$_POST['start_date'],
-                "end_date"=>$_POST['end_date']
+                "start_date"=>$stDate,
+                "end_date"=>$eDate
                 );
             $Camper=new Camp($formVars);//creates new Camp object using the data required from the variable formVars
             $Camper->putInCampers();//puts the co_camper emails in a separate array belonging to Camp object
             $Camper->verifyEmails();//verifies all the emails that were put in if they exist in database
             if(empty($Camper->unregistered) && !isset($Camper->unregistered)){
+                $errors[]='Some of your co-campers are not registered for this event. We have sent them an'
+                        . ' invitation for registration. You will be able to make a camp reservation with them'
+                        . ' once they are registered.';
                 //sorry the user's co-campers are not all registered
                 //echo 'All users not registered';
                 //here we will implement sending emails to other un-registered users to get them to register
@@ -78,15 +87,16 @@ session_start();
                 if($Camper->makeReservation($_SESSION['userEmail']))//'bilalbutt.614@gmail.com',use this but for now use an 
                 //example email registered in the DB!!!!IMPORTANT!!!
                 {
+                    
                     header('Location: campRegSuccess.php');
                     exit();
                 }
-                /*else{
-                    $errors[]='Some of your fellow campers are already registered.';
-                }*/
+                else{
+                    $errors[]='There are no available camps for rent at the moment.';
+                }
             }
         }
-        else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
+        //else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
         
     }
     else if(isset($_POST['Skip'])){

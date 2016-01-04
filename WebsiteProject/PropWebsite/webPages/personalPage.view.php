@@ -31,7 +31,11 @@
                         <div></div>
                         <div class="userInfo">
                             Camp Reservations:<br>
-                            You have no current camp reservations at the moment.
+                            <?php 
+                            if(!empty($campInfo)){ 
+                                 echo 'Your Camp Reservation Number is ' . $campInfo['CampRes_No']; }?>
+                           <?php 
+                            if(empty($campInfo)) { echo ('You have no current camp reservations at the moment.'); }?>
                             
                         </div>
                         <a href="logout.php"> 

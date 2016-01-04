@@ -19,7 +19,7 @@
         <div class="content">
            <div id="Regwrapper">
                <header class="regHeader">Camp Registration <span></span></header>
-               
+               <?php if(isset($errors) && empty($errors) === false) { echo output_error($errors);  } ?>
                <form id="campForm" action="../controller/campregister.php" method="post">
                    <div id="innerContainer"> 
                     <div id="leftCol">
@@ -46,9 +46,9 @@
                                 <input type="text" name="co_camper5" placeholder="e-mail of co-camper 5"/>
                             </div>
                             <div id="CampDate">
-                                * Enter a date after 2015-12-30:<br>
+                                * Enter a date after or including 2016-01-30:<br>
                                 <input type="date" name="start_date" min="2015-12-30"><br><br>
-                                * Enter a date before 2016-01-05:<br>
+                                * Enter a date before or including 2016-02-08:<br>
                                 <input type="date" name="end_date" max="2016-01-05"><br><br>
                             </div>
                         </div>

@@ -72,12 +72,11 @@ ALTER TABLE FOOD_INVOICE ADD CONSTRAINT FOOD_INVOICE_PK PRIMARY KEY ( Food_Invoi
 
 CREATE TABLE GROUPMEMBERS
   (
-    GroupID                   INT NOT NULL ,
     Co_email                  VARCHAR(30) NOT NULL ,
     CampRes_No                INT NOT NULL ,
     Check_in BOOLEAN NOT NULL
   ) ;
-ALTER TABLE GROUPMEMBERS ADD CONSTRAINT GROUP_PK PRIMARY KEY ( GroupID, Co_email ) ;
+ALTER TABLE GROUPMEMBERS ADD CONSTRAINT GROUP_PK PRIMARY KEY ( CampRes_No, Co_email ) ;
 
 CREATE TABLE MATERIAL
   (
@@ -203,11 +202,11 @@ INSERT INTO CAMPING_RES(CampRes_No, Account_ID, CAMP_CampID, Start_Date, End_Dat
 VALUES (3,3,3, STR_TO_DATE('01-11-2015', '%d-%m-%Y'), STR_TO_DATE('02-10-2015', '%d-%m-%Y'));
 
 /*Insert data into groupmembers*/
-INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'Chirs@gmail.com', 1, false);
-INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'Joe@gmail.com', 1, false);
-INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'AliceSim@gmail.com', 1, false);
-INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (1, 'ron_will@gmail.com', 1, false);
-INSERT INTO GROUPMEMBERS (GroupID, Co_email, CampRes_No, Check_in) VALUES (2, 'Devil@gmail.com', 2, false);
+/*INSERT INTO GROUPMEMBERS ( Co_email, CampRes_No, Check_in) VALUES ( 'Chirs@gmail.com', 1, false);
+INSERT INTO GROUPMEMBERS ( Co_email, CampRes_No, Check_in) VALUES ( 'Joe@gmail.com', 1, false);
+INSERT INTO GROUPMEMBERS ( Co_email, CampRes_No, Check_in) VALUES ( 'AliceSim@gmail.com', 1, false);
+INSERT INTO GROUPMEMBERS ( Co_email, CampRes_No, Check_in) VALUES ( 'ron_will@gmail.com', 1, false);*/
+INSERT INTO GROUPMEMBERS ( Co_email, CampRes_No, Check_in) VALUES ( 'Devil@gmail.com', 2, false);
 
 /*Insert data into food*/
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (1,'Big Burger', 150, 5.50);
