@@ -1,34 +1,6 @@
 $(document).ready(function() {
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()});
     
-$( "#campForm" ).validate({
-  rules: {
-    co_camper1: {
-      required: true,
-      email: true
-    },
-      co_camper2: {
-      required: true,
-      email: true
-    },
-      co_camper3: {
-      required: false,
-      email: true
-    },
-      co_camper4: {
-      required: false,
-      email: true
-    },
-      co_camper5: {
-      required: false,
-      email: true
-    }}});
-});
-
-$(document).ready(function() {
-
-   var timetable = new Timetable();
+    var timetable = new Timetable();
     timetable.setScope(10, 1);
     timetable.addLocations(['Main Stage', 'Jazz Reacrational Stage', 'Liquid Bar', 'Workshop']);
     
@@ -67,9 +39,6 @@ $(document).ready(function() {
     renderer.draw('.timetable'); // any css selector
    
 });
-
-
-
 //Validation for registration form
  (function ($) {
     $(document).ready(function () {
@@ -108,5 +77,30 @@ $(document).ready(function() {
                 }
             }
         });
+        $( "#campForm" ).validate({
+        rules: {
+          co_camper1: {
+            required: true,
+            email: true
+          },
+            co_camper2: {
+            required: true,
+            email: true
+          },
+            co_camper3: {
+            required: false,
+            email: true
+          },
+            co_camper4: {
+            required: false,
+            email: true
+          },
+            co_camper5: {
+            required: false,
+            email: true
+        }
+        }});
+    //Contact page validation
     });
 })(jQuery);
+
