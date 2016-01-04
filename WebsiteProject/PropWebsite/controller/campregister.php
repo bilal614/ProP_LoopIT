@@ -12,14 +12,17 @@ session_start();
         foreach ($_POST as $key=>$value){
             if(empty($value) && in_array($key, $required_fields) === true)
             {
-                $errors[] = 'Please enter the required fields';
+                $errors["missingReqFields"] = 'Please enter the required fields';
                 break 1; // break out of the loop
             }   
         }
 //validate the start date entered by the user
         if($startDate = strtotime($_POST['start_date']))
-        { $stDate=date('Y-m-d',$startDate);}
-        else { $errors[]='Starting date must be during event week.';}
+        {   $stDate=date('Y-m-d',$startDate);
+            if($stDate)
+            {}
+            else { $errors["badDate1"]='Starting date must be during event week.';}
+        }
 //validate the end date entered by the user        
         if($endDate = strtotime($_POST['end_date']))
         {$eDate=date('Y-m-d',$endDate);}
