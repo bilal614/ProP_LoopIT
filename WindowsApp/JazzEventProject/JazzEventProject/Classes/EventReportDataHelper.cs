@@ -165,7 +165,7 @@ namespace JazzEventProject.Classes
 
         public int NrOfVisPresent()
         {
-            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE RFID_code > 1  ";
+            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE RFID_Code = -1";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -185,7 +185,7 @@ namespace JazzEventProject.Classes
 
         }
 
-        // Visitors who check in
+        // All event account balance
 
         public decimal EvAccountBalance()
         {

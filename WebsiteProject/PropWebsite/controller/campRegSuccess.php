@@ -12,5 +12,5 @@ if(isset($_POST['BackPersonPage'])){
 }
 
 include '../webPages/campSuccess.view';
-?>
+
 
