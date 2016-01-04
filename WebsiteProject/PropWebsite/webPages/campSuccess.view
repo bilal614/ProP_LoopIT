@@ -29,8 +29,8 @@ and open the template in the editor.
                         <div class="bg-warning">You have been registered successfully! 
                             Your Camp Reservation Number is <?php echo $campInfo['CampRes_No'] ?> and Group Id is <?php echo $campInfo['GroupID'] ?>
                         </div>
-                        <form action="../model/campRegSuccess.php" method="post"> 
-                            <input type="submit" name="BackPersonPage" value="Back To Personal Page"/>
+                        <form action="../controller/campRegSuccess.php" method="post"> 
+                            <input type="submit" name="BackPersonPage" value="Back To Personal Page"/>                            
                         </form>
                     </div>
                 </div><!--end div#RSwapper-->
