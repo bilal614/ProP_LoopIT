@@ -1,8 +1,9 @@
+<?php include ('../includes/common.inc.php');?>
 <!DOCTYPE html>
 <html>
 <head>
     <?php
-        include('../includes/subPages/headTag.php');
+        displayHeadTag();
     ?>
    
 </head>
@@ -12,7 +13,7 @@
     </h1>
     <div class="container">
         <?php
-            include('../includes/subPages/header.php');
+            displayHeader()
         ?>
         
         <div class="content">
@@ -64,7 +65,7 @@
                    </div>
                </div>
     <?php
-        include('../includes/subPages/footer.php');
+        displayFooter()
     ?>
     
 </body>
