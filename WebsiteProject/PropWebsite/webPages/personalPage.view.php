@@ -4,7 +4,7 @@
      <?php
         require_once ('../includes/common.inc.php');
         displayHeadTag();
-        global $campInfo;
+        global $campInfo,$campDates;
     ?>
 <body>
     <h1>
@@ -34,7 +34,8 @@
                             Camp Reservations:<br>
                             <?php 
                             if(!empty($campInfo)){ 
-                                 echo 'Your Camp Reservation Number is ' . $campInfo['CampRes_No']; }?>
+                                 echo 'Your Camp Reservation Number is ' . $campInfo['CampRes_No'].
+        '. Beginning on ' . $campDates['Start_Date'].' till '.$campDates['End_Date'].'.'; }?>
                            <?php 
                             if(empty($campInfo)) { echo ('You have no current camp reservations at the moment.'); }?>
                             
