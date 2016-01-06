@@ -103,49 +103,6 @@ session_start();
         header('Location: '.$_SESSION['redirectURL']);
         exit();
     }
-
-    /*function campReg()
-    {
-        global $errors;
-        $goBack=filter_input(INPUT_POST, 'Skip');
-        $submitForm=  filter_input(INPUT_POST, 'Reserve');
-        if(!empty($submitForm) && empty($errors)){
-            $formVars=array
-                (
-                "co_camper1"=>$_POST['co_camper1'],
-                "co_camper2"=>$_POST['co_camper2'],
-                "co_camper3"=>$_POST['co_camper3'],
-                "co_camper4"=>$_POST['co_camper4'],
-                "co_camper5"=>$_POST['co_camper5'],
-                "start_date"=>$_POST['start_date'],
-                "end_date"=>$_POST['end_date']
-                );
-            $Camper=new Camp($formVars);//creates new Camp object using the data required from the variable formVars
-            $Camper->putInCampers();//puts the co_camper emails in a separate array belonging to Camp object
-            $Camper->verifyEmails();//verifies all the emails that were put in if they exist in database
-            if(empty($Camper->unregistered) && !isset($Camper->unregistered)){
-                //sorry the user's co-campers are not all registered
-                //echo 'All users not registered';
-                //here we will implement sending emails to other un-registered users to get them to register
-            }
-            else{
-                if($Camper->makeReservation($_SESSION['userEmail']))//'bilalbutt.614@gmail.com',use this but for now use an 
-                //example email registered in the DB!!!!IMPORTANT!!!
-                {
-                    header('Location: campRegSuccess.php');
-                    exit();
-                }
-                
-            }
-        }
-        else if(isset($errors) && empty($errors) === false) { echo output_error($errors);  }
-        /*else if(isset($goBack)){
-            
-            header('Location: '.$_SESSION['redirectURL']);
-            exit();
-            //include 'personalPage.php';
-            }
-    }*/
     
     include '../webPages/campreservation.view.php';
 ?>

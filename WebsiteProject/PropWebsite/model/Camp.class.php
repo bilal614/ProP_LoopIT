@@ -223,7 +223,7 @@ class Camp extends DataObject {
     
     public static function getCampResNo($email){
         $conn= parent::connect();
-        $sql="SELECT CampRes_No FROM ".TBL_GROUP." WHERE Co_email=:email";
+        $sql="SELECT CampRes_No FROM ".TBL_GROUP." WHERE Co_email=:email;";
         $row;
         try{
             $st=$conn->prepare($sql);

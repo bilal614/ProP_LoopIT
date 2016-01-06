@@ -7,7 +7,9 @@
         $email = $_SESSION['userEmail'];
         $eventAccount = EventAccount::getByEmailAddress($email);
         $infors = $eventAccount->GetData();
-        $campInfo=  Camp::getCampResNo($_SESSION['email']);
+        if(!empty(Camp::getCampResNo($_SESSION['userEmail'])))
+        {$campInfo = Camp::getCampResNo($_SESSION['userEmail']);}
+        else{$campInfo;}
     }
     else{
         echo "Opps! You need to login for this page!";

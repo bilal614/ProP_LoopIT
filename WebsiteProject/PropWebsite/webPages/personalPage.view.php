@@ -4,6 +4,7 @@
      <?php
         require_once ('../includes/common.inc.php');
         displayHeadTag();
+        global $campInfo;
     ?>
 <body>
     <h1>
@@ -56,7 +57,9 @@
                         <input type="button" id="payBtn" name="payNow" value="Pay Now!">
                     </a>
                     <h5 class="ticketReminder">Camp Reservation (optional):</h5>
-                    <p class="personalPage">For those of you planning to spend the week at the festival you and 
+                    <?php if(empty($campInfo)) { ?>
+                    <p class="personalPage">  
+                        For those of you planning to spend the week at the festival you and 
                         upto five friends have the option of renting a campsite on the festival grounds. In order
                         to sign up your friends for the camp-site they must have already registered for the festival 
                         through this web-site. 
@@ -65,7 +68,12 @@
                     </p>
                         <form action="../controller/personalPage.php" method="post">
                             <input type="submit" id="campReserve" name="CampReserve" value="Make Reservation Now!"/>
-                        </form>                    
+                        </form> 
+                    <?php }else { ?>
+                    <p class="personalPage">
+                        You already have a camping reservation. Cannot make anymore camping reservations.
+                    </p>
+                    <?php } ?>
                 </div>
             </div>
         </div>
