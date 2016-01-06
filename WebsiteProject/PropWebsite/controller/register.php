@@ -82,8 +82,9 @@
                        header('Location: registerSuccess.php');
                        //email to user
                        $link = 'http://localhost/PropWebsite/PropWebsite/controller/activate.php?email='.$register_data['email'].'&hash='.$register_data['hash'];
-                       $msg = "<p>Hello ".$register_data['lastname']."<\p> <p>You need to activate your account, please click the link below: <\p> <p>".$link."<\p> <p> Kind regards,</p> <p>Jazz festival team</p>";
-                       sentEmail($register_data['email'], $msg);
+                       $msg = "<p>Hello ".$register_data['lastname'].",<\p> <p>You need to activate your account, please click the link below: <\p> <p>".$link."<\p> <p> Kind regards,</p> <p>Jazz festival team</p>";
+                       $subject = "Activate jazz festival event";
+                       sentEmail($register_data['email'], $msg, $subject);
                   }
               }
               else if(empty($errors) === false) {

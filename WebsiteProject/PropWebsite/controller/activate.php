@@ -8,7 +8,7 @@
         $email = $_GET['email'];
         $hash = $_GET['hash'];
         if(User::user_exists($email)===FALSE){
-            $errors[]='Oops, something went wrong, we could not find that email address';
+            $errors[]='Sorry, something went wrong, we could not find that email address';
         } else if(User::activate_user($email, $hash)===FALSE){
             $errors[] = 'We had problems activating your account';
         }
@@ -21,14 +21,15 @@
     //Activate user
     if(empty($errors) === FALSE){
         ?>
-            <h2> Oops...</h2>      
+            <h2> Sorry, there are some errors: </h2>      
         <?php
         echo output_error($errors);
     } else {
         $eventAccount = EventAccount::getByEmailAddress($email);
         $infors = $eventAccount->GetData();
-        $msg = "<p>Hello ".$infors['First_Name']."</p> <p>You registered for our jazz festival, Here is your information: </p><p> Your event account ID:".$infors['Account_ID']."</p>"."<p> Kind regards,</p> <p>Jazz festival team</p>";
-        sentEmail($email, $msg);
+        $msg = "<p>Hello ".$infors['First_Name'].", </p> <p>You registered for our jazz festival, Here is your information: </p><p> Your event account ID:".$infors['Account_ID']."</p>"."<p> Kind regards,</p> <p>Jazz festival team.</p>";
+        $subject = "Jazz event festival e-ticket";
+        sentEmail($email, $msg, $subject);
         require '../webPages/Activated.view.php';
     }
 ?>
