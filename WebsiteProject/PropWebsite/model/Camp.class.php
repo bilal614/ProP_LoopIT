@@ -223,11 +223,29 @@ class Camp extends DataObject {
     
     public static function getCampResNo($email){
         $conn= parent::connect();
-        $sql="SELECT CampRes_No FROM ".TBL_GROUP." WHERE Co_email=:email;";
+        $sql="SELECT CampRes_No FROM ".TBL_GROUP." WHERE Co_email= :email;";
         $row;
         try{
             $st=$conn->prepare($sql);
             $st->bindValue(":email", $email,PDO::PARAM_STR);
+            $st->execute();
+            $row=$st->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+            parent::disconnect($conn);
+            die ("Could not retrieve data ".$e);
+        }
+        parent::disconnect($conn);
+        return $row;
+    }
+    
+    public static function getCampDates($campResNo){
+        $conn= parent::connect();
+        $sql="SELECT Start_Date, End_Date FROM ".TBL_CAMP_RES." WHERE CampRes_No = :resNo;";
+        $row;
+        try{
+            $st=$conn->prepare($sql);
+            $st->bindValue(":resNo", $campResNo,PDO::PARAM_INT);
             $st->execute();
             $row=$st->fetch(PDO::FETCH_ASSOC);
         }
