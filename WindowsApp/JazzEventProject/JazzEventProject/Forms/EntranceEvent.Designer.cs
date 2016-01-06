@@ -62,11 +62,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lblcurrentStatus = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bottomPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -101,7 +105,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(28, 128);
+            this.groupBox1.Location = new System.Drawing.Point(21, 175);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -217,7 +221,7 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(358, 128);
+            this.groupBox2.Location = new System.Drawing.Point(351, 175);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -328,7 +332,7 @@
             this.bottomPanel.Controls.Add(this.btnActivateRFID);
             this.bottomPanel.Controls.Add(this.btnPay);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 338);
+            this.bottomPanel.Location = new System.Drawing.Point(0, 429);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(761, 114);
             this.bottomPanel.TabIndex = 21;
@@ -412,7 +416,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(463, 85);
+            this.label17.Location = new System.Drawing.Point(24, 121);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(116, 17);
             this.label17.TabIndex = 23;
@@ -421,17 +425,50 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(585, 84);
+            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Maroon;
+            this.label18.Location = new System.Drawing.Point(155, 121);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(164, 17);
+            this.label18.Size = new System.Drawing.Size(142, 18);
             this.label18.TabIndex = 24;
             this.label18.Text = "Please scan an RFID.";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(23, 7);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 17);
+            this.label19.TabIndex = 25;
+            this.label19.Text = "Status:";
+            // 
+            // lblcurrentStatus
+            // 
+            this.lblcurrentStatus.AutoSize = true;
+            this.lblcurrentStatus.ForeColor = System.Drawing.Color.Maroon;
+            this.lblcurrentStatus.Location = new System.Drawing.Point(88, 7);
+            this.lblcurrentStatus.Name = "lblcurrentStatus";
+            this.lblcurrentStatus.Size = new System.Drawing.Size(106, 17);
+            this.lblcurrentStatus.TabIndex = 26;
+            this.lblcurrentStatus.Text = "Opening form";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.panel2.Controls.Add(this.lblcurrentStatus);
+            this.panel2.Controls.Add(this.label19);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 399);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(761, 30);
+            this.panel2.TabIndex = 26;
             // 
             // EntranceEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 452);
+            this.ClientSize = new System.Drawing.Size(761, 543);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.button1);
@@ -455,6 +492,8 @@
             this.HeaderPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.bottomPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,6 +534,9 @@
         private System.Windows.Forms.Label labelRFID;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblcurrentStatus;
+        private System.Windows.Forms.Panel panel2;
 
     }
 }

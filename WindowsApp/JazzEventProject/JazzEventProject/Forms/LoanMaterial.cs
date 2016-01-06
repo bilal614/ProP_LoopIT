@@ -181,7 +181,7 @@ namespace JazzEventProject
             }
             catch
             {
-                MessageBox.Show("No open RFID scanners detected.");
+                lblcurrentStatus.Text = "No open RFID scanners detected.";
             }
         }
 
@@ -241,12 +241,13 @@ namespace JazzEventProject
                 }
                 if (nbofInvoice == 1 && nbofLoanedMaterial >= 1)
                 {
-                    MessageBox.Show("Success!");
                     btnPrint.Enabled = true;
+                    lblBalance.Text = (currentAccount.Balance - total).ToString("0.00");
+                    lblcurrentStatus.Text = "Transaction is done successfully!";
                 }
                 else
                 {
-                    MessageBox.Show("Error!");
+                    lblcurrentStatus.Text = "Problems occurs with updating database";
                 }
             }
 
@@ -348,13 +349,16 @@ namespace JazzEventProject
         private void ChangeTagOnForm(object sender, TagEventArgs e)
         {
             customerRFID = phidgetScanner.RFIDtagNr;
+            lblcurrentStatus.Text = "The RFID tag " + customerRFID.ToString() + " has scanned";
             currentAccount = AccountdData.GetEventAccountFromRFID(customerRFID);
             if (currentAccount != null)
             {
                 lblName.Text = currentAccount.FirstName;
                 lblBalance.Text = currentAccount.Balance.ToString("0.00");
             }
-            else { MessageBox.Show("The scanned RFID code does not exist in database."); }
+            else {
+                lblcurrentStatus.Text = "The scanned RFID code does not exist in database."; 
+            }
 
         }
 
@@ -376,7 +380,7 @@ namespace JazzEventProject
             }
             catch
             {
-                MessageBox.Show("No open RFID scanners detected.");
+                lblcurrentStatus.Text = "No open RFID scanners detected.";
             }
         }
     }

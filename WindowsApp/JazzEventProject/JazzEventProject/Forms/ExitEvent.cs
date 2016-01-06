@@ -54,14 +54,19 @@ namespace JazzEventProject
             try
             {
                 phidgetScanner.OpenRFIDReader();
+                lblcurrentStatus.Text = phidgetScanner.currentStatus;
                 phidgetScanner.myRFIDReader.Tag += new TagEventHandler(ChangeTagOnForm);
             }
-            catch { MessageBox.Show("No RFID reader detected."); }
+            catch
+            {
+                lblcurrentStatus.Text = "No RFID reader detected.";
+            }
         }
 
         private void ChangeTagOnForm(object sender, TagEventArgs e)
         {
             label20.Text = phidgetScanner.RFIDtagNr;
+            lblcurrentStatus.Text = "The RFID tag is scanned";
             if(phidgetScanner.RFIDtagNr!=null)
             {
                 String rfidNr=phidgetScanner.RFIDtagNr;
@@ -79,14 +84,22 @@ namespace JazzEventProject
                     { label9.Text = "Returned"; }
                     else {  label9.Text="Not Returned, "+currentAccount.RFID;}        
                 }
-                else { MessageBox.Show("The scanned RFID code does not exist in database."); }
+                else {
+                    lblcurrentStatus.Text = "The scanned RFID code does not exist in database.";
+                }
             }
         }
 
         private void ExitEvent_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try { phidgetScanner.CloseRFIDReader(); }
-            catch { MessageBox.Show("No open RFID scanners detected."); }
+            try
+            { 
+                phidgetScanner.CloseRFIDReader(); 
+            }
+            catch 
+            {
+                lblcurrentStatus.Text = "No open RFID scanners detected.";
+            }
         }
 
         private void btnBackToMainForm_Click(object sender, EventArgs e)
@@ -105,11 +118,13 @@ namespace JazzEventProject
                     currentAccount.ActivateRFID(phidgetScanner.RFIDtagNr);//this method gives the currentAccount a null
                     //string value for its RFID number in order to show that the person's RFID has been deactivated
                     label16.Text = currentAccount.RFID;
-                    MessageBox.Show(String.Format("RFID: {0} has been deactivated for event account id: {1}"
-                        , phidgetScanner.RFIDtagNr, currentAccount.AccountId));
+                    lblcurrentStatus.Text = String.Format("RFID: {0} has been deactivated for event account id: {1}"
+                        , phidgetScanner.RFIDtagNr, currentAccount.AccountId);
                     label9.Text = "Returned";
                 }
-                else { MessageBox.Show("Please scan an RFID."); }
+                else { 
+                    lblcurrentStatus.Text = "Please scan an RFID."; 
+                }
             }
             else { MessageBox.Show("Please enter an Event Account Id."); }
         }

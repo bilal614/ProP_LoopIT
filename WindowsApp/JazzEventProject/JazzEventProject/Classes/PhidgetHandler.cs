@@ -14,6 +14,7 @@ namespace JazzEventProject.Classes
         //instance variables
         public RFID myRFIDReader;
         public String RFIDtagNr, RFIDscannerNr;
+        public String currentStatus;
 
 
         //constructor
@@ -30,7 +31,10 @@ namespace JazzEventProject.Classes
                 myRFIDReader.Detach += new DetachEventHandler(ShowWhoIsDetached);
                 myRFIDReader.Tag += new TagEventHandler(ProcessThisTag);
             }
-            catch (PhidgetException) { MessageBox.Show("error at start-up."); }
+            catch (PhidgetException) { 
+               
+                currentStatus = "error at start-up";
+            }
         }
 
         public void OpenRFIDReader()
@@ -39,11 +43,13 @@ namespace JazzEventProject.Classes
             {
                 myRFIDReader.open();
                 myRFIDReader.waitForAttachment(3000);
-                MessageBox.Show("an RFID-reader is found and opened.");
+                currentStatus = "an RFID-reader is found and opened.";
                 myRFIDReader.Antenna = true;
                 myRFIDReader.LED = true;
             }
-            catch (PhidgetException) { MessageBox.Show("no RFID-reader opened."); }
+            catch (PhidgetException) { 
+                currentStatus = "no RFID-reader opened.";
+            }
         }
 
         public void CloseRFIDReader()
@@ -51,7 +57,7 @@ namespace JazzEventProject.Classes
             myRFIDReader.LED = false;
             myRFIDReader.Antenna = false;
             myRFIDReader.close();
-            MessageBox.Show("RFID scanner has been closed.");
+            currentStatus = "RFID scanner has been closed";
         }
 
         //methods
@@ -63,7 +69,7 @@ namespace JazzEventProject.Classes
 
         private void ShowWhoIsDetached(object sender, DetachEventArgs e)
         {
-            MessageBox.Show("RFIDReader detached!, serial nr: " + e.Device.SerialNumber.ToString());
+            currentStatus = "RFIDReader detached!, serial nr: " + e.Device.SerialNumber.ToString();
         }
 
         public void ProcessThisTag(object sender, TagEventArgs e)

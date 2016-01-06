@@ -102,13 +102,19 @@ namespace JazzEventProject
                         currentAccount.ActivateRFID(phidgetScanner.RFIDtagNr);//this method gives the currentAccount the scanned
                         //RFID number
                         label16.Text = currentAccount.RFID;
-                        MessageBox.Show(String.Format("RFID: {0} has been assigned to event account id: {1}"
-                            , phidgetScanner.RFIDtagNr, currentAccount.AccountId));
+                        lblcurrentStatus.Text = String.Format("RFID: {0} has been assigned to event account id: {1}"
+                            , phidgetScanner.RFIDtagNr, currentAccount.AccountId);
                     }
                 }
-                else { MessageBox.Show("Please scan an RFID."); }
+                else 
+                { 
+                    lblcurrentStatus.Text = "Please scan an RFID.";
+                }
             }
-            else { MessageBox.Show("Please enter an Event Account Id first and/or scan an RFID."); }
+            else 
+            {
+                lblcurrentStatus.Text = "Please enter an Event Account Id first and/or scan an RFID.";
+            }
         }
 
         private void EntranceEvent_Load(object sender, EventArgs e)
@@ -116,20 +122,29 @@ namespace JazzEventProject
             try 
             {
                 phidgetScanner.OpenRFIDReader();
+                lblcurrentStatus.Text = phidgetScanner.currentStatus;
                 phidgetScanner.myRFIDReader.Tag += new TagEventHandler(ChangeTagOnForm);
             }
-            catch { MessageBox.Show("No RFID reader detected."); }
+            catch {
+                lblcurrentStatus.Text = "No RFID reader detected.";
+            }
         }
 
         private void EntranceEvent_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try { phidgetScanner.CloseRFIDReader(); }
-            catch { MessageBox.Show("No open RFID scanners detected."); }
+            try {
+                phidgetScanner.CloseRFIDReader();
+                lblcurrentStatus.Text = phidgetScanner.currentStatus;
+            }
+            catch {
+                lblcurrentStatus.Text = "No open RFID scanners detected.";
+            }
         }
 
         private void ChangeTagOnForm(object sender, TagEventArgs e)
         {
             label18.Text = phidgetScanner.RFIDtagNr;
+            lblcurrentStatus.Text = "The RFID tag is scanned";
         }
     }
 }
