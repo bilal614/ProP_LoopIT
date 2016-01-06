@@ -12,7 +12,7 @@ function output_error($error){
 }
 
 //Using phpMailer to sent email
-function sentEmail($email,$msg){
+function sentEmail($email,$msg, $subject){
     //testing mail function of php/ didn't work on localhost
     //$msg = 'Pleasmail('thanhhnk@gmail.com','My subject',$msg,'From: customerService@festivaljazz.com')e click this link to activate your account';
     // mail('thanhhnk@gmail.com','My subject',$msg,'From: customerService@festivaljazz.com');
@@ -31,7 +31,7 @@ function sentEmail($email,$msg){
     $mail->AddAddress($email);               // Name is optional
 
     $mail->IsHTML(TRUE);                                  // Set email format to HTML
-    $mail->Subject = 'Activate your account for jazz festival';
+    $mail->Subject = $subject;
     $mail->Body    = $msg;
 
     if(!$mail->Send()) {
