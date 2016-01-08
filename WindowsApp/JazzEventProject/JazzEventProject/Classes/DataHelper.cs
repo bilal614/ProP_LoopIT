@@ -13,10 +13,14 @@ namespace JazzEventProject.Classes
 
         public DataHelper()
         {
-            String connectionInfo = "server=athena01.fhict.local;" +
-                                   "database=dbi333151;" +
-                                   "user id=dbi333151;" +
-                                   "password=rTnrm7Fajk;" +
+            //String connectionInfo = "server=athena01.fhict.local;" +
+            //                       "database=dbi333151;" +
+            //                       "user id=dbi333151;" +
+            //                       "password=rTnrm7Fajk;" +
+            //                       "connect timeout=30;";
+            String connectionInfo = "server=localhost;" +
+                                   "database=prop;" +
+                                   "Uid = root;" +
                                    "connect timeout=30;";
 
             connection = new MySqlConnection(connectionInfo);
