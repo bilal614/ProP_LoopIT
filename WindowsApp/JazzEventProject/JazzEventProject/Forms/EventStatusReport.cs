@@ -25,6 +25,7 @@ namespace JazzEventProject
         {
             dataGridViewFoodReport.DataSource = eventstat.GetAllFoodInfors();
 
+            dataGridViewUserReprot.DataSource = eventstat.GetAllUsersInfos();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -46,12 +47,12 @@ namespace JazzEventProject
             textBox3.Text = eventstat.EvAccountBalance().ToString() + " €"; textBox3.BackColor = Color.GreenYellow;// event account balance
             textBox5.Text = Convert.ToString(150 - eventstat.NrOfCampRented()); textBox5.BackColor = Color.GreenYellow;// Number of free camping spots
 
-            textBox12.Text = eventstat.BBurgerSold().ToString(); textBox12.BackColor = Color.GreenYellow;// big burger sold
-            textBox11.Text = eventstat.CColaSold().ToString(); textBox11.BackColor = Color.GreenYellow;// coca cola sold
-            textBox9.Text = eventstat.ChickBurgerSold().ToString(); textBox9.BackColor = Color.GreenYellow;// chicken burger sold
-            textBox13.Text = eventstat.FFriesSold().ToString(); textBox13.BackColor = Color.GreenYellow;// french fries sold
-            textBox14.Text = eventstat.HBeerSold().ToString(); textBox14.BackColor = Color.GreenYellow;// Heinneken beer sold
-            textBox15.Text = eventstat.SaladSold().ToString(); textBox15.BackColor = Color.GreenYellow;// Salad sold
+            //textBox12.Text = eventstat.BBurgerSold().ToString(); textBox12.BackColor = Color.GreenYellow;// big burger sold
+            //textBox11.Text = eventstat.CColaSold().ToString(); textBox11.BackColor = Color.GreenYellow;// coca cola sold
+            //textBox9.Text = eventstat.ChickBurgerSold().ToString(); textBox9.BackColor = Color.GreenYellow;// chicken burger sold
+            //textBox13.Text = eventstat.FFriesSold().ToString(); textBox13.BackColor = Color.GreenYellow;// french fries sold
+            //textBox14.Text = eventstat.HBeerSold().ToString(); textBox14.BackColor = Color.GreenYellow;// Heinneken beer sold
+            //textBox15.Text = eventstat.SaladSold().ToString(); textBox15.BackColor = Color.GreenYellow;// Salad sold
 
         }
 
@@ -62,15 +63,15 @@ namespace JazzEventProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            accountId = Convert.ToInt32(textBox1.Text);
-            currentAccount = accountHelper.GetAccount(accountId);
+            //accountId = Convert.ToInt32(textBox1.Text);
+            //currentAccount = accountHelper.GetAccount(accountId);
 
-            if (currentAccount!= null)
-            {
-                textBox8.Text = Convert.ToString(500 - currentAccount.Balance) + " €"; textBox8.BackColor = Color.GreenYellow;// Money spent
-                textBox4.Text = Convert.ToString(currentAccount.Balance) + " €"; textBox4.BackColor = Color.GreenYellow;// Current account balance
-                textBox10.Text = "Yes"; textBox10.BackColor = Color.GreenYellow;// Camp reserved
-            }
+            //if (currentAccount!= null)
+            //{
+            //    textBox8.Text = Convert.ToString(500 - currentAccount.Balance) + " €"; textBox8.BackColor = Color.GreenYellow;// Money spent
+            //    textBox4.Text = Convert.ToString(currentAccount.Balance) + " €"; textBox4.BackColor = Color.GreenYellow;// Current account balance
+            //    textBox10.Text = "Yes"; textBox10.BackColor = Color.GreenYellow;// Camp reserved
+            //}
 
         }
 

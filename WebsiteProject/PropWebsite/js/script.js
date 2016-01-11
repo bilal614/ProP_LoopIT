@@ -101,6 +101,23 @@ $(document).ready(function() {
         }
         }});
     //Contact page validation
+    $( "#contactForm").validate({
+        rules: {
+          'name': {
+            required: true,
+            minlength: 3,
+            maxlength: 20
+            },
+            'message': {
+            required: true,
+            minlength: 3,
+            maxlength: 20
+            },
+            'email': {
+            required: true,
+            email: true
+          }
+        }});
     });
 })(jQuery);
 
