@@ -42,7 +42,7 @@ namespace JazzEventProject
             dataGridView1.Rows.Add(newrow);
 
             textBox2.Text = eventstat.NrOfReg().ToString(); textBox2.BackColor = Color.GreenYellow;// visitors expected
-            textBox7.Text = eventstat.NrOfVisPresent().ToString(); textBox7.BackColor = Color.GreenYellow;// visitors presents
+            textBox7.Text = Convert.ToString(eventstat.NrOfVisPresent()); textBox7.BackColor = Color.GreenYellow;// visitors presents
             textBox6.Text = (eventstat.NrOfReg() - eventstat.NrOfVisPresent()).ToString(); textBox6.BackColor = Color.GreenYellow;// visitors left
             textBox3.Text = eventstat.EvAccountBalance().ToString() + " €"; textBox3.BackColor = Color.GreenYellow;// event account balance
             textBox5.Text = Convert.ToString(150 - eventstat.NrOfCampRented()); textBox5.BackColor = Color.GreenYellow;// Number of free camping spots

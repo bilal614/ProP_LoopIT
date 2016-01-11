@@ -165,7 +165,7 @@ namespace JazzEventProject.Classes
 
         public int NrOfVisPresent()
         {
-            String sql = "SELECT COUNT(*) FROM E_ACCOUNT WHERE RFID_Code = -1";
+            String sql = "SELECT COUNT(*) FROM `e_account` WHERE RFID_Code IS NOT NULL ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -391,7 +391,7 @@ namespace JazzEventProject.Classes
 
         public List<UserReport> GetAllUsersInfos()
         {
-            String sql = "SELECT Account_ID, First_Name, Last_Name, Balance FROM e_account ORDER BY Account_ID ASC;";
+            String sql = "SELECT e.Account_ID as UserID, e.First_Name as FName, e.Last_Name as LName, e.Balance as U_Bal, e.Phone as Phone, IFNULL(m.ReturnStatus,0) as LoanMat FROM e_account e LEFT JOIN m_invoice m ON e.Account_ID = m.Account_ID GROUP BY e.Account_ID  ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             List<UserReport> temp2;
             temp2 = new List<UserReport>();
@@ -401,22 +401,26 @@ namespace JazzEventProject.Classes
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
 
-                int UserID;
-                string FName;
-                string LName;
-                int MoneySpent;
-                int AvailableBalance;
-                //bool LoanedMat;
+                int User_ID;
+                string First_Name;
+                string Last_Name;
+                decimal User_Balance;
+                decimal AvailableBalance;
+                string Loaned_Material;
                 while (reader.Read())
                 {
-                    UserID = Convert.ToInt32(reader["User ID"]);
-                    FName = Convert.ToString(reader["First Name"]);
-                    LName = Convert.ToString(reader["Last Name"]);
-                    MoneySpent = Convert.ToInt32(reader["Money Spent"]);
-                    AvailableBalance = Convert.ToInt32(reader["Actual balance"]);
-                    //LoanedMat = Convert.ToBoolean(reader["Loaned Material"]);
+                    User_ID = Convert.ToInt32(reader["UserID"]);
+                    First_Name = Convert.ToString(reader["FName"]);
+                    Last_Name = Convert.ToString(reader["LName"]);
+                    User_Balance = Convert.ToDecimal(reader["U_Bal"]);
+                    AvailableBalance = Convert.ToDecimal(reader["Phone"]);
+                    if (Convert.ToInt32(reader["LoanMat"]) == 0)
+                        Loaned_Material = "No";
+                    else
+                        Loaned_Material = "Yes";
+                        ;
 
-                    temp2.Add(new UserReport(UserID, FName, LName, MoneySpent, AvailableBalance /*, LoanedMat)*/));
+                    temp2.Add(new UserReport(User_ID, First_Name, Last_Name, User_Balance, AvailableBalance, Loaned_Material));
                 }
             }
             catch
