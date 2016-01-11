@@ -360,8 +360,7 @@ namespace JazzEventProject.Classes
             {
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
-
-                int FoodID;
+                 int FoodID;
                 string FoodName;
                 int amountSold;
                 int amountAval;
@@ -372,9 +371,11 @@ namespace JazzEventProject.Classes
                     amountSold = Convert.ToInt32(reader["soldQuantity"]);
                     amountAval = Convert.ToInt32(reader["availableQuantity"]);
 
-                    temp.Add(new FoodReport(FoodID, FoodName, amountSold,amountAval));
+                    temp.Add(new FoodReport(FoodID, FoodName, amountSold, amountAval));
+
                 }
-            }
+               
+             }
             catch
             {
                 MessageBox.Show("error while loading the invoices");
@@ -384,6 +385,49 @@ namespace JazzEventProject.Classes
                 connection.Close();
             }
             return temp;
+        }
+
+        // Select all users information
+
+        public List<UserReport> GetAllUsersInfos()
+        {
+            String sql = "SELECT Account_ID, First_Name, Last_Name, Balance FROM e_account ORDER BY Account_ID ASC;";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            List<UserReport> temp2;
+            temp2 = new List<UserReport>();
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                int UserID;
+                string FName;
+                string LName;
+                int MoneySpent;
+                int AvailableBalance;
+                //bool LoanedMat;
+                while (reader.Read())
+                {
+                    UserID = Convert.ToInt32(reader["User ID"]);
+                    FName = Convert.ToString(reader["First Name"]);
+                    LName = Convert.ToString(reader["Last Name"]);
+                    MoneySpent = Convert.ToInt32(reader["Money Spent"]);
+                    AvailableBalance = Convert.ToInt32(reader["Actual balance"]);
+                    //LoanedMat = Convert.ToBoolean(reader["Loaned Material"]);
+
+                    temp2.Add(new UserReport(UserID, FName, LName, MoneySpent, AvailableBalance /*, LoanedMat)*/));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("error while loading users");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return temp2;
         }
     }
 }
