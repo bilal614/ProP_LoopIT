@@ -35,6 +35,13 @@ session_start();
         }
                
 //Validates that all the emails entered in the co-camper emails are infact valid emails.
+        if($_POST['co_camper1']===$_SESSION['userEmail'] || $_POST['co_camper2']===$_SESSION['userEmail'] || 
+                $_POST['co_camper3']===$_SESSION['userEmail'] || $_POST['co_camper4']===$_SESSION['userEmail'] || 
+                $_POST['co_camper5']===$_SESSION['userEmail'])
+        {
+            $errors[]='You are already inlcuded in camping reservation, you do not need to include your own '
+                    . 'email in any of the e-mail fields.';
+        }
         if(!empty($_POST['co_camper1'])){
             if(filter_var($_POST['co_camper1'],FILTER_VALIDATE_EMAIL)===FALSE)
             {$errors[] = 'Co-camper 1 must have a valid email address.';}
