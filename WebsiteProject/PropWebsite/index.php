@@ -118,7 +118,7 @@
     <script type="text/javascript">
     $('.countdown').final_countdown({
         start: '1441104300',
-        end: '1452941100',
+        end: '1454112000',
         now: ((new Date).getTime()/1000).toString()
     });
     </script>

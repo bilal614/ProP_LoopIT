@@ -41,6 +41,7 @@ namespace JazzEventProject
             catch { MessageBox.Show("No RFID reader detected."); }
         }
 
+        int row = 0;
         //DataGridViewRow newrow = new DataGridViewRow();
         private void ChangeTagOnForm(object sender, TagEventArgs e)
         {
@@ -59,6 +60,7 @@ namespace JazzEventProject
                         if (scannedMember != null)
                         { reservation = campDatHelper.GetCampRes(scannedMember.CampResNo); }
                     }
+                    
 
                     if (reservation != null)
                     {
@@ -70,12 +72,11 @@ namespace JazzEventProject
                             newrow.Cells[1].Value = reservation.EndDate;
                             newrow.Cells[2].Value = reservation.StartDate;
                             newrow.Cells[3].Value = reservation.CampId;
-                            newrow.Cells[4].Value = scannedMember.GroupId;
-                            newrow.Cells[5].Value = scannedMember.Co_Email;
-                            newrow.Cells[6].Value = eID;
-                            newrow.Cells[7].Value = rfid;
-                            newrow.Cells[8].Value = scannedMember.CheckIn;
+                            newrow.Cells[4].Value = scannedMember.Co_Email;
+                            newrow.Cells[5].Value = eID;
+                            newrow.Cells[6].Value = scannedMember.CheckIn;
                             dataGridView1.Rows.Add(newrow);
+                            row++;
                         //}
                         //catch { MessageBox.Show("This reservation information is already displayed."); }
                     }
@@ -102,7 +103,8 @@ namespace JazzEventProject
             {
                 if (groupHelper.CampCheckIn(scannedMember.Co_Email))
                 {
-                    dataGridView1[8, 0].Value = true;
+                    dataGridView1[6, row].Value = true;
+                    //int rows = dataGridView1.RowCount;
                 }
                 else { MessageBox.Show("Could not check in."); }
             }
@@ -123,7 +125,7 @@ namespace JazzEventProject
             {
                 if (groupHelper.CampCheckOut(scannedMember.Co_Email))
                 {
-                    dataGridView1[8, 0].Value = false;
+                    dataGridView1[6, row].Value = false;
                 }
                 else { MessageBox.Show("Could not check out."); }
             }

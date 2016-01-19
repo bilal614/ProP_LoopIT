@@ -17,5 +17,15 @@ namespace JazzEventProject.Classes
             this.ReturnDate = returnDate;
             this.ReturnStatus = returnStatus;
         }
+        
+
+        /// <summary>
+        /// Function for material invoice item
+        /// </summary>
+        /// <returns></returns>
+        public string ToString()
+        {
+            return Item_Id + "\t" + Quantity + "\t" + ReturnStatus;
+        }
     }
 }

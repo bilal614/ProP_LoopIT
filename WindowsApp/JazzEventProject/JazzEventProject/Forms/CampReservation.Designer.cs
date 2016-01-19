@@ -30,32 +30,30 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CampReservation));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.HeaderPanel = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bottomPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBackToMainForm = new System.Windows.Forms.Button();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.btnCheckIn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Camping_Reservation_Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.End_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Camp_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Group_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.E_mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Event_Account_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CheckIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HeaderPanel = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.bottomPanel = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnBackToMainForm = new System.Windows.Forms.Button();
-            this.btnCheckOut = new System.Windows.Forms.Button();
-            this.btnCheckIn = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.HeaderPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bottomPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -66,60 +64,13 @@
             this.End_Date,
             this.Start_Date,
             this.Camp_ID,
-            this.Group_ID,
             this.E_mail,
             this.Event_Account_ID,
-            this.RFID,
             this.CheckIn});
             this.dataGridView1.Location = new System.Drawing.Point(0, 90);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(942, 150);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Camping_Reservation_Number
-            // 
-            this.Camping_Reservation_Number.HeaderText = "Camp Reservation Number";
-            this.Camping_Reservation_Number.Name = "Camping_Reservation_Number";
-            // 
-            // End_Date
-            // 
-            this.End_Date.HeaderText = "End Date";
-            this.End_Date.Name = "End_Date";
-            // 
-            // Start_Date
-            // 
-            this.Start_Date.HeaderText = "Start Date";
-            this.Start_Date.Name = "Start_Date";
-            // 
-            // Camp_ID
-            // 
-            this.Camp_ID.HeaderText = "Camp ID";
-            this.Camp_ID.Name = "Camp_ID";
-            // 
-            // Group_ID
-            // 
-            this.Group_ID.HeaderText = "Group ID";
-            this.Group_ID.Name = "Group_ID";
-            // 
-            // E_mail
-            // 
-            this.E_mail.HeaderText = "E-mail";
-            this.E_mail.Name = "E_mail";
-            // 
-            // Event_Account_ID
-            // 
-            this.Event_Account_ID.HeaderText = "Event Account ID";
-            this.Event_Account_ID.Name = "Event_Account_ID";
-            // 
-            // RFID
-            // 
-            this.RFID.HeaderText = "RFID";
-            this.RFID.Name = "RFID";
-            // 
-            // CheckIn
-            // 
-            this.CheckIn.HeaderText = "Check In";
-            this.CheckIn.Name = "CheckIn";
             // 
             // HeaderPanel
             // 
@@ -153,15 +104,6 @@
             this.label19.TabIndex = 25;
             this.label19.Text = "Scanned RFID:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 50);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -194,6 +136,25 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(942, 5);
             this.panel3.TabIndex = 15;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 64);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(942, 5);
+            this.panel2.TabIndex = 16;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(942, 5);
+            this.panel1.TabIndex = 15;
             // 
             // btnBackToMainForm
             // 
@@ -238,24 +199,49 @@
             this.btnCheckIn.UseVisualStyleBackColor = true;
             this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
-            // panel2
+            // pictureBox1
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 64);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(942, 5);
-            this.panel2.TabIndex = 16;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(62, 50);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
-            // panel1
+            // Camping_Reservation_Number
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(942, 5);
-            this.panel1.TabIndex = 15;
+            this.Camping_Reservation_Number.HeaderText = "Camp Reservation Number";
+            this.Camping_Reservation_Number.Name = "Camping_Reservation_Number";
+            // 
+            // End_Date
+            // 
+            this.End_Date.HeaderText = "End Date";
+            this.End_Date.Name = "End_Date";
+            // 
+            // Start_Date
+            // 
+            this.Start_Date.HeaderText = "Start Date";
+            this.Start_Date.Name = "Start_Date";
+            // 
+            // Camp_ID
+            // 
+            this.Camp_ID.HeaderText = "Camp ID";
+            this.Camp_ID.Name = "Camp_ID";
+            // 
+            // E_mail
+            // 
+            this.E_mail.HeaderText = "E-mail";
+            this.E_mail.Name = "E_mail";
+            // 
+            // Event_Account_ID
+            // 
+            this.Event_Account_ID.HeaderText = "Event Account ID";
+            this.Event_Account_ID.Name = "Event_Account_ID";
+            // 
+            // CheckIn
+            // 
+            this.CheckIn.HeaderText = "Check In";
+            this.CheckIn.Name = "CheckIn";
             // 
             // CampReservation
             // 
@@ -273,9 +259,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.bottomPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -283,14 +269,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Camping_Reservation_Number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn End_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Start_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Camp_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Group_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn E_mail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Event_Account_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RFID;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
@@ -303,6 +281,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Camping_Reservation_Number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Camp_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn E_mail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Event_Account_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CheckIn;
     }
 }

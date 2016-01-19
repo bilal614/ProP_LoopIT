@@ -44,7 +44,7 @@ namespace JazzEventProject.Classes
 
                     //no need to look at checkIn because it is assumed everybodys checkIn value would be false in
                     //database when they arrive at the festival
-                    allGuests.Add(new GroupMember(groupId, coEMail, campResNo));
+                    allGuests.Add(new GroupMember(coEMail, campResNo));
                 }
 
             }
@@ -77,12 +77,11 @@ namespace JazzEventProject.Classes
 
                 while (reader.Read())
                 {
-                    groupId = Convert.ToInt32(reader["GroupID"]);
                     coEMail = Convert.ToString(reader["Co_email"]);
                     campResNo = Convert.ToInt32(reader["CampRes_No"]);
                     checkIn = Convert.ToBoolean(reader["Check_in"]);
 
-                    selectedMember = new GroupMember(groupId, coEMail, campResNo);
+                    selectedMember = new GroupMember(coEMail, campResNo);
                     selectedMember.CheckIn = checkIn;
                 }
             }

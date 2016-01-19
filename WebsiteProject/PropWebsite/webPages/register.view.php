@@ -2,7 +2,7 @@
 <html>
 <head>
      <?php
-//So we can use one common file for calling common functions
+     //So we can use one common file for calling common functions
      include('../includes/common.inc.php');        
      displayHeadTag();
     ?>

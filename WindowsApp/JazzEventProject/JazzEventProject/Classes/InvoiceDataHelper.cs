@@ -179,5 +179,83 @@ namespace JazzEventProject.Classes
             }
             return temp;
         }
+
+        //Return material methods
+          public List<Material_Invoice_Items> GetPersonalMaterialInvoices(int AccountID)
+        {
+            // Get all invoices
+            List<Invoice> allInvoices = this.GetAllMaterialInvoices();
+            // Pick the ones that belong to the Account
+            List<Invoice> personalInvoices = allInvoices.FindAll(x => x.AccountId == AccountID);
+            List<Material_Invoice_Items> temp;
+            temp = new List<Material_Invoice_Items>();
+
+            // Get MaterialInvoiceItems that belong to the account
+            foreach (Invoice i in personalInvoices)
+            {
+                String sql = "SELECT * FROM MATERIAL_INVOICE WHERE Material_invoiceID=" + i.Id + "AND ReturnStatus=0";
+                MySqlCommand command = new MySqlCommand(sql, connection);
+
+                try
+                {
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    int mQuantity;
+                    int materialID;
+                    int invoiceID;
+                    DateTime date;
+                    bool returnStatus;
+                    while (reader.Read())
+                    {
+                        mQuantity = Convert.ToInt32(reader["Material_Quantity"]);
+                        materialID = Convert.ToInt32(reader["Material_ID"]);
+                        invoiceID = Convert.ToInt32(reader["Material_InvoiceID"]);
+                        date = Convert.ToDateTime(reader["ReturnDate"]);
+                        returnStatus = Convert.ToBoolean(reader["ReturnStatus"]);
+
+
+                        temp.Add(new Material_Invoice_Items(mQuantity, materialID, invoiceID, date, returnStatus));
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("error while loading the invoices");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return temp;
+        }
+        //Updates the status of the returned items
+        public int UpdateMaterialInvoiceItems(List<Material_Invoice_Items> items)
+        {
+            int nrOfRecordsChanged = 0;
+            foreach (Material_Invoice_Items i in items)
+            {
+                if (i.ReturnStatus)
+                {
+                    String sql = string.Format("UPDATE MATERIAL_INVOICE SET ReturnStatus = 1 WHERE Material_ID = {0} AND Material_InvoiceID{1};", i.Item_Id, i.Invoice_Id);
+                    MySqlCommand command = new MySqlCommand(sql, connection);
+
+                    try
+                    {
+                        connection.Open();
+                        nrOfRecordsChanged += command.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        return -1; //which means the try-block was not executed succesfully, so  . . .
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            return nrOfRecordsChanged;
+        }
     }
 }

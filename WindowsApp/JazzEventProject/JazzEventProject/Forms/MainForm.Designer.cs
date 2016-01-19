@@ -43,6 +43,7 @@
             this.btnStatus = new System.Windows.Forms.Button();
             this.btnCamp = new System.Windows.Forms.Button();
             this.btnEventEntrance = new System.Windows.Forms.Button();
+            this.btnReturnMaterial = new System.Windows.Forms.Button();
             this.Headerpanel.SuspendLayout();
             this.formButtonPanel.SuspendLayout();
             this.centerPanel.SuspendLayout();
@@ -140,6 +141,7 @@
             this.centerPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.centerPanel.Controls.Add(this.btnPayment);
             this.centerPanel.Controls.Add(this.btnExit);
+            this.centerPanel.Controls.Add(this.btnReturnMaterial);
             this.centerPanel.Controls.Add(this.btnMaterial);
             this.centerPanel.Controls.Add(this.btnFood);
             this.centerPanel.Controls.Add(this.btnStatus);
@@ -251,7 +253,7 @@
             this.btnCamp.Image = ((System.Drawing.Image)(resources.GetObject("btnCamp.Image")));
             this.btnCamp.Location = new System.Drawing.Point(225, 58);
             this.btnCamp.Name = "btnCamp";
-            this.btnCamp.Size = new System.Drawing.Size(166, 245);
+            this.btnCamp.Size = new System.Drawing.Size(166, 113);
             this.btnCamp.TabIndex = 6;
             this.btnCamp.Text = "Camp managment";
             this.btnCamp.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -275,6 +277,24 @@
             this.btnEventEntrance.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEventEntrance.UseVisualStyleBackColor = false;
             this.btnEventEntrance.Click += new System.EventHandler(this.btnEventEntrance_Click);
+            // 
+            // btnReturnMaterial
+            // 
+            this.btnReturnMaterial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(161)))), ((int)(((byte)(226)))));
+            this.btnReturnMaterial.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnReturnMaterial.FlatAppearance.BorderSize = 0;
+            this.btnReturnMaterial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturnMaterial.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnMaterial.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReturnMaterial.Image = ((System.Drawing.Image)(resources.GetObject("btnReturnMaterial.Image")));
+            this.btnReturnMaterial.Location = new System.Drawing.Point(225, 190);
+            this.btnReturnMaterial.Name = "btnReturnMaterial";
+            this.btnReturnMaterial.Size = new System.Drawing.Size(166, 113);
+            this.btnReturnMaterial.TabIndex = 3;
+            this.btnReturnMaterial.Text = "Return Material";
+            this.btnReturnMaterial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnReturnMaterial.UseVisualStyleBackColor = false;
+            this.btnReturnMaterial.Click += new System.EventHandler(this.btnReturnMaterial_Click);
             // 
             // MainForm
             // 
@@ -312,6 +332,7 @@
         private System.Windows.Forms.Button btnCamp;
         private System.Windows.Forms.Button btnEventEntrance;
         private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Button btnReturnMaterial;
 
     }
 }

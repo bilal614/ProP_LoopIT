@@ -129,6 +129,12 @@
     <Compile Include="Forms\PayPalTextFileTranslator.Designer.cs">
       <DependentUpon>PayPalTextFileTranslator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReturnMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReturnMaterial.Designer.cs">
+      <DependentUpon>ReturnMaterial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\CampReservation.resx">
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PayPalTextFileTranslator.resx">
       <DependentUpon>PayPalTextFileTranslator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReturnMaterial.resx">
+      <DependentUpon>ReturnMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
