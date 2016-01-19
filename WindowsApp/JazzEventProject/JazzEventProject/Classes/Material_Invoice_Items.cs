@@ -23,7 +23,7 @@ namespace JazzEventProject.Classes
         /// Function for material invoice item
         /// </summary>
         /// <returns></returns>
-        public string ToString()
+        public override string ToString()
         {
             return Item_Id + "\t" + Quantity + "\t" + ReturnStatus;
         }

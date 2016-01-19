@@ -193,7 +193,7 @@ namespace JazzEventProject.Classes
             // Get MaterialInvoiceItems that belong to the account
             foreach (Invoice i in personalInvoices)
             {
-                String sql = "SELECT * FROM MATERIAL_INVOICE WHERE Material_invoiceID=" + i.Id + "AND ReturnStatus=0";
+                String sql = "SELECT * FROM MATERIAL_INVOICE WHERE Material_InvoiceID=" + i.Id + " AND ReturnStatus=0;";
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 try
@@ -237,7 +237,7 @@ namespace JazzEventProject.Classes
             {
                 if (i.ReturnStatus)
                 {
-                    String sql = string.Format("UPDATE MATERIAL_INVOICE SET ReturnStatus = 1 WHERE Material_ID = {0} AND Material_InvoiceID{1};", i.Item_Id, i.Invoice_Id);
+                    String sql = string.Format("UPDATE MATERIAL_INVOICE SET ReturnStatus=1 WHERE Material_ID={0} AND Material_InvoiceID={1};", i.Item_Id, i.Invoice_Id);
                     MySqlCommand command = new MySqlCommand(sql, connection);
 
                     try

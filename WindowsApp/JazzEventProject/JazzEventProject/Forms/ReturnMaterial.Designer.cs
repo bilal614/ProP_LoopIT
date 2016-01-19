@@ -90,8 +90,9 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Return All";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form1
+            // ReturnMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,8 +103,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.listBox1);
-            this.Name = "Form1";
+            this.Name = "ReturnMaterial";
             this.Text = "Return Loaned Materials";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReturnMaterial_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

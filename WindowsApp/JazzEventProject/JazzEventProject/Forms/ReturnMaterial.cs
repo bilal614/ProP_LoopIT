@@ -80,17 +80,49 @@ namespace JazzEventProject
                 lbName.Text = person.FirstName;
                 //Get loaned materials list
                 loanedMaterials = invoiceDataHelper.GetPersonalMaterialInvoices(person.AccountId);
-
+                listBox1.Items.Clear();
+                //listBox1.Items.Add("Name \t Quantity \t ReturnStatus");
                 //Put items list into listbox +
                 for(int i = 0; i < loanedMaterials.Count; i++)
                 {
-                    listBox1.Items.Add(loanedMaterials[i]);
+                    //Adds item name quantity and retunr status to the listbox
+                    listBox1.Items.Add(materials.Find(x => x.ID== loanedMaterials[i].Item_Id).Name+"\t"+loanedMaterials[i].Quantity+"\t"+loanedMaterials[i].ReturnStatus);
                 }
             }
             else
             {
                 lbName.Text = "The scanned RFID code does not exist in database.";
             }
+
+        }
+
+        private void ReturnMaterial_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            phidgetScanner.CloseRFIDReader();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            decimal money=0;
+            //Updates users loaned materials list +
+            foreach (Material_Invoice_Items m in loanedMaterials)
+            {
+                m.ReturnStatus = true;
+                m.ReturnDate = DateTime.Now;
+
+
+                //prideda ta daikta y evento duomenu baze. Add item to event database
+
+                materials.Find(x => x.ID == m.Item_Id).Quantity++;
+                dataHelper.UpdateAMaterial(m.Item_Id, materials);
+                money += ((Material)materials.Find(x => x.ID == m.Item_Id)).DepositAmount;
+            }
+            //Update Invoice
+
+            invoiceDataHelper.UpdateMaterialInvoiceItems(loanedMaterials);
+
+            //Refund deposit +
+            eaDataHelper.UpdateAccountBalance(person.AccountId, money);
 
         }
     }
