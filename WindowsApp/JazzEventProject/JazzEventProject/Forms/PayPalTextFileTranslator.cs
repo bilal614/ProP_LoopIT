@@ -49,7 +49,7 @@ namespace JazzEventProject
                    
                    EventAccountDataHelper accountHelper = new EventAccountDataHelper();
 
-                   accountHelper.UpdateAccountBalance(arrID[index - 4], arrB[index - 4]);
+                   accountHelper.UpdateAccountBalanceWithPaypalFIle(arrID[index - 4], arrB[index - 4]);
                }
             }
 

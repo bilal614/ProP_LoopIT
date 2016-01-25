@@ -82,3 +82,4 @@ D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\J
 \\vmware-host\Shared Folders\Desktop\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe
 \\vmware-host\Shared Folders\Desktop\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.pdb
 \\vmware-host\Shared Folders\Desktop\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\Phidget21.NET.dll
+C:\ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.ReturnMaterial.resources

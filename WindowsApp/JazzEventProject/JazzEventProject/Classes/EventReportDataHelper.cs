@@ -391,7 +391,7 @@ namespace JazzEventProject.Classes
 
         public List<UserReport> GetAllUsersInfos()
         {
-            String sql = "SELECT e.Account_ID as UserID, e.First_Name as FName, e.Last_Name as LName, e.Balance as U_Bal, e.Phone as Phone, IFNULL(m.ReturnStatus,0) as LoanMat FROM e_account e LEFT JOIN m_invoice m ON e.Account_ID = m.Account_ID GROUP BY e.Account_ID  ";
+            String sql = " SELECT e.Account_ID as UserID, e.First_Name as FName, e.Last_Name as LName, e.Balance as U_Bal, e.Phone as Phone, IFNULL(m.ReturnStatus,0) as LoanMat, IFNULL(SUM(f.Quantity_Sold * fo.Food_Price),0) AS TOTAL FROM e_account e LEFT JOIN m_invoice m ON e.Account_ID = m.Account_ID LEFT JOIN F_INVOICE i ON e.Account_ID = i.Account_ID LEFT JOIN FOOD_Invoice f ON i.Food_InvoiceID = f.Food_InvoiceID LEFT JOIN FOOD fo ON f.food_ID = fo.food_ID GROUP BY e.Account_ID ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             List<UserReport> temp2;
             temp2 = new List<UserReport>();
@@ -405,22 +405,27 @@ namespace JazzEventProject.Classes
                 string First_Name;
                 string Last_Name;
                 decimal User_Balance;
-                decimal AvailableBalance;
+                int Phone;
+                decimal Money_Spent;
+                decimal Avail_Bal;
                 string Loaned_Material;
                 while (reader.Read())
                 {
                     User_ID = Convert.ToInt32(reader["UserID"]);
                     First_Name = Convert.ToString(reader["FName"]);
                     Last_Name = Convert.ToString(reader["LName"]);
+                    Money_Spent = Convert.ToDecimal(reader["TOTAL"]) ;
                     User_Balance = Convert.ToDecimal(reader["U_Bal"]);
-                    AvailableBalance = Convert.ToDecimal(reader["Phone"]);
+                    Phone = Convert.ToInt32(reader["Phone"]);
+                    
+                    Avail_Bal = User_Balance - Money_Spent;
                     if (Convert.ToInt32(reader["LoanMat"]) == 0)
                         Loaned_Material = "No";
                     else
                         Loaned_Material = "Yes";
                         ;
 
-                    temp2.Add(new UserReport(User_ID, First_Name, Last_Name, User_Balance, AvailableBalance, Loaned_Material));
+                        temp2.Add(new UserReport(User_ID, First_Name, Last_Name, Money_Spent , Avail_Bal, Phone, Loaned_Material));
                 }
             }
             catch

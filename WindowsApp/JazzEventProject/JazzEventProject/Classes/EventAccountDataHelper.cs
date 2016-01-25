@@ -480,6 +480,41 @@ namespace JazzEventProject.Classes
             return email;
         }
 
-       
+       // this method is specially to update the balance of all the customers
+        // after uploading the textfile from Palpal.
+        public bool UpdateAccountBalanceWithPaypalFIle(int id, decimal balance)
+        {
+            EventAccount currentClient = GetAccount(id);
+            decimal totalBalance = 0;
+            bool ticketPaid = false;
+
+            if (currentClient != null) { totalBalance = currentClient.Balance; }//adds existing balance of the
+            //currentClient to the totalBalance if that client exists in the DB
+            totalBalance += balance;
+
+            if (currentClient != null)
+            {
+                String sql = String.Format("UPDATE E_ACCOUNT SET Balance={0} WHERE Account_ID={1}",
+                    totalBalance, id);
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                try
+                {
+                    connection.Open();
+                    int nrOfrecordsChanged = command.ExecuteNonQuery();
+                    if (nrOfrecordsChanged == 1)
+                    { ticketPaid = true; }
+                }
+                catch
+                { MessageBox.Show("error while loading the participant."); }
+                finally
+                { connection.Close(); }
+            }
+            else
+            {
+                MessageBox.Show("Event account Id " + id +" does not exist in database.");
+            }
+
+            return ticketPaid;
+        }
     }
 }
