@@ -162,43 +162,43 @@ ALTER TABLE MATERIAL_INVOICE DROP FOREIGN KEY MATERIAL_INVOICE_M_INVOICE_FK;
 ALTER TABLE M_INVOICE DROP FOREIGN KEY M_INVOICE_E_ACCOUNT_FK;
 
 /*Insert Data into UserAcct table*/
-INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+INSERT INTO USER_ACCT(UserEmail,PassWord,HASH,Active)
 VALUES('martin@gmail.com','password','sajhdkalfjlkasjdlskjd', 1);
-INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+INSERT INTO USER_ACCT(UserEmail,PassWord,HASH,Active)
 VALUES('ron_will@gmail.com','password','sjdlaksfjkaaskjasdq',1);
-INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+INSERT INTO USER_ACCT(UserEmail,PassWord,HASH,Active)
 VALUES('Mike@gmail.com', 'password','qoirowueqroiureiw',1);
-INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+INSERT INTO USER_ACCT(UserEmail,PassWord,HASH,Active)
 VALUES('Chirs@gmail.com','password','zbnxcmnxzcmnvb',1);
-INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+INSERT INTO USER_ACCT(UserEmail,PassWord,HASH,Active)
 VALUES('Devil@gmail.com','password','qoiwruytweqouewqi',1);
-INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+INSERT INTO USER_ACCT(UserEmail,PassWord,HASH,Active)
 VALUES('Joe@gmail.com', 'password','mzxnvcmbczvmzxnk', 1);
-INSERT INTO User_Acct(UserEmail,PassWord,HASH,Active)
+INSERT INTO USER_ACCT(UserEmail,PassWord,HASH,Active)
 VALUES('AliceSim@gmail.com', 'password','qpwoireuriwer', 1);
 
 /*Insert data into Camp Table*/
-INSERT INTO Camp(CampID, Description, Available)
+INSERT INTO CAMP(CampID, Description, Available)
 VALUES (1,'tentsplot, size: 5m x 5m', false);
-INSERT INTO Camp(CampID, Description, Available)
+INSERT INTO CAMP(CampID, Description, Available)
 VALUES (2,'Near by river, caravan, 5m x 2m', true);
-INSERT INTO Camp(CampID, Description, Available)
+INSERT INTO CAMP(CampID, Description, Available)
 VALUES (3,'Eco-cabin, 5m x 2m', true);
 
 /*Insert data into E_Account*/
-INSERT INTO E_Account(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+INSERT INTO E_ACCOUNT(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
 VALUES(1,null,'Martin', 'Tailor','062315298','martin@gmail.com', 0.0, false, false);
-INSERT INTO E_Account(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+INSERT INTO E_ACCOUNT(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
 VALUES(2,null,'Ron', 'Williams','063789502','ron_will@gmail.com', 0.0, true, true);
-INSERT INTO E_Account(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+INSERT INTO E_ACCOUNT(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
 VALUES(3,null,'Mike', 'Copperfield','06235603','Mike@gmail.com', 0.0, true, true);
-INSERT INTO E_Account(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+INSERT INTO E_ACCOUNT(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
 VALUES(4,null,'Chris', 'Miller','06235963','Chirs@gmail.com', 0.0, false, false);
-INSERT INTO E_Account(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+INSERT INTO E_ACCOUNT(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
 VALUES(5,null,'Norman', 'Devid','06621553','Devil@gmail.com', 0.0, false, false);
-INSERT INTO E_Account(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+INSERT INTO E_ACCOUNT(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
 VALUES(6,null,'Joe', 'North','06233366','Joe@gmail.com', 0.0, true, true);
-INSERT INTO E_Account(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
+INSERT INTO E_ACCOUNT(Account_ID,RFID_code,First_Name,Last_Name,Phone,E_mail,Balance,Payment_Status,Pay_InAdvance)
 VALUES(7,null,'Alice', 'Simpson','06362145','AliceSim@gmail.com', 0.0, true, true);
 
 /*Insert data into Camping_res*/
@@ -239,13 +239,13 @@ INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 2, 3
 INSERT INTO FOOD_INVOICE(Quantity_Sold, Food_InvoiceID, Food_ID) VALUES (2, 2, 6);
 
 /*Insert data into MATERIAL*/
-INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+INSERT INTO MATERIAL(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
 VALUES (1,'USB Cable',1.00,1.50,'USB cable for charging phone',50);
-INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+INSERT INTO MATERIAL(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
 VALUES (2,'Charger for laptop',2.00,2.50,'',30);
-INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+INSERT INTO MATERIAL(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
 VALUES (3,'USB Device',1.00,1.50,'USB device, capacity 8GB',20);
-INSERT INTO Material(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
+INSERT INTO MATERIAL(Material_ID, Name, Deposit_Amount, Loaning_Price, Description, Material_Quantity) 
 VALUES (4,'Camera',11.50,10.00,'Canon cammera, 8GB, 2000x5000 pixels',20);
 
 /*Insert data into M_Invoice*/
