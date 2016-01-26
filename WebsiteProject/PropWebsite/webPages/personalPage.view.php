@@ -40,7 +40,7 @@
                             if(empty($campInfo)) { echo ('You have no current camp reservations at the moment.'); }?>
                             
                         </div>
-                        <a href="logout.php"> 
+                        <a href="logOut.php"> 
                             <input type="button" id="logout" name="logout" value="Log out">
                         </a>
                     </div>

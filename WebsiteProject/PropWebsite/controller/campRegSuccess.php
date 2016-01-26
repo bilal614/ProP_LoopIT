@@ -17,6 +17,6 @@ if(isset($_POST['BackPersonPage'])){
     exit();
 }
 
-include '../webPages/campSuccess.view';
+include '../webPages/campSuccess.view.php';
 
 

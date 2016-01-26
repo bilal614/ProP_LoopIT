@@ -16,7 +16,7 @@ namespace JazzEventProject.Classes
         /// <returns></returns>
         public List<Camp> GetAllCamps()
         {
-            String sql = "SELECT * FROM Camp";
+            String sql = "SELECT * FROM CAMP";
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             List<Camp> temp;

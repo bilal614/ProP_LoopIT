@@ -16,7 +16,7 @@ namespace JazzEventProject.Classes
         /// <returns>List of food invoices</returns>
         public List<Invoice> GetAllFoodInvoices()
         {
-            String sql = "SELECT * FROM F_Invoice";
+            String sql = "SELECT * FROM F_INVOICE";
             MySqlCommand command = new MySqlCommand(sql, connection);
             List<Invoice> temp;
             temp = new List<Invoice>();
@@ -144,7 +144,7 @@ namespace JazzEventProject.Classes
         /// <returns></returns>
         public List<Invoice> GetAllMaterialInvoices()
         {
-            String sql = "SELECT * FROM M_Invoice";
+            String sql = "SELECT * FROM M_INVOICE";
             MySqlCommand command = new MySqlCommand(sql, connection);
             List<Invoice> temp;
             temp = new List<Invoice>();

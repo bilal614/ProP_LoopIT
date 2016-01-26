@@ -351,7 +351,7 @@ namespace JazzEventProject.Classes
         //Select food report infors
         public List<FoodReport> GetAllFoodInfors()
         {
-            String sql = "select f.food_ID as foodID, f.food_name as foodName, sum(fi.quantity_sold) soldQuantity, f.food_quantity availableQuantity from food f join food_invoice fi on f.food_id = fi.food_id group by f.food_id";
+            String sql = "select f.food_ID as foodID, f.food_name as foodName, sum(fi.quantity_sold) soldQuantity, f.food_quantity availableQuantity from FOOD f join FOOD_INVOICE fi on f.food_id = fi.food_id group by f.food_id";
             MySqlCommand command = new MySqlCommand(sql, connection);
             List<FoodReport> temp;
             temp = new List<FoodReport>();
@@ -391,7 +391,7 @@ namespace JazzEventProject.Classes
 
         public List<UserReport> GetAllUsersInfos()
         {
-            String sql = " SELECT e.Account_ID as UserID, e.First_Name as FName, e.Last_Name as LName, e.Balance as U_Bal, e.Phone as Phone, IFNULL(m.ReturnStatus,0) as LoanMat, IFNULL(SUM(f.Quantity_Sold * fo.Food_Price),0) AS TOTAL FROM e_account e LEFT JOIN m_invoice m ON e.Account_ID = m.Account_ID LEFT JOIN F_INVOICE i ON e.Account_ID = i.Account_ID LEFT JOIN FOOD_Invoice f ON i.Food_InvoiceID = f.Food_InvoiceID LEFT JOIN FOOD fo ON f.food_ID = fo.food_ID GROUP BY e.Account_ID ";
+            String sql = " SELECT e.Account_ID as UserID, e.First_Name as FName, e.Last_Name as LName, e.Balance as U_Bal, e.Phone as Phone, IFNULL(m.ReturnStatus,0) as LoanMat, IFNULL(SUM(f.Quantity_Sold * fo.Food_Price),0) AS TOTAL FROM E_ACCOUNT e LEFT JOIN M_INVOICE m ON e.Account_ID = m.Account_ID LEFT JOIN F_INVOICE i ON e.Account_ID = i.Account_ID LEFT JOIN FOOD_INVOICE f ON i.Food_InvoiceID = f.Food_InvoiceID LEFT JOIN FOOD fo ON f.food_ID = fo.food_ID GROUP BY e.Account_ID ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             List<UserReport> temp2;
             temp2 = new List<UserReport>();

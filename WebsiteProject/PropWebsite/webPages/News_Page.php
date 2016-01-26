@@ -2,15 +2,16 @@
 <html>
 <head>
      <?php
-        include('../includes/subPages/headTag.php');
-    ?>
+        include ('../includes/common.inc.php');
+        displayHeadTag();
+     ?>
 <body>
     <h1>
     <img src="../templates/images/logo.png" alt="logo" style="width:400px;height:70px" />
     </h1>
     <div class="container">
          <?php
-            include('../includes/subPages/header.php');
+            displayHeader();
         ?>
         <div class="content">
             <div id="Regwrapper">
@@ -32,7 +33,7 @@
         </div>
     </div>
     <?php
-        include('../includes/subPages/footer.php');
+        displayFooter();
     ?>             
 </body>
 </html>
