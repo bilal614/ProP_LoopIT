@@ -444,7 +444,7 @@ namespace JazzEventProject.Classes
         {
             int idEvent = 0;
 
-            String sql = String.Format("SELECT Account_ID FROM E_Account WHERE RFID_code='{0}'", rfid);
+            String sql = String.Format("SELECT Account_ID FROM E_ACCOUNT WHERE RFID_code='{0}'", rfid);
             MySqlCommand command = new MySqlCommand(sql, connection);
 
             try

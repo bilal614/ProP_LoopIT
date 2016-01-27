@@ -60,6 +60,7 @@
             this.dataGridViewUserReprot = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.GreyPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -82,7 +83,7 @@
             this.TotalRev});
             this.dataGridView1.Location = new System.Drawing.Point(12, 73);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(750, 142);
+            this.dataGridView1.Size = new System.Drawing.Size(750, 118);
             this.dataGridView1.TabIndex = 0;
             // 
             // NmbrOfReg
@@ -158,7 +159,7 @@
             this.bottomPanel.Controls.Add(this.btnBackToMainForm);
             this.bottomPanel.Controls.Add(this.btnUpdate);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 627);
+            this.bottomPanel.Location = new System.Drawing.Point(0, 610);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(774, 114);
             this.bottomPanel.TabIndex = 17;
@@ -226,7 +227,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 221);
+            this.groupBox1.Location = new System.Drawing.Point(12, 197);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(239, 207);
             this.groupBox1.TabIndex = 18;
@@ -332,7 +333,7 @@
             // dataGridViewFoodReport
             // 
             this.dataGridViewFoodReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFoodReport.Location = new System.Drawing.Point(291, 247);
+            this.dataGridViewFoodReport.Location = new System.Drawing.Point(291, 223);
             this.dataGridViewFoodReport.Name = "dataGridViewFoodReport";
             this.dataGridViewFoodReport.Size = new System.Drawing.Size(471, 181);
             this.dataGridViewFoodReport.TabIndex = 21;
@@ -340,16 +341,16 @@
             // dataGridViewUserReprot
             // 
             this.dataGridViewUserReprot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUserReprot.Location = new System.Drawing.Point(12, 482);
+            this.dataGridViewUserReprot.Location = new System.Drawing.Point(12, 442);
             this.dataGridViewUserReprot.Name = "dataGridViewUserReprot";
-            this.dataGridViewUserReprot.Size = new System.Drawing.Size(750, 150);
+            this.dataGridViewUserReprot.Size = new System.Drawing.Size(750, 139);
             this.dataGridViewUserReprot.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(466, 221);
+            this.label1.Location = new System.Drawing.Point(466, 197);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 22);
             this.label1.TabIndex = 23;
@@ -359,17 +360,27 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(288, 454);
+            this.label7.Location = new System.Drawing.Point(15, 408);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(177, 22);
             this.label7.TabIndex = 24;
             this.label7.Text = "Detailed users report";
             // 
+            // GreyPanel
+            // 
+            this.GreyPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.GreyPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.GreyPanel.Location = new System.Drawing.Point(0, 64);
+            this.GreyPanel.Name = "GreyPanel";
+            this.GreyPanel.Size = new System.Drawing.Size(774, 5);
+            this.GreyPanel.TabIndex = 32;
+            // 
             // EventStatusReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 741);
+            this.ClientSize = new System.Drawing.Size(774, 724);
+            this.Controls.Add(this.GreyPanel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewUserReprot);
@@ -427,5 +438,6 @@
         private System.Windows.Forms.DataGridView dataGridViewUserReprot;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel GreyPanel;
     }
 }

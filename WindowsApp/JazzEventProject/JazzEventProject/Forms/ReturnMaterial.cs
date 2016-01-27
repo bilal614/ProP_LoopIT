@@ -13,7 +13,7 @@ using JazzEventProject.Classes;
 
 namespace JazzEventProject
 {
-    public partial class ReturnMaterial : Form
+    public partial class ReturnForm : Form
     {
         private List<Items> materials;
         private ItemDataHelper dataHelper;
@@ -27,7 +27,7 @@ namespace JazzEventProject
         PhidgetHandler phidgetScanner;
         string customerRFID;
 
-        public ReturnMaterial()
+        public ReturnForm()
         {
             InitializeComponent();
             //turetu is duomenu bazes sukrauti itemus ir issaugoti sarase +
@@ -48,31 +48,49 @@ namespace JazzEventProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Updates users loaned materials list +
-            loanedMaterials[selectedItem].ReturnStatus = true;
-            loanedMaterials[selectedItem].ReturnDate = DateTime.Now;
-            
-            //prideda ta daikta y evento duomenu baze. Add item to event database
-            int selectedItemID = loanedMaterials[selectedItem].Item_Id;
-            materials.Find(x => x.ID == selectedItemID).Quantity++;
-            dataHelper.UpdateAMaterial(selectedItemID, materials);
-            //Update Invoice
+            try
+            {
+                //Datagridview selected row
+                selectedItem = dataGridViewReturn.SelectedRows[0].Index;
+                dataGridViewReturn.Rows.Remove(dataGridViewReturn.SelectedRows[0]);
 
-            invoiceDataHelper.UpdateMaterialInvoiceItems(loanedMaterials);
 
-            //Refund deposit +
-            eaDataHelper.UpdateAccountBalance(person.AccountId, ((Material)materials.Find(x => x.ID == selectedItemID)).DepositAmount);
+                //Updates users loaned materials list +
+                loanedMaterials[selectedItem].ReturnStatus = true;
+                loanedMaterials[selectedItem].ReturnDate = DateTime.Now;
+
+                //prideda ta daikta y evento duomenu baze. Add item to event database
+                int selectedItemID = loanedMaterials[selectedItem].Item_Id;
+                materials.Find(x => x.ID == selectedItemID).Quantity++;
+                dataHelper.UpdateAMaterial(selectedItemID, materials);
+                //Update Invoice
+
+                invoiceDataHelper.UpdateMaterialInvoiceItems(loanedMaterials);
+
+                //Refund deposit +
+                eaDataHelper.UpdateAccountBalance(person.AccountId, ((Material)materials.Find(x => x.ID == selectedItemID)).DepositAmount);
+
+                lblcurrentStatus.Text = "Selected item is returned.";
+            }
+            catch
+            {
+                MessageBox.Show("Please selected the returned material");
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedItem = this.listBox1.SelectedIndex;
+            //selectedItem = this.listBox1.SelectedIndex;
 
         }
 
         //kazkas turi but kas nuskanuoja RFID. Smth that scans RFID +
         private void ChangeTagOnForm(object sender, TagEventArgs e)
         {
+            //Reset datagrid view 
+            dataGridViewReturn.Rows.Clear();
+            dataGridViewReturn.Refresh();
+
             customerRFID = phidgetScanner.RFIDtagNr;
             person = eaDataHelper.GetEventAccountFromRFID(customerRFID);
             if (person != null)
@@ -80,18 +98,33 @@ namespace JazzEventProject
                 lbName.Text = person.FirstName;
                 //Get loaned materials list
                 loanedMaterials = invoiceDataHelper.GetPersonalMaterialInvoices(person.AccountId);
-                listBox1.Items.Clear();
+                //listBox1.Items.Clear();
                 //listBox1.Items.Add("Name \t Quantity \t ReturnStatus");
+
                 //Put items list into listbox +
                 for(int i = 0; i < loanedMaterials.Count; i++)
                 {
                     //Adds item name quantity and retunr status to the listbox
-                    listBox1.Items.Add(materials.Find(x => x.ID== loanedMaterials[i].Item_Id).Name+"\t"+loanedMaterials[i].Quantity+"\t"+loanedMaterials[i].ReturnStatus);
+                    //listBox1.Items.Add(materials.Find(x => x.ID== loanedMaterials[i].Item_Id).Name+"\t"+loanedMaterials[i].Quantity+"\t"+loanedMaterials[i].ReturnStatus);
+
+                  
+                    //Use datagrid view
+                    DataGridViewRow newrow = new DataGridViewRow();
+                    newrow.CreateCells(dataGridViewReturn);
+                    newrow.Cells[0].Value = materials.Find(x => x.ID == loanedMaterials[i].Item_Id).Name;
+                    newrow.Cells[1].Value = loanedMaterials[i].Quantity;
+                    newrow.Cells[2].Value = loanedMaterials[i].ReturnStatus;
+
+                    dataGridViewReturn.Rows.Add(newrow);
+                    
                 }
+
+                lblcurrentStatus.Text = "Customer's information is displayed";
+
             }
             else
             {
-                lbName.Text = "The scanned RFID code does not exist in database.";
+                lblcurrentStatus.Text = "The scanned RFID code does not exist in database.";
             }
 
         }
@@ -124,6 +157,11 @@ namespace JazzEventProject
             //Refund deposit +
             eaDataHelper.UpdateAccountBalance(person.AccountId, money);
 
+            //Clear and refresh datagridview
+            dataGridViewReturn.Rows.Clear();
+            dataGridViewReturn.Refresh();
+
+            lblcurrentStatus.Text = "All of items is returned";
         }
     }
 }

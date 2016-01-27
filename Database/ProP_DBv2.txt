@@ -223,6 +223,8 @@ INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (3,'Chick
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (4,'Salads', 60, 2.50);
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (5,'Heniken Beer', 250, 1.50);
 INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (6,'Coca-cola', 550, 1.20);
+INSERT INTO FOOD(Food_ID, Food_Name, Food_Quantity, Food_Price) VALUES (7,'Coffee', 550, 1.20);
+
 
 /*Insert data into f_invoice*/
 INSERT INTO F_INVOICE(Food_InvoiceID, SoldDate, Account_ID) VALUES (1, STR_TO_DATE('02-11-2015', '%d-%m-%Y'), 1);
