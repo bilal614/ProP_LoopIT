@@ -75,8 +75,9 @@ namespace JazzEventProject
                             newrow.Cells[4].Value = scannedMember.Co_Email;
                             newrow.Cells[5].Value = eID;
                             newrow.Cells[6].Value = scannedMember.CheckIn;
+                            dataGridView1.Rows.Clear();    
                             dataGridView1.Rows.Add(newrow);
-                            row++;
+                            //row++;
                         //}
                         //catch { MessageBox.Show("This reservation information is already displayed."); }
                     }
