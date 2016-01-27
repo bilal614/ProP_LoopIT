@@ -99,7 +99,7 @@ namespace JazzEventProject.Classes
         }
         public int CampRev()
         {
-            String sql = "SELECT (COUNT( DISTINCT CampRes_No)*30 + COUNT(GroupID)*20) FROM GROUPMEMBERS ";
+            String sql = "SELECT COUNT( DISTINCT CampRes_No ) *30 + COUNT( * ) *20 FROM GROUPMEMBERS ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
@@ -165,7 +165,7 @@ namespace JazzEventProject.Classes
 
         public int NrOfVisPresent()
         {
-            String sql = "SELECT COUNT(*) FROM `e_account` WHERE RFID_Code IS NOT NULL ";
+            String sql = "SELECT COUNT(*) FROM `E_ACCOUNT` WHERE RFID_Code IS NOT NULL ";
             MySqlCommand command = new MySqlCommand(sql, connection);
             int number = 0;
             try
