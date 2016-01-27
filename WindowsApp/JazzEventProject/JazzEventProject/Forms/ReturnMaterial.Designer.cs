@@ -40,15 +40,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBackToMainForm = new System.Windows.Forms.Button();
             this.dataGridViewReturn = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblcurrentStatus = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.GreyPanel = new System.Windows.Forms.Panel();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bottomPanel.SuspendLayout();
@@ -174,33 +174,19 @@
             this.btnBackToMainForm.Text = "Back";
             this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBackToMainForm.UseVisualStyleBackColor = true;
+            this.btnBackToMainForm.Click += new System.EventHandler(this.btnBackToMainForm_Click);
             // 
             // dataGridViewReturn
             // 
             this.dataGridViewReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReturn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
+            this.ItemName,
             this.Quantity,
             this.ReturnStatus});
             this.dataGridViewReturn.Location = new System.Drawing.Point(35, 151);
             this.dataGridViewReturn.Name = "dataGridViewReturn";
             this.dataGridViewReturn.Size = new System.Drawing.Size(656, 163);
             this.dataGridViewReturn.TabIndex = 16;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // ReturnStatus
-            // 
-            this.ReturnStatus.HeaderText = "Return Status";
-            this.ReturnStatus.Name = "ReturnStatus";
             // 
             // label3
             // 
@@ -266,6 +252,21 @@
             this.GreyPanel.Size = new System.Drawing.Size(713, 5);
             this.GreyPanel.TabIndex = 31;
             // 
+            // ItemName
+            // 
+            this.ItemName.HeaderText = "Name";
+            this.ItemName.Name = "ItemName";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // ReturnStatus
+            // 
+            this.ReturnStatus.HeaderText = "Return Status";
+            this.ReturnStatus.Name = "ReturnStatus";
+            // 
             // ReturnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,9 +282,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbName);
             this.Margin = new System.Windows.Forms.Padding(2);
-            //this.Name = "ReturnForm";
+            this.Name = "ReturnForm";
             this.Text = "Return Loaned Materials";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReturnMaterial_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReturnForm_FormClosed);
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -308,9 +309,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnBackToMainForm;
         private System.Windows.Forms.DataGridView dataGridViewReturn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReturnStatus;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -318,6 +316,9 @@
         private System.Windows.Forms.Label lblcurrentStatus;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel GreyPanel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReturnStatus;
     }
 }
 

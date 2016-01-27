@@ -42,8 +42,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -67,6 +65,8 @@
             this.lblcurrentStatus = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
@@ -89,7 +89,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(191, 171);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(243, 22);
             this.textBox1.TabIndex = 1;
@@ -108,9 +108,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(51, 225);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox1.Size = new System.Drawing.Size(417, 242);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -221,27 +221,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Name:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(16, 118);
-            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 17);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Loan:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(221, 118);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(108, 15);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "LoanedMaterial";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label17);
@@ -254,9 +233,9 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(539, 232);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox2.Size = new System.Drawing.Size(452, 235);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
@@ -331,16 +310,16 @@
             this.HeaderPanel.Controls.Add(this.label18);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
-            this.HeaderPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HeaderPanel.Margin = new System.Windows.Forms.Padding(4);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(1063, 79);
+            this.HeaderPanel.Size = new System.Drawing.Size(1020, 79);
             this.HeaderPanel.TabIndex = 18;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(83, 62);
             this.pictureBox1.TabIndex = 11;
@@ -364,9 +343,9 @@
             this.GreyPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.GreyPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.GreyPanel.Location = new System.Drawing.Point(0, 79);
-            this.GreyPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GreyPanel.Margin = new System.Windows.Forms.Padding(4);
             this.GreyPanel.Name = "GreyPanel";
-            this.GreyPanel.Size = new System.Drawing.Size(1063, 6);
+            this.GreyPanel.Size = new System.Drawing.Size(1020, 6);
             this.GreyPanel.TabIndex = 19;
             // 
             // bottomPanel
@@ -377,9 +356,9 @@
             this.bottomPanel.Controls.Add(this.btnBackToMainForm);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel.Location = new System.Drawing.Point(0, 524);
-            this.bottomPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bottomPanel.Margin = new System.Windows.Forms.Padding(4);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(1063, 140);
+            this.bottomPanel.Size = new System.Drawing.Size(1020, 140);
             this.bottomPanel.TabIndex = 22;
             // 
             // btnActivateRFID
@@ -387,8 +366,8 @@
             this.btnActivateRFID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActivateRFID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActivateRFID.Image = ((System.Drawing.Image)(resources.GetObject("btnActivateRFID.Image")));
-            this.btnActivateRFID.Location = new System.Drawing.Point(523, 14);
-            this.btnActivateRFID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnActivateRFID.Location = new System.Drawing.Point(480, 14);
+            this.btnActivateRFID.Margin = new System.Windows.Forms.Padding(4);
             this.btnActivateRFID.Name = "btnActivateRFID";
             this.btnActivateRFID.Size = new System.Drawing.Size(181, 118);
             this.btnActivateRFID.TabIndex = 17;
@@ -402,8 +381,8 @@
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(712, 14);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrint.Location = new System.Drawing.Point(669, 14);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(140, 118);
             this.btnPrint.TabIndex = 15;
@@ -416,9 +395,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1063, 6);
+            this.panel1.Size = new System.Drawing.Size(1020, 6);
             this.panel1.TabIndex = 14;
             // 
             // btnBackToMainForm
@@ -427,8 +406,8 @@
             this.btnBackToMainForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackToMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToMainForm.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToMainForm.Image")));
-            this.btnBackToMainForm.Location = new System.Drawing.Point(875, 14);
-            this.btnBackToMainForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBackToMainForm.Location = new System.Drawing.Point(832, 14);
+            this.btnBackToMainForm.Margin = new System.Windows.Forms.Padding(4);
             this.btnBackToMainForm.Name = "btnBackToMainForm";
             this.btnBackToMainForm.Size = new System.Drawing.Size(172, 118);
             this.btnBackToMainForm.TabIndex = 1;
@@ -440,7 +419,7 @@
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(442, 165);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 28);
             this.btnSearch.TabIndex = 23;
@@ -478,9 +457,9 @@
             this.panel2.Controls.Add(this.label23);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 487);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1063, 37);
+            this.panel2.Size = new System.Drawing.Size(1020, 37);
             this.panel2.TabIndex = 27;
             // 
             // lblcurrentStatus
@@ -518,11 +497,32 @@
             this.label24.TabIndex = 25;
             this.label24.Text = "RFID Tag is lost, typing event account here:";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(221, 118);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(108, 15);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "LoanedMaterial";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(16, 118);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 17);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Loan:";
+            // 
             // ExitEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1063, 664);
+            this.ClientSize = new System.Drawing.Size(1020, 664);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label20);
@@ -536,7 +536,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ExitEvent";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ExitEvent_FormClosed);
             this.Load += new System.EventHandler(this.ExitEvent_Load);
@@ -560,14 +560,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -595,5 +593,7 @@
         private System.Windows.Forms.Label lblcurrentStatus;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

@@ -15,7 +15,6 @@ D:\2015ProP\Versions\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProjec
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe.config
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.exe
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject_V1.pdb
-D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.csprojResolveAssemblyReference.cache
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.csproj.GenerateResource.Cache
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.exe
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\JazzEventProject_V1.pdb
@@ -83,3 +82,4 @@ C:\Pro_P\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\Jazz
 \\vmware-host\Shared Folders\Desktop\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\bin\Debug\Phidget21.NET.dll
 C:\ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.ReturnMaterial.resources
 D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.ReturnForm.resources
+D:\2015ProP\ProP_LoopIT\WindowsApp\JazzEventProject\JazzEventProject\obj\Debug\JazzEventProject.csprojResolveAssemblyReference.cache

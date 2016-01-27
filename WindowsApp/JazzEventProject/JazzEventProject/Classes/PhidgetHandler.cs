@@ -54,10 +54,17 @@ namespace JazzEventProject.Classes
 
         public void CloseRFIDReader()
         {
-            myRFIDReader.LED = false;
-            myRFIDReader.Antenna = false;
-            myRFIDReader.close();
-            currentStatus = "RFID scanner has been closed";
+            try
+            {
+                myRFIDReader.LED = false;
+                myRFIDReader.Antenna = false;
+                myRFIDReader.close();
+                currentStatus = "RFID scanner has been closed";
+            }
+            catch
+            {
+                currentStatus = "No RFID scanner attached, please check the connection";
+            }
         }
 
         //methods

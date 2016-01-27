@@ -129,10 +129,6 @@ namespace JazzEventProject
 
         }
 
-        private void ReturnMaterial_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            phidgetScanner.CloseRFIDReader();
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -162,6 +158,24 @@ namespace JazzEventProject
             dataGridViewReturn.Refresh();
 
             lblcurrentStatus.Text = "All of items is returned";
+        }
+
+        private void ReturnForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                phidgetScanner.CloseRFIDReader();
+                lblcurrentStatus.Text = phidgetScanner.currentStatus;
+            }
+            catch
+            {
+                lblcurrentStatus.Text = "No open RFID scanners detected.";
+            }
+        }
+
+        private void btnBackToMainForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
