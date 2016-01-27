@@ -50,10 +50,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(14, 200);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.richTextBox1.Location = new System.Drawing.Point(9, 130);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(967, 281);
+            this.richTextBox1.Size = new System.Drawing.Size(646, 184);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -62,10 +61,9 @@
             // 
             this.lblTxtBox.AutoSize = true;
             this.lblTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTxtBox.Location = new System.Drawing.Point(13, 170);
-            this.lblTxtBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTxtBox.Location = new System.Drawing.Point(9, 110);
             this.lblTxtBox.Name = "lblTxtBox";
-            this.lblTxtBox.Size = new System.Drawing.Size(223, 25);
+            this.lblTxtBox.Size = new System.Drawing.Size(160, 17);
             this.lblTxtBox.TabIndex = 2;
             this.lblTxtBox.Text = "Text from text-file below:";
             // 
@@ -75,18 +73,16 @@
             this.HeaderPanel.Controls.Add(this.label2);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
-            this.HeaderPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(992, 98);
+            this.HeaderPanel.Size = new System.Drawing.Size(661, 64);
             this.HeaderPanel.TabIndex = 13;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(14, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 7);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(62, 50);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
@@ -96,10 +92,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(116, 34);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(77, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(352, 32);
+            this.label2.Size = new System.Drawing.Size(234, 24);
             this.label2.TabIndex = 10;
             this.label2.Text = "PAYPAL TRANSACTIONS";
             // 
@@ -110,19 +105,19 @@
             this.bottomPanel.Controls.Add(this.btnBackToMainForm);
             this.bottomPanel.Controls.Add(this.btnLoadFileAndSave);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel.Location = new System.Drawing.Point(0, 497);
-            this.bottomPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bottomPanel.Location = new System.Drawing.Point(0, 323);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(992, 175);
+            this.bottomPanel.Size = new System.Drawing.Size(661, 114);
             this.bottomPanel.TabIndex = 16;
             // 
             // btnAddTextFile
             // 
             this.btnAddTextFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTextFile.Image = global::JazzEventProject.Properties.Resources.Plus_50;
-            this.btnAddTextFile.Location = new System.Drawing.Point(256, 17);
+            this.btnAddTextFile.Location = new System.Drawing.Point(171, 11);
+            this.btnAddTextFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddTextFile.Name = "btnAddTextFile";
-            this.btnAddTextFile.Size = new System.Drawing.Size(279, 148);
+            this.btnAddTextFile.Size = new System.Drawing.Size(186, 96);
             this.btnAddTextFile.TabIndex = 17;
             this.btnAddTextFile.Text = "Add PayPal text file";
             this.btnAddTextFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -134,9 +129,8 @@
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(992, 8);
+            this.panel3.Size = new System.Drawing.Size(661, 5);
             this.panel3.TabIndex = 16;
             // 
             // btnBackToMainForm
@@ -145,24 +139,23 @@
             this.btnBackToMainForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackToMainForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToMainForm.Image = ((System.Drawing.Image)(resources.GetObject("btnBackToMainForm.Image")));
-            this.btnBackToMainForm.Location = new System.Drawing.Point(831, 17);
-            this.btnBackToMainForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBackToMainForm.Location = new System.Drawing.Point(554, 11);
             this.btnBackToMainForm.Name = "btnBackToMainForm";
-            this.btnBackToMainForm.Size = new System.Drawing.Size(142, 148);
+            this.btnBackToMainForm.Size = new System.Drawing.Size(95, 96);
             this.btnBackToMainForm.TabIndex = 1;
             this.btnBackToMainForm.Text = "Back";
             this.btnBackToMainForm.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBackToMainForm.UseVisualStyleBackColor = true;
+            this.btnBackToMainForm.Click += new System.EventHandler(this.btnBackToMainForm_Click);
             // 
             // btnLoadFileAndSave
             // 
             this.btnLoadFileAndSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoadFileAndSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadFileAndSave.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadFileAndSave.Image")));
-            this.btnLoadFileAndSave.Location = new System.Drawing.Point(542, 17);
-            this.btnLoadFileAndSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLoadFileAndSave.Location = new System.Drawing.Point(361, 11);
             this.btnLoadFileAndSave.Name = "btnLoadFileAndSave";
-            this.btnLoadFileAndSave.Size = new System.Drawing.Size(280, 148);
+            this.btnLoadFileAndSave.Size = new System.Drawing.Size(187, 96);
             this.btnLoadFileAndSave.TabIndex = 1;
             this.btnLoadFileAndSave.Text = "Load file and save to DB";
             this.btnLoadFileAndSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -173,10 +166,9 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 98);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(0, 64);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(992, 8);
+            this.panel2.Size = new System.Drawing.Size(661, 5);
             this.panel2.TabIndex = 17;
             // 
             // openFileDialog1
@@ -185,26 +177,28 @@
             // 
             // textSelectedFile
             // 
-            this.textSelectedFile.Location = new System.Drawing.Point(183, 124);
+            this.textSelectedFile.Location = new System.Drawing.Point(122, 81);
+            this.textSelectedFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textSelectedFile.Name = "textSelectedFile";
-            this.textSelectedFile.Size = new System.Drawing.Size(797, 26);
+            this.textSelectedFile.Size = new System.Drawing.Size(533, 20);
             this.textSelectedFile.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 127);
+            this.label1.Location = new System.Drawing.Point(9, 83);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 25);
+            this.label1.Size = new System.Drawing.Size(98, 17);
             this.label1.TabIndex = 19;
             this.label1.Text = "Selected file";
             // 
             // PayPalTextFileTranslator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 672);
+            this.ClientSize = new System.Drawing.Size(661, 437);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textSelectedFile);
             this.Controls.Add(this.panel2);
@@ -212,7 +206,6 @@
             this.Controls.Add(this.HeaderPanel);
             this.Controls.Add(this.lblTxtBox);
             this.Controls.Add(this.richTextBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PayPalTextFileTranslator";
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
